@@ -28,18 +28,21 @@ This is the second time this class is taught, its original name is [Sensing Mach
 ## Evaluation
 
 You should be an active participant in the class.
+
 * Show up on time and pay attention.
 * Ask questions, show work, participate in discussions.
 
 There will be 4 assignments for the first part of the semester.
+
 * Assignments should be completed individually.
 * The objective of these is to make sure you understand what is covered in the class and get your hands dirty.
 * If you are familiar with the techniques explored, get out of your comfort zone!
 * Assignments will have an open-ended component and creativity is encouraged.
 
 The second part of the semester will be dedicated to a larger project.
+
 * Projects should be created by teams of 2 students.
-* The objective is to build a fully fleshed out interactive, which can take the shape of an artwork, a performance, an installation, etc. 
+* The objective is to build a fully fleshed out interactive, which can take the shape of an artwork, a performance, an installation, etc.
 * Be prepared to show progress every week, starting with a proposal, progress milestones every week, and a final presentation of a working project on the last class.
 
 The evaluation breakdown is as follows:
@@ -50,7 +53,7 @@ The evaluation breakdown is as follows:
 | Assignments              | 40%  |
 | Final Project            | 40%  |
 
-Pass/Fail means that anything below 80% is a fail. 
+Pass/Fail means that anything below 80% is a fail.
 
 I will notify you ahead of time if you are at risk of failing, and you can reach out to me at any time if you are concerned about your standing in the class.
 

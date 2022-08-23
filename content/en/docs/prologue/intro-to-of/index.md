@@ -19,6 +19,7 @@ toc: true
 [openFrameworks](https://openframeworks.cc/) (OF) is an open source cross-platform C++ toolkit designed to assist the creative process, by providing a simple and intuitive framework for experimentation.
 
 OF is distributed under the MIT License, which gives everyone the freedoms to use openFrameworks in any context:
+
 * Commercial or non-commercial.
 * Public or private.
 * Open or closed source.
@@ -80,6 +81,7 @@ img.load(...);
 ### Open Source
 
 OF is distributed as source code.
+
 * An open book, giving the curious a good starting point for learning about C++ library wrangling.
 * A work in progress, keeping the code visible allowing for easier changes and feedback.
 * An invitation for users to modify the toolkit to their taste or needs.
@@ -88,7 +90,7 @@ Over 70 people have contributed to the core, and there are more than 1500 addons
 
 ### Comparisons with Processing
 
-openFrameworks and Processing have many similarities. In fact, OF is inspired by Processing! 
+openFrameworks and Processing have many similarities. In fact, OF is inspired by Processing!
 
 When possible, openFrameworks tries to maintain parity with Processing, making moving from one to the other very easy. Compare the following code snippets:
 
@@ -133,13 +135,15 @@ For example, `void ofApp::draw()` means "define the `draw()` function that belon
 [Download](https://openframeworks.cc/download/) the openFrameworks package for your environment.
 
 Follow the corresponding setup guide.
+
 * Unlike Processing, OF does not come with its own development environment (IDE). Instructions to set this up will be included in the guide.
 * You will use [Xcode](https://developer.apple.com/xcode/) for development under macOS and [Visual Studio](https://visualstudio.microsoft.com/vs/) for development under Windows.
 
 ### Project Generation
 
-To create a new project, you are **strongly encouraged** to use the OF Project Generator. 
-* This application can be found in your downloaded package, under `/path/to/OF/projectGenerator-XXX`. 
+To create a new project, you are **strongly encouraged** to use the OF Project Generator.
+
+* This application can be found in your downloaded package, under `/path/to/OF/projectGenerator-XXX`.
 * The Project Generator will take care of adding any files and libraries needed to build your applications.
 
 The first time you run the Project Generator, you'll be asked to set the path to the openFrameworks installation on your system.
@@ -212,7 +216,7 @@ public:
 ```
 
 {{< details "What does <code>#pragma once</code> mean?" >}}
-We now know `#include` will insert the contents of another file into our code, however we only want to include every piece of code once in our application. You will notice many files will have `#include "ofMain.h"` at the top, but that code cannot be inserted over and over, as this will give us duplicate classes and functions with the same name. 
+We now know `#include` will insert the contents of another file into our code, however we only want to include every piece of code once in our application. You will notice many files will have `#include "ofMain.h"` at the top, but that code cannot be inserted over and over, as this will give us duplicate classes and functions with the same name.
 
 This is where the `#pragma once` directive comes in. It tells the compiler to only include the contents of the file once, no matter how many times it is referenced with `#include`.
 

@@ -9,7 +9,7 @@
 
 /** Import highlight.js */
 @import "highlight.js/scss/github-dark-dimmed";
-//@import "highlight.js/scss/base16/onedark";
+/* stylelint-disable-line */ // @import "highlight.js/scss/base16/onedark";
 
 /** Import KaTeX */
 @import "katex/dist/katex";
@@ -21,7 +21,7 @@
 @import "common/gist";
 @import "components/alerts";
 @import "components/buttons";
-// @import "components/code";
+ /* stylelint-disable-line */ // @import "components/code";
 @import "components/details";
 @import "components/syntax";
 @import "components/comments";
