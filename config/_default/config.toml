@@ -1,5 +1,5 @@
-baseurl = "https://doks.netlify.app/"
-canonifyURLs = false
+baseurl = "https://seeingmachines.betamovement.net/"
+canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
 enableEmoji = true

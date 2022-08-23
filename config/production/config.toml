@@ -1,1 +1,2 @@
-canonifyURLs = false
+baseurl = "https://seeingmachines.betamovement.net/"
+canonifyURLs = true
