@@ -7,6 +7,15 @@ draft: false
 images: []
 ---
 
+ITP Fall 2022<br/>
+Mondays 6:00pm - 8:30pm<br/>
+370 Jay St, Room 413
+
+Professor: Elie Zananiri<br/>
+Contact Email: [ez377@nyu.edu](mailto:ez377@nyu.edu)<br/>
+Office Hours: [Mondays 5:00pm-6:00pm by appointment](https://calendar.google.com/calendar/selfsched?sstoken=UUFtdUlOM1BOTFpsfGRlZmF1bHR8OTA2NTRjNjM2OTA5YjU0MTRhMjdjYjczYzc0ZTAwMTM)<br/>
+Discord Server: [https://discord.gg/QZRMf2FmZP](https://discord.gg/QZRMf2FmZP)
+
 ## Overview
 
 A programming course where we'll explore various techniques and solutions for tracking and sensing people or objects in space. Students will get familiar with the terminology and algorithms behind many sensing topics such as computer vision, depth cameras, positional tracking, and coordinate mapping. As these subjects are explored, we will also dig into communication, and how this information can be transmitted from one tool to another, for example using OSC, Spout/Syphon, MIDI, DMX/ArtNet. The goal being to use the right tool for the job and not limit ourselves to a particular piece of software.
