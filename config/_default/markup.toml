@@ -17,10 +17,10 @@ defaultMarkdownHandler = "goldmark"
   guessSyntax = false
   hl_Lines = ""
   lineNoStart = 1
-  lineNos = false
+  lineNos = true
   lineNumbersInTable = true
   noClasses = false
-  style = "dracula"
+  style = "github-dark-dimmed"
   tabWidth = 4
 
 [tableOfContents]

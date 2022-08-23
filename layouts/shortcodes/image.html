@@ -1,0 +1,10 @@
+<p><div style='
+    {{ with .Get "align" -}}text-align:{{.}};margin:auto;{{ end -}}
+    {{ with .Get "width" -}}width:{{.}};{{ end -}}
+    {{ with .Get "height" -}}height:{{.}};{{ end -}}
+'>
+    <img  
+    {{ with .Get "src" -}} src="{{.}}"{{ end -}}
+    {{ with .Get "alt" -}} alt="{{.}}"{{ end -}} 
+    >
+</div></p>

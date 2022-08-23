@@ -1,9 +1,94 @@
 ---
-title : "Modern Documentation Theme"
-description: "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
-lead: "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
-date: 2020-10-06T08:47:36+00:00
-lastmod: 2020-10-06T08:47:36+00:00
+title : "Seeing Machines"
+description: "A programming course where we'll explore various techniques and solutions for tracking and sensing people or objects in space."
+date: 2022-08-16T18:24:18-04:00
+lastmod: 2022-08-16T18:24:18-04:00
 draft: false
 images: []
 ---
+
+## Overview
+
+A programming course where we'll explore various techniques and solutions for tracking and sensing people or objects in space. Students will get familiar with the terminology and algorithms behind many sensing topics such as computer vision, depth cameras, positional tracking, and coordinate mapping. As these subjects are explored, we will also dig into communication, and how this information can be transmitted from one tool to another, for example using OSC, Spout/Syphon, MIDI, DMX/ArtNet. The goal being to use the right tool for the job and not limit ourselves to a particular piece of software.
+
+We will mainly be working in C++ using the [openFrameworks](https://openframeworks.cc/) toolkit. C++ can be intimidating at first, but it is a fast, widely used, general purpose language that is worth the effort and rewarding, especially for this topic. Students are not expected to have prior experience with C++ or openFrameworks, but are required to have some programming experience and enjoy coding. You should come into the course knowing what a `variable`, `function`, `class`, `array`, and `for loop` is 🤓.
+
+The first classes will consist of theory and in-class exercises covering these techniques, and remaining classes will be dedicated to a special project, which should use a combination of what we've learned to create a new work. Students will work in small groups to build this special project, but we'll review proposals, milestones, and work in progress collectively on every class, encouraging discussion and collaboration.
+
+This is the second time this class is taught, its original name is [Sensing Machines](https://prisonerjohn.com/sensing-machines). It is a work in progress, so please let me know if there is any topic you would like to cover!
+
+## Objectives
+
+* Gain understanding of the various ways a computer system can "sense" its environment.
+* Dive into the technical details to implement sensing systems.
+* Become familiar with the distinct features of the languages and tools available to the programmer.
+* Learn to use communication protocols to share data between different tools.
+* Build cool projects.
+
+## Evaluation
+
+You should be an active participant in the class.
+* Show up on time and pay attention.
+* Ask questions, show work, participate in discussions.
+
+There will be 4 assignments for the first part of the semester.
+* Assignments should be completed individually.
+* The objective of these is to make sure you understand what is covered in the class and get your hands dirty.
+* If you are familiar with the techniques explored, get out of your comfort zone!
+* Assignments will have an open-ended component and creativity is encouraged.
+
+The second part of the semester will be dedicated to a larger project.
+* Projects should be created by teams of 2 students.
+* The objective is to build a fully fleshed out interactive, which can take the shape of an artwork, a performance, an installation, etc. 
+* Be prepared to show progress every week, starting with a proposal, progress milestones every week, and a final presentation of a working project on the last class.
+
+The evaluation breakdown is as follows:
+
+|                          |      |
+|--------------------------|-----:|
+| On-time Participation    | 20%  |
+| Assignments              | 40%  |
+| Final Project            | 40%  |
+
+Pass/Fail means that anything below 80% is a fail. 
+
+I will notify you ahead of time if you are at risk of failing, and you can reach out to me at any time if you are concerned about your standing in the class.
+
+## Schedule
+
+| Date   | Topic          | Assignment |
+|:---------------------|:---------------|:-----------|
+| Sep 9  | Foreword<br/>Intro to openFrameworks | |
+| Sep 16 | Images and Video<br/>Arrays<br/>     | Assignment 1 OUT |
+| Sep 23 | Computer Vision<br/>Intro to OpenCV | Assignment 1 DUE<br/>Assignment 2 OUT |
+| Sep 30 | Logging<br/>Object Tracking | |
+| Oct 7  | Pointers<br/>Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |
+| Oct 15 | Depth Images<br/>Networking |  |
+| Oct 21 | Draw Bounds<br/>Depth World | Assignment 3 DUE<br/>Assignment 4 OUT |
+| Oct 28 | Frame Buffers<br/>Texture Sharing |  |
+| Nov 4  | Classes<br/>Sound | Assignment 4 DUE<br>Final Project OUT |
+| Nov 11 | Project Proposals<br/>Topic TBD | Project Proposal DUE |
+| Nov 18 | Milestone Check-In<br/>Topic TBD | |
+| Nov 25 | Final Presentations | Final Project DUE |
+
+## Academic Integrity
+
+Plagiarism is presenting someone else’s work as though it were your own. More specifically, plagiarism is to present as your own: A sequence of words quoted without quotation marks from another writer or a paraphrased passage from another writer’s work or facts, ideas or images composed by someone else.
+
+The core of the educational experience at the Tisch School of the Arts is the creation of original academic and artistic work by students for the critical review of faculty members.  It is therefore of the utmost importance that students at all times provide their instructors with an accurate sense of their current abilities and knowledge in order to receive appropriate constructive criticism and advice.  Any attempt to evade that essential, transparent transaction between instructor and student through plagiarism or cheating is educationally self-defeating and a grave violation of Tisch School of the Arts community standards.  For all the details on plagiarism, please refer to page 10 of the Tisch School of the Arts, Policies and Procedures Handbook, which can be found online at: [http://students.tisch.nyu.edu/page/home.html](http://students.tisch.nyu.edu/page/home.html)
+
+## Accessibility
+
+Please feel free to make suggestions to your instructor about ways in which this class could become more accessible to you.  Academic accommodations are available for students with documented disabilities. Please contact the Moses Center for Students with Disabilities at 212 998-4980 for further information.
+
+## Counseling and Wellness
+
+Your health and safety are a priority at NYU. If you experience any health or mental health issues during this course, we encourage you to utilize the support services of the 24/7 NYU Wellness Exchange [212-443-9999](tel:212-443-9999). Also, all students who may require an academic accommodation due to a qualified disability, physical or mental, please register with the Moses Center [212-998-4980](tel:212-998-4980). Please let your instructor know if you need help connecting to these resources.
+
+## Use of Electronic Devices
+
+Laptops will be an essential part of the course and may be used in class during workshops and for taking notes in lecture. Laptops must be closed during class discussions and student presentations.  Phone use in class is strictly prohibited unless directly related to a presentation of your own work or if you are asked to do so as part of the curriculum.
+
+## Title IX
+
+Tisch School of the Arts to dedicated to providing its students with a learning environment that is rigorous, respectful, supportive and nurturing so that they can engage in the free exchange of ideas and commit themselves fully to the study of their discipline. To that end Tisch is committed to enforcing University policies prohibiting all forms of sexual misconduct as well as discrimination on the basis of sex and gender.  Detailed information regarding these policies and the resources that are available to students through the Title IX office can be found by using the following link: [Title IX at NYU](https://www.nyu.edu/about/policies-guidelines-compliance/equal-opportunity/title9.html).

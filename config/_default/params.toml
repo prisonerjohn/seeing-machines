@@ -1,42 +1,42 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Doks"
+title = "Seeing Machines"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+titleAddition = "ITP Fall 2022"
+description = "A programming course where we’ll explore various techniques and solutions for tracking and sensing people or objects in space."
 
 ## Documentation
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["doks.png"]
+images = ["default-image.png"]
 ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
+domainTLD = "seeingmachines.betamovement.net"
+titleHome = "Seeing Machines"
 
 ## Twitter Cards
-twitterSite = "@getdoks"
-twitterCreator = "@henkverlinde"
+#twitterSite = "@getdoks"
+twitterCreator = "@prisonerjohn"
 
 ## JSON-LD
-# schemaType = "Person"
-schemaType = "Organization"
-schemaName = "Doks"
-schemaAuthor = "Henk Verlinde"
-schemaAuthorTwitter = "https://twitter.com/henkverlinde"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaAuthorGitHub = "https://github.com/h-enk"
+schemaType = "Person"
+#schemaType = "Organization"
+schemaName = "Seeing Machines"
+schemaAuthor = "Elie Zananiri"
+schemaAuthorTwitter = "https://twitter.com/prisonerjohn"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/prisonerjohn/"
+schemaAuthorGitHub = "https://github.com/prisonerjohn"
 schemaLocale = "en-US"
-schemaLogo = "logo-doks.png"
+schemaLogo = "default-logo.png"
 schemaLogoWidth = 512
 schemaLogoHeight = 512
-schemaImage = "doks.png"
-schemaImageWidth = 1280
-schemaImageHeight = 640
-schemaTwitter = "https://twitter.com/getdoks"
-schemaLinkedIn = ""
-schemaGitHub = "https://github.com/h-enk/doks"
+schemaImage = "default-image.png"
+schemaImageWidth = 1024
+schemaImageHeight = 768
+#schemaTwitter = "https://twitter.com/getdoks"
+#schemaLinkedIn = ""
+#schemaGitHub = "https://github.com/h-enk/doks"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
@@ -68,7 +68,7 @@ fillImage = "1270x740 Center" # normalize image size
 footer = "Powered by <a class=\"text-muted\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://getdoks.org/\">Doks</a>"
 
 # Feed
-copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
+copyRight = "Copyright (c) 2022 Elie Zananiri"
 
 # Alert
 alert = false
