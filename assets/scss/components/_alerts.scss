@@ -1,6 +1,6 @@
 .alert {
-  font-family: $font-family-monospace;
-  font-size: $font-size-sm;
+  // font-family: $font-family-monospace;
+  // font-size: $font-size-sm;
 }
 
 .alert-icon {
@@ -161,4 +161,11 @@
   background: darken($beige, 5%);
   color: $black;
   padding: 0.25rem 0.5rem;
+}
+
+[data-dark-mode] .alert code:not(.hljs) {
+  background: darken($beige, 10%);
+  color: $black;
+  padding: 4px;
+  font-size: 100%;
 }

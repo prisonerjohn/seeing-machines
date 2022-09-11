@@ -122,11 +122,13 @@ void ofApp::draw()
 }
 ```
 
-{{< details "What does the <code>::</code> mean?" >}}
+{{< alert context="info" icon="✌️" >}}
+**What does the <code>::</code> mean?**
+
 `::` is a scope resolution operator in C++. It is used to show the relationship between methods (functions) and classes. Methods can be defined anywhere in the source code, so we need a way to know where they belong when they are defined.
 
 For example, `void ofApp::draw()` means "define the `draw()` function that belongs to the `ofApp` class".
-{{< /details >}}
+{{< /alert >}}
 
 ## Getting Started
 
@@ -138,6 +140,12 @@ Follow the corresponding setup guide.
 
 * Unlike Processing, OF does not come with its own development environment (IDE). Instructions to set this up will be included in the guide.
 * You will use [Xcode](https://developer.apple.com/xcode/) for development under macOS and [Visual Studio](https://visualstudio.microsoft.com/vs/) for development under Windows.
+
+{{< alert context="danger" icon="⚠️" >}}
+If you encounter a build system error when compiling for Xcode, try changing the `Build System` dropdown in the Project Settings.
+
+{{< image src="xcode-build-system-error.png" alt="Build System Error" align="center" >}}
+{{< /alert >}}
 
 ### Project Generation
 
@@ -177,11 +185,13 @@ int main()
 }
 ```
 
-{{< details "What does <code>#include</code> mean?" >}}
+{{< alert context="info" icon="✌️" >}}
+**What does <code>#include</code> mean?**
+
 The `#` symbol is used to indicate a compiler directive. When a file has the line `#include "someFile.h"`, this tells the compiler to insert the code from that specific file into the source code.
 
 If we want to use any classes or functions defined in other files, we need to `#include` these in our code so that the compiler knows where to look for them.
-{{< /details >}}
+{{< /alert >}}
 
 The other two files define the `ofApp` class. You can think of `ofApp` as the main class that holds and runs all the components belonging to your program, kind of like a sketch in Processing.
 
@@ -215,13 +225,15 @@ public:
 };
 ```
 
-{{< details "What does <code>#pragma once</code> mean?" >}}
+{{< alert context="info" icon="✌️" >}}
+**What does <code>#pragma once</code> mean?**
+
 We now know `#include` will insert the contents of another file into our code, however we only want to include every piece of code once in our application. You will notice many files will have `#include "ofMain.h"` at the top, but that code cannot be inserted over and over, as this will give us duplicate classes and functions with the same name.
 
 This is where the `#pragma once` directive comes in. It tells the compiler to only include the contents of the file once, no matter how many times it is referenced with `#include`.
 
 As a general rule, you should always start your header files with the line `#pragma once`.
-{{< /details >}}
+{{< /alert >}}
 
 The implementation will have extension `.cpp`. This is where all the methods declared in the header are defined.
 
@@ -306,3 +318,5 @@ Note that the placeholder `ofApp` already has stubs for common methods you may w
 OF ships with a multitude of examples in the `path/to/OF/examples` folder, and this is the best way to get familiar with the tool. Note that project files need to be created for these using the Project Generator before they can be built.
 
 OF also has comprehensive [documentation](https://openframeworks.cc/documentation/) on its website, as well as an active [user forum](https://forum.openframeworks.cc/), which are other great places to get information.
+
+If you are more of a visual learner, Lewis Lepton's [openFrameworks Tutorial Series](https://www.youtube.com/playlist?list=PL4neAtv21WOlqpDzGqbGM_WN2hc5ZaVv7) on YouTube is an excellent resource.
