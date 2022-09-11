@@ -292,8 +292,9 @@ body {
   color: red;
   font-family: sans-serif;
 }
+
 @keyframes blinker {
   50% {
-      opacity: 0;
+    opacity: 0;
   }
 }
