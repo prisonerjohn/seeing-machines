@@ -68,22 +68,22 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 
 ## Schedule
 
-| Date   | Topic          | Assignment |
-|:---------------------|:---------------|:-----------|
-| Sep 12 | Foreword<br/>Intro to openFrameworks | |
-| Sep 19 | Arrays<br/>Images and Video | Assignment 1 OUT |
-| Sep 26 | Computer Vision<br/>Intro to OpenCV | Assignment 1 DUE<br/>Assignment 2 OUT |
-| Oct 3  | Object Tracking | |
-| Oct 11 (TUE) | Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |
-| Oct 17 | <div class="blink">NO CLASS</div> |  |
-| Oct 24 | Depth Images |  |
-| Oct 31 | Depth in 3D | Assignment 3 DUE<br/>Assignment 4 OUT |
-| Nov 7  | Networking<br/>Frame Buffers<br/>Texture Sharing |  |
-| Nov 14 | Classes<br/>Sound | Assignment 4 DUE |
-| Nov 21 | Mobile Development | Final Project OUT |
-| Nov 28 | Project Proposals<br/>Topic TBD | Project Proposal DUE |
-| Dec 5  | Milestone Check-In<br/>Topic TBD | |
-| Dec 12 | Final Presentations | Final Project DUE |
+| Date   | Topic          | Assignment | Recordings |
+|:-------|:---------------|:-----------|:-----------|
+| Sep 12 | Foreword<br/>Intro to openFrameworks | | [AUDIO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BAUDIO%5D/1_r1qgdqh9)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BVIDEO%5D/1_8uypx4sb) |
+| Sep 19 | Arrays<br/>Images and Video | Assignment 1 OUT | |
+| Sep 26 | Computer Vision<br/>Intro to OpenCV | Assignment 1 DUE<br/>Assignment 2 OUT | |
+| Oct 3  | Object Tracking | | |
+| Oct 11 (TUE) | Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT | |
+| Oct 17 | <div class="blink">NO CLASS</div> | | |
+| Oct 24 | Depth Images |  | |
+| Oct 31 | Depth in 3D | Assignment 3 DUE<br/>Assignment 4 OUT | |
+| Nov 7  | Networking<br/>Frame Buffers<br/>Texture Sharing |  | |
+| Nov 14 | Classes<br/>Sound | Assignment 4 DUE | |
+| Nov 21 | Mobile Development | Final Project OUT | |
+| Nov 28 | Project Proposals<br/>Topic TBD | Project Proposal DUE | |
+| Dec 5  | Milestone Check-In<br/>Topic TBD | | |
+| Dec 12 | Final Presentations | Final Project DUE | |
 
 ## Academic Integrity
 

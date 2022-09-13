@@ -91,7 +91,7 @@ You've probably used some of these in your previous classes and projects.
 
 ## The right tool for the job
 
-The focus of Sensing Machines will be to use sensors with computers (rather than microcontrollers), for the purpose of building successful interactive experiences.
+The focus of Seeing Machines will be to use sensors with computers (rather than microcontrollers), for the purpose of building successful interactive experiences.
 
 The devices we will use will have SDKs (software development kits) and interfaces for many platforms and languages. This is great as it allows us to use something we are already familiar with, however some tools are better suited than others for specific tasks. For example, Python is great at text and language processing, Max is best at sound analysis, and Unity is ideal to get up and running with VR.
 
