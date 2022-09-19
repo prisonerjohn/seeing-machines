@@ -1,7 +1,12 @@
 [[main]]
   name = "Docs"
-  url = "/docs/prologue/"
+  url = "/docs/prologue/foreword"
   weight = 10
+
+[[main]]
+  name = "Assignments"
+  url = "/docs/assignments"
+  weight = 20
 
 [[social]]
   name = "GitHub"

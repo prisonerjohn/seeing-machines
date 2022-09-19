@@ -70,8 +70,8 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 
 | Date   | Topic          | Assignment | Recordings |
 |:-------|:---------------|:-----------|:-----------|
-| Sep 12 | Foreword<br/>Intro to openFrameworks | | [AUDIO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BAUDIO%5D/1_r1qgdqh9)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BVIDEO%5D/1_8uypx4sb) |
-| Sep 19 | Arrays<br/>Images and Video | Assignment 1 OUT | |
+| Sep 12 | [Foreword]({{< relref "docs/prologue/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/prologue/intro-to-of" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BAUDIO%5D/1_r1qgdqh9)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BVIDEO%5D/1_8uypx4sb) |
+| Sep 19 | [Variables and Arrays]({{< relref "docs/class-1/variables-and-arrays" >}})<br/>[Images and Video]({{< relref "docs/class-1/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) | |
 | Sep 26 | Computer Vision<br/>Intro to OpenCV | Assignment 1 DUE<br/>Assignment 2 OUT | |
 | Oct 3  | Object Tracking | | |
 | Oct 11 (TUE) | Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT | |
