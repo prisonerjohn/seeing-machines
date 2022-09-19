@@ -21,14 +21,17 @@ Let's start with the basics and review data types in C++.
 ### Main Primitives
 
 #### `int`
-  * 32 bits of data (usually but not always)
-  * represents a whole number between `-2,147,483,648` and `2,147,483,647`
+
+* 32 bits of data (usually but not always)
+* represents a whole number between `-2,147,483,648` and `2,147,483,647`
+
 ```cpp
 int videoWidth = 1920;
 int videoHeight = 1080;
 int numVideoPixels = videoWidth * videoHeight;
 ```
-  * integers do not support decimal points
+
+* integers do not support decimal points
 
 {{< alert context="info" icon="✌️" >}}
 **Integer division <code>/</code> and modulo <code>%</code> operators**
@@ -42,32 +45,41 @@ int numTeams = numStudents / studentsPerTeam;  // 4 not 4.25!
 ```
 
 The modulo `%` operator is used on integers to get the remainder of a division.
+
 ```cpp
 int leftoverStudents = numStudents % studentsPerTeam;  // 1 student without a team :(
 ```
+
 {{< /alert >}}
 
 #### `unsigned int`
-  * the unsigned (no +/- sign) version of `int`, only positive numbers
-  * represents `0` and positive whole numbers up to `4,294,967,295`
+
+* the unsigned (no +/- sign) version of `int`, only positive numbers
+* represents `0` and positive whole numbers up to `4,294,967,295`
 
 #### `char`
-  * 8 bits of data
-  * represents a whole number between `-128` and `127`
+
+* 8 bits of data
+* represents a whole number between `-128` and `127`
+
 ```cpp
 char numStudents = 17;
 char studentsPerTeam = 4;
 char numTeams = numStudents / studentsPerTeam;  // 4 not 4.25!
 ```
-  * if we try to use a `char` to represent a larger number, we will end up with the wrong value but C++ will not flag an error!
+
+* if we try to use a `char` to represent a larger number, we will end up with the wrong value but C++ will not flag an error!
+
 ```cpp
 char videoWidth = 1920;  // ?
 ```
 
 #### `unsigned char`
-  * the unsigned (no +/- sign) version of `char`, only positive numbers
-  * represents `0` and positive whole numbers up to `255`
-  * often used to represent characters in a string, using the [ASCII table](https://www.asciitable.com/) for conversion
+
+* the unsigned (no +/- sign) version of `char`, only positive numbers
+* represents `0` and positive whole numbers up to `255`
+* often used to represent characters in a string, using the [ASCII table](https://www.asciitable.com/) for conversion
+
 ```cpp
 unsigned char H = 72;
 unsigned char i = 'i';
@@ -77,20 +89,24 @@ cout << H << i << endl;
 {{< alert context="info" icon="✌️" >}}
 **What do <code>cout</code> and <code>endl</code> do?**
 
-`cout` is a command to send text output to the console. The `<<` (left shift) operator is used to send data to the output, and can be used multiple times to add more text to the output. 
+`cout` is a command to send text output to the console. The `<<` (left shift) operator is used to send data to the output, and can be used multiple times to add more text to the output.
 
 New lines are not automatically added. The `endl` command is used to send a new line. This will usually be found at the end of a `cout` line of code.
 {{< /alert >}}
 
 #### `bool`
-  * 1 bit of data
-  * represents `true` or `false`, `0` or `1`, "yes" or "no", etc.
-  * we can use the keywords `true` and `false` to set a boolean value
+
+* 1 bit of data
+* represents `true` or `false`, `0` or `1`, "yes" or "no", etc.
+* we can use the keywords `true` and `false` to set a boolean value
+
 ```cpp
 bool isTheSkyBlue = true;
 bool isThisBoring = false;
 ```
+
 * we can also use numbers, where `0` evaluates to `false` and any other number evaluates to `true`
+
 ```cpp
 bool numStudents = 17;  // true
 if (numStudents)
@@ -98,18 +114,23 @@ if (numStudents)
   cout << "Class is in session!" << endl;
 }
 ```
+
 {{< alert context="danger" icon="⚠️" >}}
 Note that even though you can use numbers to represent a boolean, the `bool` data type only has enough memory to represent `0` or `1`.
+
 ```cpp
 bool numStudents = 17;
 cout << "There are " << numStudents << " students in class" << endl;  // 1
 ```
+
 {{< /alert >}}
 
 #### `float`
-  * 32 bits of data
-  * represents a decimal number with ~7 significant digits
-  * `float` is short for "floating point", which means that the decimal point can move positions (e.g. we can represent `1.23456` and `123.456` with the same amount of memory)
+
+* 32 bits of data
+* represents a decimal number with ~7 significant digits
+* `float` is short for "floating point", which means that the decimal point can move positions (e.g. we can represent `1.23456` and `123.456` with the same amount of memory)
+
 ```cpp
 float videoWidth = 1920;
 float videoHeight = 1080;
@@ -121,16 +142,19 @@ float aspectRatio = videoWidth / videoHeight;  // 1.777778
 The following primitive types are not used as often but are still useful if we need to optimize and use less memory, or increase precision and use more memory.
 
 #### `short` and `unsigned short`
-  * 16 bits of data
-  * represents whole numbers between `-32,768` and `32,767` (signed) or `0` and `65,535` (unsigned).
+
+* 16 bits of data
+* represents whole numbers between `-32,768` and `32,767` (signed) or `0` and `65,535` (unsigned)
 
 #### `long` and `unsigned long`
-  * 64 bits of data
-  * represents whole numbers between `-9M` and `9M` (signed) or `0` and `18M` (unsigned).
+
+* 64 bits of data
+* represents whole numbers between `-9M` and `9M` (signed) or `0` and `18M` (unsigned)
 
 #### `double`
-  * 64 bits of data
-  * represents floating point numbers with ~15 significant digits
+
+* 64 bits of data
+* represents floating point numbers with ~15 significant digits
 
 ### Strings
 
@@ -142,7 +166,7 @@ string name = "John Doe";
 
 `string` objects have a variety of [methods](https://cplusplus.com/reference/string/string/) (class functions) we can use to access their properties.
 
-```
+```cpp
 string name;
 if (name.empty())
 {
@@ -241,7 +265,7 @@ cout << "' has " << name.size() << " characters" << endl;
 
 ### 2D Arrays
 
-Arrays of other arrays are called multidimensional arrays. Instead of each array position holding a single element, it holds an entire array of elements. 
+Arrays of other arrays are called multidimensional arrays. Instead of each array position holding a single element, it holds an entire array of elements.
 
 Although arrays can have any number of dimensions, we will most often work with two-dimensional arrays.
 
@@ -286,7 +310,7 @@ for (int y = 0; y < 2; y++)
 
 {{< details "How would we fill an array of 40 columns by 30 columns with a random <code>true</code> or <code>false</code> value? How could we print it out to the console as a grid layout?" >}}
 
-We can use the [`ofRandomuf()`](https://openframeworks.cc/documentation/math/ofMath/#!show_ofRandomuf) OF function, which returns a random value between `0` and `1` (the "uf" stands for unsigned float). We will set our element to `false` if the random value is less than `0.5`, and set it to `true` if the value is greater than `0.5`. 
+We can use the [`ofRandomuf()`](https://openframeworks.cc/documentation/math/ofMath/#!show_ofRandomuf) OF function, which returns a random value between `0` and `1` (the "uf" stands for unsigned float). We will set our element to `false` if the random value is less than `0.5`, and set it to `true` if the value is greater than `0.5`.
 
 ```cpp
 bool values[40][30];
@@ -326,7 +350,7 @@ for (int y = 0; y < 30; y++)  // rows
 
 {{< details "How would we visualize this grid as pixels on screen?" >}}
 
-We can draw a cell for each grid position using [`ofDrawRectangle(...)`](https://openframeworks.cc/documentation/graphics/ofGraphics/#!show_ofDrawRectangle), setting the color for each cell in the loop using [`ofSetColor(...)`](https://openframeworks.cc/documentation/graphics/ofGraphics/#show_ofSetColor). 
+We can draw a cell for each grid position using [`ofDrawRectangle(...)`](https://openframeworks.cc/documentation/graphics/ofGraphics/#!show_ofDrawRectangle), setting the color for each cell in the loop using [`ofSetColor(...)`](https://openframeworks.cc/documentation/graphics/ofGraphics/#show_ofSetColor).
 
 ```cpp
 // Draw the array as a grid.
@@ -352,7 +376,7 @@ for (int y = 0; y < 30; y++)  // rows
 
 {{< details "How would we only set the edge values (border pixels) to <code>true</code> and the remaining pixels to <code>false</code>?<p></p><div style='text-align:center;margin:auto;'><img src='array-border.png'></div>" >}}
 
-* The left edge elements have their column index set to `0`. 
+* The left edge elements have their column index set to `0`.
 * The top edge elements have their row index set to `0`.
 * The right edge elements have their column index set to the number of columns (the width) minus 1. In our case, this is `39`.
 * The bottom edge elements have their row index set to the number of rows (the height) minus 1. In our case, this is `29`.
@@ -410,7 +434,7 @@ We do not end up with a border on the right or the bottom because `39` and `29` 
 
 ### 1D to 2D Interpretation
 
-There is no difference in computer between a 1D and a 2D array, they are both just many indexed elements in sequence. 
+There is no difference in computer between a 1D and a 2D array, they are both just many indexed elements in sequence.
 
 We could re-write some of our previous examples using a one-dimensional array, but using two-dimensional access.
 
@@ -439,4 +463,4 @@ for (int y = 0; y < 30; y++)  // rows
 }
 ```
 
-In the last few examples, we have been using arrays to generate images. We have interpreted the array element values as colors. This is, in fact, how images are usually stored in computer memory. We will explore this further in the next section. 
+In the last few examples, we have been using arrays to generate images. We have interpreted the array element values as colors. This is, in fact, how images are usually stored in computer memory. We will explore this further in the next section.

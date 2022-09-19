@@ -20,7 +20,7 @@ Digital images come in a variety of formats, each with their own properties.
 
 ### Vector Graphics
 
-*Vector* formats define a set of points and instructions on how to draw them. The instructions are run by a program to raster the image in order to view it. 
+*Vector* formats define a set of points and instructions on how to draw them. The instructions are run by a program to raster the image in order to view it.
 
 Some of the more common vector formats are `SVG`, `EPS`, `PDF`, and `AI`.
 
@@ -28,7 +28,7 @@ If we open the following `SVG` file in a text editor, we will notice that it is 
 
 {{< image src="shapes.svg" alt="Shapes SVG" align="center" >}}
 
-```
+```svg
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    ...
@@ -60,12 +60,14 @@ If we open the following `SVG` file in a text editor, we will notice that it is 
 ```
 
 Pros:
-  * Small file sizes, because minimal information is being stored.
-  * Images can be scaled up without any quality loss or increase in file size. This is because the instruction set does not change, the only thing that changes is the point values.
+
+* Small file sizes, because minimal information is being stored.
+* Images can be scaled up without any quality loss or increase in file size. This is because the instruction set does not change, the only thing that changes is the point values.
 
 Cons:
-  * Low level of detail.
-  * Limited types of effects, because we don't have all the image data available in the format.
+
+* Low level of detail.
+* Limited types of effects, because we don't have all the image data available in the format.
 
 ### Raster Graphics
 
@@ -76,30 +78,33 @@ Some of the more common vector formats are `JPG`, `PNG`, `GIF`, and `TIF`.
 {{< image src="shapes.png" alt="Shapes PNG" align="center" >}}
 
 Pros:
-  * High quality and detail, especially at high resolutions.
-  * More advanced image effects, because every pixel can be edited.
+
+* High quality and detail, especially at high resolutions.
+* More advanced image effects, because every pixel can be edited.
 
 Cons:
-  * File sizes tend to be bigger.
-  * Images lose quality when scaled up.
+
+* File sizes tend to be bigger.
+* Images lose quality when scaled up.
 
 In order not to end up with huge file sizes, many raster formats are compressed. Some compression methods are *lossy*, meaning that some of the data is lost when it is compressed, and others are *lossless*, meaning that all the data is recovered once the data is uncompressed.
 
 ### Video
 
-Videos are just a series of images that need to be processed and displayed very quickly. 
+Videos are just a series of images that need to be processed and displayed very quickly.
 
-Video formats are always rasters and are mostly compressed. 
-* Some formats are simply extensions of their image counterparts, like `Motion JPG` for example, which is just a series of `JPG`-compressed frames. 
+Video formats are always rasters and are mostly compressed.
+
+* Some formats are simply extensions of their image counterparts, like `Motion JPG` for example, which is just a series of `JPG`-compressed frames.
 * Others are specific to video, like `H.264`, which has a form of compression over time, where some pixels are predicted based on known pixels in previous and future key frames. This is called *temporal compression*.
 
 Efficient compression is necessary for video because of the huge amount of data that it carries. While film used to run at 24 frames per second, high definition video now runs standard at 60 frames per second, and sometimes goes as high as 240 fps! Combining these fast frame rates with large resolutions like 4K means that hundreds of millions of pixels need to be processed every second for a video to play smoothly.
 
 ### Processing Images
 
-When working with image data, we will usually want to work with rasterized uncompressed images. This is because many algorithms require looping efficiently through all pixels in an image, or doing quick look-ups between neighboring pixels. 
+When working with image data, we will usually want to work with rasterized uncompressed images. This is because many algorithms require looping efficiently through all pixels in an image, or doing quick look-ups between neighboring pixels.
 
-The good news is that this usually happens in the image loader or video codec, before an image or video frame gets to us. For example in OF, FreeImage will automatically decompress `JPG` or `PNG` images and provide us the "final" pixels in the frame. 
+The good news is that this usually happens in the image loader or video codec, before an image or video frame gets to us. For example in OF, FreeImage will automatically decompress `JPG` or `PNG` images and provide us the "final" pixels in the frame.
 
 While we will almost never have to worry about decoding an image or a video frame ourselves, we should still be mindful of what format the data comes in, and make sure that it is suitable for our application.
 
@@ -173,6 +178,7 @@ If we navigate under the hood and see what `ofImage.load()` is actually doing, w
 ## Image Attributes
 
 An image data structure usually comprises of:
+
 * a size (a width and height)
 * a pixel format
 * a value for each pixel
@@ -228,7 +234,7 @@ void ofApp::draw()
 
 ### Pixel Access
 
-A standard color pixel will have 3 color channels: red, green, and blue (`RGB`). While Processing packs all channels into a single `int`, this is not common practice. 
+A standard color pixel will have 3 color channels: red, green, and blue (`RGB`). While Processing packs all channels into a single `int`, this is not common practice.
 
 The color values are usually packed *sequentially* in the array. Instead of each pixel holding a single value, it will hold 3.
 
@@ -259,7 +265,7 @@ index = (y * width + x) * 3
 
 {{< details "<code>ofPixels.getColor()</code> can also accept a single argument for the index (instead of two arguments for the column and row). How can we modify the previous example to use the single index version of <code>getColor()</code>?" >}}
 
-We can use the formula above to convert our column and row to an index value in the color array. . 
+We can use the formula above to convert our column and row to an index value in the color array.
 
 ```cpp
 // ofApp.cpp
@@ -341,7 +347,7 @@ void ofApp::draw()
 
 ### Image Format
 
-The most common image type we will work with is `RGB` color images. 
+The most common image type we will work with is `RGB` color images.
 
 We will also work with single-channel formats, usually called grayscale or luminance. These are particularly handy for devices that only capture a brightness level, like infrared cameras or depth sensors.
 

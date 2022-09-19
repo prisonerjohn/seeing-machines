@@ -22,9 +22,9 @@ weight: 100
 
 ### Instructions
 
-Your assignment is to build your version of the Game of Life using openFrameworks. This will give you an opportunity to play with an image's pixel data. 
+Your assignment is to build your version of the Game of Life using openFrameworks. This will give you an opportunity to play with an image's pixel data.
 
-* Use an `ofImage` as your 2D canvas. 
+* Use an `ofImage` as your 2D canvas.
 * Set `0` as the pixel value for a dead cell, and `255` as the pixel value for a live cell.
 * Neighbors are the pixels on the top-left, top-center, top-right, middle-left, middle-right, bottom-left, bottom-center, and bottom-right.
 * Make sure to handle edge cases appropriately! You can either ignore the invalid neighbors or wrap around the texture.
@@ -36,7 +36,8 @@ While Conway's version has its own specific rules, our version will use rules ba
 1. If the first and last number of your ID are the same, use the middle number instead for rule 2.
 
 For example, my NYU ID is ez377. Here is some pseudo-code representing my rules:
-```
+
+```text
 for (each cell in image):
     if (cell is dead):
         count live neighbors
@@ -54,7 +55,7 @@ for (each cell in image):
 
 * Name your project `SM01-FirstLast` where **First** is your first name and **Last** is your last name.
 
-```
+```text
 - OF/
   - apps/
     - seeing-machines/
@@ -67,14 +68,14 @@ for (each cell in image):
         - ...
 ```
 
-* Only submit the necessary files to rebuild your project. 
+* Only submit the necessary files to rebuild your project.
 
-  * This includes sources, the `addons.make` file, and any resources in your `data` folder. 
-  * No project or compiled files. 
-  * In the example above, you would only keep the `src` folder, `addons.make` file, and `bin/data` if you are using any external assets. 
+  * This includes sources, the `addons.make` file, and any resources in your `data` folder.
+  * No project or compiled files.
+  * In the example above, you would only keep the `src` folder, `addons.make` file, and `bin/data` if you are using any external assets.
   * Zip the `SM01-ElieZananiri` parent directory.
 
-```
+```text
     - seeing-machines/
       - SM01-ElieZananiri/
         - src/
