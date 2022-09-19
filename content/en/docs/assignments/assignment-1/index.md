@@ -37,7 +37,7 @@ While Conway's version has its own specific rules, our version will use rules ba
 
 For example, my NYU ID is ez377. Here is some pseudo-code representing my rules:
 
-```text
+```python
 for (each cell in image):
     if (cell is dead):
         count live neighbors
@@ -55,7 +55,7 @@ for (each cell in image):
 
 * Name your project `SM01-FirstLast` where **First** is your first name and **Last** is your last name.
 
-```text
+```python
 - OF/
   - apps/
     - seeing-machines/
@@ -75,11 +75,11 @@ for (each cell in image):
   * In the example above, you would only keep the `src` folder, `addons.make` file, and `bin/data` if you are using any external assets.
   * Zip the `SM01-ElieZananiri` parent directory.
 
-```text
-    - seeing-machines/
-      - SM01-ElieZananiri/
-        - src/
-        - addons.make
+```python
+- seeing-machines/
+  - SM01-ElieZananiri/
+    - src/
+    - addons.make
 ```
 
 * **OPTIONAL** In true ITP fashion, you can make a blog post about your project. If you do, please send me the link!
