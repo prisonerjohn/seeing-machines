@@ -308,7 +308,7 @@ for (int y = 0; y < 2; y++)
 
 {{< /details >}}
 
-{{< details "How would we fill an array of 40 columns by 30 columns with a random <code>true</code> or <code>false</code> value? How could we print it out to the console as a grid layout?" >}}
+{{< details "How would we fill an array of 40 columns by 30 rows with a random <code>true</code> or <code>false</code> value? How could we print it out to the console as a grid layout?" >}}
 
 We can use the [`ofRandomuf()`](https://openframeworks.cc/documentation/math/ofMath/#!show_ofRandomuf) OF function, which returns a random value between `0` and `1` (the "uf" stands for unsigned float). We will set our element to `false` if the random value is less than `0.5`, and set it to `true` if the value is greater than `0.5`.
 
