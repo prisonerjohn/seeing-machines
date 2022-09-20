@@ -25,8 +25,9 @@ weight: 100
 Your assignment is to build your version of the Game of Life using openFrameworks. This will give you an opportunity to play with an image's pixel data.
 
 * Use an `ofImage` as your 2D canvas.
-* Set `0` as the pixel value for a dead cell, and `255` as the pixel value for a live cell.
-* Neighbors are the pixels on the top-left, top-center, top-right, middle-left, middle-right, bottom-left, bottom-center, and bottom-right.
+* Set black `0` as the pixel value for a dead cell, and white `255` as the pixel value for a live cell.
+* Set the initial values to whatever you want. You can use random values or try a pattern.
+* Neighbors are the pixels on the top-left, top-center, top-right, middle-left, middle-right, bottom-left, bottom-center, and bottom-right (8 neighbors total).
 * Make sure to handle edge cases appropriately! You can either ignore the invalid neighbors or wrap around the texture.
 
 While Conway's version has its own specific rules, our version will use rules based on your NYU ID.
@@ -50,6 +51,37 @@ for (each cell in image):
 ```
 
 {{< video ratio="1x1" attributes="controls autoplay loop" mp4-src="game-of-life.mp4" >}}
+
+{{< details "Hint: How can we fill an <code>ofImage</code> with values?" >}}
+
+* [`ofImage.allocate()`](https://openframeworks.cc/documentation/graphics/ofImage/#show_allocate) will allocate memory for the image without having to load a file from disk.
+* [`ofImage.getPixels()`](https://openframeworks.cc/documentation/graphics/ofImage/#show_getPixels) will return an `ofPixels` object which we can use to access the pixel data.
+* `ofImage.getPixels()` makes a copy of the pixel data. After we make our edits, we need to save the new data back to the `ofImage` using [`ofImage.setFromPixels()`](https://openframeworks.cc/documentation/graphics/ofImage/#show_setFromPixels).
+
+```cpp
+lifeImg.allocate(40, 30, OF_IMAGE_GRAYSCALE);
+
+ofPixels lifePix = lifeImg.getPixels();
+for (int y = 0; y < lifeImg.getHeight(); y++)
+{
+  for (int x = 0; x < lifeImg.getWidth(); x++)
+  {
+    if (ofRandomuf() < 0.5)
+    {
+      lifePix.setColor(x, y, ofColor(0));
+    }
+    else
+    {
+      lifePix.setColor(x, y, ofColor(255));
+    }
+  }
+}
+// getPixels() makes a copy of the pixels, so we need to 
+// use setFromPixels to set the new values back on the image.
+lifeImg.setFromPixels(dogPix);
+```
+
+{{< /details >}}
 
 ## Delivery
 
