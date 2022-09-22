@@ -30,24 +30,25 @@ Your assignment is to build your version of the Game of Life using openFramework
 * Neighbors are the pixels on the top-left, top-center, top-right, middle-left, middle-right, bottom-left, bottom-center, and bottom-right (8 neighbors total).
 * Make sure to handle edge cases appropriately! You can either ignore the invalid neighbors or wrap around the texture.
 
-While Conway's version has its own specific rules, our version will use rules based on your NYU ID.
+We will follow the same rules as the original game of life:
 
-1. The first number in your ID is the number of dead neighbors required for a live cell to die.
-1. The last number in your ID is the number of live neighbors required for a dead cell to come alive.
-1. If the first and last number of your ID are the same, use the middle number instead for rule 2.
+1. Isolation: a live ⬜ cell with less than `2` live neighbors will die 😥.
+1. Overcrowding: a live ⬜ cell with `4` or more neighbors will die 😵.
+1. Reproduction: a dead ⬛ cell with exactly `3` live neighbors will live 🐣.
 
-For example, my NYU ID is ez377. Here is some pseudo-code representing my rules:
+Here is some pseudo-code representing my rules:
 
 ```python
 for (each cell in image):
+    count live neighbors
+    if (cell is live):
+        if (num live neighbors < 2):
+            cell dies
+        if (num live neighbors > 3):
+            cell dies
     if (cell is dead):
-        count live neighbors
-        if (num live neighbors == 7):
-            cell comes alive!
-    else:
-        count dead neighbors
-        if (num dead neighbors == 3):
-            cell dies :(
+        if (num live neighbors == 3):
+            cell lives
 ```
 
 {{< video ratio="1x1" attributes="controls autoplay loop" mp4-src="game-of-life.mp4" >}}
@@ -82,6 +83,15 @@ lifeImg.setFromPixels(dogPix);
 ```
 
 {{< /details >}}
+
+### Bonus Points!
+
+If you are looking for an additional challenge, try adding the following extra features:
+
+1. Press a key to pause / start the simulation.
+1. Press a key to reset the grid to random values.
+1. Press a key to set the grid to all live cells, and another for all dead cells.
+1. Click the mouse on a cell and toggle its state!
 
 ## Delivery
 
