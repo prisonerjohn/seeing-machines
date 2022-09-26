@@ -1,10 +1,10 @@
-<p><div style='
-    {{ with .Get "align" -}}text-align:{{.}};margin:auto;{{ end -}}
-    {{ with .Get "width" -}}width:{{.}};{{ end -}}
-    {{ with .Get "height" -}}height:{{.}};{{ end -}}
+<figure style='display:block; margin: 1em auto;
+{{ with .Get "width" -}} width:{{.}}; {{ end -}}
+{{ with .Get "height" -}} height:{{.}}; {{ end -}}
 '>
-    <img  
+    <img style='display:block; margin: 0 auto;'
     {{ with .Get "src" -}} src="{{.}}"{{ end -}}
     {{ with .Get "alt" -}} alt="{{.}}"{{ end -}} 
     >
-</div></p>
+    {{ with .Get "caption" -}}<figcaption>{{. | markdownify }}</figcaption>{{ end -}}
+</figure>

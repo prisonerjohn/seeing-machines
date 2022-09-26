@@ -241,7 +241,7 @@ for (int i = 0; i < 10; i++)
 }
 ```
 
-{{< image src="array-index.png" alt="Array indices" align="center" >}}
+{{< image src="array-index.png" alt="Array indices" >}}
 
 ### Strings as Arrays
 
@@ -259,7 +259,7 @@ for (int i = 0; i < name.size(); i++)
 cout << "' has " << name.size() << " characters" << endl;
 ```
 
-{{< image src="array-name.png" alt="String as array" align="center" >}}
+{{< image src="array-name.png" alt="String as array" >}}
 
 {{< /details >}}
 
@@ -287,7 +287,7 @@ for (int y = 0; y < 2; y++)
 }
 ```
 
-{{< image src="array-2d.png" alt="2D array" align="center" >}}
+{{< image src="array-2d.png" alt="2D array" >}}
 
 {{< details "How would we set each value to a sequential index (from 0 to 19)?" >}}
 
@@ -304,7 +304,7 @@ for (int y = 0; y < 2; y++)
 }
 ```
 
-{{< image src="array-2d-idx.png" alt="2D array index" align="center" >}}
+{{< image src="array-2d-idx.png" alt="2D array index" >}}
 
 {{< /details >}}
 

@@ -156,15 +156,15 @@ To create a new project, you are **strongly encouraged** to use the OF Project G
 
 The first time you run the Project Generator, you'll be asked to set the path to the openFrameworks installation on your system.
 
-{{< image src="of-pg-path.png" alt="Project Generator Path" width="360px" align="center" >}}
+{{< image src="of-pg-path.png" alt="Project Generator Path" width="360px" >}}
 
 You can then create a project by giving it a name and a save path. It is recommended to save your projects under `path/to/OF/apps/seeing-machines/`.
 
-{{< image src="of-pg-proj.png" alt="Project Generator Project" width="360px" align="center" >}}
+{{< image src="of-pg-proj.png" alt="Project Generator Project" width="360px" >}}
 
 Click `Generate` to create the project files. Once that is complete, you can click on the `Open in IDE` button to open the project.
 
-{{< image src="of-pg-done.png" alt="Project Generator Done" width="360px" align="center" >}}
+{{< image src="of-pg-done.png" alt="Project Generator Done" width="360px" >}}
 
 ### Anatomy of an OF Project
 
@@ -180,8 +180,8 @@ The main function is where the application window is set. You can set up the win
 
 int main()
 {
-    ofSetupOpenGL(1920, 1080, OF_WINDOW);
-    ofRunApp(new ofApp());
+  ofSetupOpenGL(1920, 1080, OF_WINDOW);
+  ofRunApp(new ofApp());
 }
 ```
 
@@ -207,21 +207,21 @@ The header will usually have extension `.h` or `.hpp`. This is where all variabl
 class ofApp : public ofBaseApp
 {
 public:
-    void setup();
-    void update();
-    void draw();
+  void setup();
+  void update();
+  void draw();
 
-    void keyPressed(int key);
-    void keyReleased(int key);
-    void mouseMoved(int x, int y);
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void mouseEntered(int x, int y);
-    void mouseExited(int x, int y);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
+  void keyPressed(int key);
+  void keyReleased(int key);
+  void mouseMoved(int x, int y);
+  void mouseDragged(int x, int y, int button);
+  void mousePressed(int x, int y, int button);
+  void mouseReleased(int x, int y, int button);
+  void mouseEntered(int x, int y);
+  void mouseExited(int x, int y);
+  void windowResized(int w, int h);
+  void dragEvent(ofDragInfo dragInfo);
+  void gotMessage(ofMessage msg);
 };
 ```
 
@@ -242,72 +242,72 @@ The implementation will have extension `.cpp`. This is where all the methods dec
 
 void ofApp::setup() 
 {
-    // Called once at app startup.
+  // Called once at app startup.
 }
 
 void ofApp::update()
 {
-    // Called at the start of every frame.
+  // Called at the start of every frame.
 }
 
 void ofApp::draw()
 {
-    // Called every frame after update.
+  // Called every frame after update.
 }
 
 void ofApp::keyPressed(int key) 
 {
-    // Called when a key is pressed.
+  // Called when a key is pressed.
 }
 
 void ofApp::keyReleased(int key) 
 {
-    // Called when a key is released.
+  // Called when a key is released.
 }
 
 void ofApp::mouseMoved(int x, int y) 
 {
-    // Called when the mouse is moved and no buttons are pressed.
+  // Called when the mouse is moved and no buttons are pressed.
 }
 
 void ofApp::mouseDragged(int x, int y, int button) 
 {
-    // Called when the mouse is moved while a button is pressed down.
+  // Called when the mouse is moved while a button is pressed down.
 }
 
 void ofApp::mousePressed(int x, int y, int button) 
 {
-    // Called when a mouse button is pressed.
+  // Called when a mouse button is pressed.
 }
 
 void ofApp::mouseReleased(int x, int y, int button) 
 {
-    // Called when a mouse button is released.
+  // Called when a mouse button is released.
 }
 
 void ofApp::mouseEntered(int x, int y) 
 {
-    // Called when the mouse cursor enters the application window.
+  // Called when the mouse cursor enters the application window.
 }
 
 void ofApp::mouseExited(int x, int y) 
 {
-    // Called when the mouse cursor exits the application window.
+  // Called when the mouse cursor exits the application window.
 }
 
 void ofApp::windowResized(int w, int h) 
 {
-    // Called when the application window is resized.
+  // Called when the application window is resized.
 }
 
 void ofApp::gotMessage(ofMessage msg) 
 {
-    // I have no idea :/
+  // I have no idea :/
 }
 
 void ofApp::dragEvent(ofDragInfo dragInfo) 
 {
-    // Called when a file or set of files are dragged onto the application window.
+  // Called when a file or set of files are dragged onto the application window.
 }
 ```
 

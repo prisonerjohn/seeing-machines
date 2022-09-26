@@ -46,9 +46,9 @@ We have traditionally only considered five human senses:
 
 Neurologist Dr. Wilder Penfield conceived the [Sensory Homuncilus](https://en.wikipedia.org/wiki/Cortical_homunculus), a physical representation of how the human body would look if the various body parts were sized in proportion to the cortical area used for their specific sensory functions.
 
-{{< image src="https://upload.wikimedia.org/wikipedia/commons/c/c4/1421_Sensory_Homunculus.jpg" alt="A 2-D cortical sensory homunculus" width="360px" align="center" >}}
+{{< image src="https://upload.wikimedia.org/wikipedia/commons/c/c4/1421_Sensory_Homunculus.jpg" alt="A 2-D cortical sensory homunculus" width="360px" caption="[*A 2-D cortical sensory homunculus*](https://upload.wikimedia.org/wikipedia/commons/c/c4/1421_Sensory_Homunculus.jpg)" >}}
 
-{{< image src="https://www.sharonpricejames.com/uploads/1/1/2/8/112878735/banner-image_1_orig.jpg" alt="3-D interpretation by Sharon Price James" width="360px" align="center" >}}
+{{< image src="https://www.sharonpricejames.com/uploads/1/1/2/8/112878735/banner-image_1_orig.jpg" alt="3-D interpretation by Sharon Price James" width="360px" caption="[*3-D interpretation by Sharon Price James*](https://www.sharonpricejames.com/the-original-homunculus-company.html)" >}}
 
 This is a simplification, but demonstrates that touch is the most predominant sense, followed by taste, hearing, smell, and finally sight.
 
