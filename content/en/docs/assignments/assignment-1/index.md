@@ -135,3 +135,23 @@ If you are looking for an additional challenge, try adding the following extra f
 Come to class with a working project on a working computer, and be prepared to talk and answer questions about it. Time allowing, some of you will demo your projects to the class!
 
 Thank you!
+
+## Solution
+
+Here are example projects for a [basic solution](sm01-ElieZananiri-basic.zip) and a [fancy solution](sm01-ElieZananiri-fancy.zip) (with all the bonus features).
+
+A few things to watch out for:
+
+* While iterating through the pixels, we do not want to read values from the same array we are writing to. If we do this, we will be reading values that we are modifying and will get unexpected results.
+* When counting neighbors, we want to make sure to skip the current pixel. We need to look at the 8 surrounding pixels only.
+
+One line to look at closely in the example solution is:
+
+```cpp
+lifeImg.getTexture().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+```
+
+When an image is scaled up, it needs additional pixels to fill in the extra resolution. Conversely, when an image is scaled down, it removes some of its original pixels because the resolution is smaller. The min/mag filters define how the renderer should handle these situations.
+
+* The default mode uses linear interpolation `GL_LINEAR`. This blends the nearby pixels together to make new pixels and may look fuzzy, which is not what we want.
+* The nearest neighbor mode `GL_NEAREST` uses the nearest pixel value for the added pixels without any blending. This keeps the image sharp at any resolution, but it may look pixelated.
