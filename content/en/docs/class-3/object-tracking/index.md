@@ -20,7 +20,7 @@ We are going to track a red playing card and can assume that the card will be th
 
 {{< image src="red-card.jpg" alt="A Red Card" width="600px" >}}
 
-## Contour Finding 
+## Contour Finding
 
 In order to do this, we will use a *Contour Finding* algorithm.
 
@@ -122,10 +122,10 @@ void ofApp::draw()
 
 While this application technically works, it is hard to get the settings right. Let's modify it to make it easier to use.
 
-We often get better results when comparing colors in HSV rather than RGB space. 
+We often get better results when comparing colors in HSV rather than RGB space.
 
 * RGB defines how much red, green, and blue is in an image.
-  * A small change in values might result in a greater difference seen, and vice-versa. 
+  * A small change in values might result in a greater difference seen, and vice-versa.
   * When working near the grayscale range (white to black), it is hard to evaluate how much red, green, and blue is actually in the pixel.
 * HSV defines colors as levels of hue, saturation, and brightness.
   * This is closer to how humans perceive color, and differentiate objects they see in space.
@@ -388,9 +388,10 @@ The pattern on the back of the card is making it hard to get a clean blob. It is
 The following operations are called *convolution* operations. A convolution is a process by which a pixel looks at its neighbours values to calculate its own value. The rules to calculate this value are set in a *kernel*.
 
 A *kernel*  has a size and weights.
+
 * The size, also called the *window*, specifies how many neighbours to look at when making the calculation. For example, a `3x3` kernel will consider the 8 direct neighbours and the pixel itself.
 * The weights represent how much of each pixel in the kernel to take in when calculating the final value. A *normalized* kernel will have the same weights throughout, while a non-normalized one will have different weight values.
-* The window is usually odd and square, also called *box*, (e.g. `3x3` or `5x5`) and the pixel in question is in the middle of it. 
+* The window is usually odd and square, also called *box*, (e.g. `3x3` or `5x5`) and the pixel in question is in the middle of it.
 
 ```python
                           [ 1  4  6  4 1 ]
