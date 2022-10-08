@@ -60,7 +60,7 @@ Like the name implies, [time of flight](https://en.wikipedia.org/wiki/Time-of-fl
   * Fast, and ideal for real-time processing.
 * Cons:
   * Mid-level accuracy.
-  * Low resolution as it uses a custom sensor. 
+  * Low resolution as it uses a custom sensor.
   * Subject to interference from other devices.
 
 ### Stereo Vision
@@ -70,12 +70,12 @@ Stereo vision works like human depth perception, where two cameras (or eyes) are
 {{< image src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Sgm_method.PNG" alt="Semi-global Matching Method" caption="[*Semi-global Matching Method*](https://commons.wikimedia.org/wiki/File:Sgm_method.PNG)" width="600px" >}}
 
 * Pros:
-    * Tends to be cheap, as any off the shelf cameras can be used.
-    * Image representation is intuitive to humans.
-    * No interference.
+  * Tends to be cheap, as any off the shelf cameras can be used.
+  * Image representation is intuitive to humans.
+  * No interference.
 * Cons:
-    * Low accuracy.
-    * Complex implementation requiring feature extraction and matching.
+  * Low accuracy.
+  * Complex implementation requiring feature extraction and matching.
 
 ## Microsoft Kinect
 
@@ -97,7 +97,7 @@ Microsoft originally was against the practice, even threatening legal action aga
 
 Even though it was discontinued in 2013, this device is still used because of its long range and ease of use on all major OSes.
 
-![]({{ site.baseurl }}/assets/images/kinect_v1.png){:width="600px"}
+{{< image src="kinect_v1.png" alt="Kinect for Xbox 360" width="600px" >}}
 
 * Technology: Coded light
 * Range: `1.2-3.5m` / `3.9-11.5ft`
@@ -106,29 +106,31 @@ Even though it was discontinued in 2013, this device is still used because of it
 * FOV: `57°x43°`
 
 Extra features:
-  * Microphone
-  * Motorized base to adjust device angle
+
+* Microphone
+* Motorized base to adjust device angle
 
 OF Support
+
 * [ofxKinect](https://openframeworks.cc/documentation/ofxKinect/)
   * Windows, Mac, Linux
   * [README](https://github.com/openframeworks/openFrameworks/tree/master/addons/ofxKinect) for setup instructions
   * Based on [libfreenect](https://openkinect.org/wiki/Main_Page)
 
-<div style="width:600px;margin:0 auto;">
+<figure style="width:600px;display:block;margin:0 auto;">
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/36892768?color=ffffff&badge=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-*<a href="https://vimeo.com/36892768">Starfield</a> from <a href="https://vimeo.com/lab212">Lab212</a> on <a href="https://vimeo.com">Vimeo</a>.*
-</div>
+<figcaption><i><a href="https://vimeo.com/36892768">Starfield</a> from <a href="https://vimeo.com/lab212">Lab212</a> on <a href="https://vimeo.com">Vimeo</a>.</i></figcaption>
+</figure>
 
-#### Kinect V2 (aka Kinect for Xbox One)
+### Kinect V2 (aka Kinect for Xbox One)
 
-Released in 2012, the second version of the Kinect is said to have 3x the fidelity of its predecessor and a 60% wider field of view. 
+Released in 2012, the second version of the Kinect is said to have 3x the fidelity of its predecessor and a 60% wider field of view.
 
 While still originally labeled as an Xbox controller, Microsoft shipped a Windows SDK with the device, providing access to advanced features to Desktop applications.
 
 This device was discontinued in 2017 but is also still widely used for long-term installations.
 
-![]({{ site.baseurl }}/assets/images/kinect_v2.jpg){:width="600px"}
+{{< image src="kinect_v2.jpg" alt="Kinect V2" width="600px" >}}
 
 * Technology: Time-of-flight
 * Range: `0.5-4.5m` / `1.6-11.5ft`
@@ -137,13 +139,15 @@ This device was discontinued in 2017 but is also still widely used for long-term
 * FOV: `70°x60°`
 
 Extra features using [Microsoft SDK](https://developer.microsoft.com/en-us/windows/kinect):
-  * Body tracking (up to 6 people)
-  * Facial expression recognition
-  * Hand gesture recognition
-  * Heart rate tracking
-  * Speech recognition
+
+* Body tracking (up to 6 people)
+* Facial expression recognition
+* Hand gesture recognition
+* Heart rate tracking
+* Speech recognition
 
 OF Support
+
 * [ofxKinectV2](https://github.com/ofTheo/ofxKinectV2)
   * Windows, Mac, Linux
   * Based on [libfreenect2](https://github.com/OpenKinect/libfreenect2)
@@ -152,18 +156,16 @@ OF Support
   * Windows only!
   * Requires [Microsoft SDK](https://developer.microsoft.com/en-us/windows/kinect)
 
-<div style="width:600px;margin:0 auto;">
+<figure style="width:600px;display:block;margin:0 auto;">
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/96615251?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-*<a href="https://vimeo.com/96615251">Parade - Dancing Shadow Sculptures</a> from <a href="https://vimeo.com/bonjourdpt">Dpt.</a> on <a href="https://vimeo.com">Vimeo</a>.*
-</div>
+<figcaption><i><a href="https://vimeo.com/96615251">Parade - Dancing Shadow Sculptures</a> from <a href="https://vimeo.com/bonjourdpt">Dpt.</a> on <a href="https://vimeo.com">Vimeo</a>.</i></figcaption>
+</figure>
 
-#### Kinect for Azure
+### Kinect for Azure
 
 Just released in 2019, the [Kinect for Azure](https://azure.microsoft.com/en-us/services/kinect-dk/) is based on technologies of the previous Kinect and the [HoloLens](https://www.microsoft.com/en-us/hololens). This is the first Kinect device marketed to developers at launch, and the first device to have an [open-source SDK](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK) with official support for non-Windows platforms.
 
-Having just come out, the Kinect for Azure is still in development, but has a lot of promise.
-
-![]({{ site.baseurl }}/assets/images/kinect_v3.png){:width="600px"}
+{{< image src="kinect_v3.png" alt="Kinect for Azure" width="600px" >}}
 
 * Technology: Time-of-flight
 * Range: `0.25-5.5m` / `0.8-11.5ft` (mode dependent)
@@ -172,16 +174,18 @@ Having just come out, the Kinect for Azure is still in development, but has a lo
 * FOV: Up to `120°x120°`
 
 Extra features using [Microsoft SDK](https://developer.microsoft.com/en-us/windows/kinect):
-  * Orientation sensors
-  * 360° microphone array
-  * Body tracking (still in beta)
+
+* Orientation sensors
+* 360° microphone array
+* Body tracking (still in beta)
 
 OF Support
+
 * [ofxAzureKinect](https://github.com/prisonerjohn/ofxAzureKinect)
   * Windows, Linux
   * Requires [Azure Kinect Sensor SDK](https://docs.microsoft.com/en-us/azure/kinect-dk/sensor-sdk-download)
 
-### Intel RealSense
+## Intel RealSense
 
 The [Intel RealSense](https://www.intelrealsense.com/) started off as a compact depth camera aimed at video conferencing, gesture-based interaction, and 3D scanning. The 200 series included many devices, both standalone and embedded in tablet computers and laptops.
 
@@ -189,29 +193,23 @@ The quality was not up-to-par with other depth cameras, and the original RealSen
 
 In 2018, Intel released the 400 series devices, which were a major improvement on the previous generation. Low cost, small form-factor and portability make these devices a viable choice for many applications.
 
-![]({{ site.baseurl }}/assets/images/realsense_d400_cameras.jpg){:width="600px"}
+{{< image src="realsense_d400_cameras.jpg" alt="Intel RealSense" width="600px" >}}
 
-#### D415 / D435 / D435i
+### D415 / D435 / D455 / D457
 
 * Technology: Stereo IR
 * Range: `0.10-10m` / `0.3-32ft` (depends on conditions)
 * Color resolution: `1920x1080px`
 * Depth resolution: `1280x720px`
-* FOV: `65°x40°` (D415), `85°x58°` (D435)
-
-#### SR305
-
-* Technology: Coded light
-* Range: `0.20-1.5m` / `0.6-5ft` (depends on conditions)
-* Color resolution: `1920x1080px`
-* Depth resolution: `640x480px`
-* FOV: `69°x54°`
+* FOV: `65°x40°` (D415), `87°x58°` (D435, D455, D457)
 
 Extra features:
-  * USB powered
-  * Orientation sensors (on D435i)
+
+* USB powered
+* Orientation sensors (on some models)
 
 OF Support
+
 * [ofxLibRealSense2](https://github.com/m9dfukc/ofxLibRealSense2)
   * Mac (Windows, Linux in theory)
 * [ofxRealSense2](https://github.com/prisonerjohn/ofxRealSense2)
