@@ -215,7 +215,7 @@ OF Support
 * [ofxRealSense2](https://github.com/prisonerjohn/ofxRealSense2)
   * Windows (Mac, Linux in theory)
 
-### Other Options
+## Other Options
 
 * [Orbbec Astra](https://orbbec3d.com/product-astra-pro/)
 * [Structure Core](https://structure.io/structure-core)
