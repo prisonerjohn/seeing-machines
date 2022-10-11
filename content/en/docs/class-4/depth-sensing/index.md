@@ -177,7 +177,7 @@ Extra features using [Microsoft SDK](https://developer.microsoft.com/en-us/windo
 
 * Orientation sensors
 * 360° microphone array
-* Body tracking (still in beta)
+* Body tracking (requires NVIDIA GPU)
 
 OF Support
 
@@ -217,7 +217,62 @@ OF Support
 
 ## Other Options
 
-* [Orbbec Astra](https://orbbec3d.com/product-astra-pro/)
-* [Structure Core](https://structure.io/structure-core)
-* [Stereolabs ZED](https://www.stereolabs.com/zed/)
-* [Leap Motion](https://www.leapmotion.com/)
+### Stereolabs ZED
+
+Stereolabs are the newest addition to this list, and are worth mentioning because of their high quality [ZED 2](https://www.stereolabs.com/zed-2/) sensors.
+
+* Technology: Stereo Color (range is virtually unlimited)
+* Waterproof / dustproof options makes them great for outdoor use
+* SDK uses machine learning models to provide a robust depth map and body tracking features
+* Works on Windows and Linux but requires an NVIDIA GPU
+
+### Orbbec Astra
+
+Orbbec released the [Astra Series](https://orbbec3d.com/index/Product/info.html?cate=38&id=36) as a response to the Microsoft Kinect. The goal was to create an open, cross-platform SDK which included body tracking with OpenNI.
+
+* Technology: Strucutured Light
+
+### Leap Motion
+
+The [Leap Motion Controller](https://www.ultraleap.com/product/leap-motion-controller/) is a depth sensor that focuses on hand and finger tracking. It can be used for both Desktop and VR applications.
+
+* Technology: Stereo IR
+
+## USB Connections
+
+We will often find ourselves wanting to connect many sensors to a single computer, or wanting to position our sensors far from the computer. This can be achieved using USB hubs and USB extenders, but one thing to remember is that not all USBs are created equal, and like most things in life, you get what you pay for.
+
+In all cases, the most important thing we can do is test our setup with all the hardware connected to make sure everything is working as expected.
+
+### Bandwidth
+
+USB bandwidth (amount of data over time) should be planned carefully:
+
+* Only enable feeds that are necessary to the application (e.g. Disable the RGB color stream if we are only interested in the depth data).
+* Use a lower image resolution if it provides enough information (e.g. Test a lower resolution stream to see if it provides enough precision).
+* If using multiple devices, connect them to different USB channels when possible (e.g. Connect one on the front and the other on the back).
+
+### Hubs
+
+USB hubs can help, but have limitations:
+
+* Powered USB hubs will have higher bandwidth as they can use more power.
+* External hubs that connect to a PC using a USB connection will create a bottleneck (since all the data still needs to go through a single bus).
+* Internal PCIe hubs with dedicated channels per port will work the best.
+
+Recommendation:
+
+* [StarTech PCI Express Adapter Card](https://www.startech.com/en-us/cards-adapters/pexusb3s44v)
+
+### Cables
+
+USB cables will deteriorate the signal over distance.
+
+* Use cables that are close in length to what is needed. Cables that are too long will weaken the signal.
+* Thicker and insulated cables tend to reduce interference.
+* Active (powered) cables can boost the data signal, especially over long distances.
+
+Recommendations:
+
+* [Cable Matters Active USB 3.0 extension cable](https://www.cablematters.com/pc-512-135-active-usb-30-extension-cable-usb-3-extension-cable-usb-extension-cable-male-to-female.aspx)
+* [Newnex active cables](https://www.newnex.com/usb-type-c-cables-legacy.php)
