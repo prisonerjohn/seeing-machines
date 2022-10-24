@@ -1,0 +1,531 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-500.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script><link rel=stylesheet href=https://seeingmachines.betamovement.net/main.8d021019b9ce3f15211b87c945c913e36aaf7bf23d3e2a81f9da6c01ea22a3c97caa4400b3466899838f5b4b52d3749af9554379487e932c3e83530c676aeca2.css integrity="sha512-jQIQGbnOPxUhG4fJRckT42qve/I9PiqB+dpsAeoio8l8qkQAs0ZomYOPW0tS03Sa+VVDeUh+kyw+g1MMZ2rsog==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Depth Images - Seeing Machines</title><meta name=description content="Depth Grabbers # While depth sensors come in a variety of shapes, sizes, and technologies, the method to interface with them is usually pretty similar. Just like color cameras, depth cameras deliver images at the requested framerate. These images come in as arrays of pixels, which can then be manipulated and uploaded to a texture for rendering.
+As these are specialty devices, we cannot use an ofVideoGrabber to retrieve data from them."><link rel=canonical href=https://seeingmachines.betamovement.net/docs/class-5/depth-images/><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Depth Images"><meta property="og:description" content="Depth Grabbers # While depth sensors come in a variety of shapes, sizes, and technologies, the method to interface with them is usually pretty similar. Just like color cameras, depth cameras deliver images at the requested framerate. These images come in as arrays of pixels, which can then be manipulated and uploaded to a texture for rendering.
+As these are specialty devices, we cannot use an ofVideoGrabber to retrieve data from them."><meta property="og:url" content="https://seeingmachines.betamovement.net/docs/class-5/depth-images/"><meta property="og:site_name" content="Seeing Machines"><meta property="article:published_time" content="2022-10-23T14:19:40-04:00"><meta property="article:modified_time" content="2022-10-23T14:19:40-04:00"><meta property="og:image" content="https://seeingmachines.betamovement.net/default-image.png"><meta property="og:image:alt" content="Seeing Machines"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content><meta name=twitter:creator content="@prisonerjohn"><meta name=twitter:title content="Depth Images"><meta name=twitter:description content><meta name=twitter:image content="https://seeingmachines.betamovement.net/default-image.png"><meta name=twitter:image:alt content="Depth Images"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/1","name":"Seeing Machines","url":"https://seeingmachines.betamovement.net/","sameAs":[],"image":{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/#/schema/image/1","url":"https://seeingmachines.betamovement.net/default-image.png","width":1024,"height":768,"caption":"Seeing Machines"}},{"@type":"WebSite","@id":"https://seeingmachines.betamovement.net/#/schema/website/1","url":"https://seeingmachines.betamovement.net/","name":"Seeing Machines","description":"A programming course where we’ll explore various techniques and solutions for tracking and sensing people or objects in space.","publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"}},{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/","url":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/","name":"Depth Images","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/#/schema/website/1"},"about":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"datePublished":"2022-10-23T14:19:40CET","dateModified":"2022-10-23T14:19:40CET","breadcrumb":{"@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://seeingmachines.betamovement.net/docs/class-5/depth-images/"]}]},{"@type":"BreadcrumbList","@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/","url":"https://seeingmachines.betamovement.net/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/","url":"https://seeingmachines.betamovement.net/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-5/","url":"https://seeingmachines.betamovement.net/docs/class-5/","name":"Class 5"}},{"@type":"ListItem","position":4,"item":{"@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://seeingmachines.betamovement.net/#/schema/article/1","headline":"Depth Images","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/"},"mainEntityOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/"},"datePublished":"2022-10-23T14:19:40CET","dateModified":"2022-10-23T14:19:40CET","author":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/2"},"publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"image":{"@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/2","name":"Elie Zananiri","sameAs":["https://twitter.com/prisonerjohn","https://www.linkedin.com/in/prisonerjohn/","https://github.com/prisonerjohn"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/docs/class-5/depth-images/#/schema/image/2","url":"https://seeingmachines.betamovement.net/default-image.png","contentUrl":"https://seeingmachines.betamovement.net/default-image.png","caption":"Depth Images"}]}]}</script><meta name=theme-color content="#fff"><link rel=icon href=https://seeingmachines.betamovement.net/favicon.ico sizes=any><link rel=icon type=image/svg+xml href=https://seeingmachines.betamovement.net/favicon.svg><link rel=apple-touch-icon sizes=180x180 href=https://seeingmachines.betamovement.net/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://seeingmachines.betamovement.net/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://seeingmachines.betamovement.net/favicon-16x16.png><link rel=manifest crossorigin=use-credentials href=https://seeingmachines.betamovement.net/site.webmanifest></head><body class="docs single"><div class=sticky-top><div class=header-bar></div><header class="navbar navbar-expand-lg navbar-light doks-navbar"><nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation"><a class="navbar-brand order-0" href=https://seeingmachines.betamovement.net/ aria-label="Seeing Machines">Seeing Machines</a>
+<button class="btn btn-link order-0 ms-auto d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasExample aria-controls=offcanvasExample><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button><div class="offcanvas offcanvas-start d-lg-none" tabindex=-1 id=offcanvasExample aria-labelledby=offcanvasExampleLabel><div class=header-bar></div><div class=offcanvas-header><h5 class=offcanvas-title id=offcanvasExampleLabel>Browse docs</h5><button type=button class=btn-close data-bs-dismiss=offcanvas aria-label=Close></button></div><div class=offcanvas-body><aside class="doks-sidebar mt-n3"><nav id=doks-docs-nav aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-f7e883054c348d897063924d41a7ec2d aria-expanded=false>
+Class 0</button><div class=collapse id=section-f7e883054c348d897063924d41a7ec2d><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/variables-and-arrays/>Variables and Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/computer-vision/>Computer Vision</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=false>
+Class 3</button><div class=collapse id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/object-tracking/>Object Tracking</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e01cc216a97c1db953e2304e6aa8998a aria-expanded=false>
+Class 4</button><div class=collapse id=section-e01cc216a97c1db953e2304e6aa8998a><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/logging/>Logging</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/depth-sensing/>Depth Sensing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cb8d2462ebd86364c3502e7084b7f391 aria-expanded=true>
+Class 5</button><div class="collapse show" id=section-cb8d2462ebd86364c3502e7084b7f391><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/pointers/>Pointers</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-5/depth-images/>Depth Images</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-3/>Assignment 3</a></li></ul></div></li></ul></nav></aside></div></div><button class="btn btn-menu order-2 d-block d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasDoks aria-controls=offcanvasDoks aria-label="Open main menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><div class="offcanvas offcanvas-end border-0 py-lg-1" tabindex=-1 id=offcanvasDoks data-bs-backdrop=true aria-labelledby=offcanvasDoksLabel><div class="header-bar d-lg-none"></div><div class="offcanvas-header d-lg-none"><h2 class="h5 offcanvas-title ps-2" id=offcanvasDoksLabel><a class=text-dark href=https://seeingmachines.betamovement.net/>Seeing Machines</a></h2><button type=button class="btn-close text-reset me-2" data-bs-dismiss=offcanvas aria-label="Close main menu"></button></div><div class="offcanvas-body p-4 p-lg-0"><ul class="nav flex-column flex-lg-row align-items-lg-center mt-2 mt-lg-0 ms-lg-2 me-lg-auto"><li class=nav-item><a class="nav-link ps-0 py-1 active" href=https://seeingmachines.betamovement.net/docs/class-0/foreword>Docs</a></li><li class=nav-item><a class="nav-link ps-0 py-1" href=https://seeingmachines.betamovement.net/docs/assignments>Assignments</a></li></ul><hr class="text-black-50 my-4 d-lg-none"><form class="doks-search position-relative flex-grow-1 ms-lg-auto me-lg-2"><input id=search class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off><div id=suggestions class="shadow bg-white rounded d-none"></div></form><hr class="text-black-50 my-4 d-lg-none"><ul class="nav flex-column flex-lg-row"><li class=nav-item><a class="nav-link social-link" href=https://github.com/prisonerjohn/seeing-machines><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><small class="ms-2 d-lg-none">GitHub</small></a></li><li class=nav-item><a class="nav-link social-link" href=https://twitter.com/prisonerjohn><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg><small class="ms-2 d-lg-none">Twitter</small></a></li></ul><hr class="text-black-50 my-4 d-lg-none"><button id=mode class="btn btn-link" type=button aria-label="Toggle user interface mode">
+<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button></div></div></nav></header></div><div class=container-xxl><aside class=doks-sidebar><nav id=doks-docs-nav class="collapse d-lg-none" aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-f7e883054c348d897063924d41a7ec2d aria-expanded=false>
+Class 0</button><div class=collapse id=section-f7e883054c348d897063924d41a7ec2d><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/variables-and-arrays/>Variables and Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/computer-vision/>Computer Vision</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=false>
+Class 3</button><div class=collapse id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/object-tracking/>Object Tracking</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e01cc216a97c1db953e2304e6aa8998a aria-expanded=false>
+Class 4</button><div class=collapse id=section-e01cc216a97c1db953e2304e6aa8998a><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/logging/>Logging</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/depth-sensing/>Depth Sensing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cb8d2462ebd86364c3502e7084b7f391 aria-expanded=true>
+Class 5</button><div class="collapse show" id=section-cb8d2462ebd86364c3502e7084b7f391><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/pointers/>Pointers</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-5/depth-images/>Depth Images</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-3/>Assignment 3</a></li></ul></div></li></ul></nav></aside></div><div class="wrap container-xxl" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block"><nav class=docs-links aria-label="Main navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-f7e883054c348d897063924d41a7ec2d aria-expanded=false>
+Class 0</button><div class=collapse id=section-f7e883054c348d897063924d41a7ec2d><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/variables-and-arrays/>Variables and Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/computer-vision/>Computer Vision</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=false>
+Class 3</button><div class=collapse id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/object-tracking/>Object Tracking</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e01cc216a97c1db953e2304e6aa8998a aria-expanded=false>
+Class 4</button><div class=collapse id=section-e01cc216a97c1db953e2304e6aa8998a><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/logging/>Logging</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/depth-sensing/>Depth Sensing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cb8d2462ebd86364c3502e7084b7f391 aria-expanded=true>
+Class 5</button><div class="collapse show" id=section-cb8d2462ebd86364c3502e7084b7f391><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/pointers/>Pointers</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-5/depth-images/>Depth Images</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-3/>Assignment 3</a></li></ul></div></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#depth-grabbers>Depth Grabbers</a><ul><li><a href=#intel-realsense>Intel RealSense</a></li><li><a href=#microsoft-kinect>Microsoft Kinect</a></li><li><a href=#microsoft-kinect-v2>Microsoft Kinect V2</a></li></ul></li><li><a href=#depth-threshold>Depth Threshold</a></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#depth-grabbers>Depth Grabbers</a><ul><li><a href=#intel-realsense>Intel RealSense</a></li><li><a href=#microsoft-kinect>Microsoft Kinect</a></li><li><a href=#microsoft-kinect-v2>Microsoft Kinect V2</a></li></ul></li><li><a href=#depth-threshold>Depth Threshold</a></li></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>Depth Images</h1><p class=lead></p><nav class=d-xl-none aria-label="Quaternary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#depth-grabbers>Depth Grabbers</a><ul><li><a href=#intel-realsense>Intel RealSense</a></li><li><a href=#microsoft-kinect>Microsoft Kinect</a></li><li><a href=#microsoft-kinect-v2>Microsoft Kinect V2</a></li></ul></li><li><a href=#depth-threshold>Depth Threshold</a></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#depth-grabbers>Depth Grabbers</a><ul><li><a href=#intel-realsense>Intel RealSense</a></li><li><a href=#microsoft-kinect>Microsoft Kinect</a></li><li><a href=#microsoft-kinect-v2>Microsoft Kinect V2</a></li></ul></li><li><a href=#depth-threshold>Depth Threshold</a></li></ul></nav></div></nav><h2 id=depth-grabbers>Depth Grabbers <a href=#depth-grabbers class=anchor aria-hidden=true>#</a></h2><p>While depth sensors come in a variety of shapes, sizes, and technologies, the method to interface with them is usually pretty similar. Just like color cameras, depth cameras deliver images at the requested framerate. These images come in as arrays of pixels, which can then be manipulated and uploaded to a texture for rendering.</p><p>As these are specialty devices, we cannot use an <code>ofVideoGrabber</code> to retrieve data from them. We will need to use a special &ldquo;grabber&rdquo; tailored to each device and its SDK.</p><div class="alert alert-info d-flex" role=alert><div class="flex-shrink-1 alert-icon">✌️</div><div class=w-100><p><strong>How come <code>ofVideoGrabber</code> works for all webcams?</strong></p><p><a href=https://en.m.wikipedia.org/wiki/USB_video_device_class>USB Video Class</a>, or UVC, is a standard describing formats by which a device can stream video frames. Most USB webcams follow this standard and that is why we can use a common interface to access their streams.</p><p><code>ofVideoGrabber</code> is therefore able to work with any USB video device that complies with the UVC standard. It is actually a wrapper with specific implementations based on the type of system we are on, for example <a href=https://developer.apple.com/av-foundation/>AVFoundation</a> on macOS, <a href=https://gstreamer.freedesktop.org/>GStreamer</a> on Linux, and <a href=https://docs.microsoft.com/en-us/windows/win32/medfound/microsoft-media-foundation-sdk>Windows Media Foundation</a> on Windows.</p></div></div><p>We fortunately will not have to implement this ourselves. In the same way that <code>ofxCv</code> acts as a bridge between OpenCV and openFrameworks, there are many <a href=http://ofxaddons.com/categories>OF addons</a> we can use that manage the interface between the sensor SDK and openFrameworks.</p><h3 id=intel-realsense>Intel RealSense <a href=#intel-realsense class=anchor aria-hidden=true>#</a></h3><p><a href=https://gitlab.com/prisonerjohn/ofxrealsense2/><code>ofxRealSense2</code></a> is a good choice for the Intel RealSense, as it gives us both pixel and texture access, as well as control over many of the SDK&rsquo;s filtering options.</p><div class="alert alert-danger d-flex" role=alert><div class="flex-shrink-1 alert-icon">⚠️</div><div class=w-100><p>Unfortunately, there seems to be an <a href=https://support.intelrealsense.com/hc/en-us/community/posts/4548413451539-Activating-the-realsense-D435-Depth-Camera-in-MacOs>incompatibility with the Intel RealSense and macOS Monterey</a> related to permissions. You may be unable to run the following code if you are using this operating system.</p><p>I am actively looking for solutions and will let the class know once I have more information.</p></div></div><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxRealSense2.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+    void setup();
+    void update();
+    void draw();
+    ofxRealSense2::Context rsContext;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  // Default RS resolution.
+  ofSetWindowShape(640, 360);
+
+  // true parameter starts the camera automatically.
+  rsContext.setup(true);
+}
+
+void ofApp::update()
+{
+  rsContext.update();
+}
+
+void ofApp::draw()
+{
+  // Try to get a pointer to a device.
+  std::shared_ptr&lt;ofxRealSense2::Device&gt; rsDevice = rsContext.getDevice(0);
+  if (rsDevice)
+  {
+    // Draw the depth texture.
+    rsDevice-&gt;getDepthTex().draw(0, 0);
+  }
+}
+</code></pre><p>A depth image will usually be single-channel, and therefore rendered in grayscale. Each gray value represents the distance of that pixel to the camera. The convention is usually brighter for nearer objects, but this is just representative.</p><figure style='display:block;margin:1em auto;width:600px'><img style='display:block;margin:0 auto' src=rs-depth.png alt="RealSense Depth Image"><figcaption><em>RealSense Depth Image</em></figcaption></figure><p>We can read the actual depth value using the SDK function <code>ofxRealSense2::Device.getDistance(x, y)</code>. We will read the value under the mouse, and display it using <a href=https://openframeworks.cc/documentation/graphics/ofGraphics/#!show_ofDrawBitmapString><code>ofDrawBitmapStringHighlight()</code></a> for debugging.</p><pre><code class=language-cpp>// ofApp.cpp
+include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  // Default RS resolution.
+  ofSetWindowShape(640, 360);
+
+  rsContext.setup(true);
+}
+
+void ofApp::update()
+{
+  rsContext.update();
+}
+
+void ofApp::draw()
+{
+  std::shared_ptr&lt;ofxRealSense2::Device&gt; rsDevice = rsContext.getDevice(0);
+  if (rsDevice)
+  {
+    rsDevice-&gt;getDepthTex().draw(0, 0);
+
+    float distAtMouse = rsDevice-&gt;getDistance(ofGetMouseX(), ofGetMouseY());
+    ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY());
+  }
+}
+</code></pre><p>The value returned by the SDK is probably read from the depth texture. Let&rsquo;s try to read it directly from the pixels array and see if the values match.</p><p>Note that there are usually two available depth readings:</p><ul><li>The raw depth buffer contains the actual depth measurement.<ul><li>The value can be read directly from the pixel value.</li><li>The value is metric, usually in millimeters (1mm = 0.001m).</li><li>The pixel format is <code>unsigned short</code>, with range <code>0</code> to <code>65535</code> (16-bit).</li></ul></li><li>The depth buffer contains a scaled representation of the pixel data.<ul><li>This is just for us to make sure everything is working, as the raw depth image is usually very dark or very bright.</li><li>We should not use this for any depth readings.</li><li>The pixel format is <code>unsigned char</code>, with range <code>0</code> to <code>255</code> (8-bit). This is the same as most RGB images.</li><li>This is sometimes called the <em>scaled</em> or <em>mapped</em> image.</li></ul></li></ul><p>We will therefore read our value from the raw depth texture.</p><pre><code class=language-cpp>// ofApp.cpp
+include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  // Default RS resolution.
+  ofSetWindowShape(640, 360);
+
+  rsContext.setup(true);
+}
+
+void ofApp::update()
+{
+  rsContext.update();
+}
+
+void ofApp::draw()
+{
+  std::shared_ptr&lt;ofxRealSense2::Device&gt; rsDevice = rsContext.getDevice(0);
+  if (rsDevice)
+  {
+    rsDevice-&gt;getDepthTex().draw(0, 0);
+
+    // Get the point distance using the SDK function.
+    float distAtMouse = rsDevice-&gt;getDistance(ofGetMouseX(), ofGetMouseY());
+    ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY() - 10);
+
+    // Get the point depth using the texture directly.
+    ofShortPixels rawDepthPix = rsDevice-&gt;getRawDepthPix();
+    int depthAtMouse = rawDepthPix.getColor(ofGetMouseX(), ofGetMouseY()).r;
+    ofDrawBitmapStringHighlight(ofToString(depthAtMouse), ofGetMouseX() + 16, ofGetMouseY() + 10);
+  }
+}
+</code></pre><p>Note that we are getting an <code>ofColor</code> from the depth pixels, and reading the red channel with <code>ofColor.r</code> to get the depth value. We could use any of the red, green, blue channels here; as our data is in a single grayscale channel, all the colors represent the same value.</p><p>The Intel RealSense raw image tends to be very noisy, and needs some filtering to clean it up and make it usable. The SDK includes many options for filtering and these are available in the addon. To use them with <code>ofxGui</code>, we just need to add the <code>ofxRealSense2::Device.params</code> object to the <code>ofxPanel</code>.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxRealSense2.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxRealSense2::Context rsContext;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  // Default RS resolution.
+  ofSetWindowShape(640, 360);
+
+  guiPanel.setup(&quot;Depth&quot;, &quot;settings.json&quot;);
+
+  rsContext.setup(true);
+
+  std::shared_ptr&lt;ofxRealSense2::Device&gt; rsDevice = rsContext.getDevice(0);
+  if (rsDevice)
+  {
+    guiPanel.add(rsDevice-&gt;params);
+  }
+}
+
+void ofApp::update()
+{
+  rsContext.update();
+}
+
+void ofApp::draw()
+{
+  std::shared_ptr&lt;ofxRealSense2::Device&gt; rsDevice = rsContext.getDevice(0);
+  if (rsDevice)
+  {
+    rsDevice-&gt;getDepthTex().draw(0, 0);
+
+    float distAtMouse = rsDevice-&gt;getDistance(ofGetMouseX(), ofGetMouseY());
+    ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY());
+  }
+
+  guiPanel.draw();
+}
+</code></pre><h3 id=microsoft-kinect>Microsoft Kinect <a href=#microsoft-kinect class=anchor aria-hidden=true>#</a></h3><p><a href=https://openframeworks.cc/documentation/ofxKinect/><code>ofxKinect</code></a> is the best choice for the original Microsoft Kinect, as it ships with OF and gives us all the data we need.</p><p>Notice that the code looks almost similar to what we just did for the RealSense!</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxKinect.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxKinect kinect;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  kinect.init();
+  kinect.open();
+}
+
+void ofApp::update()
+{
+  kinect.update();
+}
+
+void ofApp::draw()
+{
+  if (kinect.isFrameNew())
+  {
+    kinect.getDepthTexture().draw(0, 0);
+
+    // Get the point distance using the SDK function.
+    float distAtMouse = kinect.getDistanceAt(ofGetMouseX(), ofGetMouseY());
+    ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY() - 10);
+
+    // Get the point depth using the texture directly.
+    ofShortPixels rawDepthPix = kinect.getRawDepthPixels();
+    int depthAtMouse = rawDepthPix.getColor(ofGetMouseX(), ofGetMouseY()).r;
+    ofDrawBitmapStringHighlight(ofToString(depthAtMouse), ofGetMouseX() + 16, ofGetMouseY() + 10);
+  }
+}
+</code></pre><h3 id=microsoft-kinect-v2>Microsoft Kinect V2 <a href=#microsoft-kinect-v2 class=anchor aria-hidden=true>#</a></h3><p><a href=https://github.com/elliotwoods/ofxKinectForWindows2><code>ofxKinectForWindows2</code></a> is a good choice for the Kinect V2. It works with the [Microsoft Kinect for Windows 2.0 SDK], which means it supports all Kinect features (including body tracking). However, note that this only works on Windows!</p><p>Alternatively, <a href=https://github.com/ofTheo/ofxKinectV2><code>ofxKinectV2</code></a> is a cross-platform solution that works similarly to <code>ofxKinect</code>.</p><p><code>ofxKinectForWindows2</code> does not include a function to get distance from a coordinate, so we will need to sample the depth texture directly.</p><pre><code class=language-cpp>// ofApp.h
+#include &quot;ofxKinectForWindows2.h&quot;
+
+class ofApp : public ofBaseApp 
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxKFW2::Device kinect;
+}
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  kinect.open();
+  kinect.initDepthSource();
+  kinect.initColorSource();
+}
+
+void ofApp::update()
+{
+  kinect.update();
+}
+
+void ofApp::draw()
+{
+  if (kinect.isFrameNew())
+  {
+    std::shared_ptr&lt;ofxKFW2::Source::Depth&gt; depthSource = kinect.getDepthSource();
+
+    // Clamp the mouse coordinate to ensure it stays within the data bounds.
+    int readX = ofClamp(ofGetMouseX(), 0, depthSource-&gt;getWidth() - 1);
+    int readY = ofClamp(ofGetMouseY(), 0, depthSource-&gt;getHeight() - 1);
+
+    // Get the point depth using the texture directly.
+    ofShortPixels rawDepthPix = depthSource-&gt;getPixels();
+    int depthAtMouse = rawDepthPix.getColor(readX, readY).r;
+    ofDrawBitmapStringHighlight(ofToString(depthAtMouse), ofGetMouseX(), ofGetMouseY());
+  }
+}
+</code></pre><h2 id=depth-threshold>Depth Threshold <a href=#depth-threshold class=anchor aria-hidden=true>#</a></h2><p>Depth pixels are very useful for thresholding images. This tends to be much more precise than using brightness or color (as we have been doing previously) since we eliminate any issues with change in lighting or with similarities between background and foreground colors. We can set a depth range that valid pixels belong to and discard anything that&rsquo;s nearer or farther than this range.</p><p>Let&rsquo;s first attempt to do this manually by iterating through the pixel array.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxRealSense2.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxRealSense2::Context rsContext;
+
+  ofImage thresholdImg;
+
+  ofParameter&lt;int&gt; nearThreshold;
+  ofParameter&lt;int&gt; farThreshold;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  // Default RS resolution.
+  ofSetWindowShape(640, 720);
+
+  // Start the sensor.
+  rsContext.setup(true);
+
+  // Allocate the image.
+  thresholdImg.allocate(640, 360, OF_IMAGE_GRAYSCALE);
+
+  // Setup the parameters.
+  nearThreshold.set(&quot;Near Threshold&quot;, 10, 0, 4000);
+  farThreshold.set(&quot;Far Threshold&quot;, 1000, 0, 4000);
+
+  // Setup the gui.
+  guiPanel.setup(&quot;Depth Threshold&quot;, &quot;settings.json&quot;);
+  guiPanel.add(nearThreshold);
+  guiPanel.add(farThreshold);
+}
+
+void ofApp::update()
+{
+  rsContext.update();
+}
+
+void ofApp::draw()
+{
+  std::shared_ptr&lt;ofxRealSense2::Device&gt; rsDevice = rsContext.getDevice(0);
+  if (rsDevice)
+  {
+    rsDevice-&gt;getDepthTex().draw(0, 0);
+
+    // Get the point distance using the SDK function.
+    float distAtMouse = rsDevice-&gt;getDistance(ofGetMouseX(), ofGetMouseY());
+    ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY());
+
+    // Threshold the depth.
+    ofShortPixels rawDepthPix = rsDevice-&gt;getRawDepthPix();
+    ofPixels&amp; thresholdPix = thresholdImg.getPixels();
+    for (int y = 0; y &lt; rawDepthPix.getHeight(); y++)
+    {
+      for (int x = 0; x &lt; rawDepthPix.getWidth(); x++)
+      {
+        int depth = rawDepthPix.getColor(x, y).r;
+        if (nearThreshold &lt; depth &amp;&amp; depth &lt; farThreshold)
+        {
+          thresholdPix.setColor(x, y, ofColor(255));
+        }
+        else
+        {
+          thresholdPix.setColor(x, y, ofColor(0));
+        }
+      }
+    }
+
+    // Upload pixels to texture.
+    thresholdImg.update();
+
+    // Draw the result image.
+    thresholdImg.draw(0, 360);
+  }
+
+  // Draw the gui.
+  guiPanel.draw();
+}
+</code></pre><figure style='display:block;margin:1em auto;width:600px'><img style='display:block;margin:0 auto' src=rs-threshold.png alt="RealSense Threshold"><figcaption><em>RealSense Threshold</em></figcaption></figure><p>We can also achieve the same effect using OpenCV with two consecutive calls to <a href="https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#threshold"><code>cv::threshold()</code></a>.</p><ul><li>The first will be for the near value, and will keep everything greater than the threshold value.</li><li>The second will be for the far value, and will be inverted so that we keep everything smaller than the threshold value.</li><li>We then combine the result of both operations using <a href="https://docs.opencv.org/2.4/modules/core/doc/operations_on_arrays.html?highlight=bitwise_and#bitwise-and"><code>cv::bitwise_and()</code></a>, which just adds both textures together.</li></ul><p>Unfortunately, OpenCV does not work with <code>unsigned short</code> images, so we cannot use our array of depth pixels directly. We first need to convert it either to an array of <code>unsigned char</code> or <code>float</code>.</p><ul><li>If we go with <code>unsigned char</code>, we will lose precision because we will need to pack <code>65536</code> possible values into <code>256</code>. We should therefore use <code>float</code> and <code>ofFloatPixels</code>.</li><li>In both cases, if we let OF do the conversion automatically, it will rescale the values to fit into the new range. So <code>[0, 65535]</code> becomes <code>[0, 255]</code> or <code>[0.0, 1.0]</code>. We need to remain aware of this as it will change the range of our near/far parameters.</li></ul><p>Here is a second thresholding attempt using OpenCV.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxRealSense2.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxRealSense2::Context rsContext;
+
+  ofImage thresholdImg;
+
+  ofParameter&lt;float&gt; nearThreshold;
+  ofParameter&lt;float&gt; farThreshold;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  // Default RS resolution.
+  ofSetWindowShape(640, 720);
+
+  // Start the sensor.
+  rsContext.setup(true);
+
+  // Setup the parameters.
+  nearThreshold.set(&quot;Near Threshold&quot;, 0.01f, 0.0f, 0.1f);
+  farThreshold.set(&quot;Far Threshold&quot;, 0.02f, 0.0f, 0.1f);
+
+  // Setup the gui.
+  guiPanel.setup(&quot;Depth Threshold&quot;, &quot;settings.json&quot;);
+  guiPanel.add(nearThreshold);
+  guiPanel.add(farThreshold);
+}
+
+void ofApp::update()
+{
+  rsContext.update();
+}
+
+void ofApp::draw()
+{
+  std::shared_ptr&lt;ofxRealSense2::Device&gt; rsDevice = rsContext.getDevice(0);
+  if (rsDevice)
+  {
+    rsDevice-&gt;getDepthTex().draw(0, 0);
+
+    // Get the point distance using the SDK function.
+    float distAtMouse = rsDevice-&gt;getDistance(ofGetMouseX(), ofGetMouseY());
+    ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY());
+
+    // Threshold the depth.
+    ofFloatPixels rawDepthPix = rsDevice-&gt;getRawDepthPix();
+    ofFloatPixels thresholdNear, thresholdFar, thresholdResult;
+    ofxCv::threshold(rawDepthPix, thresholdNear, nearThreshold);
+    ofxCv::threshold(rawDepthPix, thresholdFar, farThreshold, true);
+    ofxCv::bitwise_and(thresholdNear, thresholdFar, thresholdResult);
+
+    // Upload pixels to image.
+    thresholdImg.setFromPixels(thresholdResult);
+
+    // Draw the result image.
+    thresholdImg.draw(0, 360);
+  }
+
+  // Draw the gui.
+  guiPanel.draw();
+}
+</code></pre><p>And here is that same example using a Kinect and OpenCV.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxKinect.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxKinect kinect;
+
+  ofImage thresholdImg;
+
+  ofParameter&lt;float&gt; nearThreshold;
+  ofParameter&lt;float&gt; farThreshold;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  ofSetWindowShape(1280, 480);
+
+  // Start the depth sensor.
+  kinect.setRegistration(true);
+  kinect.init();
+  kinect.open();
+
+  // Setup the parameters.
+  nearThreshold.set(&quot;Near Threshold&quot;, 0.01f, 0.0f, 0.1f);
+  farThreshold.set(&quot;Far Threshold&quot;, 0.02f, 0.0f, 0.1f);
+
+  // Setup the gui.
+  guiPanel.setup(&quot;Depth Threshold&quot;, &quot;settings.json&quot;);
+  guiPanel.add(nearThreshold);
+  guiPanel.add(farThreshold);
+}
+
+void ofApp::update()
+{
+  kinect.update();
+}
+
+void ofApp::draw()
+{
+  if (kinect.isFrameNew())
+  {
+    kinect.getDepthTexture().draw(0, 0);
+
+    // Get the point distance using the SDK function.
+    float distAtMouse = kinect.getDistanceAt(ofGetMouseX(), ofGetMouseY());
+    ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY());
+
+    // Threshold the depth.
+    ofFloatPixels rawDepthPix = kinect.getRawDepthPixels();
+    ofFloatPixels thresholdNear, thresholdFar, thresholdResult;
+    ofxCv::threshold(rawDepthPix, thresholdNear, nearThreshold);
+    ofxCv::threshold(rawDepthPix, thresholdFar, farThreshold, true);
+    ofxCv::bitwise_and(thresholdNear, thresholdFar, thresholdResult);
+
+    // Upload pixels to image.
+    thresholdImg.setFromPixels(thresholdResult);
+
+    // Draw the result image.
+    thresholdImg.draw(640, 0);
+  }
+
+  // Draw the gui.
+  guiPanel.draw();
+}
+</code></pre><div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between"></div><div class="docs-navigation d-flex justify-content-between"><a href=https://seeingmachines.betamovement.net/docs/class-5/pointers/><div class="card my-1"><div class="card-body py-2">&larr; Pointers</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container-xxl><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://github.com/>GitHub</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=https://seeingmachines.betamovement.net/js/bootstrap.min.6cdb76625316a021e696f0641e0948e88df021948825dbf90228403664b1691ff7a291ac9d485a8da13b1cc8b9d543ba6dce6702692ff979943a02038ffbd52e.js integrity="sha512-bNt2YlMWoCHmlvBkHglI6I3wIZSIJdv5AihANmSxaR/3opGsnUhajaE7HMi51UO6bc5nAmkv+XmUOgIDj/vVLg==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/js/highlight.min.93c197e7097c47fc0788b21721b3c308e18e43299f1e45e8ff2697d13cd62908cc5949a053c1fb7242d7b4a60eb07bd106061252f7aa925ef7e91033ea59d9b9.js integrity="sha512-k8GX5wl8R/wHiLIXIbPDCOGOQymfHkXo/yaX0TzWKQjMWUmgU8H7ckLXtKYOsHvRBgYSUveqkl736RAz6lnZuQ==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/main.min.162c56a0426544de0d010e66c56e321579655c400c9aae06a6823e7682de379adadf2165bd416fea191e4e7e410fbf1fd2c35a759aa43ff2e3787067669bf81b.js integrity="sha512-FixWoEJlRN4NAQ5mxW4yFXllXEAMmq4GpoI+doLeN5ra3yFlvUFv6hkeTn5BD78f0sNadZqkP/LjeHBnZpv4Gw==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/index.min.1e6e7751eb10211b9bfa846bf7f6ce0157e56004f827cee95cc32c4b14c664162cbea94fbf3bbeadaddef831323700a953288183bab71400a72c638b6e30416d.js integrity="sha512-Hm53UesQIRub+oRr9/bOAVflYAT4J87pXMMsSxTGZBYsvqlPvzu+ra3e+DEyNwCpUyiBg7q3FACnLGOLbjBBbQ==" crossorigin=anonymous defer></script></body></html>
