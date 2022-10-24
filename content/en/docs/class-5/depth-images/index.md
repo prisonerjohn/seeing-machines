@@ -304,12 +304,12 @@ void ofApp::draw()
 
 [`ofxKinectForWindows2`](https://github.com/elliotwoods/ofxKinectForWindows2) is a good choice for the Kinect V2. It works with the [Microsoft Kinect for Windows 2.0 SDK], which means it supports all Kinect features (including body tracking). However, note that this only works on Windows!
 
-Alternatively, [`ofxKinectV2`](https://github.com/ofTheo/ofxKinectV2) is a cross-platform solution that works similarly to `ofxKinect`.
-
 `ofxKinectForWindows2` does not include a function to get distance from a coordinate, so we will need to sample the depth texture directly.
 
 ```cpp
 // ofApp.h
+#include "ofMain.h"
+
 #include "ofxKinectForWindows2.h"
 
 class ofApp : public ofBaseApp 
@@ -320,7 +320,7 @@ public:
   void draw();
 
   ofxKFW2::Device kinect;
-}
+};
 ```
 
 ```cpp
@@ -356,6 +356,84 @@ void ofApp::draw()
   }
 }
 ```
+
+Alternatively, [`ofxKinectV2`](https://github.com/ofTheo/ofxKinectV2) is a cross-platform solution that works similarly to `ofxKinect`. The code to sample the distance under the mouse is very similar.
+
+```cpp
+// ofApp.h
+#pragma once
+
+#include "ofMain.h"
+
+#include "ofxKinectV2.h"
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxKinectV2 kinect;
+  ofTexture depthTex;
+};
+```
+
+```cpp
+// ofApp.cpp
+#include "ofApp.h"
+
+void ofApp::setup()
+{
+  ofSetWindowShape(512, 424);
+
+  // Use a settings object to configure the device.
+  ofxKinectV2::Settings settings;
+  settings.enableRGB = false;
+  settings.enableDepth = true;
+
+  kinect.open(0, settings);
+}
+
+void ofApp::update()
+{
+  kinect.update();
+
+  // Only load the data if there is a new frame to process.
+  if (kinect.isFrameNew())
+  {
+    depthTex.loadData(kinect.getDepthPixels());
+  }
+}
+
+void ofApp::draw()
+{
+  depthTex.draw(0, 0);
+
+  // Get the point distance using the SDK function (in meters).
+  float distAtMouse = kinect.getDistanceAt(ofGetMouseX(), ofGetMouseY());
+  ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY() - 10);
+
+  // Get the point depth using the texture directly (in millimeters).
+  const ofFloatPixels& rawDepthPix = kinect.getRawDepthPixels();
+  int depthAtMouse = rawDepthPix.getColor(ofGetMouseX(), ofGetMouseY()).r;
+  ofDrawBitmapStringHighlight(ofToString(depthAtMouse), ofGetMouseX() + 16, ofGetMouseY() + 10);
+}
+```
+
+Some notes to consider:
+
+* The device is configured using a settings object of type `ofxKinectV2::Settings`. This is a common pattern in openFrameworks we will encounter again.
+* `ofxKinectV2` does not provide textures for the data, so we need to use our own and load it with pixel data in `update()`. We use `isFrameNew()` to check if there is new data to upload on each frame.
+* The SDK function `getDistanceAt()` returns the distance in meters but the raw pixel data returns the data in millimeters. The depth data is also using `float` pixels instead of the more common `short`.
+
+{{< alert context="info" icon="✌️" >}}
+**The `const` qualifier**
+
+[`const`](https://en.cppreference.com/w/cpp/language/cv) is a qualifier that can be used on a variable to indicate that it will not change; that it will remain *constant*.
+
+In the example above, we are creating a temporary variable for the pixel data from `getRawDepthPixels()`. We do not want to make a copy of this data, so we use the `&` when declaring the variable to indicate it will be a reference. This data should not be modified by the programmer because it comes directly from the device. `getRawDepthPixels()` indicates this in its return type; it requires any reference to be constant.
+{{< /alert >}}
 
 ## Depth Threshold
 
