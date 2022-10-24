@@ -231,7 +231,9 @@ void ofApp::draw()
     ofDrawBitmapStringHighlight(ofToString(depthAtMouse), ofGetMouseX() + 16, ofGetMouseY() + 10);
   }
 }
-</code></pre><h3 id=microsoft-kinect-v2>Microsoft Kinect V2 <a href=#microsoft-kinect-v2 class=anchor aria-hidden=true>#</a></h3><p><a href=https://github.com/elliotwoods/ofxKinectForWindows2><code>ofxKinectForWindows2</code></a> is a good choice for the Kinect V2. It works with the [Microsoft Kinect for Windows 2.0 SDK], which means it supports all Kinect features (including body tracking). However, note that this only works on Windows!</p><p>Alternatively, <a href=https://github.com/ofTheo/ofxKinectV2><code>ofxKinectV2</code></a> is a cross-platform solution that works similarly to <code>ofxKinect</code>.</p><p><code>ofxKinectForWindows2</code> does not include a function to get distance from a coordinate, so we will need to sample the depth texture directly.</p><pre><code class=language-cpp>// ofApp.h
+</code></pre><h3 id=microsoft-kinect-v2>Microsoft Kinect V2 <a href=#microsoft-kinect-v2 class=anchor aria-hidden=true>#</a></h3><p><a href=https://github.com/elliotwoods/ofxKinectForWindows2><code>ofxKinectForWindows2</code></a> is a good choice for the Kinect V2. It works with the [Microsoft Kinect for Windows 2.0 SDK], which means it supports all Kinect features (including body tracking). However, note that this only works on Windows!</p><p><code>ofxKinectForWindows2</code> does not include a function to get distance from a coordinate, so we will need to sample the depth texture directly.</p><pre><code class=language-cpp>// ofApp.h
+#include &quot;ofMain.h&quot;
+
 #include &quot;ofxKinectForWindows2.h&quot;
 
 class ofApp : public ofBaseApp 
@@ -242,7 +244,7 @@ public:
   void draw();
 
   ofxKFW2::Device kinect;
-}
+};
 </code></pre><pre><code class=language-cpp>// ofApp.cpp
 #include &quot;ofApp.h&quot;
 
@@ -274,7 +276,63 @@ void ofApp::draw()
     ofDrawBitmapStringHighlight(ofToString(depthAtMouse), ofGetMouseX(), ofGetMouseY());
   }
 }
-</code></pre><h2 id=depth-threshold>Depth Threshold <a href=#depth-threshold class=anchor aria-hidden=true>#</a></h2><p>Depth pixels are very useful for thresholding images. This tends to be much more precise than using brightness or color (as we have been doing previously) since we eliminate any issues with change in lighting or with similarities between background and foreground colors. We can set a depth range that valid pixels belong to and discard anything that&rsquo;s nearer or farther than this range.</p><p>Let&rsquo;s first attempt to do this manually by iterating through the pixel array.</p><pre><code class=language-cpp>// ofApp.h
+</code></pre><p>Alternatively, <a href=https://github.com/ofTheo/ofxKinectV2><code>ofxKinectV2</code></a> is a cross-platform solution that works similarly to <code>ofxKinect</code>. The code to sample the distance under the mouse is very similar.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxKinectV2.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofxKinectV2 kinect;
+  ofTexture depthTex;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  ofSetWindowShape(512, 424);
+
+  // Use a settings object to configure the device.
+  ofxKinectV2::Settings settings;
+  settings.enableRGB = false;
+  settings.enableDepth = true;
+
+  kinect.open(0, settings);
+}
+
+void ofApp::update()
+{
+  kinect.update();
+
+  // Only load the data if there is a new frame to process.
+  if (kinect.isFrameNew())
+  {
+    depthTex.loadData(kinect.getDepthPixels());
+  }
+}
+
+void ofApp::draw()
+{
+  depthTex.draw(0, 0);
+
+  // Get the point distance using the SDK function (in meters).
+  float distAtMouse = kinect.getDistanceAt(ofGetMouseX(), ofGetMouseY());
+  ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY() - 10);
+
+  // Get the point depth using the texture directly (in millimeters).
+  const ofFloatPixels&amp; rawDepthPix = kinect.getRawDepthPixels();
+  int depthAtMouse = rawDepthPix.getColor(ofGetMouseX(), ofGetMouseY()).r;
+  ofDrawBitmapStringHighlight(ofToString(depthAtMouse), ofGetMouseX() + 16, ofGetMouseY() + 10);
+}
+</code></pre><p>Some notes to consider:</p><ul><li>The device is configured using a settings object of type <code>ofxKinectV2::Settings</code>. This is a common pattern in openFrameworks we will encounter again.</li><li><code>ofxKinectV2</code> does not provide textures for the data, so we need to use our own and load it with pixel data in <code>update()</code>. We use <code>isFrameNew()</code> to check if there is new data to upload on each frame.</li><li>The SDK function <code>getDistanceAt()</code> returns the distance in meters but the raw pixel data returns the data in millimeters. The depth data is also using <code>float</code> pixels instead of the more common <code>short</code>.</li></ul><div class="alert alert-info d-flex" role=alert><div class="flex-shrink-1 alert-icon">✌️</div><div class=w-100><p><strong>The <code>const</code> qualifier</strong></p><p><a href=https://en.cppreference.com/w/cpp/language/cv><code>const</code></a> is a qualifier that can be used on a variable to indicate that it will not change; that it will remain <em>constant</em>.</p><p>In the example above, we are creating a temporary variable for the pixel data from <code>getRawDepthPixels()</code>. We do not want to make a copy of this data, so we use the <code>&</code> when declaring the variable to indicate it will be a reference. This data should not be modified by the programmer because it comes directly from the device. <code>getRawDepthPixels()</code> indicates this in its return type; it requires any reference to be constant.</p></div></div><h2 id=depth-threshold>Depth Threshold <a href=#depth-threshold class=anchor aria-hidden=true>#</a></h2><p>Depth pixels are very useful for thresholding images. This tends to be much more precise than using brightness or color (as we have been doing previously) since we eliminate any issues with change in lighting or with similarities between background and foreground colors. We can set a depth range that valid pixels belong to and discard anything that&rsquo;s nearer or farther than this range.</p><p>Let&rsquo;s first attempt to do this manually by iterating through the pixel array.</p><pre><code class=language-cpp>// ofApp.h
 #pragma once
 
 #include &quot;ofMain.h&quot;
@@ -528,4 +586,4 @@ void ofApp::draw()
 </code></pre><div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between"></div><div class="docs-navigation d-flex justify-content-between"><a href=https://seeingmachines.betamovement.net/docs/class-5/pointers/><div class="card my-1"><div class="card-body py-2">&larr; Pointers</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container-xxl><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://github.com/>GitHub</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=https://seeingmachines.betamovement.net/js/bootstrap.min.6cdb76625316a021e696f0641e0948e88df021948825dbf90228403664b1691ff7a291ac9d485a8da13b1cc8b9d543ba6dce6702692ff979943a02038ffbd52e.js integrity="sha512-bNt2YlMWoCHmlvBkHglI6I3wIZSIJdv5AihANmSxaR/3opGsnUhajaE7HMi51UO6bc5nAmkv+XmUOgIDj/vVLg==" crossorigin=anonymous defer></script>
 <script src=https://seeingmachines.betamovement.net/js/highlight.min.93c197e7097c47fc0788b21721b3c308e18e43299f1e45e8ff2697d13cd62908cc5949a053c1fb7242d7b4a60eb07bd106061252f7aa925ef7e91033ea59d9b9.js integrity="sha512-k8GX5wl8R/wHiLIXIbPDCOGOQymfHkXo/yaX0TzWKQjMWUmgU8H7ckLXtKYOsHvRBgYSUveqkl736RAz6lnZuQ==" crossorigin=anonymous defer></script>
 <script src=https://seeingmachines.betamovement.net/main.min.162c56a0426544de0d010e66c56e321579655c400c9aae06a6823e7682de379adadf2165bd416fea191e4e7e410fbf1fd2c35a759aa43ff2e3787067669bf81b.js integrity="sha512-FixWoEJlRN4NAQ5mxW4yFXllXEAMmq4GpoI+doLeN5ra3yFlvUFv6hkeTn5BD78f0sNadZqkP/LjeHBnZpv4Gw==" crossorigin=anonymous defer></script>
-<script src=https://seeingmachines.betamovement.net/index.min.1e6e7751eb10211b9bfa846bf7f6ce0157e56004f827cee95cc32c4b14c664162cbea94fbf3bbeadaddef831323700a953288183bab71400a72c638b6e30416d.js integrity="sha512-Hm53UesQIRub+oRr9/bOAVflYAT4J87pXMMsSxTGZBYsvqlPvzu+ra3e+DEyNwCpUyiBg7q3FACnLGOLbjBBbQ==" crossorigin=anonymous defer></script></body></html>
+<script src=https://seeingmachines.betamovement.net/index.min.7c1465d87069f73f59468a4e42bcd1b604afa656f4d043d33635bffdd84e7d4824c7bfe2311b02cfbc326f8716c20142a16dac7b00014dd52d442519e66eb25e.js integrity="sha512-fBRl2HBp9z9ZRopOQrzRtgSvplb00EPTNjW//dhOfUgkx7/iMRsCz7wyb4cWwgFCoW2sewABTdUtRCUZ5m6yXg==" crossorigin=anonymous defer></script></body></html>
