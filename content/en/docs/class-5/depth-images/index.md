@@ -702,8 +702,6 @@ void ofApp::draw()
 {
   if (kinect.isFrameNew())
   {
-    kinect.getDepthTexture().draw(0, 0);
-
     // Get the point distance using the SDK function.
     float distAtMouse = kinect.getDistanceAt(ofGetMouseX(), ofGetMouseY());
     ofDrawBitmapStringHighlight(ofToString(distAtMouse, 3), ofGetMouseX(), ofGetMouseY());
@@ -717,10 +715,13 @@ void ofApp::draw()
 
     // Upload pixels to image.
     thresholdImg.setFromPixels(thresholdResult);
-
-    // Draw the result image.
-    thresholdImg.draw(640, 0);
   }
+
+  // Draw the source image.
+  kinect.getDepthTexture().draw(0, 0);
+
+  // Draw the result image.
+  thresholdImg.draw(640, 0);
 
   // Draw the gui.
   guiPanel.draw();
