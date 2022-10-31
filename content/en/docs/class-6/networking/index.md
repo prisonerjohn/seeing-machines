@@ -91,7 +91,7 @@ Messages are sent as *packets*.
 
 OF comes with the [ofxNetwork](https://openframeworks.cc/documentation/ofxNetwork/) addon.
 
-* Includes everything you need for both TCP and UDP communication. 
+* Includes everything you need for both TCP and UDP communication.
 * Has great examples in the `path/to/OF/examples/communication/` directory to get started.
 
 ### ofxOsc
@@ -303,6 +303,6 @@ Similar techniques can be used to send contour finder or face tracker data over 
 * [ofxLibwebsockets](https://github.com/robotconscience/ofxLibwebsockets) is an OF wrapper for [WebSockets](http://www.websocket.org/).
   * Good documentation and examples.
   * Reliable protocol and implementation.
-* [ofxZmq](https://github.com/jvcleave/ofxZmq) is an OF implementation of [ZeroMQ](https://zeromq.org/). 
+* [ofxZmq](https://github.com/jvcleave/ofxZmq) is an OF implementation of [ZeroMQ](https://zeromq.org/).
   * Optimized messaging that can be considered a reliable alternative to OSC.
 * [Many, many more...](http://ofxaddons.com/categories/6-web-networking)
