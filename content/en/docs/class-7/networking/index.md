@@ -8,9 +8,9 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "class-6"
+    parent: "class-7"
     identifier: "networking"
-weight: 720
+weight: 810
 toc: true
 ---
 
