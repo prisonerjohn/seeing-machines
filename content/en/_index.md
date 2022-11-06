@@ -78,7 +78,7 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Oct 17 | <div class="blink">NO CLASS</div> | | |
 | Oct 24 | [Pointers]({{< relref "docs/class-5/pointers" >}})<br/>[Depth Images]({{< relref "docs/class-5/depth-images" >}}) |  | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2022+%5BAUDIO%5D/1_7cxish10)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2022+%5BVIDEO%5D/1_ca3cu4xr) |
 | Oct 31 | [Depth World]({{< relref "docs/class-6/depth-world">}}) | Assignment 3 DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2022+%5BAUDIO%5D/1_vtjhicck)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2022+%5BVIDEO%5D/1_tx3r0ien) |
-| Nov 7  | [Networking]({{< relref "docs/class-7/networking">}})<br/>Frame Buffers<br/>Texture Sharing | [Assignment 4 OUT]({{< relref "docs/assignments/assignment-4" >}}) |  |
+| Nov 7  | [Networking]({{< relref "docs/class-7/networking">}})<br/>[Texture Sharing]({{< relref "docs/class-7/texture-sharing">}})<br/>[Draw Bounds]({{< relref "docs/class-7/draw-bounds">}}) | [Assignment 4 OUT]({{< relref "docs/assignments/assignment-4" >}}) |  |
 | Nov 14 | Classes<br/>Sound | Assignment 4 DUE | |
 | Nov 21 | Mobile Development | Final Project OUT | |
 | Nov 28 | Project Proposals<br/>Topic TBD | Project Proposal DUE | |
