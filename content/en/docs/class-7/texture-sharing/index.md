@@ -14,7 +14,7 @@ weight: 820
 toc: true
 ---
 
-It is sometimes necessary to share more than just state updates or short messages between applications. You may need to share an entire image over for various reasons:
+It is sometimes necessary to share more than just state updates or short messages between applications. We may need to share an entire image over for various reasons:
 
 * Continue image processing in another app.
 * Use OF image as a texture for a material in a 3D rendering application.
@@ -444,11 +444,12 @@ void ofApp::serverIndexChanged(int& val)
 
 Similarly to Syphon, Spout already has plug-ins available for a multitude of platforms, and being open-source, allows any developer to write their own Spout interface for any tool they choose.
 
-We will use the [ofxSpout](https://github.com/prisonerjohn/ofxSpout) addon for openFrameworks. Note that if using the `master` branch, you will also need to download and install the [Spout SDK](http://spout.zeal.co/download-spout/).
+We will use the [ofxSpout](https://github.com/prisonerjohn/ofxSpout) addon for openFrameworks. Note that if using the `master` branch, we will also need to download and install the [Spout SDK](http://spout.zeal.co/download-spout/).
 
 ### Sender
 
 The following app is a similar thresholding app with two senders.
+
 * Note that `ofxSpout` only includes a `send()` function which takes an `ofTexture` reference as a parameter.
 
 ```cpp
