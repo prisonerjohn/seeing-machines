@@ -496,7 +496,7 @@ void ofApp::setup()
   grabber.setup(640, 480);
 
   // Allocate threshold image (same size as video).
-  thresholdImg.allocate(640, 480);
+  thresholdImg.allocate(640, 480, OF_IMAGE_COLOR);
 
   // Set up Spout senders.
   senderGrabber.init("Video Input");
@@ -857,7 +857,7 @@ void ofApp::draw()
 
 If there is enough interest in the class to use NDI, I can try to update one of the addons to work across the board, just let me know!
 
-<figure style="width:600px;height:1117px;display:block;margin:0 auto;">
+<figure style="width:600px;height:400px;display:block;margin:0 auto;">
 <video src="unity-vision.mp4" controls muted width="100%"></video>
 <figcaption><i>Unity Vision.</i></figcaption>
 </figure>
