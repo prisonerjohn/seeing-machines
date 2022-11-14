@@ -91,7 +91,7 @@ The header looks quite different from the VS version.
 
 #include <stdio.h>
 
-#endif /* ezBall_hpp */
+#endif // ezBall_hpp
 ```
 
 ```cpp
