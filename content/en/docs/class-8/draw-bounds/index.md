@@ -283,8 +283,11 @@ void ofApp::draw()
   ofPixels& grabberPix = grabber.getPixels();
   // Get the color value under the mouse.
   // Remap from draw space to pixel space.
-  int sampleX = ofMap(ofGetMouseX(), drawBounds.x, drawBounds.width, 0, grabber.getWidth(), true);
-  int sampleY = ofMap(ofGetMouseY(), drawBounds.y, drawBounds.height, 0, grabber.getHeight(), true);
+  int sampleX = ofMap(ofGetMouseX(), drawBounds.x, drawBounds.x + drawBounds.width, 0, grabber.getWidth(), true);
+  int sampleY = ofMap(ofGetMouseY(), drawBounds.y, drawBounds.y + drawBounds.height, 0, grabber.getHeight(), true);
+  // OR
+  //int sampleX = ofMap(ofGetMouseX(), drawBounds.getMinX(), drawBounds.getMaxX(), 0, grabber.getWidth(), true);
+  //int sampleY = ofMap(ofGetMouseY(), drawBounds.getMinY(), drawBounds.getMaxY(), 0, grabber.getHeight(), true);
   ofColor color = grabberPix.getColor(sampleX, sampleY);
 
   // Draw a rectangle under the mouse using the pixel color.
