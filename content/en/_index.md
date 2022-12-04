@@ -81,8 +81,8 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Nov 7  | [Networking]({{< relref "docs/class-7/networking">}})<br/>[Texture Sharing]({{< relref "docs/class-7/texture-sharing">}}) | [Assignment 4 OUT]({{< relref "docs/assignments/assignment-4" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2022+%5BAUDIO%5D/1_wvmsql9c)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2022+%5BVIDEO%5D/1_bl9ocg6q) |
 | Nov 14 | [Draw Bounds]({{< relref "docs/class-8/draw-bounds">}})<br/>[Frame Buffers]({{< relref "docs/class-8/frame-buffers">}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2022+%5BAUDIO%5D/1_c8imj9ss)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2022+%5BVIDEO%5D/1_cnhob2nv) |
 | Nov 21 | [Classes]({{< relref "docs/class-9/classes">}})<br/>[Mobile Development]({{< relref "docs/class-9/mobile-development">}}) | Assignment 4 DUE<br/>[Final Project OUT]({{< relref "docs/assignments/final-project" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+21+2022+%5BAUDIO%5D/1_r6jfmemg)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+21+2022+%5BVIDEO%5D/1_h3mfsivx) |
-| Nov 28 | Project Proposals<br/>[Machine Learning]({{< relref "docs/class-10/machine-learning">}}) | Project Proposal DUE | |
-| Dec 5  | Milestone Check-In<br/>Topic TBD | | |
+| Nov 28 | Project Proposals<br/>[Machine Learning]({{< relref "docs/class-10/machine-learning">}}) | Project Proposal DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+28+2022+%5BAUDIO%5D/1_qajjmcbq)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+28+2022+%5BVIDEO%5D/1_rpk75r6u) |
+| Dec 5  | Milestone Check-In<br/>[Mapping]({{< relref "docs/class-11/mapping">}}) | | |
 | Dec 12 | Final Presentations | Final Project DUE | |
 
 ## Academic Integrity
