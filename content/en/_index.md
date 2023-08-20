@@ -70,19 +70,19 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 
 | Date   | Topic          | Assignment | Recordings |
 |:-------|:---------------|:-----------|:-----------|
-| Sep 12 | [Foreword]({{< relref "docs/class-0/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-0/intro-to-of" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BAUDIO%5D/1_r1qgdqh9)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing%20Machines%20Sep%2012%202022%20%5BVIDEO%5D/1_8uypx4sb) |
-| Sep 19 | [Variables and Arrays]({{< relref "docs/class-1/variables-and-arrays" >}})<br/>[Images and Video]({{< relref "docs/class-1/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+19+2022+%5BAUDIO%5D/1_z1u7mcj2)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+19+2022+%5BVIDEO%5D/1_hv93189q) |
-| Sep 26 | [Computer Vision]({{< relref "docs/class-2/computer-vision" >}}) | Assignment 1 DUE<br/>[Assignment 2 OUT]({{< relref "docs/assignments/assignment-2" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+26+2022+%5BAUDIO%5D/1_mrdyaszc)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+26+2022+%5BVIDEO%5D/1_tbda3i1y) |
-| Oct 3  | [Intro to OpenCV]({{< relref "docs/class-3/intro-to-opencv" >}})<br/>[Object Tracking]({{< relref "docs/class-3/object-tracking" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2022+%5BAUDIO%5D/1_el6vp5jl)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2022+%5BVIDEO%5D/1_otqjbku5) |
-| Oct 11 (TUE) | [Logging]({{< relref "docs/class-4/logging" >}})<br />[Depth Sensing]({{< relref "docs/class-4/depth-sensing" >}}) | Assignment 2 DUE<br/>[Assignment 3 OUT]({{< relref "docs/assignments/assignment-3" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+11+2022+%5BAUDIO%5D/1_lzxlrtte)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+11+2022+%5BVIDEO%5D/1_ozd2ijj6) |
-| Oct 17 | <div class="blink">NO CLASS</div> | | |
-| Oct 24 | [Pointers]({{< relref "docs/class-5/pointers" >}})<br/>[Depth Images]({{< relref "docs/class-5/depth-images" >}}) |  | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2022+%5BAUDIO%5D/1_7cxish10)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2022+%5BVIDEO%5D/1_ca3cu4xr) |
-| Oct 31 | [Depth World]({{< relref "docs/class-6/depth-world">}}) | Assignment 3 DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2022+%5BAUDIO%5D/1_vtjhicck)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2022+%5BVIDEO%5D/1_tx3r0ien) |
-| Nov 7  | [Networking]({{< relref "docs/class-7/networking">}})<br/>[Texture Sharing]({{< relref "docs/class-7/texture-sharing">}}) | [Assignment 4 OUT]({{< relref "docs/assignments/assignment-4" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2022+%5BAUDIO%5D/1_wvmsql9c)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2022+%5BVIDEO%5D/1_bl9ocg6q) |
-| Nov 14 | [Draw Bounds]({{< relref "docs/class-8/draw-bounds">}})<br/>[Frame Buffers]({{< relref "docs/class-8/frame-buffers">}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2022+%5BAUDIO%5D/1_c8imj9ss)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2022+%5BVIDEO%5D/1_cnhob2nv) |
-| Nov 21 | [Classes]({{< relref "docs/class-9/classes">}})<br/>[Mobile Development]({{< relref "docs/class-9/mobile-development">}}) | Assignment 4 DUE<br/>[Final Project OUT]({{< relref "docs/assignments/final-project" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+21+2022+%5BAUDIO%5D/1_r6jfmemg)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+21+2022+%5BVIDEO%5D/1_h3mfsivx) |
-| Nov 28 | Project Proposals<br/>[Machine Learning]({{< relref "docs/class-10/machine-learning">}}) | Project Proposal DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+28+2022+%5BAUDIO%5D/1_qajjmcbq)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+28+2022+%5BVIDEO%5D/1_rpk75r6u) |
-| Dec 5  | Milestone Check-In<br/>[Mapping]({{< relref "docs/class-11/mapping">}}) | | |
+| Sep 12 | [Foreword]({{< relref "docs/class-0/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-0/intro-to-of" >}}) | | |
+| Sep 19 | Variables and Arrays<br/>Images and Video | Assignment 1 OUT |  |
+| Sep 26 | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
+| Oct 3  | Intro to OpenCV<br/>Object Tracking | |  |
+| Oct 11 | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |
+| Oct 24 | Pointers<br/>Depth Images |  |  |
+| Oct 31 | Depth World | Assignment 3 DUE |  |
+| Nov 7  | Networking<br/>Texture Sharing | Assignment 4 OUT |  |
+| Nov 14 | Draw Bounds<br/>Frame Buffers | |  |
+| Nov 21 | Classes<br/>Mobile Development | Assignment 4 DUE<br/>Final Project OUT |  |
+| Nov 28 | Project Proposals<br/>Machine Learning | Project Proposal DUE |  |
+| Dec 5  | Milestone Check-In<br/>TBD | | |
+| Dec 5  | Milestone Check-In<br/>Mapping | | |
 | Dec 12 | Final Presentations | Final Project DUE | |
 
 ## Academic Integrity
