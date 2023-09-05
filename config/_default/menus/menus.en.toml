@@ -1,6 +1,6 @@
 [[main]]
   name = "Docs"
-  url = "/docs/class-0/foreword"
+  url = "/docs"
   weight = 10
 
 [[main]]

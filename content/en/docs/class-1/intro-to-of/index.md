@@ -140,6 +140,7 @@ Follow the corresponding setup guide.
 
 * Unlike Processing, OF does not come with its own development environment (IDE). Instructions to set this up will be included in the guide.
 * You will use [Xcode](https://developer.apple.com/xcode/) for development under macOS and [Visual Studio](https://visualstudio.microsoft.com/vs/) for development under Windows.
+* Please refer to the [Getting Started]({{< relref "docs/class-0/getting-started" >}}) page for details.
 
 {{< alert context="danger" icon="⚠️" >}}
 If you encounter a build system error when compiling for Xcode, try changing the `Build System` dropdown in the Project Settings.

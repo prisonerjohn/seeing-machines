@@ -7,13 +7,13 @@ draft: false
 images: []
 ---
 
-ITP Fall 2022<br/>
-Mondays 6:00pm - 8:30pm<br/>
-370 Jay St, Room 413
+ITP Fall 2023<br/>
+Tuesdays 6:00pm - 8:30pm<br/>
+370 Jay St, Room 450
 
 Professor: Elie Zananiri<br/>
 Contact Email: [ez377@nyu.edu](mailto:ez377@nyu.edu)<br/>
-Office Hours: [Mondays 5:00pm-6:00pm by appointment](https://calendar.google.com/calendar/selfsched?sstoken=UUFtdUlOM1BOTFpsfGRlZmF1bHR8OTA2NTRjNjM2OTA5YjU0MTRhMjdjYjczYzc0ZTAwMTM)<br/>
+Office Hours: [Tuesdays 5:00pm-6:00pm by appointment](https://calendar.google.com/calendar/selfsched?sstoken=UUFtdUlOM1BOTFpsfGRlZmF1bHR8OTA2NTRjNjM2OTA5YjU0MTRhMjdjYjczYzc0ZTAwMTM)<br/>
 Discord Server: [https://discord.gg/NGMGbjK8w3](https://discord.gg/NGMGbjK8w3)
 
 ## Overview
@@ -24,7 +24,7 @@ We will mainly be working in C++ using the [openFrameworks](https://openframewor
 
 The first classes will consist of theory and in-class exercises covering these techniques, and remaining classes will be dedicated to a special project, which should use a combination of what we've learned to create a new work. Students will work in small groups to build this special project, but we'll review proposals, milestones, and work in progress collectively on every class, encouraging discussion and collaboration.
 
-This is the second time this class is taught, its original name is [Sensing Machines](https://prisonerjohn.com/sensing-machines). It is a work in progress, so please let me know if there is any topic you would like to cover!
+This is the third time this class is taught. It is (and probably always will be) a work in progress, so please let me know if there is any topic you would like to cover!
 
 ## Objectives
 
@@ -68,22 +68,24 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 
 ## Schedule
 
-| Date   | Topic          | Assignment | Recordings |
-|:-------|:---------------|:-----------|:-----------|
-| Sep 12 | [Foreword]({{< relref "docs/class-0/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-0/intro-to-of" >}}) | | |
-| Sep 19 | Variables and Arrays<br/>Images and Video | Assignment 1 OUT |  |
-| Sep 26 | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
-| Oct 3  | Intro to OpenCV<br/>Object Tracking | |  |
-| Oct 11 | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |
-| Oct 24 | Pointers<br/>Depth Images |  |  |
-| Oct 31 | Depth World | Assignment 3 DUE |  |
-| Nov 7  | Networking<br/>Texture Sharing | Assignment 4 OUT |  |
-| Nov 14 | Draw Bounds<br/>Frame Buffers | |  |
-| Nov 21 | Classes<br/>Mobile Development | Assignment 4 DUE<br/>Final Project OUT |  |
-| Nov 28 | Project Proposals<br/>Machine Learning | Project Proposal DUE |  |
-| Dec 5  | Milestone Check-In<br/>TBD | | |
-| Dec 5  | Milestone Check-In<br/>Mapping | | |
-| Dec 12 | Final Presentations | Final Project DUE | |
+| Date     | Topic          | Assignment | Recordings |
+|:---------|:---------------|:-----------|:-----------|
+| Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | | |
+| Sep 5    | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | |
+| Sep 12   | Variables and Arrays<br/>Images and Video | Assignment 1 OUT |  |
+| Sep 19   | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
+| Sep 26   | Intro to OpenCV<br/>Object Tracking | |  |
+| Oct 3    | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |
+| Oct 10   | <div class="blink">NO CLASS</div> | | |
+| Oct 17   | Pointers<br/>Depth Images |  |  |
+| Oct 24   | Depth World | Assignment 3 DUE |  |
+| Oct 31   | Networking<br/>Texture Sharing | Assignment 4 OUT |  |
+| Nov 7    | Draw Bounds<br/>Frame Buffers | |  |
+| Nov 14   | Classes<br/>Mobile Development | Assignment 4 DUE<br/>Final Project OUT |  |
+| Nov 21   | Project Proposals<br/>Machine Learning | Project Proposal DUE |  |
+| Nov 28   | Milestone Check-In<br/>TBD | | |
+| Dec 5    | Milestone Check-In<br/>Mapping | | |
+| Dec 12   | Final Presentations | Final Project DUE | |
 
 ## Academic Integrity
 
