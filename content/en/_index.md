@@ -71,7 +71,7 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Date     | Topic          | Assignment | Recordings |
 |:---------|:---------------|:-----------|:-----------|
 | Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | | |
-| Sep 5    | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | |
+| Sep 5    | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}})<br/>[Data Types]({{< relref "docs/class-1/data-types" >}}) | | |
 | Sep 12   | Variables and Arrays<br/>Images and Video | Assignment 1 OUT |  |
 | Sep 19   | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
 | Sep 26   | Intro to OpenCV<br/>Object Tracking | |  |
