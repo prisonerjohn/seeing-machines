@@ -2,9 +2,11 @@
 {{ with .Get "width" -}} width:{{.}}; {{ end -}}
 {{ with .Get "height" -}} height:{{.}}; {{ end -}}
 '>
-    <img style='display:block; margin: 0 auto;'
-    {{ with .Get "src" -}} src="{{.}}"{{ end -}}
-    {{ with .Get "alt" -}} alt="{{.}}"{{ end -}} 
-    >
+    <a {{ with .Get "src" -}} href="{{.}}"{{ end -}}>
+        <img style='display:block; margin: 0 auto;'
+        {{ with .Get "src" -}} src="{{.}}"{{ end -}}
+        {{ with .Get "alt" -}} alt="{{.}}"{{ end -}} 
+        >
+    </a>
     {{ with .Get "caption" -}}<figcaption>{{. | markdownify }}</figcaption>{{ end -}}
 </figure>
