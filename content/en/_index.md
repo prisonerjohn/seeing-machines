@@ -71,8 +71,8 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Date     | Topic          | Assignment | Recordings |
 |:---------|:---------------|:-----------|:-----------|
 | Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | | |
-| Sep 5    | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}})<br/>[Data Types]({{< relref "docs/class-1/data-types" >}}) | | |
-| Sep 12   | Variables and Arrays<br/>Images and Video | Assignment 1 OUT |  |
+| Sep 5    | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+5+2023+%5BAUDIO%5D/1_7xgtbhhf)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+5+2023+%5BVIDEO%5D/1_s73kyypa) |
+| Sep 12   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>Variables and Arrays<br/>Images and Video | Assignment 1 OUT |  |
 | Sep 19   | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
 | Sep 26   | Intro to OpenCV<br/>Object Tracking | |  |
 | Oct 3    | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |

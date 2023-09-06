@@ -8,9 +8,9 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "class-1"
+    parent: "class-2"
     identifier: "data-types"
-weight: 130
+weight: 210
 toc: true
 ---
 
