@@ -272,9 +272,9 @@ Note that this only works if the window and image have equal resolutions. If the
 
 In the previous examples, the drawn image is anchored in the top-left corner of the window `(0, 0)` and by default, it is drawn at full resolution. This means that the image might be smaller or larger than our window.
 
-If we want the image to fill and fit in the exact window bounds, we have two options.
+If we want the image to fill and fit in the exact window bounds, we have two options:
 
-1. We can resize the window to match the image resolution. This is what we have been doing in the previous examples.
+We can resize the window to match the image resolution. This is what we have been doing in the previous examples.
 
 ```cpp
 // ofApp.cpp
@@ -295,7 +295,7 @@ void ofApp::draw()
 }
 ```
 
-2. We can scale the image to match the window size.
+We can scale the image to match the window size.
 
 ```cpp
 // ofApp.cpp
