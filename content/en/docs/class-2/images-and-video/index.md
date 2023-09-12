@@ -4,13 +4,13 @@ description: ""
 lead: ""
 date: 2022-09-18T13:42:06-04:00
 lastmod: 2022-09-18T13:42:06-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-1"
+    parent: "class-2"
     identifier: "images-and-video"
-weight: 220
+weight: 230
 toc: true
 ---
 
@@ -173,7 +173,7 @@ In this specific example, we are not using most of the `ofApp` placeholder metho
 However, note that the method needs to be removed from both the header `.h` and the implementation `.cpp` files or else the compiler will assume something is missing and will throw an error.
 {{< /alert >}}
 
-If we navigate under the hood and see what `ofImage.load()` is actually doing, we see that it calls many functions from the `FreeImage` library to determine the file's format, uncompress the data, and load it into values for each pixel.
+If we navigate under the hood and see what `ofImage::load()` is actually doing, we see that it calls many functions from the `FreeImage` library to determine the file's format, uncompress the data, and load it into values for each pixel.
 
 ## Image Attributes
 
@@ -183,7 +183,9 @@ An image data structure usually comprises of:
 * a pixel format
 * a value for each pixel
 
-This looks a lot like the arrays we have been exploring in the previous section. This makes arrays great options to represent image data in a computer program.
+### Pixel Arrays
+
+This structure looks a lot like the arrays we have been exploring in the previous section. This makes arrays great options to represent image data in a computer program.
 
 Even though an image has two dimensions (a width and a height), the pixel array is usually one-dimensional, packing the rows one after the other in sequence.
 
@@ -191,7 +193,41 @@ Even though an image has two dimensions (a width and a height), the pixel array 
 
 Some frameworks allow accessing pixels using the column `x` and row `y`, like [`PImage.get()`](https://www.processing.org/reference/PImage_get_.html) in Processing and [`ofImage.getColor()`](https://openframeworks.cc//documentation/graphics/ofImage/#!show_getColor) in openFrameworks. These convenience functions are very useful as they take care of figuring out all the index arithmetic for us.
 
-The following example reads the value of a pixel under the mouse cursor.
+The following example draws an image one pixel at a time, using nested for-loops to iterate through each row and column.
+
+```cpp
+// ofApp.cpp
+#include "ofApp.h"
+
+void ofApp::setup()
+{
+  // Load the dog image.
+  dogImg.load("dog-grass.jpg");
+
+  // Set the window size to match the image.
+  ofSetWindowShape(dogImg.getWidth(), dogImg.getHeight());
+}
+
+void ofApp::draw()
+{
+  for (int y = 0; y < dogImg.getHeight(); y++)
+  {
+    for (int x = 0; x < dogImg.getWidth(); x++)
+    {
+      ofColor color = dogImg.getColor(x, y);
+      ofSetColor(color);
+      ofDrawRectangle(x, y, 1, 1);
+    }
+  }
+}
+```
+
+* [`ofSetWindowShape()`](https://openframeworks.cc/documentation/application/ofAppRunner/#show_ofSetWindowShape) resizes the window to the size of the loaded image. Note that this function can be called any time while the app is running, and can override the starting window dimensions that are set in `main.cpp`.
+* [`ofImage.getColor()`](https://openframeworks.cc/documentation/graphics/ofImage/#!show_getColor) returns the [`ofColor`](https://openframeworks.cc/documentation/types/ofColor/) value at a specified column and row index. `ofColor` is a data structure used to access the different channels that make up a color value.
+
+{{< details "How would we read the value  of a pixel under the mouse cursor?" >}}
+
+We can use `ofImage.getColor()` and pass the mouse coordinates as the column and row index.
 
 ```cpp
 // ofApp.cpp
@@ -228,9 +264,132 @@ void ofApp::draw()
 }
 ```
 
-* [`ofSetWindowShape()`](https://openframeworks.cc/documentation/application/ofAppRunner/#show_ofSetWindowShape) resizes the window to the size of the loaded image. Note that this function can be called any time while the app is running, and can override the starting window dimensions that are set in `main.cpp`.
-* [`ofImage.getPixels()`](https://openframeworks.cc/documentation/graphics/ofImage/#!show_getPixels) returns an [`ofPixels`](https://openframeworks.cc/documentation/graphics/ofPixels/) object containing the pixel color values. `ofPixels` is a class backed by an array, with helper methods to access the data it contains.
-* [`ofPixels.getColor()`](https://openframeworks.cc/documentation/graphics/ofPixels/#show_getColor) is one of these helper methods, which returns an [`ofColor`](https://openframeworks.cc/documentation/types/ofColor/) value at a specified column and row index. `ofColor` is a data structure used to access the different channels that make up a color value.
+Note that this only works if the window and image have equal resolutions. If they didn't, we would need to remap the mouse coordinates to the window coordinates. We will cover this in a later class.
+
+{{< /details >}}
+
+### Size and Scale
+
+In the previous examples, the drawn image is anchored in the top-left corner of the window `(0, 0)` and by default, it is drawn at full resolution. This means that the image might be smaller or larger than our window.
+
+If we want the image to fill and fit in the exact window bounds, we have two options.
+
+1. We can resize the window to match the image resolution. This is what we have been doing in the previous examples.
+
+```cpp
+// ofApp.cpp
+#include "ofApp.h"
+
+void ofApp::setup()
+{
+  // Load the dog image.
+  dogImg.load("dog-grass.jpg");
+
+  // Set the window size to match the image.
+  ofSetWindowShape(dogImg.getWidth(), dogImg.getHeight());
+}
+
+void ofApp::draw()
+{
+  dogImg.draw(0, 0);
+}
+```
+
+2. We can scale the image to match the window size.
+
+```cpp
+// ofApp.cpp
+#include "ofApp.h"
+
+void ofApp::setup()
+{
+  // Load the dog image.
+  dogImg.load("dog-grass.jpg");
+
+  ofSetWindowShape(1280, 720);
+}
+
+void ofApp::draw()
+{
+  dogImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+}
+```
+
+* If `ofImage::draw()` is called with 4 arguments, the first 2 set the top-left coordinates and the last 2 set the width and height.
+
+{{< alert context="info" icon="✌️" >}}
+**Pixels and Textures**
+
+At this point, it's a good idea to have a basic understanding of how modern computers draw images to the screen.
+
+Two different processing units are used for this to occur.
+
+* A *pixel color array* lives on the *CPU*. We can load data into this array and read it and change it. In OF, this is represented by  [`ofPixels`](https://openframeworks.cc/documentation/graphics/ofPixels/).
+* A *texture* lives on the *GPU*. It cannot be manipulated (easily) and is read to be rendered on a screen. In OF, this is represented by  [`ofTexture`](https://openframeworks.cc/documentation/graphics/ofTexture/).
+* When the image is ready to be drawn, the pixel array is sent from the CPU to the GPU and converted to a texture.
+
+`ofImage` contains an `ofPixels` and an `ofTexture` and will try to handle the CPU to GPU transfer automatically.
+ {{< /alert >}}
+
+If we use an [image that is smaller than the window](dog-grass-low.jpg), it will be scaled up to fit the window. We can tell OF how to upscale the image by setting a filter on the *texture*.
+
+When an image is scaled up, it needs additional pixels to fill in the extra resolution. Conversely, when an image is scaled down, it removes some of its original pixels because the resolution is smaller. The *min* and *mag* filters define how the renderer should handle these situations.
+
+* The default mode uses linear interpolation `GL_LINEAR`. This blends the nearby pixels together to make new pixels and may look blurry.
+* The nearest neighbor mode `GL_NEAREST` uses the nearest pixel value for the added pixels without any blending. This keeps the image sharp at any resolution, but it may look pixelated.
+
+```cpp
+// ofApp.h
+#pragma once
+
+#include "ofMain.h"
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void draw();
+
+  void mousePressed(int button, int x, int y);
+  void mouseReleased(int button, int x, int y);
+
+  ofImage dogImg;
+};
+```
+
+```cpp
+// ofApp.cpp
+#include "ofApp.h"
+
+void ofApp::setup()
+{
+  dogImg.load("dog-grass-low.jpg");
+
+  ofSetWindowShape(1280, 720);
+}
+
+void ofApp::draw()
+{
+  dogImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+}
+
+void ofApp::mousePressed(int button, int x, int y)
+{
+  dogImg.getTexture().setTextureMinMagFilter(GL_NEAREST, GL_NEAREST);
+}
+
+void ofApp::mouseReleased(int button, int x, int y)
+{
+  dogImg.getTexture().setTextureMinMagFilter(GL_LINEAR, GL_LINEAR);
+}
+```
+
+* We can access the texture with [`ofImage.getTexture()`](https://openframeworks.cc/documentation/graphics/ofImage/#!show_getTexture) and set the *min* (scale down) and *mag* (scale up) filters with [`ofTexture.setTextureMinMagFilter()`](https://openframeworks.cc/documentation/graphics/ofTexture/#!show_setTextureMinMagFilter).
+* Texture filters do not use any additional computation, because they are handled automatically by the GPU!
+
+{{< image src="dog-linear.png" alt="Dog using GL_LINEAR" caption="Dog using <code>GL_LINEAR</code>" width="320px" >}}
+
+{{< image src="dog-nearest.png" alt="Dog using GL_NEAREST" caption="Dog using <code>GL_NEAREST</code>" width="320px" >}}
 
 ### Pixel Access
 
@@ -344,6 +503,8 @@ void ofApp::draw()
   ofDrawRectangle(x - 25, y - 25, 50, 50);
 }
 ```
+
+## Data Formats
 
 ### Image Format
 

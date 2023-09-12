@@ -8,7 +8,7 @@ draft: true
 images: []
 menu:
   docs:
-    parent: "class-2"
+    parent: "class-3"
     identifier: "computer-vision"
 weight: 310
 toc: true
