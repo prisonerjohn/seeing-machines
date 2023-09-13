@@ -72,7 +72,7 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 |:---------|:---------------|:-----------|:-----------|
 | Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | | |
 | Sep 5    | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+5+2023+%5BAUDIO%5D/1_7xgtbhhf)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+5+2023+%5BVIDEO%5D/1_s73kyypa) |
-| Sep 12   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>[Arrays]({{< relref "docs/class-2/arrays" >}})<br/>[Images and Video]({{< relref "docs/class-2/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) |  |
+| Sep 12   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>[Arrays]({{< relref "docs/class-2/arrays" >}})<br/>[Images and Video]({{< relref "docs/class-2/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+12+2023+%5BAUDIO%5D/1_vy6vvl8l)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+12+2023+%5BVIDEO%5D/1_zgszrz07) |
 | Sep 19   | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
 | Sep 26   | Intro to OpenCV<br/>Object Tracking | |  |
 | Oct 3    | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |
