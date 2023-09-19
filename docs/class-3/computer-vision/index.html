@@ -1,0 +1,465 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-500.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script><link rel=stylesheet href=https://seeingmachines.betamovement.net/main.201417ef09ab1feedca13aa2c1421e70dafad1589ed8f36457fc63462610ceb90fb17b3e6fe16933d580ec7826300f5b3adf0ff68333dbf5687d81dc470dd423.css integrity="sha512-IBQX7wmrH+7coTqiwUIecNr60Vie2PNkV/xjRiYQzrkPsXs+b+FpM9WA7HgmMA9bOt8P9oMz2/VofYHcRw3UIw==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Computer Vision - Seeing Machines</title><meta name=description content="Computer vision allows computers to &amp;ldquo;see&amp;rdquo;, and to understand what they are seeing. This is done by reading and interpreting digital images and video.
+Operations # What are some common computer vision operations?
+Image filtering Convert from one color space to another (e.g. RGB to grayscale). Adjust brightness and contrast. Blur or sharpen the image. Edge detection. Understanding Edge Detection (Sobel Operator) Background subtraction Detect moving objects by comparing them to a reference frame."><link rel=canonical href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Computer Vision"><meta property="og:description" content="Computer vision allows computers to &ldquo;see&rdquo;, and to understand what they are seeing. This is done by reading and interpreting digital images and video.
+Operations # What are some common computer vision operations?
+Image filtering Convert from one color space to another (e.g. RGB to grayscale). Adjust brightness and contrast. Blur or sharpen the image. Edge detection. Understanding Edge Detection (Sobel Operator) Background subtraction Detect moving objects by comparing them to a reference frame."><meta property="og:url" content="https://seeingmachines.betamovement.net/docs/class-3/computer-vision/"><meta property="og:site_name" content="Seeing Machines"><meta property="article:published_time" content="2022-09-25T13:57:20-04:00"><meta property="article:modified_time" content="2022-09-25T13:57:20-04:00"><meta property="og:image" content="https://seeingmachines.betamovement.net/default-image.png"><meta property="og:image:alt" content="Seeing Machines"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content><meta name=twitter:creator content="@prisonerjohn"><meta name=twitter:title content="Computer Vision"><meta name=twitter:description content><meta name=twitter:image content="https://seeingmachines.betamovement.net/default-image.png"><meta name=twitter:image:alt content="Computer Vision"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/1","name":"Seeing Machines","url":"https://seeingmachines.betamovement.net/","sameAs":[],"image":{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/#/schema/image/1","url":"https://seeingmachines.betamovement.net/default-image.png","width":1024,"height":768,"caption":"Seeing Machines"}},{"@type":"WebSite","@id":"https://seeingmachines.betamovement.net/#/schema/website/1","url":"https://seeingmachines.betamovement.net/","name":"Seeing Machines","description":"A programming course where we’ll explore various techniques and solutions for tracking and sensing people or objects in space.","publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"}},{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/","url":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/","name":"Computer Vision","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/#/schema/website/1"},"about":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"datePublished":"2022-09-25T13:57:20CET","dateModified":"2022-09-25T13:57:20CET","breadcrumb":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://seeingmachines.betamovement.net/docs/class-3/computer-vision/"]}]},{"@type":"BreadcrumbList","@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/","url":"https://seeingmachines.betamovement.net/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/","url":"https://seeingmachines.betamovement.net/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-3/","url":"https://seeingmachines.betamovement.net/docs/class-3/","name":"Class 3"}},{"@type":"ListItem","position":4,"item":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://seeingmachines.betamovement.net/#/schema/article/1","headline":"Computer Vision","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/"},"mainEntityOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/"},"datePublished":"2022-09-25T13:57:20CET","dateModified":"2022-09-25T13:57:20CET","author":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/2"},"publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"image":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/2","name":"Elie Zananiri","sameAs":["https://twitter.com/prisonerjohn","https://www.linkedin.com/in/prisonerjohn/","https://github.com/prisonerjohn"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/docs/class-3/computer-vision/#/schema/image/2","url":"https://seeingmachines.betamovement.net/default-image.png","contentUrl":"https://seeingmachines.betamovement.net/default-image.png","caption":"Computer Vision"}]}]}</script><meta name=theme-color content="#fff"><link rel=icon href=https://seeingmachines.betamovement.net/favicon.ico sizes=any><link rel=icon type=image/svg+xml href=https://seeingmachines.betamovement.net/favicon.svg><link rel=apple-touch-icon sizes=180x180 href=https://seeingmachines.betamovement.net/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://seeingmachines.betamovement.net/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://seeingmachines.betamovement.net/favicon-16x16.png><link rel=manifest crossorigin=use-credentials href=https://seeingmachines.betamovement.net/site.webmanifest></head><body class="docs single"><div class=sticky-top><div class=header-bar></div><header class="navbar navbar-expand-lg navbar-light doks-navbar"><nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation"><a class="navbar-brand order-0" href=https://seeingmachines.betamovement.net/ aria-label="Seeing Machines">Seeing Machines</a>
+<button class="btn btn-link order-0 ms-auto d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasExample aria-controls=offcanvasExample><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button><div class="offcanvas offcanvas-start d-lg-none" tabindex=-1 id=offcanvasExample aria-labelledby=offcanvasExampleLabel><div class=header-bar></div><div class=offcanvas-header><h5 class=offcanvas-title id=offcanvasExampleLabel>Browse docs</h5><button type=button class=btn-close data-bs-dismiss=offcanvas aria-label=Close></button></div><div class=offcanvas-body><aside class="doks-sidebar mt-n3"><nav id=doks-docs-nav aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=true>
+Class 3</button><div class="collapse show" id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li></ul></div></li></ul></nav></aside></div></div><button class="btn btn-menu order-2 d-block d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasDoks aria-controls=offcanvasDoks aria-label="Open main menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><div class="offcanvas offcanvas-end border-0 py-lg-1" tabindex=-1 id=offcanvasDoks data-bs-backdrop=true aria-labelledby=offcanvasDoksLabel><div class="header-bar d-lg-none"></div><div class="offcanvas-header d-lg-none"><h2 class="h5 offcanvas-title ps-2" id=offcanvasDoksLabel><a class=text-dark href=https://seeingmachines.betamovement.net/>Seeing Machines</a></h2><button type=button class="btn-close text-reset me-2" data-bs-dismiss=offcanvas aria-label="Close main menu"></button></div><div class="offcanvas-body p-4 p-lg-0"><ul class="nav flex-column flex-lg-row align-items-lg-center mt-2 mt-lg-0 ms-lg-2 me-lg-auto"><li class=nav-item><a class="nav-link ps-0 py-1 active" href=https://seeingmachines.betamovement.net/docs>Docs</a></li><li class=nav-item><a class="nav-link ps-0 py-1" href=https://seeingmachines.betamovement.net/docs/assignments>Assignments</a></li></ul><hr class="text-black-50 my-4 d-lg-none"><form class="doks-search position-relative flex-grow-1 ms-lg-auto me-lg-2"><input id=search class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off><div id=suggestions class="shadow bg-white rounded d-none"></div></form><hr class="text-black-50 my-4 d-lg-none"><ul class="nav flex-column flex-lg-row"><li class=nav-item><a class="nav-link social-link" href=https://github.com/prisonerjohn/seeing-machines><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><small class="ms-2 d-lg-none">GitHub</small></a></li><li class=nav-item><a class="nav-link social-link" href=https://twitter.com/prisonerjohn><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg><small class="ms-2 d-lg-none">Twitter</small></a></li></ul><hr class="text-black-50 my-4 d-lg-none"><button id=mode class="btn btn-link" type=button aria-label="Toggle user interface mode">
+<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button></div></div></nav></header></div><div class=container-xxl><aside class=doks-sidebar><nav id=doks-docs-nav class="collapse d-lg-none" aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=true>
+Class 3</button><div class="collapse show" id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li></ul></div></li></ul></nav></aside></div><div class="wrap container-xxl" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block"><nav class=docs-links aria-label="Main navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=true>
+Class 3</button><div class="collapse show" id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li></ul></div></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#operations>Operations</a><ul><li><a href=#image-segmentation>Image Segmentation</a></li></ul></li><li><a href=#video-capture>Video Capture</a><ul><li><a href=#pass-by-reference-vs-pass-by-value>Pass by Reference vs. Pass by Value</a></li></ul></li><li><a href=#thresholding>Thresholding</a><ul><li><a href=#ofxgui>ofxGui</a></li><li><a href=#ofparameter>ofParameter</a></li></ul></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#devices>Devices</a><ul><li><a href=#color>Color</a></li><li><a href=#infrared>Infrared</a></li></ul></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#operations>Operations</a><ul><li><a href=#image-segmentation>Image Segmentation</a></li></ul></li><li><a href=#video-capture>Video Capture</a><ul><li><a href=#pass-by-reference-vs-pass-by-value>Pass by Reference vs. Pass by Value</a></li></ul></li><li><a href=#thresholding>Thresholding</a><ul><li><a href=#ofxgui>ofxGui</a></li><li><a href=#ofparameter>ofParameter</a></li></ul></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#devices>Devices</a><ul><li><a href=#color>Color</a></li><li><a href=#infrared>Infrared</a></li></ul></li></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>Computer Vision</h1><p class=lead></p><nav class=d-xl-none aria-label="Quaternary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#operations>Operations</a><ul><li><a href=#image-segmentation>Image Segmentation</a></li></ul></li><li><a href=#video-capture>Video Capture</a><ul><li><a href=#pass-by-reference-vs-pass-by-value>Pass by Reference vs. Pass by Value</a></li></ul></li><li><a href=#thresholding>Thresholding</a><ul><li><a href=#ofxgui>ofxGui</a></li><li><a href=#ofparameter>ofParameter</a></li></ul></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#devices>Devices</a><ul><li><a href=#color>Color</a></li><li><a href=#infrared>Infrared</a></li></ul></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#operations>Operations</a><ul><li><a href=#image-segmentation>Image Segmentation</a></li></ul></li><li><a href=#video-capture>Video Capture</a><ul><li><a href=#pass-by-reference-vs-pass-by-value>Pass by Reference vs. Pass by Value</a></li></ul></li><li><a href=#thresholding>Thresholding</a><ul><li><a href=#ofxgui>ofxGui</a></li><li><a href=#ofparameter>ofParameter</a></li></ul></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#devices>Devices</a><ul><li><a href=#color>Color</a></li><li><a href=#infrared>Infrared</a></li></ul></li></ul></nav></div></nav><p>Computer vision allows computers to &ldquo;see&rdquo;, and to understand what they are seeing. This is done by reading and interpreting digital images and video.</p><h2 id=operations>Operations <a href=#operations class=anchor aria-hidden=true>#</a></h2><p>What are some common computer vision operations?</p><ul><li>Image filtering<ul><li>Convert from one color space to another (e.g. RGB to grayscale).</li><li>Adjust brightness and contrast.</li><li>Blur or sharpen the image.</li><li>Edge detection.</li></ul></li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=https://miro.medium.com/fit/c/1838/551/1*4lPMjSPaS2JLWZAaYrXr2Q.jpeg><img style='display:block;margin:0 auto' src=https://miro.medium.com/fit/c/1838/551/1*4lPMjSPaS2JLWZAaYrXr2Q.jpeg alt="Understanding Edge Detection (Sobel Operator)"></a><figcaption><a href=https://medium.com/datadriveninvestor/understanding-edge-detection-sobel-operator-2aada303b900><em>Understanding Edge Detection (Sobel Operator)</em></a></figcaption></figure><ul><li>Background subtraction<ul><li>Detect moving objects by comparing them to a reference frame.</li></ul></li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=https://www.idiap.ch/~odobez/human-detection/media/background-subtraction-1.png><img style='display:block;margin:0 auto' src=https://www.idiap.ch/~odobez/human-detection/media/background-subtraction-1.png alt="IHDC: Idiap Human Detection Code"></a><figcaption><a href=https://www.idiap.ch/~odobez/human-detection/index.html><em>IHDC: Idiap Human Detection Code</em></a></figcaption></figure><ul><li>Object recognition<ul><li>Blob detection</li><li>Contour finding</li></ul></li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=http://kineme.net/files/composition/benoitlahoz/CarasueloContours.jpg><img style='display:block;margin:0 auto' src=http://kineme.net/files/composition/benoitlahoz/CarasueloContours.jpg alt="OpenCV Contours & Convex Hull 2 Structure plugin"></a><figcaption><a href=http://kineme.net/taxonomy/term/114/0><em>OpenCV Contours & Convex Hull 2 Structure plugin</em></a></figcaption></figure><ul><li>Motion estimation<ul><li>Track pixel movement between consecutive frames and infer the direction objects are moving into.</li></ul></li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=http://cs.brown.edu/courses/csci1290/2011/results/final/psastras/images/sequence0/save_0.png><img style='display:block;margin:0 auto' src=http://cs.brown.edu/courses/csci1290/2011/results/final/psastras/images/sequence0/save_0.png alt="Dense Realtime Optical Flow on the GPU"></a><figcaption><a href=https://cs.brown.edu/courses/csci1290/2011/results/final/psastras/><em>Dense Realtime Optical Flow on the GPU</em></a></figcaption></figure><ul><li>Face detection<ul><li>Feature recognition</li><li>Smile detection</li></ul></li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=https://www.bogotobogo.com/python/OpenCV_Python/images/FaceDetection/xfiles4.png><img style='display:block;margin:0 auto' src=https://www.bogotobogo.com/python/OpenCV_Python/images/FaceDetection/xfiles4.png alt="Object Detection : Face Detection using Haar Cascade Classifiers"></a><figcaption><a href=https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php><em>Object Detection : Face Detection using Haar Cascade Classifiers</em></a></figcaption></figure><ul><li>Camera and projector calibration</li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=http://projection-mapping.org/wp-content/uploads/2015/02/procamcalib-thumb.png><img style='display:block;margin:0 auto' src=http://projection-mapping.org/wp-content/uploads/2015/02/procamcalib-thumb.png alt=Procamcalib></a><figcaption><a href=http://projection-mapping.org/tools/procamcalib/><em>Procamcalib</em></a></figcaption></figure><figure style="width:600px;height:400px;display:block;margin:0 auto"><iframe width=600 height=375 src=https://www.youtube.com/embed/lX6JcybgDFo frameborder=0 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><figcaption><i>Box by Bot & Dolly</i></figcaption></figure><h3 id=image-segmentation>Image Segmentation <a href=#image-segmentation class=anchor aria-hidden=true>#</a></h3><p>One of the most common operations we will have to perform when working with computer vision is image segmentation. Image segmentation simply means dividing up the image pixels into meaningful groups. These meaningful groups depend on the application we are creating. For example, we may want to only consider the brightest pixels in an image, pixels of a certain color, clusters of pixels of a specific size, etc.</p><figure style='display:block;margin:1em auto;width:600px'><a href=https://www.researchgate.net/profile/Gabriel_Sanchez-Perez/publication/220050099/figure/fig1/AS:277473016205312@1443166130542/Hand-shape-segmentation-grayscale-captured-image-and-its-corresponding-binary-segmented.png><img style='display:block;margin:0 auto' src=https://www.researchgate.net/profile/Gabriel_Sanchez-Perez/publication/220050099/figure/fig1/AS:277473016205312@1443166130542/Hand-shape-segmentation-grayscale-captured-image-and-its-corresponding-binary-segmented.png alt="Shape-based hand recognition approach using the morphological pattern spectrum"></a><figcaption><a href=https://www.researchgate.net/publication/220050099_Shape-based_hand_recognition_approach_using_the_morphological_pattern_spectrum><em>Shape-based hand recognition approach using the morphological pattern spectrum</em></a></figcaption></figure><p>Image segmentation is the first step into many applications as it is a way to discard unwanted data and only keep what we need to focus on.</p><h2 id=video-capture>Video Capture <a href=#video-capture class=anchor aria-hidden=true>#</a></h2><p>Let&rsquo;s begin with a simple app to stream data from a connected webcam.</p><p>We will use an <a href=https://openframeworks.cc/documentation/video/ofVideoGrabber/><code>ofVideoGrabber</code></a> to capture frames from video.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber grabber;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+}
+
+void ofApp::draw()
+{
+  grabber.draw(0, 0, ofGetWidth(), ofGetHeight());
+}
+</code></pre><p>Note that we call the <a href=https://openframeworks.cc/documentation/video/ofVideoGrabber/#!show_update><code>ofVideoGrabber::update()</code></a> function every frame. This method checks if there&rsquo;s a new video frame available and if so, refreshes the grabber to make it available.</p><p>We will use an <a href=https://openframeworks.cc/documentation/graphics/ofImage/><code>ofImage</code></a> to store our thresholded image. Let&rsquo;s start with a stub procedure that just copies the video pixels into the image one at a time.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber grabber;
+  ofImage resultImg;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+  resultImg.allocate(1280, 720, OF_IMAGE_COLOR);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+
+  ofPixels grabberPix = grabber.getPixels();
+  ofPixels resultPix = resultImg.getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor);
+    }
+  }
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+}
+</code></pre><div class="alert alert-danger d-flex" role=alert><div class="flex-shrink-1 alert-icon">⚠️</div><div class=w-100><p>Why is the drawn image not updating?</p><p>Remember that an <code>ofImage</code> is made up of two parts: <a href=https://openframeworks.cc/documentation/graphics/ofPixels/><code>ofPixels</code></a>, which is the data component of the image (on the CPU), and <a href=https://openframeworks.cc/documentation/gl/ofTexture/><code>ofTexture</code></a>, which is the graphics component of the image (on the GPU). For an image to get drawn to the screen, the data in <code>ofPixels</code> must be copied over to the <code>ofTexture</code>.</p><p>When manipulating pixels directly as we are doing, this process needs to be triggered manually by calling <a href=https://openframeworks.cc/documentation/graphics/ofImage/#show_update><code>ofImage::update()</code></a>.</p></div></div><h3 id=pass-by-reference-vs-pass-by-value>Pass by Reference vs. Pass by Value <a href=#pass-by-reference-vs-pass-by-value class=anchor aria-hidden=true>#</a></h3><p>You&rsquo;ll notice that our drawn image is still not working even after adding the call to <code>ofImage::update()</code>.</p><p>In C++, there are a few ways to pass data (aka arguments or parameters) between objects and functions. We can pass data by reference, by value, or by pointer.</p><ul><li>Pass by <strong>reference</strong> means that we are passing the actual data object itself. Any changes we make to the received object will be kept in the original reference, as it is the same object.</li><li>Pass by <strong>value</strong> means that we are just passing the value of the data, not the data object itself. This means making a copy of the original object and passing that copy. This does not make a difference when the data is a number (like an <code>int</code> or a <code>float</code>) but it does matter when the data is an object, as any changes we make to the received object are only applied on this new copy object.</li><li>Pass by <strong>pointer</strong> means that we are passing the memory address of the data object. We will look at this later on in the course.</li></ul><p>By default, data is passed by <strong>value</strong> in C++.</p><p>In our app, the line <code>ofPixels resultPix = resultImg.getPixels();</code> creates a copy of the image pixels and stores it in <code>resultPix</code>. Any changes we make to <code>resultPix</code> are changes made on the copy and not on the <code>ofPixels</code> belonging to <code>resultImg</code>. This is why we are not seeing the image get updated.</p><p>One way to resolve this would be to save back the modified pixels to <code>resultImg</code> at the end of the loop:</p><pre><code class=language-cpp>resultImg.setFromPixels(resultPix);
+</code></pre><p>Our code finally works! However it is highly unoptimized as we are now making two additional copies of our pixel array every frame.</p><pre><code class=language-cpp>// ofApp.cpp
+
+// ...
+
+void ofApp::update()
+{
+  grabber.update();
+
+  ofPixels grabberPix = grabber.getPixels();
+  ofPixels resultPix = resultImg.getPixels();  // COPY!
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor);
+    }
+  }
+
+  resultImg.setFromPixels(resultPix);  // COPY!
+}
+
+// ...
+</code></pre><p>A better approach is to pass the original pixels by reference using the <code>&</code> operator. The reference <code>ofPixels</code> from the <code>ofImage</code> are then modified directly. We can even go ahead and pass the grabber pixels by reference and avoid making a copy there too.</p><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+  resultImg.allocate(1280, 720, OF_IMAGE_COLOR);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+
+  // Use a reference to the ofPixels in both the grabber and the image.
+  ofPixels&amp; grabberPix = grabber.getPixels();
+  ofPixels&amp; resultPix = resultImg .getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor);
+    }
+  }
+
+  // Update the internal texture (GPU) with the new pixel data.
+  resultImg.update();
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+}
+</code></pre><details><summary>How would we set the result image to create a negative film effect?<p></p><div style=text-align:center;margin:auto><img src=video-invert.png></div></summary><p>A negative of a pixel of color is the inverse of that color. Because every pixel channel&rsquo;s value has range <code>0</code>-<code>255</code>, the inverse is the value substracted from <code>255</code>.</p><pre><code class=language-cpp>negCol.r = 255 - pixCol.r;
+negCol.g = 255 - pixCol.g;
+negCol.b = 255 - pixCol.b;
+</code></pre><p><code>ofColor</code> has an <a href=https://openframeworks.cc/documentation/types/ofColor/#show_invert><code>ofColor::invert()</code></a> method which does this for us.</p><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+// ...
+
+void ofApp::update()
+{
+  grabber.update();
+
+  // Use a reference to the ofPixels in both the grabber and the image.
+  ofPixels&amp; grabberPix = grabber.getPixels();
+  ofPixels&amp; resultPix = resultImg.getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor.invert());
+    }
+  }
+  // Update the internal texture (GPU) with the new pixel data.
+  resultImg.update();
+}
+
+// ...
+</code></pre></details><details><summary>How would we set the result image to create a gray tone effect?<p></p><div style=text-align:center;margin:auto><img src=video-gray.png></div></summary><p>We have a few options that could work. In all cases, we need to convert the image from the 3 RGB channels into a single channel value.</p><ul><li>We could use the max value, called the <em>brightness</em>.</li></ul><pre><code class=language-cpp>unsigned char gray = max(pixColor.r, max(pixColor.g, pixColor.b));
+</code></pre><ul><li>We could use the average value, called the <em>lightness</em>.</li></ul><pre><code class=language-cpp>unsigned char gray = (pixColor.r + pixColor.g + pixColor.b) / 3;
+</code></pre><ul><li>We could calculate a weighted average, called the <em>luminance</em>. The following formula takes into account human eye perception, which is more sensitive to green.</li></ul><pre><code class=language-cpp>unsigned char gray = 0.21 * pixColor.r + 0.71 * pixColor.g + 0.07 * pixColor.b;
+</code></pre><p><code>ofColor</code> has <a href=https://openframeworks.cc/documentation/types/ofColor/#show_getBrightness><code>ofColor::getBrightness()</code></a> and <a href=https://openframeworks.cc/documentation/types/ofColor/#show_getLightness><code>ofColor::getLightness()</code></a> methods which can help.</p><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+// ...
+
+void ofApp::update()
+{
+  grabber.update();
+
+  // Use a reference to the ofPixels in both the grabber and the image.
+  ofPixels&amp; grabberPix = grabber.getPixels();
+  ofPixels&amp; resultPix = resultImg.getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor.getLightness());
+
+      //unsigned char gray = 0.21 * pixColor.r + 0.71 * pixColor.g + 0.07 * pixColor.b; 
+      //resultPix.setColor(x, y, gray);
+    }
+  }
+  // Update the internal texture (GPU) with the new pixel data.
+  resultImg.update();
+}
+
+// ...
+</code></pre></details><h2 id=thresholding>Thresholding <a href=#thresholding class=anchor aria-hidden=true>#</a></h2><p>Thresholding is a simple segmentation technique where a pixel value is either on or off. If it is on we will color it white and if it is off we will color it black. Thresholded images can be used as masks into our input image, used to discard any pixels we want to ignore.</p><figure style="width:600px;height:400px;display:block;margin:0 auto"><div style="padding:56.25% 0 0;position:relative"><iframe src=https://player.vimeo.com/video/8525186 style=position:absolute;top:0;left:0;width:100%;height:100% frameborder=0 allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src=https://player.vimeo.com/api/player.js></script><figcaption><i><a href=https://vimeo.com/8525186>night lights</a> from <a href=https://vimeo.com/thesystemis>zach lieberman</a> on <a href=https://vimeo.com>Vimeo</a>.</i></figcaption></figure><p>Let&rsquo;s write a simple thresholding algorithm that only keeps the brightest parts of an image. We will use the brightness of each pixel color to determine if it should be on or off in our result image.</p><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+  resultImg.allocate(1280, 720, OF_IMAGE_COLOR);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+
+  int brightnessThreshold = 128;
+
+  ofPixels&amp; grabberPix = grabber.getPixels();
+  ofPixels&amp; resultPix = resultImg.getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      if (pixColor.getBrightness() &gt; brightnessThreshold)
+      {
+        // Set the pixel white if its value is above the threshold.
+        resultPix.setColor(x, y, ofColor(255));
+      }
+      else
+      {
+        // Set the pixel black if its value is below the threshold.
+        resultPix.setColor(x, y, ofColor(0));
+      }
+    }
+  }
+  resultImg.update();
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+}
+</code></pre><p>We should make our threshold value editable, as we do not know what environment this app will run in.</p><p>Let&rsquo;s make <code>brightnessThreshold</code> a class variable by moving the declaration to the header file. We can then use the mouse position to adjust the value in every update loop. We will use the <a href=https://openframeworks.cc/documentation/math/ofMath/#!show_ofMap><code>ofMap()</code></a> function to easily convert our mouse position (from 0 to the width of the window) to our brightness range (from <code>0</code> to <code>255</code>).</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber grabber;
+  ofImage resultImg;
+
+  int brightnessThreshold;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+  resultImg.allocate(1280, 720, OF_IMAGE_COLOR);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+
+  brightnessThreshold = ofMap(mouseX, 0, ofGetWidth(), 255, 0);
+
+  ofPixels&amp; grabberPix = grabber.getPixels();
+  ofPixels&amp; resultPix = resultImg.getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      if (pixColor.getBrightness() &gt; brightnessThreshold)
+      {
+        // Set the pixel white if its value is above the threshold.
+        resultPix.setColor(x, y, ofColor(255));
+      }
+      else
+      {
+        // Set the pixel black if its value is below the threshold.
+        resultPix.setColor(x, y, ofColor(0));
+      }
+    }
+  }
+  resultImg.update();
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+}
+</code></pre><p>This is functional, but the way we are setting the threshold is a little clunky. We want better control and feedback for our threshold variable, and we can do this by replacing the mouse position by a GUI with a slider.</p><p>We will achieve this using two new elements: the <code>ofxGui</code> addon and the <code>ofParameter</code> template class.</p><h3 id=ofxgui>ofxGui <a href=#ofxgui class=anchor aria-hidden=true>#</a></h3><p>The <code>ofxGui</code> addon ships with OF and is used for creating GUI elements.</p><p>&ldquo;Addon&rdquo; means it is not part of the OF core files. We need additional files in our project to use the addon. This can be complex if we do it manually, but thankfully we can select addons in the Project Generator and let it take care of the hard work.</p><figure style='display:block;margin:1em auto;width:360px'><a href=of-pg-gui.png><img style='display:block;margin:0 auto' src=of-pg-gui.png alt="Project Generator ofxGui"></a></figure><p>When we regenerate our project files, we will now have access to all the <code>ofxGui</code> classes.</p><p>For this example, we will use <a href=https://openframeworks.cc/documentation/ofxGui/ofxPanel/><code>ofxPanel</code></a>, which is simply a container that can hold other GUI controls like buttons and sliders.</p><p><code>ofxGui</code> cannot use data types like <code>int</code>, <code>float</code>, <code>string</code> directly, because it needs additional information like a name, a range, etc.</p><p>One option is to use special classes that are part of <code>ofxGui</code> like <code>ofxIntSlider</code>, <code>ofxColorSlider</code>, <code>ofxButton</code>, etc. The example <code>examples\gui\guiExample</code> demonstrates how to do this.</p><h3 id=ofparameter>ofParameter <a href=#ofparameter class=anchor aria-hidden=true>#</a></h3><p>Another option is to use a special OF class called <a href=https://openframeworks.cc/documentation/types/ofParameter/><code>ofParameter</code></a>. This is more useful because <code>ofParameter</code> objects have similar properties and can be used outside of <code>ofxGui</code>.</p><p><code>ofParameter</code> is a <strong>wrapper</strong> class that is used to give other data types super powers. For example:</p><ul><li>Min and max values can be defined and the value will always stay within that range.</li><li>A notification gets triggered whenever the value is changed. This is especially useful for GUIs where we need to respond right away when a variable changes.</li></ul><p><code>ofParameter</code> uses the template syntax, meaning that whatever type they hold is set between the <code>&lt; ></code> symbols. In our case, since the threshold is an <code>int</code>, our <code>ofParameter</code> will be defined using <code>ofParameter&lt;int></code>.</p><div class="alert alert-info d-flex" role=alert><div class="flex-shrink-1 alert-icon">✌️</div><div class=w-100><p><strong>What is a template?</strong></p><p>C++ has a concept of <a href=https://en.cppreference.com/w/cpp/language/templates>templates</a>. The idea with templates is to use types as parameters, similar to how we use values as parameters. If a class is templated, it can work with various data types without having to write the same code multiple times.</p><p>We will usually see classes or functions be templated.</p><p>In fact, we have already been using templates with <code>ofPixels</code>! The <code>ofPixels</code> type is actually a <a href=https://github.com/openframeworks/openFrameworks/blob/master/libs/openFrameworks/graphics/ofPixels.h#L661>shorthand</a> for <code>ofPixels_&lt;unsigned char></code>. This means it is an <a href=https://openframeworks.cc/documentation/graphics/ofPixels/#!show_ofPixels_><code>ofPixels_</code></a> template where the data type of the pixels is <code>unsigned char</code> (and that is why our values go from <code>0</code> to <code>255</code>).</p><p><code>ofPixels_</code> can also be used with <code>float</code> and <code>unsigned short</code> pixels, using <code>ofPixels_&lt;float></code> or <code>ofPixels_&lt;unsigned short></code>. The shorthands <code>ofFloatPixels</code> and <code>ofShortPixels</code> are also available, and they represent exactly the same thing.</p><p><code>ofParameter</code> works in a similar way, it is a template class. We need to specify the type and precision of the data it will control, in this case <code>int</code>. This is done when declaring the variable with type <code>ofParameter&lt;int></code>.</p></div></div><p>Our code now looks like the following, and our app window has a slider in the top-left corner we can use to edit the threshold value.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxGui.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber grabber;
+  ofImage resultImg;
+
+  ofParameter&lt;int&gt; brightnessThreshold;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+  resultImg.allocate(1280, 720, OF_IMAGE_COLOR);
+
+  // Initialize the threshold parameter with range [0, 255].
+  brightnessThreshold.set(&quot;Bri Thresh&quot;, 120, 0, 255);
+
+  // Setup the GUI panel and add the threshold parameter.
+  guiPanel.setup(&quot;Threshold&quot;);
+  guiPanel.add(brightnessThreshold);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+
+  ofPixels&amp; grabberPix = grabber.getPixels();
+  ofPixels&amp; resultPix = resultImg.getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      if (pixColor.getBrightness() &gt; brightnessThreshold)
+      {
+        // Set the pixel white if its value is above the threshold.
+        resultPix.setColor(x, y, ofColor(255));
+      }
+      else
+      {
+        // Set the pixel black if its value is below the threshold.
+        resultPix.setColor(x, y, ofColor(0));
+      }
+    }
+  }
+  resultImg.update();
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+
+  guiPanel.draw();
+}
+</code></pre><h2 id=background-subtraction>Background Subtraction <a href=#background-subtraction class=anchor aria-hidden=true>#</a></h2><p>Background subtraction is a segmentation technique where the background pixels of an image are removed, leaving only the foreground data for processing.</p><div class="alert alert-info d-flex" role=alert><div class="flex-shrink-1 alert-icon">✌️</div><div class=w-100><p><strong>What defines the background?</strong></p><p>This varies depending on the type of sensor used, the environment, and the application.</p><p>When using a depth sensor, we can actually use a pixel&rsquo;s distance from the camera to determine if it&rsquo;s in the background or not. In general for 2D video, a background pixel is one that is considered <em>stable</em>, i.e. that does not change its value much or at all.</p></div></div><p>Background subtraction requires that we have a background frame as a reference. We can do this by saving a video frame in memory, and comparing future frames to it in our <code>update()</code> loop.</p><p>Video pixel values change slightly over time, so we cannot expect them to be identical frame by frame. We will add a threshold value and compare the difference between the pixels to determine if it should be on or off.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxGui.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber grabber;
+  ofImage backgroundImg;
+  ofImage resultImg;
+
+  ofParameter&lt;bool&gt; captureBackground;
+  ofParameter&lt;int&gt; colorThreshold;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+  resultImg.allocate(1280, 720, OF_IMAGE_COLOR);
+
+  captureBackground.set(&quot;Capture BG&quot;, true);
+  colorThreshold.set(&quot;Color Thresh&quot;, 120, 0, 255);
+
+  guiPanel.setup(&quot;BG Subtraction&quot;);
+  guiPanel.add(captureBackground);
+  guiPanel.add(colorThreshold);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+
+  ofPixels&amp; grabberPix = grabber.getPixels();
+
+  if (captureBackground)
+  {
+    backgroundImg.setFromPixels(grabber.getPixels());
+    captureBackground = false;
+  }
+
+  ofPixels&amp; resultPix = resultImg.getPixels();
+  for (int y = 0; y &lt; grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x &lt; grabberPix.getWidth(); x++)
+    {
+      ofColor grabColor = grabberPix.getColor(x, y);
+      ofColor bgColor = backgroundImg.getColor(x, y);
+      if (abs(grabColor.r - bgColor.r) &gt; colorThreshold ||
+          abs(grabColor.g - bgColor.g) &gt; colorThreshold ||
+          abs(grabColor.b - bgColor.b) &gt; colorThreshold)
+      {
+        resultPix.setColor(x, y, grabColor);
+      }
+      else
+      {
+        resultPix.setColor(x, y, ofColor(0));
+      }
+    }
+  }
+  resultImg.update();
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+
+  guiPanel.draw();
+}
+</code></pre><h2 id=devices>Devices <a href=#devices class=anchor aria-hidden=true>#</a></h2><h3 id=color>Color <a href=#color class=anchor aria-hidden=true>#</a></h3><p>While using built-in webcams is convenient for testing, it is not a great choice for deployed projects. They tend to be low quality and not offer manual controls for white balance, exposure, focus, etc.</p><ul><li>Higher end webcams like the <a href=https://www.logitech.com/en-us/products/webcams.html>Logitech C9XX or Brio series</a> are a good alternative.</li><li>For best quality, a DSLR or video camera can be used with a capture card, like the <a href=https://www.blackmagicdesign.com/products/ultrastudio>Blackmagic UltraStudio Recorder 3G</a>.</li></ul><h3 id=infrared>Infrared <a href=#infrared class=anchor aria-hidden=true>#</a></h3><p>Depending on the application and environment, it might be better to use an alternative to a color camera for capturing images.</p><p>Infrared cameras are often used for sensing because they see light that is invisible to humans. They tend to be a more versatile choice as they can be used in a bright room, a pitch dark room, facing a video projector, behind a touch surface, etc.</p><figure style="width:600px;height:490px;display:block;margin:0 auto"><div style="padding:75% 0 0;position:relative"><iframe src=https://player.vimeo.com/video/283105 style=position:absolute;top:0;left:0;width:100%;height:100% frameborder=0 allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src=https://player.vimeo.com/api/player.js></script><figcaption><i><a href=https://vimeo.com/283105>presence [a.k.a soft & silky]</a> from <a href=https://vimeo.com/smallfly>smallfly</a> on <a href=https://vimeo.com>Vimeo</a>.</i></figcaption></figure><p>Infrared USB cameras can be hard to come by.</p><ul><li>One option is to get a depth sensor like an <a href=https://www.intelrealsense.com/>Intel RealSense</a>. Most of these also include an IR light emitter, which means it will always have enough light to work properly.</li><li>Another popular option is to &ldquo;hack&rdquo; regular color cameras by adding a piece of processed film in front of the lens (which acts as an IR filter). There are a few <a href=https://www.instructables.com/id/Infrared-IR-Webcam/>tutorials</a> on Instructables for doing this. A popular device for this hack is the <a href=http://wiki.lofarolabs.com/index.php/Removing_the_IR_Filter_from_the_PS3_Eye_Camera>PS3 Eye</a> camera.</li><li>Finally, we can opt for <a href="https://duckduckgo.com/?q=security+camera&t=ffab&iax=images&ia=images">security cameras</a>. These tend to have emitters around the lens to ensure there is enough light for the sensor. However, the quality is not great and they usually do not have USB connectivity and will require an adapter.</li></ul><p>Thermographic cameras, commonly known as FLIR, can be an interesting option. These infrared cameras sense radiation/heat and represent it as a color map. This can be very useful for tracking humans or animals as they can easily be segmented from their surroundings.</p><figure style="width:600px;display:block;margin:0 auto"><iframe width=560 height=315 src=https://www.youtube.com/embed/5gqVf_rLfn4 frameborder=0 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><figcaption><i><a href=https://www.youtube.com/embed/5gqVf_rLfn4>AGGRO DR1FT Teaser Trailer #1</a></i></figcaption></figure><div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between"></div><div class="docs-navigation d-flex justify-content-between"><a href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/><div class="card my-1"><div class="card-body py-2">&larr; Images and Video</div></div></a><a class=ms-auto href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/><div class="card my-1"><div class="card-body py-2">Intro to OpenCV &rarr;</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container-xxl><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://github.com/>GitHub</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=https://seeingmachines.betamovement.net/js/bootstrap.min.7315382e899a7d7132d93fdf0d6682c67a93f0e72ee1a757f33f3207de3b14e2460a935c9d4cec78f86d94ab892d053c70540695eed0bbb7bf5bdc979e6f5a9f.js integrity="sha512-cxU4LomafXEy2T/fDWaCxnqT8Ocu4adX8z8yB947FOJGCpNcnUzsePhtlKuJLQU8cFQGle7Qu7e/W9yXnm9anw==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/js/highlight.min.93c197e7097c47fc0788b21721b3c308e18e43299f1e45e8ff2697d13cd62908cc5949a053c1fb7242d7b4a60eb07bd106061252f7aa925ef7e91033ea59d9b9.js integrity="sha512-k8GX5wl8R/wHiLIXIbPDCOGOQymfHkXo/yaX0TzWKQjMWUmgU8H7ckLXtKYOsHvRBgYSUveqkl736RAz6lnZuQ==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/main.min.162c56a0426544de0d010e66c56e321579655c400c9aae06a6823e7682de379adadf2165bd416fea191e4e7e410fbf1fd2c35a759aa43ff2e3787067669bf81b.js integrity="sha512-FixWoEJlRN4NAQ5mxW4yFXllXEAMmq4GpoI+doLeN5ra3yFlvUFv6hkeTn5BD78f0sNadZqkP/LjeHBnZpv4Gw==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/index.min.66adeef5252215eed701e139337cd7a5c031070a285861c78dd96541a4cc86f7daf27b0d39bdc500f4fbf318ebcfedac0f4d1a370c43837b709e8fb65c88a40a.js integrity="sha512-Zq3u9SUiFe7XAeE5M3zXpcAxBwooWGHHjdllQaTMhvfa8nsNOb3FAPT78xjrz+2sD00aNwxDg3twno+2XIikCg==" crossorigin=anonymous defer></script></body></html>

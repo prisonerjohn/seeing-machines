@@ -1,0 +1,224 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-500.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script><link rel=stylesheet href=https://seeingmachines.betamovement.net/main.201417ef09ab1feedca13aa2c1421e70dafad1589ed8f36457fc63462610ceb90fb17b3e6fe16933d580ec7826300f5b3adf0ff68333dbf5687d81dc470dd423.css integrity="sha512-IBQX7wmrH+7coTqiwUIecNr60Vie2PNkV/xjRiYQzrkPsXs+b+FpM9WA7HgmMA9bOt8P9oMz2/VofYHcRw3UIw==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Intro to OpenCV - Seeing Machines</title><meta name=description content="OpenCV is an open-source library for performing computer vision operations.
+OpenCV was originally released in 2000 and has gone through many updates and revisions since then. The library is cross-platform and available for all major platforms. It includes interfaces in C++, Java, and Python. OpenCV includes hundreds of algorithms, for performing a variety of tasks like image conversion, object tracking, feature recognition, camera calibration, etc. OpenCV uses its own image type, called cv::Mat."><link rel=canonical href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Intro to OpenCV"><meta property="og:description" content="OpenCV is an open-source library for performing computer vision operations.
+OpenCV was originally released in 2000 and has gone through many updates and revisions since then. The library is cross-platform and available for all major platforms. It includes interfaces in C++, Java, and Python. OpenCV includes hundreds of algorithms, for performing a variety of tasks like image conversion, object tracking, feature recognition, camera calibration, etc. OpenCV uses its own image type, called cv::Mat."><meta property="og:url" content="https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/"><meta property="og:site_name" content="Seeing Machines"><meta property="article:published_time" content="2022-09-25T16:37:02-04:00"><meta property="article:modified_time" content="2022-09-25T16:37:02-04:00"><meta property="og:image" content="https://seeingmachines.betamovement.net/default-image.png"><meta property="og:image:alt" content="Seeing Machines"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content><meta name=twitter:creator content="@prisonerjohn"><meta name=twitter:title content="Intro to OpenCV"><meta name=twitter:description content><meta name=twitter:image content="https://seeingmachines.betamovement.net/default-image.png"><meta name=twitter:image:alt content="Intro to OpenCV"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/1","name":"Seeing Machines","url":"https://seeingmachines.betamovement.net/","sameAs":[],"image":{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/#/schema/image/1","url":"https://seeingmachines.betamovement.net/default-image.png","width":1024,"height":768,"caption":"Seeing Machines"}},{"@type":"WebSite","@id":"https://seeingmachines.betamovement.net/#/schema/website/1","url":"https://seeingmachines.betamovement.net/","name":"Seeing Machines","description":"A programming course where we’ll explore various techniques and solutions for tracking and sensing people or objects in space.","publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"}},{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/","url":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/","name":"Intro to OpenCV","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/#/schema/website/1"},"about":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"datePublished":"2022-09-25T16:37:02CET","dateModified":"2022-09-25T16:37:02CET","breadcrumb":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/"]}]},{"@type":"BreadcrumbList","@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/","url":"https://seeingmachines.betamovement.net/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/","url":"https://seeingmachines.betamovement.net/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-3/","url":"https://seeingmachines.betamovement.net/docs/class-3/","name":"Class 3"}},{"@type":"ListItem","position":4,"item":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://seeingmachines.betamovement.net/#/schema/article/1","headline":"Intro to OpenCV","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/"},"mainEntityOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/"},"datePublished":"2022-09-25T16:37:02CET","dateModified":"2022-09-25T16:37:02CET","author":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/2"},"publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"image":{"@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/2","name":"Elie Zananiri","sameAs":["https://twitter.com/prisonerjohn","https://www.linkedin.com/in/prisonerjohn/","https://github.com/prisonerjohn"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/#/schema/image/2","url":"https://seeingmachines.betamovement.net/default-image.png","contentUrl":"https://seeingmachines.betamovement.net/default-image.png","caption":"Intro to OpenCV"}]}]}</script><meta name=theme-color content="#fff"><link rel=icon href=https://seeingmachines.betamovement.net/favicon.ico sizes=any><link rel=icon type=image/svg+xml href=https://seeingmachines.betamovement.net/favicon.svg><link rel=apple-touch-icon sizes=180x180 href=https://seeingmachines.betamovement.net/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://seeingmachines.betamovement.net/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://seeingmachines.betamovement.net/favicon-16x16.png><link rel=manifest crossorigin=use-credentials href=https://seeingmachines.betamovement.net/site.webmanifest></head><body class="docs single"><div class=sticky-top><div class=header-bar></div><header class="navbar navbar-expand-lg navbar-light doks-navbar"><nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation"><a class="navbar-brand order-0" href=https://seeingmachines.betamovement.net/ aria-label="Seeing Machines">Seeing Machines</a>
+<button class="btn btn-link order-0 ms-auto d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasExample aria-controls=offcanvasExample><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button><div class="offcanvas offcanvas-start d-lg-none" tabindex=-1 id=offcanvasExample aria-labelledby=offcanvasExampleLabel><div class=header-bar></div><div class=offcanvas-header><h5 class=offcanvas-title id=offcanvasExampleLabel>Browse docs</h5><button type=button class=btn-close data-bs-dismiss=offcanvas aria-label=Close></button></div><div class=offcanvas-body><aside class="doks-sidebar mt-n3"><nav id=doks-docs-nav aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=true>
+Class 3</button><div class="collapse show" id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li></ul></div></li></ul></nav></aside></div></div><button class="btn btn-menu order-2 d-block d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasDoks aria-controls=offcanvasDoks aria-label="Open main menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><div class="offcanvas offcanvas-end border-0 py-lg-1" tabindex=-1 id=offcanvasDoks data-bs-backdrop=true aria-labelledby=offcanvasDoksLabel><div class="header-bar d-lg-none"></div><div class="offcanvas-header d-lg-none"><h2 class="h5 offcanvas-title ps-2" id=offcanvasDoksLabel><a class=text-dark href=https://seeingmachines.betamovement.net/>Seeing Machines</a></h2><button type=button class="btn-close text-reset me-2" data-bs-dismiss=offcanvas aria-label="Close main menu"></button></div><div class="offcanvas-body p-4 p-lg-0"><ul class="nav flex-column flex-lg-row align-items-lg-center mt-2 mt-lg-0 ms-lg-2 me-lg-auto"><li class=nav-item><a class="nav-link ps-0 py-1 active" href=https://seeingmachines.betamovement.net/docs>Docs</a></li><li class=nav-item><a class="nav-link ps-0 py-1" href=https://seeingmachines.betamovement.net/docs/assignments>Assignments</a></li></ul><hr class="text-black-50 my-4 d-lg-none"><form class="doks-search position-relative flex-grow-1 ms-lg-auto me-lg-2"><input id=search class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off><div id=suggestions class="shadow bg-white rounded d-none"></div></form><hr class="text-black-50 my-4 d-lg-none"><ul class="nav flex-column flex-lg-row"><li class=nav-item><a class="nav-link social-link" href=https://github.com/prisonerjohn/seeing-machines><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><small class="ms-2 d-lg-none">GitHub</small></a></li><li class=nav-item><a class="nav-link social-link" href=https://twitter.com/prisonerjohn><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg><small class="ms-2 d-lg-none">Twitter</small></a></li></ul><hr class="text-black-50 my-4 d-lg-none"><button id=mode class="btn btn-link" type=button aria-label="Toggle user interface mode">
+<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button></div></div></nav></header></div><div class=container-xxl><aside class=doks-sidebar><nav id=doks-docs-nav class="collapse d-lg-none" aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=true>
+Class 3</button><div class="collapse show" id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li></ul></div></li></ul></nav></aside></div><div class="wrap container-xxl" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block"><nav class=docs-links aria-label="Main navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=true>
+Class 3</button><div class="collapse show" id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-3/intro-to-opencv/>Intro to OpenCV</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li></ul></div></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#opencv-for-openframeworks>OpenCV for openFrameworks</a></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#face-detection>Face Detection</a></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#opencv-for-openframeworks>OpenCV for openFrameworks</a></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#face-detection>Face Detection</a></li></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>Intro to OpenCV</h1><p class=lead></p><nav class=d-xl-none aria-label="Quaternary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#opencv-for-openframeworks>OpenCV for openFrameworks</a></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#face-detection>Face Detection</a></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#opencv-for-openframeworks>OpenCV for openFrameworks</a></li><li><a href=#background-subtraction>Background Subtraction</a></li><li><a href=#face-detection>Face Detection</a></li></ul></nav></div></nav><p><a href=https://opencv.org/>OpenCV</a> is an open-source library for performing computer vision operations.</p><ul><li>OpenCV was originally released in 2000 and has gone through many updates and revisions since then.</li><li>The library is cross-platform and available for all major platforms. It includes interfaces in C++, Java, and Python.</li><li>OpenCV includes hundreds of algorithms, for performing a variety of tasks like image conversion, object tracking, feature recognition, camera calibration, etc.</li></ul><p>OpenCV uses its own image type, called <a href=https://docs.opencv.org/4.1.1/d3/d63/classcv_1_1Mat.html><code>cv::Mat</code></a>. The word &ldquo;Mat&rdquo; is short for <a href=https://en.wikipedia.org/wiki/Matrix_(mathematics)>matrix</a>, which is what we call a multi-dimensional array of values in mathematics. <code>cv::Mat</code> is similar to <code>ofPixels</code>, as it holds an array of pixel values, but it is also much more powerful as it can perform all types of operations on matrices. For example, we can add or multiply two <code>cv::Mat</code> objects directly, without needing to loop through the pixels one at a time.</p><div class="alert alert-info d-flex" role=alert><div class="flex-shrink-1 alert-icon">✌️</div><div class=w-100><p><strong>What does the <code>::</code> mean in this context?</strong></p><p>We have already covered that <code>::</code> is a scope resolution operator in C++. We first encountered <code>::</code> to show the relationship between methods and classes, for example <code>ofApp::setup()</code> means that the method <code>setup()</code> is part of <code>ofApp</code>.</p><p>In the case of <code>cv::Mat</code>, the <code>::</code> is used to show the relationship between classes and namespaces.</p><p>A <a href=https://en.cppreference.com/w/cpp/language/namespace>namespace</a> is a top-level group that holds classes that are related to each other. This is similar to how programs are organized using packages in JavaScript, Java, or Python. In this case, <code>cv::Mat</code> is a reference to the <code>Mat</code> class that belongs to the <code>cv</code> namespace.</p><p>Classes in the same namespace can refer to each other directly, but classes outside of that namespace need to specify the namespace using the <code>::</code> notation to refer to its classes.</p><p>Most classes in OF do not belong to a namespace, which is why we have not seen this yet, but this is gradually changing. New additions to the framework, like the <a href=https://glm.g-truc.net/0.9.9/index.html><code>glm</code></a> math library are keeping their namespace visible, so we will encounter types like <code>glm::vec2</code> and <code>glm::vec3</code> when manipulating vectors.</p></div></div><h2 id=opencv-for-openframeworks>OpenCV for openFrameworks <a href=#opencv-for-openframeworks class=anchor aria-hidden=true>#</a></h2><p>While you can use the OpenCV library directly in OF (since both are written in C++), this would require image type conversions every time we need to move data from one framework to the other. For example, to convert our background subtraction algorithm we would:</p><ol><li>Capture a frame from the camera in &ldquo;OF space&rdquo;, using <code>ofVideoGrabber</code> and <code>ofPixels</code>.</li><li>Convert the <code>ofPixels</code> to a <code>cv::Mat</code> to use the pixels in &ldquo;OpenCV space&rdquo;.</li><li>Perform the background subtraction using OpenCV functions.</li><li>Convert the result <code>cv::Mat</code> back to an <code>ofImage</code> to draw it to the screen.</li></ol><p>This would also apply to other types which we might use. For example:</p><ul><li>Points (<a href=https://docs.opencv.org/4.1.1/db/d4e/classcv_1_1Point__.html><code>cv::Point</code></a> vs <a href=https://openframeworks.cc/documentation/glm/glm%3A%3Avec2/><code>glm::vec2</code></a>)</li><li>Rectangles (<a href=https://docs.opencv.org/4.1.1/d2/d44/classcv_1_1Rect__.html><code>cv::Rect</code></a> vs <a href=https://openframeworks.cc/documentation/types/ofRectangle/><code>ofRectangle</code></a>)</li></ul><p>We will use an openFrameworks addon to interface with OpenCV. This will take care of handling these conversions and give us additional OF-specific methods we can use.</p><p>There are two options for addons:</p><ul><li><a href=https://openframeworks.cc/documentation/ofxOpenCv/><code>ofxOpenCv</code></a> is the built-in OpenCV addon. This wrapper hides most of the native OpenCV structures and methods and allows us to work strictly in &ldquo;OF space&rdquo;. While this simplifies our work, we are limited by the data types and algorithms that are included in the addon.</li><li><a href=https://github.com/kylemcdonald/ofxCv><code>ofxCv</code></a> is a user-contributed addon that takes a more transparent approach. Interchange between OF and CV is facilitated with helper functions, but the majority of the work is done using native OpenCV calls. While this may seem more complicated, it reduces our dependency to OF as we are learning how to use OpenCV directly.</li></ul><p>We will use <code>ofxCv</code> for this class. As it is a user-contributed addon, we will need to <a href=https://github.com/kylemcdonald/ofxCv>download</a> it and unzip it in the OF addons directory at <code>/path/to/OF/addons/</code>. Once that is done, the Project Generator will automatically (after a restart) detect the addon and allow us to include it in our projects.</p><p><code>ofxCv</code> uses the OpenCV files from <code>ofxOpenCv</code>, so make sure to include both addons in your projects.</p><figure style='display:block;margin:1em auto;width:360px'><a href=of-pg-ofxcv.png><img style='display:block;margin:0 auto' src=of-pg-ofxcv.png alt="Project Generator ofxCv"></a></figure><h2 id=background-subtraction>Background Subtraction <a href=#background-subtraction class=anchor aria-hidden=true>#</a></h2><p>Let&rsquo;s write a new background subtraction example using OpenCV. We will focus on pixel brightness for our operations, so we will convert our images from RGB color to grayscale before processing.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber grabber;
+  ofImage backgroundImg;
+  ofImage resultImg;
+
+  ofParameter&lt;bool&gt; captureBackground;
+  ofParameter&lt;int&gt; briThreshold;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+
+  captureBackground.set(&quot;Capture BG&quot;, true);
+  briThreshold.set(&quot;Bri Thresh&quot;, 120, 0, 255);
+
+  guiPanel.setup(&quot;BG Subtraction&quot;);
+  guiPanel.add(captureBackground);
+  guiPanel.add(briThreshold);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+
+  ofImage grabberColorImg;
+  grabberColorImg.setFromPixels(grabber.getPixels());
+
+  // Convert input image to grayscale.
+  ofImage grabberGrayImg;
+  ofxCv::copyGray(grabberColorImg, grabberGrayImg);
+
+  if (captureBackground)
+  {
+      // Copy input image to background.
+      backgroundImg = grabberGrayImg;
+      captureBackground = false;
+  }
+
+  // Compute the difference image between the background and grabber.
+  ofxCv::absdiff(backgroundImg, grabberGrayImg, resultImg);
+  // Threshold the difference image.
+  ofxCv::threshold(resultImg, briThreshold);
+  // Update the image to draw it.
+  resultImg.update();
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+
+  guiPanel.draw();
+}
+</code></pre><p>Note the use of the <code>ofxCv::absdiff()</code> and <code>ofxCv::threshold()</code> functions for processing all our pixels in a single line of code. These are wrappers for <a href="https://docs.opencv.org/2.4/modules/core/doc/operations_on_arrays.html?highlight=absdiff#absdiff"><code>cv::absdiff()</code></a> and <a href="https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#threshold"><code>cv::threshold()</code></a> allowing us to use <code>ofImage</code> objects in &ldquo;OpenCV&rdquo; space. <code>ofxCv</code> handles all the necessary conversions behind the scenes.</p><p>We could also skip some of the conversions between &ldquo;OF space&rdquo; and &ldquo;OpenCV&rdquo; space to optimize our code. This can be useful for more complex apps that need better performance. Let&rsquo;s rewrite the previous example using <code>cv</code> objects for our CV operations, i.e. replace <code>ofImage</code> with <code>cv::Mat</code>.</p><p>We will also make two additional optimizations:</p><ol><li>Cache the variables used for grabber images so that they don&rsquo;t get reallocated every frame. We do this by adding two new variables <code>grabberColorMat</code> and <code>grabberGrayMat</code> to the <code>ofApp</code> class.</li><li>Only run through our algorithm when a new video frame is captured. This is an important step as the video camera will usually run at much lower framerate than the application itself. This is achieved by checking <a href=https://openframeworks.cc/documentation/video/ofVideoGrabber/#!show_isFrameNew><code>ofVideoGrabber.isFrameNew()</code></a> before running through our CV code.</li></ol><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber grabber;
+  cv::Mat grabberColorMat;
+  cv::Mat grabberGrayMat;
+  cv::Mat backgroundMat;
+  cv::Mat resultMat;
+  ofImage resultImg;
+
+  ofParameter&lt;bool&gt; captureBackground;
+  ofParameter&lt;int&gt; briThreshold;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  grabber.setup(1280, 720);
+
+  captureBackground.set(&quot;Capture BG&quot;, true);
+  briThreshold.set(&quot;Bri Thresh&quot;, 120, 0, 255);
+
+  guiPanel.setup(&quot;BG Subtraction&quot;);
+  guiPanel.add(captureBackground);
+  guiPanel.add(briThreshold);
+}
+
+void ofApp::update()
+{
+  grabber.update();
+  if (grabber.isFrameNew())
+  {
+    // Convert the grabber image to CV space.
+    grabberColorMat = ofxCv::toCv(grabber.getPixels());
+
+    // Convert input image to grayscale.
+    ofxCv::copyGray(grabberColorMat, grabberGrayMat);
+
+    if (captureBackground)
+    {
+      // Copy input image to background.
+      // Note that the = operator copies cv::Mat by reference,
+      // but we need an actual copy here. This is why we use
+      // the cv::Mat.clone() method.
+      backgroundMat = grabberGrayMat.clone();
+      captureBackground = false;
+    }
+
+    // Compute the difference image between the background and grabber.
+    cv::absdiff(backgroundMat, grabberGrayMat, resultMat);
+    // Threshold the difference image.
+    ofxCv::threshold(resultMat, briThreshold);
+
+    // Convert the result CV image back to OF space.
+    ofxCv::toOf(resultMat, resultImg);
+    // Update the image to draw it.
+    resultImg.update();
+  }
+}
+
+void ofApp::draw()
+{
+  resultImg.draw(0, 0, ofGetWidth(), ofGetHeight());
+
+  guiPanel.draw();
+}
+</code></pre><h2 id=face-detection>Face Detection <a href=#face-detection class=anchor aria-hidden=true>#</a></h2><p>OpenCV includes a powerful object detection algorithm which is often used for finding faces in images, using something called Haar cascade classifiers.</p><p>This is a machine learning algorithm where a classifier is trained on many sample images, both positive (with faces) and negative (without faces). It uses this to generate a model, which it can then use to detect faces in new images by looking for similar patterns.</p><p>The features are in the shape of black and white patterns (Haar features), which are searched for in an image. If the patterns are arranged in a recognizable way, we have a match!</p><figure style='display:block;margin:1em auto;width:320px'><a href=https://docs.opencv.org/3.4/haar_features.jpg><img style='display:block;margin:0 auto' src=https://docs.opencv.org/3.4/haar_features.jpg alt="Haar Features"></a></figure><figure style='display:block;margin:1em auto;width:320px'><a href=https://docs.opencv.org/3.4/haar.png><img style='display:block;margin:0 auto' src=https://docs.opencv.org/3.4/haar.png alt="Haar Features"></a><figcaption><a href=https://docs.opencv.org/3.4/haar.png><em>Haar Features</em></a></figcaption></figure><p>Let&rsquo;s have a look at the face example that ships with <code>ofxCv</code>. Note that it does not come with the Haar cascade file, you&rsquo;ll need to add it yourself to the <code>OF/addons/ofxCv/example-face/bin/data/</code> folder. You can get the face file in the <code>OF/examples/computer_vision/opencvHaarFinderExample/bin/data/</code> folder, or you can try some of the other ones from the <a href=https://github.com/opencv/opencv/tree/master/data/haarcascades>OpenCV repository</a>.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+
+class ofApp : public ofBaseApp 
+{
+public:
+  void setup();
+  void update();
+  void draw();
+
+  ofVideoGrabber cam;
+  ofxCv::ObjectFinder finder;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+using namespace ofxCv;
+using namespace cv;
+
+void ofApp::setup() 
+{
+  ofSetVerticalSync(true);
+  ofSetFrameRate(120);
+  
+  finder.setup(&quot;haarcascade_frontalface_default.xml&quot;);
+  finder.setPreset(ObjectFinder::Fast);
+  cam.setup(640, 480);
+}
+
+void ofApp::update() 
+{
+  cam.update();
+  if (cam.isFrameNew()) 
+  {
+      finder.update(cam);
+  }
+}
+
+void ofApp::draw() 
+{
+  cam.draw(0, 0);
+  finder.draw();
+  ofDrawBitmapStringHighlight(ofToString(finder.size()), 10, 20);
+}
+</code></pre><div class="alert alert-info d-flex" role=alert><div class="flex-shrink-1 alert-icon">✌️</div><div class=w-100><p><strong>What does <code>using namespace</code> do?</strong></p><p>A <a href=https://en.cppreference.com/w/cpp/language/namespace><code>using</code></a> directive can be used in C++ to indicate that classes and methods from the specified namespace will be used in the file.</p><p>When adding <code>using namespace ofxCv;</code> at the top of the file, we can use classes from <code>ofxCv</code> without having to prefix them with <code>ofxCv::</code>. This can be seen with <code>ObjectFinder::Fast</code> in the code above, which if fully defined is <code>ofxCv::ObjectFinder::Fast</code>.</p><p>Some people prefer <code>using</code> directives because it makes the code more concise. Others prefer being explicit and referring the namespace throughout. Both options are fine, it&rsquo;s a matter of style.</p></div></div><figure style="width:600px;display:block;margin:0 auto"><iframe src="https://player.vimeo.com/video/96549043?title=0&byline=0&portrait=0" width=640 height=360 frameborder=0 allow="autoplay; fullscreen" allowfullscreen></iframe><figcaption><i><a href=https://vimeo.com/96549043>Sharing Faces</a> from <a href=https://vimeo.com/kylemcdonald>Kyle McDonald</a> on <a href=https://vimeo.com>Vimeo</a>.</i></figcaption></figure><div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between"></div><div class="docs-navigation d-flex justify-content-between"><a href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/><div class="card my-1"><div class="card-body py-2">&larr; Computer Vision</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container-xxl><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://github.com/>GitHub</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=https://seeingmachines.betamovement.net/js/bootstrap.min.7315382e899a7d7132d93fdf0d6682c67a93f0e72ee1a757f33f3207de3b14e2460a935c9d4cec78f86d94ab892d053c70540695eed0bbb7bf5bdc979e6f5a9f.js integrity="sha512-cxU4LomafXEy2T/fDWaCxnqT8Ocu4adX8z8yB947FOJGCpNcnUzsePhtlKuJLQU8cFQGle7Qu7e/W9yXnm9anw==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/js/highlight.min.93c197e7097c47fc0788b21721b3c308e18e43299f1e45e8ff2697d13cd62908cc5949a053c1fb7242d7b4a60eb07bd106061252f7aa925ef7e91033ea59d9b9.js integrity="sha512-k8GX5wl8R/wHiLIXIbPDCOGOQymfHkXo/yaX0TzWKQjMWUmgU8H7ckLXtKYOsHvRBgYSUveqkl736RAz6lnZuQ==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/main.min.162c56a0426544de0d010e66c56e321579655c400c9aae06a6823e7682de379adadf2165bd416fea191e4e7e410fbf1fd2c35a759aa43ff2e3787067669bf81b.js integrity="sha512-FixWoEJlRN4NAQ5mxW4yFXllXEAMmq4GpoI+doLeN5ra3yFlvUFv6hkeTn5BD78f0sNadZqkP/LjeHBnZpv4Gw==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/index.min.66adeef5252215eed701e139337cd7a5c031070a285861c78dd96541a4cc86f7daf27b0d39bdc500f4fbf318ebcfedac0f4d1a370c43837b709e8fb65c88a40a.js integrity="sha512-Zq3u9SUiFe7XAeE5M3zXpcAxBwooWGHHjdllQaTMhvfa8nsNOb3FAPT78xjrz+2sD00aNwxDg3twno+2XIikCg==" crossorigin=anonymous defer></script></body></html>
