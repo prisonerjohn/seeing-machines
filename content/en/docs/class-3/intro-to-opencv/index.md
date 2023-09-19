@@ -4,13 +4,13 @@ description: ""
 lead: ""
 date: 2022-09-25T16:37:02-04:00
 lastmod: 2022-09-25T16:37:02-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
     parent: "class-3"
     identifier: "intro-to-opencv"
-weight: 410
+weight: 320
 toc: true
 ---
 

@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-09-25T13:57:20-04:00
 lastmod: 2022-09-25T13:57:20-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -110,6 +110,8 @@ void ofApp::draw()
 }
 ```
 
+Note that we call the [`ofVideoGrabber::update()`](https://openframeworks.cc/documentation/video/ofVideoGrabber/#!show_update) function every frame. This method checks if there's a new video frame available and if so, refreshes the grabber to make it available.
+
 We will use an [`ofImage`](https://openframeworks.cc/documentation/graphics/ofImage/) to store our thresholded image. Let's start with a stub procedure that just copies the video pixels into the image one at a time.
 
 ```cpp
@@ -165,24 +167,24 @@ void ofApp::draw()
 {{< alert context="danger" icon="⚠️" >}}
 Why is the drawn image not updating?
 
-An `ofImage` is made up of two parts: [`ofPixels`](https://openframeworks.cc/documentation/graphics/ofPixels/), which is the data component of the image (on the CPU), and [`ofTexture`](https://openframeworks.cc/documentation/gl/ofTexture/), which is the graphics component of the image (on the GPU). For an image to get drawn to the screen, the data in `ofPixels` must be copied over to the `ofTexture`.
+Remember that an `ofImage` is made up of two parts: [`ofPixels`](https://openframeworks.cc/documentation/graphics/ofPixels/), which is the data component of the image (on the CPU), and [`ofTexture`](https://openframeworks.cc/documentation/gl/ofTexture/), which is the graphics component of the image (on the GPU). For an image to get drawn to the screen, the data in `ofPixels` must be copied over to the `ofTexture`.
 
-When manipulating pixels directly as we are doing, this process needs to be triggered manually by calling [`ofImage.update()`](https://openframeworks.cc/documentation/graphics/ofImage/#show_update).
+When manipulating pixels directly as we are doing, this process needs to be triggered manually by calling [`ofImage::update()`](https://openframeworks.cc/documentation/graphics/ofImage/#show_update).
 {{< /alert >}}
 
 ### Pass by Reference vs. Pass by Value
 
-You'll notice that this still does not appear to be working even after adding the call to `ofImage.update()`.
+You'll notice that our drawn image is still not working even after adding the call to `ofImage::update()`.
 
-In C++, there are a few ways to pass data between objects and functions. You can pass data by reference, by value, or by pointer.
+In C++, there are a few ways to pass data (aka arguments or parameters) between objects and functions. We can pass data by reference, by value, or by pointer.
 
 * Pass by **reference** means that we are passing the actual data object itself. Any changes we make to the received object will be kept in the original reference, as it is the same object.
-* Pass by **value** means that we are just passing the value of the data, not the data object itself. This usually means making a copy of the original object and passing that copy. This does not make a difference when the data is a number (like an `int` or a `float`) but it does matter when the data is an object as any changes we make to the received object are only occurring on this new copied object.
+* Pass by **value** means that we are just passing the value of the data, not the data object itself. This means making a copy of the original object and passing that copy. This does not make a difference when the data is a number (like an `int` or a `float`) but it does matter when the data is an object, as any changes we make to the received object are only applied on this new copy object.
 * Pass by **pointer** means that we are passing the memory address of the data object. We will look at this later on in the course.
 
 By default, data is passed by **value** in C++.
 
-In our app, the line `ofPixels resultPix = resultImg.getPixels();` creates a copy of the image pixels and stores it in `resultPix`. Any changes we make to `resultPix` are changes made on the copy and not on the `ofPixels` belonging to `resultImg`.
+In our app, the line `ofPixels resultPix = resultImg.getPixels();` creates a copy of the image pixels and stores it in `resultPix`. Any changes we make to `resultPix` are changes made on the copy and not on the `ofPixels` belonging to `resultImg`. This is why we are not seeing the image get updated.
 
 One way to resolve this would be to save back the modified pixels to `resultImg` at the end of the loop:
 
@@ -190,7 +192,33 @@ One way to resolve this would be to save back the modified pixels to `resultImg`
 resultImg.setFromPixels(resultPix);
 ```
 
-Our code finally works, however it is highly unoptimized as we are now making two additional copies of our pixel array every frame.
+Our code finally works! However it is highly unoptimized as we are now making two additional copies of our pixel array every frame.
+
+```cpp
+// ofApp.cpp
+
+// ...
+
+void ofApp::update()
+{
+  grabber.update();
+
+  ofPixels grabberPix = grabber.getPixels();
+  ofPixels resultPix = resultImg.getPixels();  // COPY!
+  for (int y = 0; y < grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x < grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor);
+    }
+  }
+
+  resultImg.setFromPixels(resultPix);  // COPY!
+}
+
+// ...
+```
 
 A better approach is to pass the original pixels by reference using the `&` operator. The reference `ofPixels` from the `ofImage` are then modified directly. We can even go ahead and pass the grabber pixels by reference and avoid making a copy there too.
 
@@ -219,6 +247,7 @@ void ofApp::update()
       resultPix.setColor(x, y, pixColor);
     }
   }
+
   // Update the internal texture (GPU) with the new pixel data.
   resultImg.update();
 }
@@ -239,7 +268,7 @@ negCol.g = 255 - pixCol.g;
 negCol.b = 255 - pixCol.b;
 ```
 
-`ofColor` has an [`ofColor.invert()`](https://openframeworks.cc/documentation/types/ofColor/#show_invert) method which does this for us.
+`ofColor` has an [`ofColor::invert()`](https://openframeworks.cc/documentation/types/ofColor/#show_invert) method which does this for us.
 
 ```cpp
 // ofApp.cpp
@@ -260,6 +289,63 @@ void ofApp::update()
     {
       ofColor pixColor = grabberPix.getColor(x, y);
       resultPix.setColor(x, y, pixColor.invert());
+    }
+  }
+  // Update the internal texture (GPU) with the new pixel data.
+  resultImg.update();
+}
+
+// ...
+```
+
+{{< /details >}}
+
+{{< details "How would we set the result image to create a gray tone effect?<p></p><div style='text-align:center;margin:auto;'><img src='video-gray.png'></div>" >}}
+
+We have a few options that could work. In all cases, we need to convert the image from the 3 RGB channels into a single channel value.
+
+* We could use the max value, called the *brightness*.
+
+```cpp
+unsigned char gray = max(pixColor.r, max(pixColor.g, pixColor.b));
+```
+
+* We could use the average value, called the *lightness*.
+
+```cpp
+unsigned char gray = (pixColor.r + pixColor.g + pixColor.b) / 3;
+```
+
+* We could calculate a weighted average, called the *luminance*. The following formula takes into account human eye perception, which is more sensitive to green.
+
+```cpp
+unsigned char gray = 0.21 * pixColor.r + 0.71 * pixColor.g + 0.07 * pixColor.b;
+```
+
+`ofColor` has [`ofColor::getBrightness()`](https://openframeworks.cc/documentation/types/ofColor/#show_getBrightness) and [`ofColor::getLightness()`](https://openframeworks.cc/documentation/types/ofColor/#show_getLightness) methods which can help.
+
+```cpp
+// ofApp.cpp
+#include "ofApp.h"
+
+// ...
+
+void ofApp::update()
+{
+  grabber.update();
+
+  // Use a reference to the ofPixels in both the grabber and the image.
+  ofPixels& grabberPix = grabber.getPixels();
+  ofPixels& resultPix = resultImg.getPixels();
+  for (int y = 0; y < grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x < grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor.getLightness());
+
+      //unsigned char gray = 0.21 * pixColor.r + 0.71 * pixColor.g + 0.07 * pixColor.b; 
+      //resultPix.setColor(x, y, gray);
     }
   }
   // Update the internal texture (GPU) with the new pixel data.
@@ -410,9 +496,15 @@ When we regenerate our project files, we will now have access to all the `ofxGui
 
 For this example, we will use [`ofxPanel`](https://openframeworks.cc/documentation/ofxGui/ofxPanel/), which is simply a container that can hold other GUI controls like buttons and sliders.
 
+`ofxGui` cannot use data types like `int`, `float`, `string` directly, because it needs additional information like a name, a range, etc.
+
+One option is to use special classes that are part of `ofxGui` like `ofxIntSlider`, `ofxColorSlider`, `ofxButton`, etc. The example `examples\gui\guiExample` demonstrates how to do this.
+
 ### ofParameter
 
-[`ofParameter`](https://openframeworks.cc/documentation/types/ofParameter/) is a **wrapper** class that is used to give other data types super powers. For example:
+Another option is to use a special OF class called [`ofParameter`](https://openframeworks.cc/documentation/types/ofParameter/). This is more useful because `ofParameter` objects have similar properties and can be used outside of `ofxGui`.
+
+`ofParameter` is a **wrapper** class that is used to give other data types super powers. For example:
 
 * Min and max values can be defined and the value will always stay within that range.
 * A notification gets triggered whenever the value is changed. This is especially useful for GUIs where we need to respond right away when a variable changes.
@@ -518,7 +610,7 @@ Background subtraction is a segmentation technique where the background pixels o
 
 This varies depending on the type of sensor used, the environment, and the application.
 
-When using a depth sensor, we can actually use a pixel's distance from the camera to determine if it's in the background or not. In general for 2D video, a background pixel is one that is considered stable, i.e. that does not change its value much or at all.
+When using a depth sensor, we can actually use a pixel's distance from the camera to determine if it's in the background or not. In general for 2D video, a background pixel is one that is considered *stable*, i.e. that does not change its value much or at all.
 {{< /alert >}}
 
 Background subtraction requires that we have a background frame as a reference. We can do this by saving a video frame in memory, and comparing future frames to it in our `update()` loop.
@@ -633,8 +725,11 @@ Infrared USB cameras can be hard to come by.
 
 * One option is to get a depth sensor like an [Intel RealSense](https://www.intelrealsense.com/). Most of these also include an IR light emitter, which means it will always have enough light to work properly.
 * Another popular option is to "hack" regular color cameras by adding a piece of processed film in front of the lens (which acts as an IR filter). There are a few [tutorials](https://www.instructables.com/id/Infrared-IR-Webcam/) on Instructables for doing this. A popular device for this hack is the [PS3 Eye](http://wiki.lofarolabs.com/index.php/Removing_the_IR_Filter_from_the_PS3_Eye_Camera) camera.
-* Finally, you can opt for [security cameras](https://duckduckgo.com/?q=security+camera&t=ffab&iax=images&ia=images). These tend to have emitters around the lens to ensure there is enough light for the sensor. However, the quality is not great and they usually do not have USB connectivity and will require an adapter.
+* Finally, we can opt for [security cameras](https://duckduckgo.com/?q=security+camera&t=ffab&iax=images&ia=images). These tend to have emitters around the lens to ensure there is enough light for the sensor. However, the quality is not great and they usually do not have USB connectivity and will require an adapter.
 
 Thermographic cameras, commonly known as FLIR, can be an interesting option. These infrared cameras sense radiation/heat and represent it as a color map. This can be very useful for tracking humans or animals as they can easily be segmented from their surroundings.
 
-{{< image src="TK_Dog.0.jpg" alt="FLIR Scout TK" caption="[*FLIR Scout TK*](https://www.theverge.com/2016/1/6/10727126/flir-scout-tk-hands-on-video-ces-2016)" width="600px" >}}
+<figure style="width:600px;display:block;margin:0 auto;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5gqVf_rLfn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<figcaption><i><a href="https://www.youtube.com/embed/5gqVf_rLfn4">AGGRO DR1FT Teaser Trailer #1</a></i></figcaption>
+</figure>

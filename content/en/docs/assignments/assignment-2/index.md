@@ -3,7 +3,7 @@ title: "Assignment 2"
 description: ""
 date: 2022-09-19T08:43:20-04:00
 lastmod: 2022-09-19T08:43:20-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -63,7 +63,7 @@ If you are looking for an additional challenge, try adding the following extra f
 
 * **OPTIONAL** In true ITP fashion, you can make a blog post about your project. If you do, please send me the link!
 
-* Post your project link to the `#assignments` channel on our Discord server. Do not send it by email. Do not send it as a DM.
+* Post your project link to the `#assignments-23` channel on our Discord server. Do not send it by email. Do not send it as a DM.
 
   * Attach the packaged ZIP to your message.
   * If that does not work, upload it to Google Drive and send the link.
