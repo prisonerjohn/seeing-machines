@@ -136,7 +136,7 @@ Come to class with a working project on a working computer, and be prepared to t
 
 Thank you!
 
-<!-- ## Solution
+## Solution
 
 Here are example projects for a [basic solution](sm01-ElieZananiri-basic.zip) and a [fancy solution](sm01-ElieZananiri-fancy.zip) (with all the bonus features).
 
@@ -144,5 +144,3 @@ A few things to watch out for:
 
 * While iterating through the pixels, we do not want to read values from the same array we are writing to. If we do this, we will be reading values that we are modifying and will get unexpected results.
 * When counting neighbors, we want to make sure to skip the current pixel. We need to look at the 8 surrounding pixels only.
-
--->

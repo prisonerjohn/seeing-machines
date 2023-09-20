@@ -8,9 +8,9 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "class-3"
+    parent: "class-4"
     identifier: "intro-to-opencv"
-weight: 320
+weight: 410
 toc: true
 ---
 
