@@ -4,11 +4,11 @@ description: ""
 lead: ""
 date: 2022-10-07T11:52:44-04:00
 lastmod: 2022-10-07T11:52:44-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-4"
+    parent: "class-5"
     identifier: "logging"
 weight: 510
 toc: true
