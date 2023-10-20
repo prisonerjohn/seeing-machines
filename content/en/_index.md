@@ -77,7 +77,7 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Sep 26   | [Intro to OpenCV]({{< relref "docs/class-4/intro-to-opencv" >}})<br/>[Object Tracking]({{< relref "docs/class-4/object-tracking" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+26+2023+%5BAUDIO%5D/1_sox63xcv)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+26+2023+%5BVIDEO%5D/1_rtdaqefg) |
 | Oct 3    | [Logging]({{< relref "docs/class-5/logging" >}})<br />[Depth Sensing]({{< relref "docs/class-5/depth-sensing" >}}) | Assignment 2 DUE<br/>[Assignment 3 OUT]({{< relref "docs/assignments/assignment-3" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2023+%5BAUDIO%5D/1_3ho6hbsv)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2023+%5BVIDEO%5D/1_5hsuoian) |
 | Oct 10   | <div class="blink">NO CLASS</div> | | |
-| Oct 17   | Pointers<br/>Depth Images |  | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BAUDIO%5D/1_2mi99aix)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BVIDEO%5D/1_258vzzxa) |
+| Oct 17   | [Pointers]({{< relref "docs/class-6/pointers" >}})<br/>[Depth Images]({{< relref "docs/class-6/depth-images" >}}) |  | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BAUDIO%5D/1_2mi99aix)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BVIDEO%5D/1_258vzzxa) |
 | Oct 24   | Depth World | Assignment 3 DUE |  |
 | Oct 31   | Networking<br/>Texture Sharing | Assignment 4 OUT |  |
 | Nov 7    | Draw Bounds<br/>Frame Buffers | |  |

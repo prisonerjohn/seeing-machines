@@ -4,17 +4,17 @@ description: ""
 lead: ""
 date: 2022-10-23T14:19:26-04:00
 lastmod: 2022-10-23T14:19:26-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-5"
+    parent: "class-6"
     identifier: "pointers"
 weight: 610
 toc: true
 ---
 
-So far in this course, every time we have wanted to reference some data, we have done so directly using variables.
+So far in this course, every time we have wanted to reference some data, we have done so directly using type variables.
 
 ```cpp
 ofImage dogImg;
@@ -52,7 +52,7 @@ ofImage * dogImgPtr; // OK
 
 {{< /alert >}}
 
-Reference variables are automatically allocated and created as soon as they are declared. All variables we have put in our `ofApp` header so far have been created right as the program started running.
+Reference variables are automatically allocated and created as soon as they are declared. All variables we have put in our `ofApp` header so far have been created right as the program started running. There is no need to call constructors explicitly, they are called automatically.
 
 Pointers on the other hand are not automatically created. They must be explicitly *instantiated* using the `new` operator.
 
@@ -205,6 +205,53 @@ void ofApp::draw()
   resultImg.draw(640, 0, 640, 480);
 }
 ```
+
+{{< alert context="info" icon="✌️" >}}
+**Party Trick**
+
+An array element reference `resultData[i]` simply adds the index `i` to the array's memory address `resultData`. If, for example, `resultData` was at address `3030`, then `resultData[2]` would point to the address `3032`.
+
+This means that `resultData[i]` and `i[resultData]` resolve to the same value!
+
+```cpp
+// ofApp.cpp
+#include "ofApp.h"
+
+// ...
+
+void ofApp::update()
+{
+  grabber.update();
+
+  int threshold = 127;
+
+  unsigned char* grabberData = grabber.getPixels().getData();
+  unsigned char* resultData = resultImg.getPixels().getData();
+  for (int i = 0; i < grabber.getWidth() * grabber.getHeight(); i++)
+  {
+    int r = grabberData[i * 3 + 0];
+    int g = grabberData[i * 3 + 1];
+    int b = grabberData[i * 3 + 2];
+
+    if (r > threshold && g > threshold && b > threshold)
+    {
+      i[resultData] = 255;
+    }
+    else
+    {
+      i[resultData] = 0;
+    }
+  }
+
+  resultImg.update();
+}
+
+// ...
+```
+
+Note that this notation is confusing and bad practice. Only use this fun fact to impress your friends at parties, and do not write code like this in production!
+
+{{< /alert >}}
 
 ## Pros
 

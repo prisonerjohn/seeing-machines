@@ -4,11 +4,11 @@ description: ""
 lead: ""
 date: 2022-10-23T14:19:40-04:00
 lastmod: 2022-10-23T14:19:40-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-5"
+    parent: "class-6"
     identifier: "depth-images"
 weight: 620
 toc: true
@@ -35,9 +35,9 @@ We fortunately will not have to implement this ourselves. In the same way that `
 [`ofxRealSense2`](https://gitlab.com/prisonerjohn/ofxrealsense2/) is a good choice for the Intel RealSense, as it gives us both pixel and texture access, as well as control over many of the SDK's filtering options.
 
 {{< alert context="danger" icon="⚠️" >}}
-Unfortunately, there seems to be an [incompatibility with the Intel RealSense and macOS Monterey](https://support.intelrealsense.com/hc/en-us/community/posts/4548413451539-Activating-the-realsense-D435-Depth-Camera-in-MacOs) related to permissions. You may be unable to run the following code if you are using this operating system.
+Unfortunately, there seems to be an [incompatibility with the Intel RealSense and macOS Monterey](https://support.intelrealsense.com/hc/en-us/community/posts/4548413451539-Activating-the-realsense-D435-Depth-Camera-in-MacOs) (and later) related to permissions. You may be unable to run the following code if you are using this operating system.
 
-I am actively looking for solutions and will let the class know once I have more information.
+I am actively looking for solutions and will let the class know once I have more information. This [blog post](https://lightbuzz.com/realsense-macos/) has potential solutions.
 {{< /alert >}}
 
 ```cpp
@@ -178,7 +178,7 @@ void ofApp::draw()
 
 Note that we are getting an `ofColor` from the depth pixels, and reading the red channel with `ofColor.r` to get the depth value. We could use any of the red, green, blue channels here; as our data is in a single grayscale channel, all the colors represent the same value.
 
-The Intel RealSense raw image tends to be very noisy, and needs some filtering to clean it up and make it usable. The SDK includes many options for filtering and these are available in the addon. To use them with `ofxGui`, we just need to add the `ofxRealSense2::Device.params` object to the `ofxPanel`.
+The Intel RealSense raw image tends to be very noisy, and needs some filtering to clean it up and make it usable. The SDK includes many options for filtering and these are available in the addon. To use them with `ofxGui`, we just need to add the `ofxRealSense2::Device::params` object to the `ofxPanel`.
 
 ```cpp
 // ofApp.h
@@ -302,7 +302,7 @@ void ofApp::draw()
 
 ### Microsoft Kinect V2
 
-[`ofxKinectForWindows2`](https://github.com/elliotwoods/ofxKinectForWindows2) is a good choice for the Kinect V2. It works with the [Microsoft Kinect for Windows 2.0 SDK], which means it supports all Kinect features (including body tracking). However, note that this only works on Windows!
+[`ofxKinectForWindows2`](https://github.com/elliotwoods/ofxKinectForWindows2) is a good choice for the Kinect V2. It works with the [Microsoft Kinect for Windows 2.0 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=44561), which means it supports all Kinect features (including body tracking). However, note that this only works on Windows!
 
 `ofxKinectForWindows2` does not include a function to get distance from a coordinate, so we will need to sample the depth texture directly.
 
@@ -423,8 +423,8 @@ void ofApp::draw()
 
 Some notes to consider:
 
-* The device is configured using a settings object of type `ofxKinectV2::Settings`. This is a common pattern in openFrameworks we will encounter again.
-* `ofxKinectV2` does not provide textures for the data, so we need to use our own and load it with pixel data in `update()`. We use `isFrameNew()` to check if there is new data to upload on each frame.
+* The device is configured using a settings object of type `ofxKinectV2::Settings`. This is a common pattern in openFrameworks that we will encounter again.
+* `ofxKinectV2` does not provide textures for the data, only pixels. We need to use our own texture and load it with pixel data in `update()`. We use `isFrameNew()` to check if there is new data to upload on each frame.
 * The SDK function `getDistanceAt()` returns the distance in meters but the raw pixel data returns the data in millimeters. The depth data is also using `float` pixels instead of the more common `short`.
 
 {{< alert context="info" icon="✌️" >}}
