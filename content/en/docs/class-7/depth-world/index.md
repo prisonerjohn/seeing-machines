@@ -4,11 +4,11 @@ description: ""
 lead: ""
 date: 2022-10-27T19:16:21-04:00
 lastmod: 2022-10-27T19:16:21-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-6"
+    parent: "class-7"
     identifier: "depth-world"
 weight: 710
 toc: true
@@ -405,6 +405,8 @@ void ofApp::draw()
 
 If we assign each vertex a color, we can see how that gets rendered across the geometry.
 
+{{< details "Use <a href=\"https://openframeworks.cc/documentation/3d/ofMesh/#show_addColor\"><code>ofMesh::addColor()</code></a> to add a color attribute to each vertex in our quad mesh." >}}
+
 ```cpp
 // ofApp.cpp
 #include "ofApp.h"
@@ -453,6 +455,8 @@ void ofApp::draw()
 }
 ```
 
+{{< /details >}}
+
 Even though we only have four vertices and four colors, the entire window has color across it. When using topology `OF_PRIMITIVE_TRIANGLES`, the entire shape of the triangle is filled in, so the renderer calculates the color for each pixel on screen by mixing the vertex colors together. This is called *interpolation*.
 
 {{< image src="quad-colors.png" alt="Quad Colors" caption="*Quad Colors*" width="600px" >}}
@@ -484,8 +488,6 @@ public:
   ofVideoGrabber grabber;
 
   ofMesh quadMesh;
-
-  ofEasyCam cam;
 
   ofParameter<bool> drawWireframe;
 
@@ -568,7 +570,9 @@ The last example does essentially what `ofVideoGrabber.draw()` does:
 
 If we change our mesh topology to `OF_PRIMITIVE_POINTS`, this will draw points at each vertex position without interpolating in the space between them.
 
-If we want to add more resolution, we need more points. Let's update our mesh to add a vertex for every pixel.
+If we want to add more resolution, we need more points.
+
+{{< details "Update the mesh to render points, and add a vertex for every pixel." >}}
 
 ```cpp
 // ofApp.h
@@ -637,7 +641,9 @@ void ofApp::draw()
 
 This still looks almost identical because we're drawing a point at every pixel position, essentially leaving no gaps.
 
-Let's add a skip parameter to modify the distance between points.
+{{< /details >}}
+
+{{< details "Add a skip parameter to modify the distance between points." >}}
 
 ```cpp
 // ofApp.h
@@ -711,6 +717,8 @@ void ofApp::draw()
   guiPanel.draw();
 }
 ```
+
+{{< /details >}}
 
 Instead of setting the `z` position of each vertex to `0`, we can use some meaningful data. Let's switch input from `ofVideoGrabber` to a depth camera, and use the depth data from our sensor!
 
@@ -946,6 +954,9 @@ void ofApp::update()
     // Align the frames to the color viewport.
     rsDevice->alignMode = ofxRealSense2::Device::Align::Color;
 
+    // Enable world point calculation.
+    rsDevice->enablePoints();
+
     ofShortPixels rawDepthPix = rsDevice->getRawDepthPix();
 
     // Rebuild the mesh.
@@ -955,7 +966,6 @@ void ofApp::update()
     {
       for (int x = 0; x < rsDevice->getRawDepthTex().getWidth(); x += skipPoints)
       {
-        int depth = rawDepthPix.getColor(x, y).r;
         pointMesh.addVertex(rsDevice->getWorldPosition(x, y));
         pointMesh.addTexCoord(glm::vec2(x, y));
       }
