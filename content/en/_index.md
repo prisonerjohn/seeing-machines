@@ -78,13 +78,13 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Oct 3    | [Logging]({{< relref "docs/class-5/logging" >}})<br />[Depth Sensing]({{< relref "docs/class-5/depth-sensing" >}}) | Assignment 2 DUE<br/>[Assignment 3 OUT]({{< relref "docs/assignments/assignment-3" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2023+%5BAUDIO%5D/1_3ho6hbsv)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2023+%5BVIDEO%5D/1_5hsuoian) |
 | Oct 10   | <div class="blink">NO CLASS</div> | | |
 | Oct 17   | [Pointers]({{< relref "docs/class-6/pointers" >}})<br/>[Depth Images]({{< relref "docs/class-6/depth-images" >}}) |  | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BAUDIO%5D/1_2mi99aix)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BVIDEO%5D/1_258vzzxa) |
-| Oct 24   | [Depth World]({{< relref "docs/class-7/depth-world" >}}) | Assignment 3 DUE |  |
-| Oct 31   | Networking<br/>Texture Sharing | Assignment 4 OUT |  |
+| Oct 24   | [Depth World]({{< relref "docs/class-7/depth-world" >}}) | Assignment 3 DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2023+%5BAUDIO%5D/1_mrkr0e6c)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2023+%5BVIDEO%5D/1_axlikaow) |
+| Oct 31   | [Networking]({{< relref "docs/class-8/networking" >}})<br/>[Texture Sharing]({{< relref "docs/class-8/texture-sharing" >}}) | [Assignment 4 OUT]({{< relref "docs/assignments/assignment-4" >}}) |  |
 | Nov 7    | Draw Bounds<br/>Frame Buffers | |  |
 | Nov 14   | Classes<br/>Mobile Development | Assignment 4 DUE<br/>Final Project OUT |  |
 | Nov 21   | Project Proposals<br/>Machine Learning | Project Proposal DUE |  |
-| Nov 28   | Milestone Check-In<br/>TBD | | |
-| Dec 5    | Milestone Check-In<br/>Mapping | | |
+| Nov 28   | Milestone Check-In<br/>Mapping | | |
+| Dec 5    | Milestone Check-In<br/>TBD | | |
 | Dec 12   | Final Presentations | Final Project DUE | |
 
 ## Academic Integrity

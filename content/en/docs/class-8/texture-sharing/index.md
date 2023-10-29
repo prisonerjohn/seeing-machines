@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-11-04T15:46:35-04:00
 lastmod: 2022-11-04T15:46:35-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -31,7 +31,7 @@ Texture sharing is often required for building interactive installations, and th
 
 ## Syphon
 
-[Syphon](http://syphon.v002.info/) is a macOS technology that allows applications to share frames in real-time. It does this by sharing texture memory avoiding unnecessary copies, and keeping data on the GPU as much as possible.
+[Syphon](https://syphon.github.io/) is a macOS technology that allows applications to share frames in real-time. It does this by sharing texture memory avoiding unnecessary copies, and keeping data on the GPU as much as possible.
 
 Syphon has plug-ins available for a multitude of platforms including [openFrameworks](https://github.com/astellato/ofxSyphon), [Processing](https://github.com/Syphon/Processing), [Unity](https://github.com/keijiro/KlakSyphon), [Jitter](https://github.com/Syphon/Jitter/releases/), [VDMX](https://vidvox.net/), [MadMapper](https://madmapper.com/), etc. It is an open-source project, which makes it easy for anyone to build their own bindings to Syphon, and this is why the list of supported applications keeps growing.
 
@@ -444,7 +444,7 @@ void ofApp::serverIndexChanged(int& val)
 
 Similarly to Syphon, Spout already has plug-ins available for a multitude of platforms, and being open-source, allows any developer to write their own Spout interface for any tool they choose.
 
-We will use the [ofxSpout](https://github.com/prisonerjohn/ofxSpout) addon for openFrameworks. Note that if using the `master` branch, we will also need to download and install the [Spout SDK](http://spout.zeal.co/download-spout/).
+We will use the [ofxSpout](https://github.com/prisonerjohn/ofxSpout/tree/feature/upgrade-2.007h) addon for openFrameworks. Make sure to use the `upgrade-2.007h` branch of the addon.
 
 ### Sender
 
@@ -456,12 +456,10 @@ The following app is a similar thresholding app with two senders.
 // ofApp.h
 #pragma once
 
+#include "ofMain.h"
+
 #include "ofxGui.h"
 #include "ofxSpout.h"
-
-// Note that we include ofMain.h after ofxSpout.h 
-// to properly resolve references to "byte".
-#include "ofMain.h"
 
 class ofApp : public ofBaseApp
 {
@@ -575,12 +573,10 @@ The following app holds two receivers corresponding to the two senders from abov
 // ofApp.h
 #pragma once
 
+#include "ofMain.h"
+
 #include "ofxGui.h"
 #include "ofxSpout.h"
-
-// Note that we include ofMain.h after ofxSpout.h 
-// to properly resolve references to "byte".
-#include "ofMain.h"
 
 class ofApp : public ofBaseApp
 {
@@ -664,17 +660,6 @@ void ofApp::keyPressed(int key)
 }
 ```
 
-{{< alert context="info" icon="✌️" >}}
-**Including `ofMain.h`**
-
-The latest version of OF uses a newer C++ standard called `C++17`. This causes some examples to break on Windows because C++ now has two definitions for the `byte` type, one in the Windows SDK and the other in the standard library `std`. The issue is that `ofMain.h` includes `using namespace std;` directive, and the compiler cannot determine if we are trying to use `byte` or `std::byte` anymore.
-
-The solution to this is simple:
-
-* Delete `#include "ofMain.h"` from the `main.cpp` file.
-* Move `#include "ofMain.h"` below the other addon includes in the `ofApp.h` file (as we are doing in the examples above).
-{{< /alert >}}
-
 ## NDI
 
 Syphon and Spout are great for sharing images between applications, but they are limited to a single machine. We sometimes need to share images between different machines and that's where NDI comes in!
@@ -698,10 +683,10 @@ The following app only has a single `ofxNDIsender`, and switches between texture
 // ofApp.h
 #pragma once
 
+#include "ofMain.h"
+
 #include "ofxGui.h"
 #include "ofxNDI.h"
-
-#include "ofMain.h"
 
 class ofApp : public ofBaseApp
 {
@@ -809,10 +794,10 @@ Because we only have a single sender, the receiver is simplified as a single `of
 // ofApp.h
 #pragma once
 
+#include "ofMain.h"
+
 #include "ofxGui.h"
 #include "ofxNDI.h"
-
-#include "ofMain.h"
 
 class ofApp : public ofBaseApp
 {
