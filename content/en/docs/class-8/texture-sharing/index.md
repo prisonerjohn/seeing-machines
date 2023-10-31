@@ -666,14 +666,13 @@ Syphon and Spout are great for sharing images between applications, but they are
 
 [NDI](https://www.ndi.tv/) is a high performance standard for video over IP. This means that it can be used to send images over the network with very low latency. The SDK is compatible with Windows, Mac, Linux, and even iOS and Android making it truly versatile.
 
-Depending on the addon we use, installing the NDI SDK is not necessary, but if we do, NDI will also advertise itself as a webcam. This means we could use an `ofVideoGrabber` as an NDI client directly in OF, we just need to select the device called "NewTek NDI Video".
+There are many options for using NDI under openFrameworks (see [here](https://github.com/thomasgeissl/ofxNDI), [here](https://github.com/leadedge/ofxNDI), and [here](https://github.com/nariakiiwatani/ofxNDI)), and you may want to try different ones to see if any suits your needs more than another.
 
-While there are many options for using NDI under openFrameworks (see [here](https://github.com/thomasgeissl/ofxNDI), [here](https://github.com/leadedge/ofxNDI), and [here](https://github.com/nariakiiwatani/ofxNDI)), I have not been able to find a fully working addon for Mac and Windows.
+[ofxNDI](https://github.com/leadedge/ofxNDI) by Lynn Jarvis is my preferred choice at the moment, but requires a manual installation of the NDI SDK on the machine (after registration on the [NDI website](https://www.ndi.tv/)).
 
-[ofxNDI](https://github.com/leadedge/ofxNDI) by Lynn Jarvis seems to be the best choice at the moment, but has some limitations / extra steps:
+* On Mac, you will also need to install the NDI redistributable after installing the SDK. The installer will be located in `/Library/NDI SDK for Apple/redist/libNDI_for_Mac.pkg`.
 
-* The NDI SDK needs to be installed on the machine (after registration on the [NDI website]((https://www.ndi.tv/))).
-* The library needs to be manually added to each project on Mac.
+{{< image src="ndi-redistributable.png" alt="NDI Redistributable" caption="*NDI Redistributable*" width="600px" >}}
 
 ### Sender
 
@@ -840,9 +839,15 @@ void ofApp::draw()
 }
 ```
 
-If there is enough interest in the class to use NDI, I can try to update one of the addons to work across the board, just let me know!
-
 <figure style="width:600px;height:400px;display:block;margin:0 auto;">
 <video src="unity-vision.mp4" controls muted width="100%"></video>
 <figcaption><i>Unity Vision.</i></figcaption>
 </figure>
+
+## Webcam Sources
+
+All three of these frameworks have the option to advertise their shared texture as a webcam. This means that we could use the output from our OF app as an `ofVideoGrabber` or anywhere on the system where we would use a video input!
+
+* With Syphon, this is achieved with the [Syphon Virtual Webcam](https://github.com/TroikaTronix/Syphon-Virtual-Webcam) third party tool.
+* With Spout, the [SpoutCam](https://leadedge.github.io/) app can be run to set up the webcam stream.
+* With NDI, we would need to install the additional [NDI Tools](https://ndi.video/type/ndi-tools/) and run the [NDI Webcam](https://ndi.video/tools/ndi-webcam/) app from the suite.
