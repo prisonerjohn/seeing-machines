@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-11-04T15:46:22-04:00
 lastmod: 2022-11-04T15:46:22-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -23,7 +23,7 @@ grabber.setup(640, 480);
 
 This is convenient because window coordinates match pixel coordinates, and we can easily do things like sampling using the mouse position without too much trouble.
 
-However, it is also limiting as we can't define the window dimensions we want. We will usually want the video to take up the entire screen, especially for presentation purposes, so we need to get comfortable with image scaling.
+However, it is also limiting as we can't define the window dimensions we want. We will usually want the video to take up the entire screen, especially for exhibit purposes, so we need to get comfortable with image scaling.
 
 ## Scale and Aspect Ratio
 
