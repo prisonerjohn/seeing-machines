@@ -930,7 +930,7 @@ void ofApp::draw()
         device1->getPointsMesh().draw();
         device1->getColorTex().unbind();
       }
-    }	
+    }
     ofPopMatrix();
   }
   ofPopMatrix();
@@ -1198,7 +1198,7 @@ void ofApp::draw()
         device1->getPointsMesh().draw();
         device1->getColorTex().unbind();
       }
-    }	
+    }
     ofPopMatrix();
   }
   ofPopMatrix();
@@ -1470,7 +1470,7 @@ void ofApp::draw()
         device1->getPointsMesh().draw();
         device1->getColorTex().unbind();
       }
-    }	
+    }
     ofPopMatrix();
   }
   ofPopMatrix();
@@ -1559,7 +1559,7 @@ We use a pinhole camera model to calculate this projection. Using a perspective 
 [ofxKinectProjectorToolkit](https://github.com/prisonerjohn/ofxKinectProjectorToolkit/tree/develop) is one of the many addons available for OF to create a correspondence between the 3D world and a 2D projector.
 
 * This addon was originally written by Gene Kogan but it's a little out of date. The link above is my updated version which should get you started faster.
-* As the name implies, this addon is meant to work with the Kinect sensor. However, the calibration functions are sensor-agnostic. You just need to provide point pairs and it does the rest. 
+* As the name implies, this addon is meant to work with the Kinect sensor. However, the calibration functions are sensor-agnostic. You just need to provide point pairs and it does the rest.
 * That being said, some sensors will provide better data than others. For example, a stereo sensor like the RealSense will have very noisy depth data which will need to be filtered before it can be useful.
 
 We will also use a chessboard pattern and the [`cv::findChessboardCorners()`](https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html#ga93efa9b0aa890de240ca32b11253dd4a) function. However, because one of our spaces is the projector and the other (the camera) is capturing this projector, we will render a digital chessboard out to the screen.

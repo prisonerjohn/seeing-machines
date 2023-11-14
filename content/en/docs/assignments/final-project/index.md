@@ -58,7 +58,7 @@ For all points above, pick the right tool for the job.
 
 You have 4 weeks to work on your project. You will need to present progress every week: a proposal, two milestones with updates and work in progress, and a final working project.
 
-#### Nov 21 / Project Proposal
+#### Nov 21 / Project Proposal {{< mdl-disable "<!-- markdownlint-disable MD001 -->" >}}
 
 * Present the idea.
   * What does it do?
