@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-11-20T17:10:27-05:00
 lastmod: 2022-11-20T17:10:27-05:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -56,9 +56,9 @@ For all points above, pick the right tool for the job.
 
 ## Schedule
 
-You have 3 weeks to work on your project. You will need to present progress every week: a proposal, a milestone with updates and work in progress, a final working project.
+You have 4 weeks to work on your project. You will need to present progress every week: a proposal, two milestones with updates and work in progress, and a final working project.
 
-### Nov 28 / Project Proposal
+#### Nov 21 / Project Proposal
 
 * Present the idea.
   * What does it do?
@@ -72,10 +72,10 @@ You have 3 weeks to work on your project. You will need to present progress ever
 * Make a plan.
   * What research will you do?
   * What components will you prototype?
-  * What will you present for the milestone?
+  * What will you present for the milestones?
   * When and how will you combine work with your teammate (if any)?
 
-### Dec 5 / Milestone Check-in
+#### Nov 28 / Milestone Check-in
 
 * Progress update.
   * Did your scope change? If so, why?
@@ -86,7 +86,18 @@ You have 3 weeks to work on your project. You will need to present progress ever
   * Show working or failed prototypes.
   * Talk through problems faced and how you resolved them.
 
-### Dec 12 / Final Presentation
+#### Dec 5 / Milestone Check-in
+
+* Progress update.
+  * Did your scope change? If so, why?
+  * What did you do last week?
+  * Are you still on track?
+  * Do you need help with anything?
+* Prototype presentation.
+  * Show working or failed prototypes.
+  * Talk through problems faced and how you resolved them.
+
+#### Dec 12 / Final Presentation
 
 * Present the final project.
   * It needs to be set up and working!
@@ -104,7 +115,7 @@ You will need to submit your progress online.
 
 * Use a blog, GitHub Pages site, or something similar.
 * Post everything you will present in class every week.
-* Post the link in the `#assignments` channel on Discord!
+* Post the link in the `#assignments-23` channel on Discord!
 
 ### Code
 
