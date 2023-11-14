@@ -1,0 +1,1820 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-500.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=https://seeingmachines.betamovement.net/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script><link rel=stylesheet href=https://seeingmachines.betamovement.net/main.0a7a38b7125afe91c1cdef02f5175edc40a39ccea75903aa1cd7e55b505e4e4439b6e67005ab89b87bed57c04dd849e9fbb738e92ebca2c638187c93f8cc2fda.css integrity="sha512-Cno4txJa/pHBze8C9Rde3ECjnM6nWQOqHNflW1BeTkQ5tuZwBauJuHvtV8BN2Enp+7c46S68osY4GHyT+Mwv2g==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Mapping - Seeing Machines</title><meta name=description content="OpenCV includes many functions for calibrating and mapping points and images between different spaces.
+Homography # A homography is a transformation that reorients one image to match or fit inside another:
+The two images are usually two points of view of the same subject. Common features are found in both images and paired to make a data set. Feature Matching + Homography to find Objects The data set is then used with the cv::findHomography function, which returns a matrix that allows us to warp one image into the other."><link rel=canonical href=https://seeingmachines.betamovement.net/docs/class-10/mapping/><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Mapping"><meta property="og:description" content="OpenCV includes many functions for calibrating and mapping points and images between different spaces.
+Homography # A homography is a transformation that reorients one image to match or fit inside another:
+The two images are usually two points of view of the same subject. Common features are found in both images and paired to make a data set. Feature Matching + Homography to find Objects The data set is then used with the cv::findHomography function, which returns a matrix that allows us to warp one image into the other."><meta property="og:url" content="https://seeingmachines.betamovement.net/docs/class-10/mapping/"><meta property="og:site_name" content="Seeing Machines"><meta property="article:published_time" content="2022-11-28T14:33:17-05:00"><meta property="article:modified_time" content="2022-11-28T14:33:17-05:00"><meta property="og:image" content="https://seeingmachines.betamovement.net/default-image.png"><meta property="og:image:alt" content="Seeing Machines"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content><meta name=twitter:creator content="@prisonerjohn"><meta name=twitter:title content="Mapping"><meta name=twitter:description content><meta name=twitter:image content="https://seeingmachines.betamovement.net/default-image.png"><meta name=twitter:image:alt content="Mapping"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/1","name":"Seeing Machines","url":"https://seeingmachines.betamovement.net/","sameAs":[],"image":{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/#/schema/image/1","url":"https://seeingmachines.betamovement.net/default-image.png","width":1024,"height":768,"caption":"Seeing Machines"}},{"@type":"WebSite","@id":"https://seeingmachines.betamovement.net/#/schema/website/1","url":"https://seeingmachines.betamovement.net/","name":"Seeing Machines","description":"A programming course where we’ll explore various techniques and solutions for tracking and sensing people or objects in space.","publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"}},{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/","url":"https://seeingmachines.betamovement.net/docs/class-10/mapping/","name":"Mapping","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/#/schema/website/1"},"about":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"datePublished":"2022-11-28T14:33:17CET","dateModified":"2022-11-28T14:33:17CET","breadcrumb":{"@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://seeingmachines.betamovement.net/docs/class-10/mapping/"]}]},{"@type":"BreadcrumbList","@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/","url":"https://seeingmachines.betamovement.net/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/","url":"https://seeingmachines.betamovement.net/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://seeingmachines.betamovement.net/docs/class-10/","url":"https://seeingmachines.betamovement.net/docs/class-10/","name":"Class 10"}},{"@type":"ListItem","position":4,"item":{"@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://seeingmachines.betamovement.net/#/schema/article/1","headline":"Mapping","description":"","isPartOf":{"@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/"},"mainEntityOfPage":{"@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/"},"datePublished":"2022-11-28T14:33:17CET","dateModified":"2022-11-28T14:33:17CET","author":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/2"},"publisher":{"@id":"https://seeingmachines.betamovement.net/#/schema/person/1"},"image":{"@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://seeingmachines.betamovement.net/#/schema/person/2","name":"Elie Zananiri","sameAs":["https://twitter.com/prisonerjohn","https://www.linkedin.com/in/prisonerjohn/","https://github.com/prisonerjohn"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://seeingmachines.betamovement.net/docs/class-10/mapping/#/schema/image/2","url":"https://seeingmachines.betamovement.net/default-image.png","contentUrl":"https://seeingmachines.betamovement.net/default-image.png","caption":"Mapping"}]}]}</script><meta name=theme-color content="#fff"><link rel=icon href=https://seeingmachines.betamovement.net/favicon.ico sizes=any><link rel=icon type=image/svg+xml href=https://seeingmachines.betamovement.net/favicon.svg><link rel=apple-touch-icon sizes=180x180 href=https://seeingmachines.betamovement.net/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://seeingmachines.betamovement.net/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=https://seeingmachines.betamovement.net/favicon-16x16.png><link rel=manifest crossorigin=use-credentials href=https://seeingmachines.betamovement.net/site.webmanifest></head><body class="docs single"><div class=sticky-top><div class=header-bar></div><header class="navbar navbar-expand-lg navbar-light doks-navbar"><nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation"><a class="navbar-brand order-0" href=https://seeingmachines.betamovement.net/ aria-label="Seeing Machines">Seeing Machines</a>
+<button class="btn btn-link order-0 ms-auto d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasExample aria-controls=offcanvasExample><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button><div class="offcanvas offcanvas-start d-lg-none" tabindex=-1 id=offcanvasExample aria-labelledby=offcanvasExampleLabel><div class=header-bar></div><div class=offcanvas-header><h5 class=offcanvas-title id=offcanvasExampleLabel>Browse docs</h5><button type=button class=btn-close data-bs-dismiss=offcanvas aria-label=Close></button></div><div class=offcanvas-body><aside class="doks-sidebar mt-n3"><nav id=doks-docs-nav aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=false>
+Class 3</button><div class=collapse id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e01cc216a97c1db953e2304e6aa8998a aria-expanded=false>
+Class 4</button><div class=collapse id=section-e01cc216a97c1db953e2304e6aa8998a><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/intro-to-opencv/>Intro to OpenCV</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/object-tracking/>Object Tracking</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cb8d2462ebd86364c3502e7084b7f391 aria-expanded=false>
+Class 5</button><div class=collapse id=section-cb8d2462ebd86364c3502e7084b7f391><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/logging/>Logging</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/depth-sensing/>Depth Sensing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c5400dee9e161c6d7e46af7661005794 aria-expanded=false>
+Class 6</button><div class=collapse id=section-c5400dee9e161c6d7e46af7661005794><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-6/pointers/>Pointers</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-6/depth-images/>Depth Images</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-ff9150b580f893ddadd43394cb6173a3 aria-expanded=false>
+Class 7</button><div class=collapse id=section-ff9150b580f893ddadd43394cb6173a3><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-7/depth-world/>Depth World</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c28d8545333b2785a226d11aa3b3b4ed aria-expanded=false>
+Class 8</button><div class=collapse id=section-c28d8545333b2785a226d11aa3b3b4ed><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-8/networking/>Networking</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-8/texture-sharing/>Texture Sharing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-0bbdd9311c2cb50588b0a462a5438610 aria-expanded=false>
+Class 9</button><div class=collapse id=section-0bbdd9311c2cb50588b0a462a5438610><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-9/draw-bounds/>Draw Bounds</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-9/frame-buffers/>Frame Buffers</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c75af093fd3f2e096e4fe21c7e51e7c7 aria-expanded=true>
+Class 10</button><div class="collapse show" id=section-c75af093fd3f2e096e4fe21c7e51e7c7><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-10/classes/>Classes</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-10/mapping/>Mapping</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-3/>Assignment 3</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-4/>Assignment 4</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/final-project/>Final Project</a></li></ul></div></li></ul></nav></aside></div></div><button class="btn btn-menu order-2 d-block d-lg-none" type=button data-bs-toggle=offcanvas data-bs-target=#offcanvasDoks aria-controls=offcanvasDoks aria-label="Open main menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button><div class="offcanvas offcanvas-end border-0 py-lg-1" tabindex=-1 id=offcanvasDoks data-bs-backdrop=true aria-labelledby=offcanvasDoksLabel><div class="header-bar d-lg-none"></div><div class="offcanvas-header d-lg-none"><h2 class="h5 offcanvas-title ps-2" id=offcanvasDoksLabel><a class=text-dark href=https://seeingmachines.betamovement.net/>Seeing Machines</a></h2><button type=button class="btn-close text-reset me-2" data-bs-dismiss=offcanvas aria-label="Close main menu"></button></div><div class="offcanvas-body p-4 p-lg-0"><ul class="nav flex-column flex-lg-row align-items-lg-center mt-2 mt-lg-0 ms-lg-2 me-lg-auto"><li class=nav-item><a class="nav-link ps-0 py-1 active" href=https://seeingmachines.betamovement.net/docs>Docs</a></li><li class=nav-item><a class="nav-link ps-0 py-1" href=https://seeingmachines.betamovement.net/docs/assignments>Assignments</a></li></ul><hr class="text-black-50 my-4 d-lg-none"><form class="doks-search position-relative flex-grow-1 ms-lg-auto me-lg-2"><input id=search class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off><div id=suggestions class="shadow bg-white rounded d-none"></div></form><hr class="text-black-50 my-4 d-lg-none"><ul class="nav flex-column flex-lg-row"><li class=nav-item><a class="nav-link social-link" href=https://github.com/prisonerjohn/seeing-machines><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><small class="ms-2 d-lg-none">GitHub</small></a></li><li class=nav-item><a class="nav-link social-link" href=https://twitter.com/prisonerjohn><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg><small class="ms-2 d-lg-none">Twitter</small></a></li></ul><hr class="text-black-50 my-4 d-lg-none"><button id=mode class="btn btn-link" type=button aria-label="Toggle user interface mode">
+<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button></div></div></nav></header></div><div class=container-xxl><aside class=doks-sidebar><nav id=doks-docs-nav class="collapse d-lg-none" aria-label="Tertiary navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=false>
+Class 3</button><div class=collapse id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e01cc216a97c1db953e2304e6aa8998a aria-expanded=false>
+Class 4</button><div class=collapse id=section-e01cc216a97c1db953e2304e6aa8998a><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/intro-to-opencv/>Intro to OpenCV</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/object-tracking/>Object Tracking</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cb8d2462ebd86364c3502e7084b7f391 aria-expanded=false>
+Class 5</button><div class=collapse id=section-cb8d2462ebd86364c3502e7084b7f391><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/logging/>Logging</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/depth-sensing/>Depth Sensing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c5400dee9e161c6d7e46af7661005794 aria-expanded=false>
+Class 6</button><div class=collapse id=section-c5400dee9e161c6d7e46af7661005794><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-6/pointers/>Pointers</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-6/depth-images/>Depth Images</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-ff9150b580f893ddadd43394cb6173a3 aria-expanded=false>
+Class 7</button><div class=collapse id=section-ff9150b580f893ddadd43394cb6173a3><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-7/depth-world/>Depth World</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c28d8545333b2785a226d11aa3b3b4ed aria-expanded=false>
+Class 8</button><div class=collapse id=section-c28d8545333b2785a226d11aa3b3b4ed><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-8/networking/>Networking</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-8/texture-sharing/>Texture Sharing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-0bbdd9311c2cb50588b0a462a5438610 aria-expanded=false>
+Class 9</button><div class=collapse id=section-0bbdd9311c2cb50588b0a462a5438610><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-9/draw-bounds/>Draw Bounds</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-9/frame-buffers/>Frame Buffers</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c75af093fd3f2e096e4fe21c7e51e7c7 aria-expanded=true>
+Class 10</button><div class="collapse show" id=section-c75af093fd3f2e096e4fe21c7e51e7c7><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-10/classes/>Classes</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-10/mapping/>Mapping</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-3/>Assignment 3</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-4/>Assignment 4</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/final-project/>Final Project</a></li></ul></div></li></ul></nav></aside></div><div class="wrap container-xxl" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block"><nav class=docs-links aria-label="Main navigation"><ul class="list-unstyled collapsible-sidebar"><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-5f2cae171c6192fa410df4385f7218aa aria-expanded=false>
+Prologue</button><div class=collapse id=section-5f2cae171c6192fa410df4385f7218aa><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-0/getting-started/>Getting Started</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e43c4a6cb52ad623673f8e77a5b10104 aria-expanded=false>
+Class 1</button><div class=collapse id=section-e43c4a6cb52ad623673f8e77a5b10104><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/foreword/>Foreword</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-1/intro-to-of/>Intro to OF</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-2ef5a7f02774e1be242988dba4c3056c aria-expanded=false>
+Class 2</button><div class=collapse id=section-2ef5a7f02774e1be242988dba4c3056c><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/data-types/>Data Types</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/arrays/>Arrays</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-2/images-and-video/>Images and Video</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-6a3be28bcd9707b6b8ff8ac55a6b8cb2 aria-expanded=false>
+Class 3</button><div class=collapse id=section-6a3be28bcd9707b6b8ff8ac55a6b8cb2><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-3/computer-vision/>Computer Vision</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-e01cc216a97c1db953e2304e6aa8998a aria-expanded=false>
+Class 4</button><div class=collapse id=section-e01cc216a97c1db953e2304e6aa8998a><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/intro-to-opencv/>Intro to OpenCV</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-4/object-tracking/>Object Tracking</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-cb8d2462ebd86364c3502e7084b7f391 aria-expanded=false>
+Class 5</button><div class=collapse id=section-cb8d2462ebd86364c3502e7084b7f391><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/logging/>Logging</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-5/depth-sensing/>Depth Sensing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c5400dee9e161c6d7e46af7661005794 aria-expanded=false>
+Class 6</button><div class=collapse id=section-c5400dee9e161c6d7e46af7661005794><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-6/pointers/>Pointers</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-6/depth-images/>Depth Images</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-ff9150b580f893ddadd43394cb6173a3 aria-expanded=false>
+Class 7</button><div class=collapse id=section-ff9150b580f893ddadd43394cb6173a3><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-7/depth-world/>Depth World</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c28d8545333b2785a226d11aa3b3b4ed aria-expanded=false>
+Class 8</button><div class=collapse id=section-c28d8545333b2785a226d11aa3b3b4ed><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-8/networking/>Networking</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-8/texture-sharing/>Texture Sharing</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-0bbdd9311c2cb50588b0a462a5438610 aria-expanded=false>
+Class 9</button><div class=collapse id=section-0bbdd9311c2cb50588b0a462a5438610><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-9/draw-bounds/>Draw Bounds</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-9/frame-buffers/>Frame Buffers</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-c75af093fd3f2e096e4fe21c7e51e7c7 aria-expanded=true>
+Class 10</button><div class="collapse show" id=section-c75af093fd3f2e096e4fe21c7e51e7c7><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/class-10/classes/>Classes</a></li><li><a class="docs-link rounded active" href=https://seeingmachines.betamovement.net/docs/class-10/mapping/>Mapping</a></li></ul></div></li><li class=mb-1><button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#section-56c4b82e7a8861de86a5ebe5eaa62225 aria-expanded=false>
+Assignments</button><div class=collapse id=section-56c4b82e7a8861de86a5ebe5eaa62225><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-1/>Assignment 1</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-2/>Assignment 2</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-3/>Assignment 3</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/assignment-4/>Assignment 4</a></li><li><a class="docs-link rounded" href=https://seeingmachines.betamovement.net/docs/assignments/final-project/>Final Project</a></li></ul></div></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#homography>Homography</a></li><li><a href=#combining-cameras>Combining Cameras</a><ul><li><a href=#affine-transform>Affine Transform</a></li><li><a href=#realsense-data>RealSense Data</a></li><li><a href=#opencv-chessboard-detection>OpenCV Chessboard Detection</a></li><li><a href=#opencv-calibration>OpenCV Calibration</a></li></ul></li><li><a href=#world-to-projector-mapping>World to Projector Mapping</a><ul><li><a href=#model-view-projection>Model View Projection</a></li><li><a href=#pinhole-camera-model>Pinhole Camera Model</a></li><li><a href=#ofxkinectprojectortoolkit>ofxKinectProjectorToolkit</a></li><li><a href=#projected-blobs>Projected Blobs</a></li></ul></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#homography>Homography</a></li><li><a href=#combining-cameras>Combining Cameras</a><ul><li><a href=#affine-transform>Affine Transform</a></li><li><a href=#realsense-data>RealSense Data</a></li><li><a href=#opencv-chessboard-detection>OpenCV Chessboard Detection</a></li><li><a href=#opencv-calibration>OpenCV Calibration</a></li></ul></li><li><a href=#world-to-projector-mapping>World to Projector Mapping</a><ul><li><a href=#model-view-projection>Model View Projection</a></li><li><a href=#pinhole-camera-model>Pinhole Camera Model</a></li><li><a href=#ofxkinectprojectortoolkit>ofxKinectProjectorToolkit</a></li><li><a href=#projected-blobs>Projected Blobs</a></li></ul></li></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>Mapping</h1><p class=lead></p><nav class=d-xl-none aria-label="Quaternary navigation"><div class=d-xl-none><button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type=button data-bs-toggle=collapse data-bs-target=#onThisPage aria-controls=doks-docs-nav aria-expanded=false aria-label="Toggle On this page navigation">
+<span>On this page</span>
+<span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg></span></button><div class=collapse id=onThisPage><div class="card card-body mt-3 py-1"><div class=page-links><nav id=TableOfContents><ul><li><a href=#homography>Homography</a></li><li><a href=#combining-cameras>Combining Cameras</a><ul><li><a href=#affine-transform>Affine Transform</a></li><li><a href=#realsense-data>RealSense Data</a></li><li><a href=#opencv-chessboard-detection>OpenCV Chessboard Detection</a></li><li><a href=#opencv-calibration>OpenCV Calibration</a></li></ul></li><li><a href=#world-to-projector-mapping>World to Projector Mapping</a><ul><li><a href=#model-view-projection>Model View Projection</a></li><li><a href=#pinhole-camera-model>Pinhole Camera Model</a></li><li><a href=#ofxkinectprojectortoolkit>ofxKinectProjectorToolkit</a></li><li><a href=#projected-blobs>Projected Blobs</a></li></ul></li></ul></nav></div></div></div></div><div class="page-links d-none d-xl-block"><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#homography>Homography</a></li><li><a href=#combining-cameras>Combining Cameras</a><ul><li><a href=#affine-transform>Affine Transform</a></li><li><a href=#realsense-data>RealSense Data</a></li><li><a href=#opencv-chessboard-detection>OpenCV Chessboard Detection</a></li><li><a href=#opencv-calibration>OpenCV Calibration</a></li></ul></li><li><a href=#world-to-projector-mapping>World to Projector Mapping</a><ul><li><a href=#model-view-projection>Model View Projection</a></li><li><a href=#pinhole-camera-model>Pinhole Camera Model</a></li><li><a href=#ofxkinectprojectortoolkit>ofxKinectProjectorToolkit</a></li><li><a href=#projected-blobs>Projected Blobs</a></li></ul></li></ul></nav></div></nav><p>OpenCV includes many functions for calibrating and mapping points and images between different spaces.</p><h2 id=homography>Homography <a href=#homography class=anchor aria-hidden=true>#</a></h2><p>A homography is a transformation that reorients one image to match or fit inside another:</p><ul><li>The two images are usually two points of view of the same subject.</li><li>Common features are found in both images and paired to make a data set.<figure style='display:block;margin:1em auto;width:600px'><a href=https://docs.opencv.org/3.0-beta/_images/homography_findobj.jpg><img style='display:block;margin:0 auto' src=https://docs.opencv.org/3.0-beta/_images/homography_findobj.jpg alt="Feature Matching + Homography to find Objects"></a><figcaption><a href=https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_feature_homography/py_feature_homography.html><em>Feature Matching + Homography to find Objects</em></a></figcaption></figure></li><li>The data set is then used with the <a href="https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html?highlight=findhomography#findhomography"><code>cv::findHomography</code></a> function, which returns a matrix that allows us to warp one image into the other.</li><li>We can then use this homography in <a href=https://docs.opencv.org/2.4/modules/imgproc/doc/geometric_transformations.html#warpperspective>cv::warpPerspective`</a>, which takes in an image and <em>warps</em> it to match the other&rsquo;s perspective.</li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=https://www.learnopencv.com/wp-content/uploads/2016/01/homography-example.jpg><img style='display:block;margin:0 auto' src=https://www.learnopencv.com/wp-content/uploads/2016/01/homography-example.jpg alt="Homography Examples using OpenCV"></a><figcaption><a href=https://www.learnopencv.com/homography-examples-using-opencv-python-c/><em>Homography Examples using OpenCV</em></a></figcaption></figure><p>This operation can have many uses, like perspective correction, embedding images into one another, or combining many to create large panoramas. The feature pairs can be manually or automatically selected, using OpenCV feature detectors.</p><figure style="width:600px;height:420px;display:block;margin:0 auto"><iframe width=600 height=375 src=https://www.youtube.com/embed/GH1p1HtNegY frameborder=0 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><figcaption><i>video panorama stitching with stabilizing homography estimation</i></figcaption></figure><p>Let&rsquo;s use homography to map our bouncing ball sketch to a projection surface.</p><p>We will start with a couple of changes:</p><ul><li>The canvas will be the size of the projection screen. We will use two macros <code>PROJECTOR_RESOLUTION_X</code> and <code>PROJECTOR_RESOLUTION_Y</code> to refer to these values across the app.</li><li>We will add a second window for the projector in <code>main.cpp</code>.</li></ul><pre><code class=language-cpp>// main.cpp
+#include &quot;ofMain.h&quot;
+#include &quot;ofApp.h&quot;
+
+int main()
+{
+  ofGLFWWindowSettings settings;
+
+  settings.setSize(1280, 720);
+  settings.setPosition(ofVec2f(100, 100));
+  settings.resizable = true;
+  shared_ptr&lt;ofAppBaseWindow&gt; mainWindow = ofCreateWindow(settings);
+
+  settings.setSize(PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y);
+  settings.setPosition(ofVec2f(ofGetScreenWidth(), 0));
+  settings.resizable = false;
+  settings.decorated = false;
+  settings.shareContextWith = mainWindow;
+  shared_ptr&lt;ofAppBaseWindow&gt; secondWindow = ofCreateWindow(settings);
+  secondWindow-&gt;setVerticalSync(false);
+
+  shared_ptr&lt;ofApp&gt; mainApp(new ofApp);
+  ofAddListener(secondWindow-&gt;events().draw, mainApp.get(), &amp;ofApp::drawProjector);
+
+  ofRunApp(mainWindow, mainApp);
+  ofRunMainLoop();
+}
+</code></pre><ul><li>We can update the ball bouncing code to use these macros for the wall coordinates.</li></ul><pre><code class=language-cpp>// ezBall.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+class ezBall
+{
+public:
+  void setup(int x, int y);
+
+  void update(glm::vec2 force);
+  void draw();
+
+private:
+  glm::vec2 pos;
+  glm::vec2 vel;
+  glm::vec2 acc;
+
+  float mass;
+
+  ofColor color;
+};
+</code></pre><pre><code class=language-cpp>// ezBall.cpp
+#include &quot;ezBall.h&quot;
+
+#include &quot;ofApp.h&quot;
+
+void ezBall::setup(int x, int y)
+{
+  pos = glm::vec2(x, y);
+  mass = ofRandom(10, 30);
+  color = ofColor(ofRandom(127, 255), ofRandom(127, 255), ofRandom(127, 255));
+}
+
+void ezBall::update(glm::vec2 force)
+{
+  // Add force.
+  acc += force / mass;
+
+  if (glm::length(vel) &gt; 0)
+  {
+    // Add friction.
+    glm::vec2 friction = glm::normalize(vel * -1) * 0.01f;
+    acc += friction;
+  }
+
+  // Apply acceleration, then reset it!
+  vel += acc;
+  acc = glm::vec2(0.0f);
+
+  // Move object.
+  pos += vel;
+
+  // Bounce off walls, taking radius into consideration.
+  if (pos.x - mass &lt; 0 || pos.x + mass &gt; PROJECTOR_RESOLUTION_X)
+  {
+    pos.x = ofClamp(pos.x, mass, PROJECTOR_RESOLUTION_X - mass);
+    vel.x *= -1;
+  }
+  if (pos.y - mass &lt; 0 || pos.y + mass &gt; PROJECTOR_RESOLUTION_Y)
+  {
+    pos.y = ofClamp(pos.y, mass, PROJECTOR_RESOLUTION_Y - mass);
+    vel.y *= -1;
+  }
+}
+
+void ezBall::draw()
+{
+  ofSetColor(color);
+  ofDrawCircle(pos, mass);
+}
+</code></pre><ul><li>We will render our bouncing balls canvas into an <code>ofFbo</code>, and draw that FBO out to both our main and projector windows.</li><li>We will interact using the mouse on the main screen, so we will have to remap our values in <code>mouseDragged()</code>. We only want to add balls when the mouse is dragging on top of the canvas, so we will check if the cursor is in the right spot using <a href=https://openframeworks.cc/documentation/math/ofMath/#!show_ofInRange><code>ofInRange()</code></a>.</li></ul><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ezBall.h&quot;
+
+// This must match the display resolution of our projector
+#define PROJECTOR_RESOLUTION_X 1920
+#define PROJECTOR_RESOLUTION_Y 1080
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  
+  void update();
+
+  void draw();
+  void drawProjector(ofEventArgs&amp; args);
+
+  void keyPressed(int key);
+  void mouseDragged(int x, int y, int button);
+  void mousePressed(int x, int y, int button);
+
+  void addBall(int x, int y);
+
+  std::vector&lt;ezBall&gt; balls;
+
+  ofFbo renderFbo;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  ofBackground(0);
+
+  renderFbo.allocate(PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y);
+}
+
+void ofApp::update()
+{
+  glm::vec2 gravity = glm::vec2(0, 9.8f);
+  renderFbo.begin();
+  {
+    ofClear(255, 255);
+
+    for (int i = 0; i &lt; balls.size(); i++)
+    {
+      balls[i].update(gravity);
+      balls[i].draw();
+    }
+  }
+  renderFbo.end();
+}
+
+void ofApp::draw()
+{
+  ofSetColor(255);
+
+  // Draw unwarped image on the left.
+  renderFbo.draw(0, 0, 640, 360);
+}
+
+void ofApp::drawProjector(ofEventArgs&amp; args)
+{
+  ofBackground(0);
+  ofSetColor(255);
+
+  renderFbo.draw(0, 0);
+}
+
+void ofApp::addBall(int x, int y)
+{
+  // Add a new ezBall.
+  balls.push_back(ezBall());
+  // Setup the last added ezBall.
+  balls.back().setup(x, y);
+}
+
+void ofApp::keyPressed(int key)
+{
+  if (key == ' ')
+  {
+    balls.clear();
+  }
+}
+
+void ofApp::mouseDragged(int x, int y, int button)
+{
+  // Only add a ball if we're dragging in the preview window.
+  if (ofInRange(x, 0, 640) &amp;&amp; ofInRange(y, 0, 360))
+  {
+    // Remap the ball to the FBO resolution.
+    int ballX = ofMap(x, 0, 640, 0, renderFbo.getWidth());
+    int ballY = ofMap(y, 0, 360, 0, renderFbo.getHeight());
+    addBall(ballX, ballY);
+  }
+}
+
+void ofApp::mousePressed(int x, int y, int button)
+{
+  // Simply call the mouseDragged handler.
+  mouseDragged(x, y, button);
+}
+</code></pre><p>Next, we will add an interface for mapping feature points from one image to the next.</p><ul><li>The points will be normalized (between 0 and 1) to make them independent of image position or resolution. This will allow us to draw them properly in both windows with minimal headaches.</li><li>The source points will never change, we will just use the four corners of our image.</li><li>The destination points can be changed by dragging them with the mouse. We will write a simple system where the point nearest to the mouse gets selected on click.</li><li>The destination points will also be drawn in the projection window, so that we can use them to against actual physical features we are projecting on.</li></ul><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxGui.h&quot;
+
+#include &quot;ezBall.h&quot;
+
+// This must match the display resolution of your projector
+#define PROJECTOR_RESOLUTION_X 1920
+#define PROJECTOR_RESOLUTION_Y 1080
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  
+  void update();
+
+  void draw();
+  void drawProjector(ofEventArgs&amp; args);
+
+  void keyPressed(int key);
+  void mouseDragged(int x, int y, int button);
+  void mousePressed(int x, int y, int button);
+  void mouseReleased(int x, int y, int button);
+
+  void addBall(int x, int y);
+
+  std::vector&lt;ezBall&gt; balls;
+
+  ofFbo renderFbo;
+
+  std::vector&lt;glm::vec2&gt; srcPoints;
+  std::vector&lt;glm::vec2&gt; dstPoints;
+
+  int activePoint;
+
+  ofParameter&lt;bool&gt; adjustMapping;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  ofBackground(0);
+
+  renderFbo.allocate(PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y);
+
+  srcPoints.push_back(glm::vec2(0, 0));
+  srcPoints.push_back(glm::vec2(1, 0));
+  srcPoints.push_back(glm::vec2(0, 1));
+  srcPoints.push_back(glm::vec2(1, 1));
+
+  dstPoints.push_back(glm::vec2(0, 0));
+  dstPoints.push_back(glm::vec2(1, 0));
+  dstPoints.push_back(glm::vec2(0, 1));
+  dstPoints.push_back(glm::vec2(1, 1));
+
+  activePoint = -1;
+
+  adjustMapping.set(&quot;Adjust Mapping&quot;, false);
+
+  guiPanel.setup(&quot;Homography&quot;, &quot;settings.json&quot;);
+  guiPanel.add(adjustMapping);
+}
+
+void ofApp::update()
+{
+  glm::vec2 gravity = glm::vec2(0, 9.8f);
+  renderFbo.begin();
+  {
+    ofClear(255, 255);
+
+    for (int i = 0; i &lt; balls.size(); i++)
+    {
+      balls[i].update(gravity);
+      balls[i].draw();
+    }
+  }
+  renderFbo.end();
+}
+
+void ofApp::draw()
+{
+  ofSetColor(255);
+
+  // Draw unwarped image on the left.
+  renderFbo.draw(0, 0, 640, 360);
+
+  if (adjustMapping)
+  {
+    // Draw mapping points.
+    for (int i = 0; i &lt; srcPoints.size(); i++)
+    {
+      ofSetColor(0, 0, 255);
+      glm::vec2 srcPt = glm::vec2(ofMap(srcPoints[i].x, 0, 1, 0, 640), ofMap(srcPoints[i].y, 0, 1, 0, 360));
+      ofDrawCircle(srcPt, 10);
+
+      ofSetColor(255, 0, 0);
+      glm::vec2 dstPt = glm::vec2(ofMap(dstPoints[i].x, 0, 1, 640, 1280), ofMap(dstPoints[i].y, 0, 1, 0, 360));
+      ofDrawCircle(dstPt, 10);
+
+      ofSetColor(255, 0, 255);
+      ofDrawLine(srcPt, dstPt);
+    }
+  }
+
+  guiPanel.draw();
+}
+
+void ofApp::drawProjector(ofEventArgs&amp; args)
+{
+  ofBackground(0);
+  ofSetColor(255);
+
+  renderFbo.draw(0, 0);
+  
+  if (adjustMapping)
+  {
+    // Draw mapping dst points.
+    for (int i = 0; i &lt; dstPoints.size(); i++)
+    {
+      ofSetColor(255, 0, 0);
+      glm::vec2 dstPt = glm::vec2(dstPoints[i].x * PROJECTOR_RESOLUTION_X, dstPoints[i].y * PROJECTOR_RESOLUTION_Y);
+      ofDrawCircle(dstPt, 20);
+    }
+  }
+}
+
+void ofApp::addBall(int x, int y)
+{
+  // Add a new ezBall.
+  balls.push_back(ezBall());
+  // Setup the last added ezBall.
+  balls.back().setup(x, y);
+}
+
+void ofApp::keyPressed(int key)
+{
+  if (key == ' ')
+  {
+    balls.clear();
+  }
+}
+
+void ofApp::mouseDragged(int x, int y, int button)
+{
+  if (adjustMapping)
+  {
+    if (activePoint &gt; -1)
+    {
+      // Move the active Point under the mouse, but stick to edges.
+      glm::vec2 normPt = glm::vec2(ofMap(x, 640, 1280, 0, 1, true), ofMap(y, 0, 360, 0, 1, true));
+      dstPoints[activePoint] = normPt;
+    }
+  }
+  else
+  {
+    // Only add a ball if we're dragging in the preview window.
+    if (ofInRange(x, 0, 640) &amp;&amp; ofInRange(y, 0, 360))
+    {
+      // Remap the ball to the FBO resolution.
+      int ballX = ofMap(x, 0, 640, 0, renderFbo.getWidth());
+      int ballY = ofMap(y, 0, 360, 0, renderFbo.getHeight());
+      addBall(ballX, ballY);
+    }
+  }
+}
+
+void ofApp::mousePressed(int x, int y, int button)
+{
+  if (adjustMapping)
+  {
+    // Try to snap to a dst point.
+    for (int i = 0; i &lt; dstPoints.size(); i++)
+    {
+      glm::vec2 dstPt = glm::vec2(ofMap(dstPoints[i].x, 0, 1, 640, 1280), ofMap(dstPoints[i].y, 0, 1, 0, 360));
+      glm::vec2 mousePt = glm::vec2(x, y);
+      if (glm::distance(dstPt, mousePt) &lt; 20)
+      {
+        // Close enough, let's grab this one.
+        activePoint = i;
+        break;
+      }
+    }
+  }
+  else
+  {
+    // Simply call the mouseDragged handler.
+    mouseDragged(x, y, button);
+  }
+}
+
+void ofApp::mouseReleased(int x, int y, int button)
+{
+  if (adjustMapping)
+  {
+    activePoint = -1;
+  }
+}
+</code></pre><p>Finally, we will use these points to first get a homography transformation, then use this transformation to warp our image on the fly.</p><p>Note that this might run slowly unless we are running our app in Release mode. This is because our projection FBO is quite large (1920x1080) and we need to read back from the GPU every frame to warp the image on the CPU.</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+
+#include &quot;ezBall.h&quot;
+
+// This must match the display resolution of your projector
+#define PROJECTOR_RESOLUTION_X 1920
+#define PROJECTOR_RESOLUTION_Y 1080
+
+class ofApp : public ofBaseApp
+{
+public:
+  void setup();
+  
+  void update();
+
+  void draw();
+  void drawProjector(ofEventArgs&amp; args);
+
+  void keyPressed(int key);
+  void mouseDragged(int x, int y, int button);
+  void mousePressed(int x, int y, int button);
+  void mouseReleased(int x, int y, int button);
+
+  void addBall(int x, int y);
+
+  std::vector&lt;ezBall&gt; balls;
+
+  ofFbo renderFbo;
+  ofPixels renderPixels;
+  ofImage warpedImg;
+
+  std::vector&lt;glm::vec2&gt; srcPoints;
+  std::vector&lt;glm::vec2&gt; dstPoints;
+
+  int activePoint;
+
+  cv::Mat homographyMat;
+  bool homographyReady;
+
+  ofParameter&lt;bool&gt; adjustMapping;
+  ofParameter&lt;bool&gt; projectWarped;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup()
+{
+  ofBackground(0);
+
+  renderFbo.allocate(PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y);
+  warpedImg.allocate(PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y, OF_IMAGE_COLOR);
+
+  srcPoints.push_back(glm::vec2(0, 0));
+  srcPoints.push_back(glm::vec2(1, 0));
+  srcPoints.push_back(glm::vec2(0, 1));
+  srcPoints.push_back(glm::vec2(1, 1));
+
+  dstPoints.push_back(glm::vec2(0, 0));
+  dstPoints.push_back(glm::vec2(1, 0));
+  dstPoints.push_back(glm::vec2(0, 1));
+  dstPoints.push_back(glm::vec2(1, 1));
+
+  activePoint = -1;
+  homographyReady = false;
+
+  adjustMapping.set(&quot;Adjust Mapping&quot;, false);
+  projectWarped.set(&quot;Project Warped&quot;, true);
+
+  guiPanel.setup(&quot;Homography&quot;, &quot;settings.json&quot;);
+  guiPanel.add(adjustMapping);
+  guiPanel.add(projectWarped);
+}
+
+void ofApp::update()
+{
+  if (adjustMapping)
+  {
+    // Copy points from glm to cv format.
+    std::vector&lt;cv::Point2f&gt; cvSrcPoints;
+    std::vector&lt;cv::Point2f&gt; cvDstPoints;
+    for (int i = 0; i &lt; srcPoints.size(); i++) 
+    {
+      // Scale points to projector dimensions.
+      cvSrcPoints.push_back(cv::Point2f(srcPoints[i].x * PROJECTOR_RESOLUTION_X, srcPoints[i].y * PROJECTOR_RESOLUTION_Y));
+      cvDstPoints.push_back(cv::Point2f(dstPoints[i].x * PROJECTOR_RESOLUTION_X, dstPoints[i].y * PROJECTOR_RESOLUTION_Y));
+    }
+
+    // Generate a homography from the two sets of points.
+    homographyMat = cv::findHomography(cv::Mat(cvSrcPoints), cv::Mat(cvDstPoints));
+    homographyReady = true;
+  }
+
+  glm::vec2 gravity = glm::vec2(0, 9.8f);
+  renderFbo.begin();
+  {
+    ofClear(255, 255);
+
+    for (int i = 0; i &lt; balls.size(); i++)
+    {
+      balls[i].update(gravity);
+      balls[i].draw();
+    }
+  }
+  renderFbo.end();
+
+  if (homographyReady) 
+  {
+    // Read the FBO to pixels.
+    renderFbo.readToPixels(renderPixels);
+
+    // Warp the pixels into a new image.
+    warpedImg.setFromPixels(renderPixels);
+    ofxCv::warpPerspective(renderPixels, warpedImg, homographyMat, CV_INTER_LINEAR);
+    warpedImg.update();
+  }
+}
+
+void ofApp::draw()
+{
+  ofSetColor(255);
+
+  // Draw unwarped image on the left.
+  renderFbo.draw(0, 0, 640, 360);
+
+  if (homographyReady)
+  {
+    // Draw warped image on the right.
+    warpedImg.draw(640, 0, 640, 360);
+  }
+
+  if (adjustMapping)
+  {
+    // Draw mapping points.
+    for (int i = 0; i &lt; srcPoints.size(); i++)
+    {
+      ofSetColor(0, 0, 255);
+      glm::vec2 srcPt = glm::vec2(ofMap(srcPoints[i].x, 0, 1, 0, 640), ofMap(srcPoints[i].y, 0, 1, 0, 360));
+      ofDrawCircle(srcPt, 10);
+
+      ofSetColor(255, 0, 0);
+      glm::vec2 dstPt = glm::vec2(ofMap(dstPoints[i].x, 0, 1, 640, 1280), ofMap(dstPoints[i].y, 0, 1, 0, 360));
+      ofDrawCircle(dstPt, 10);
+
+      ofSetColor(255, 0, 255);
+      ofDrawLine(srcPt, dstPt);
+    }
+  }
+
+  guiPanel.draw();
+}
+
+void ofApp::drawProjector(ofEventArgs&amp; args)
+{
+  ofBackground(0);
+  ofSetColor(255);
+
+  if (homographyReady &amp;&amp; projectWarped)
+  {
+    warpedImg.draw(0, 0);
+  }
+  else
+  {
+    renderFbo.draw(0, 0);
+  }
+
+  if (adjustMapping)
+  {
+    // Draw mapping dst points.
+    for (int i = 0; i &lt; dstPoints.size(); i++)
+    {
+      ofSetColor(255, 0, 0);
+      glm::vec2 dstPt = glm::vec2(dstPoints[i].x * PROJECTOR_RESOLUTION_X, dstPoints[i].y * PROJECTOR_RESOLUTION_Y);
+      ofDrawCircle(dstPt, 20);
+    }
+  }
+}
+
+void ofApp::addBall(int x, int y)
+{
+  // Add a new ezBall.
+  balls.push_back(ezBall());
+  // Setup the last added ezBall.
+  balls.back().setup(x, y);
+}
+
+void ofApp::keyPressed(int key)
+{
+  if (key == ' ')
+  {
+    balls.clear();
+  }
+}
+
+void ofApp::mouseDragged(int x, int y, int button)
+{
+  if (adjustMapping)
+  {
+    if (activePoint &gt; -1)
+    {
+      // Move the active Point under the mouse, but stick to edges.
+      glm::vec2 normPt = glm::vec2(ofMap(x, 640, 1280, 0, 1, true), ofMap(y, 0, 360, 0, 1, true));
+      dstPoints[activePoint] = normPt;
+    }
+  }
+  else
+  {
+    // Only add a ball if we're dragging in the preview window.
+    if (ofInRange(x, 0, 640) &amp;&amp; ofInRange(y, 0, 360))
+    {
+      // Remap the ball to the FBO resolution.
+      int ballX = ofMap(x, 0, 640, 0, renderFbo.getWidth());
+      int ballY = ofMap(y, 0, 360, 0, renderFbo.getHeight());
+      addBall(ballX, ballY);
+    }
+  }
+}
+
+void ofApp::mousePressed(int x, int y, int button)
+{
+  if (adjustMapping)
+  {
+    // Try to snap to a dst point.
+    for (int i = 0; i &lt; dstPoints.size(); i++)
+    {
+      glm::vec2 dstPt = glm::vec2(ofMap(dstPoints[i].x, 0, 1, 640, 1280), ofMap(dstPoints[i].y, 0, 1, 0, 360));
+      glm::vec2 mousePt = glm::vec2(x, y);
+      if (glm::distance(dstPt, mousePt) &lt; 20)
+      {
+        // Close enough, let's grab this one.
+        activePoint = i;
+        break;
+      }
+    }
+  }
+  else
+  {
+    mouseDragged(x, y, button);
+  }
+}
+
+void ofApp::mouseReleased(int x, int y, int button)
+{
+  if (adjustMapping)
+  {
+    activePoint = -1;
+  }
+}
+</code></pre><div class="alert alert-info d-flex" role=alert><div class="flex-shrink-1 alert-icon">✌️</div><div class=w-100><p><strong>Homography vs Quad Warping</strong></p><p>You may be wondering why we are not just binding our FBO texture to a quad mesh, positioning the corner points and rendering that out instead of going through all the homography steps outlined above.</p><p>The main difference is that the homography operation is going to look more accurate because it is performing a perspective shift; it is looking at the image from a different <em>virtual</em> point of view, which is essentially what we are doing in the <em>physical</em> world.</p><p>Warping a quad will just perform a simple interpolation on the image pixels to make them fit into the new shape. It might look fine for subtle transformations, but will break down quickly as the transformation becomes more extreme.</p><figure style="width:600px;height:200px;display:block;margin:0 auto"><video src=homography-warp.mp4 controls width=100%></video><figcaption><i>Homography (left) / Quad Warp (right)</i></figcaption></figure></div></div><h2 id=combining-cameras>Combining Cameras <a href=#combining-cameras class=anchor aria-hidden=true>#</a></h2><p>We will sometimes want to track a space that is larger than what a single camera can cover. We can use many sensors, but in order to combine their data correctly, we need to know what part of the space each is actually covering. While we could try to wing it by translating and rotating each point cloud, we will get much better results if we can get an accurate pose for each camera.</p><h3 id=affine-transform>Affine Transform <a href=#affine-transform class=anchor aria-hidden=true>#</a></h3><p>An <a href=https://mathworld.wolfram.com/AffineTransformation.html>affine transform</a> is a transformation that preserves the relationships (sizes and distances) between points, lines, shapes. Because our cameras are both representing the same space without distorting it, the mapping from one to another is an affine transform.</p><p>To find the relationship from one sensor to the other, we will find a set of feature points that are visible in both viewports, and input those into a formula that will figure out the transformation that can convert each point from image A to image B. That transformation will be the same for the camera A pose to camera B pose!</p><p>We need to make sure there is some overlap between areas each sensor covers, as that is where we will find our feature points.</p><ul><li>One common way to get feature points is to use a flashlight or a reflector, and track the brightest blob in the images.</li><li>Another common technique, which we will use now, is to track the corners of a chessboard.</li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=https://docs.opencv.org/3.4/homography_perspective_correction_chessboard_warp.jpg><img style='display:block;margin:0 auto' src=https://docs.opencv.org/3.4/homography_perspective_correction_chessboard_warp.jpg alt="Basic concepts of the homography explained with code"></a><figcaption><em>Basic concepts of the homography explained with code</em></figcaption></figure><h3 id=realsense-data>RealSense Data <a href=#realsense-data class=anchor aria-hidden=true>#</a></h3><p>The following example uses two RealSense cameras, but we could use any cameras we want, and mix and match.</p><p>First, we will write an app that displays the depth, color, and point cloud of each connected RealSense.</p><ul><li>The point clouds are drawn in the same area of the window, overlapping each other.</li><li>Each point cloud is wrapped inside an <code>ofPushMatrix()</code> / <code>ofPopMatrix()</code> pair, so that we can apply separate transformations to each.</li><li>The <code>debugPointClouds</code> flag allows us to draw each point cloud in a different color, to easily identify them.</li></ul><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxRealSense2.h&quot;
+
+class ofApp
+  : public ofBaseApp 
+{
+public:
+  void setup();
+  void exit();
+
+  void update();
+  void draw();
+
+  void keyPressed(int key);
+
+  ofxRealSense2::Context context;
+  ofEventListeners eventListeners;
+
+  ofEasyCam cam;
+
+  ofParameter&lt;bool&gt; debugPointClouds;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup() 
+{
+  ofDisableArbTex();
+
+  eventListeners.push(context.deviceAddedEvent.newListener([&amp;](std::string serialNumber) 
+  {
+    ofLogNotice(__FUNCTION__) &lt;&lt; &quot;Starting device &quot; &lt;&lt; serialNumber;
+    
+    auto device = context.getDevice(serialNumber);
+    device-&gt;enableDepth();
+    device-&gt;enableColor();
+    device-&gt;enablePoints();
+    device-&gt;startPipeline();
+  }));
+
+  try
+  {
+    context.setup(false);
+  } 
+  catch (std::exception &amp; e)
+  {
+    ofLogFatalError(__FUNCTION__) &lt;&lt; e.what();
+  }
+
+  debugPointClouds.set(&quot;Debug Point Clouds&quot;, false);
+
+  guiPanel.setup(&quot;Calibrate Cams&quot;, &quot;settings.json&quot;);
+  guiPanel.add(debugPointClouds);
+}
+
+void ofApp::exit() 
+{
+  context.clear();
+}
+
+void ofApp::update() 
+{
+  context.update();
+}
+
+void ofApp::draw() 
+{
+  ofBackground(0);
+
+  int count = MIN(this-&gt;context.getDevices().size(), 2);
+
+  for (int i = 0; i &lt; count; ++i)
+  {
+    auto device = context.getDevice(i);
+
+    int x = 640 * i;
+    device-&gt;getDepthTex().draw(x, 0);
+
+    colorImg[i].draw(x, 360);
+  }
+
+  cam.begin(ofRectangle(1280, 0, 720, 720));
+  ofEnableDepthTest();
+  ofPushMatrix();
+  ofScale(100);
+  ofRotateXDeg(180);
+  {
+    // Draw device 0 transformed.
+    ofPushMatrix();
+    {
+      ofDrawAxis(1.0);
+
+      auto device0 = context.getDevice(0);
+
+      if (debugPointClouds)
+      {
+        ofSetColor(255, 0, 0);
+        device0-&gt;getPointsMesh().draw();
+      }
+      else
+      {
+        ofSetColor(255);
+        device0-&gt;getColorTex().bind();
+        device0-&gt;getPointsMesh().draw();
+        device0-&gt;getColorTex().unbind();
+      }
+    }
+    ofPopMatrix();
+
+    // Draw device 1 at the origin.
+    ofPushMatrix();
+    {
+      ofDrawAxis(1.0);
+      ofSetColor(0, 255, 0);
+
+      auto device1 = context.getDevice(1);
+
+      if (debugPointClouds) 
+      {
+        ofSetColor(0, 255, 0);
+        device1-&gt;getPointsMesh().draw();
+      } 
+      else
+      {
+        ofSetColor(255);
+        device1-&gt;getColorTex().bind();
+        device1-&gt;getPointsMesh().draw();
+        device1-&gt;getColorTex().unbind();
+      }
+    }
+    ofPopMatrix();
+  }
+  ofPopMatrix();
+  ofDisableDepthTest();
+  cam.end();
+
+  ofSetColor(255);
+
+  ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 10);
+
+  guiPanel.draw();
+}
+
+void ofApp::keyPressed(int key) 
+{
+
+}
+</code></pre><h3 id=opencv-chessboard-detection>OpenCV Chessboard Detection <a href=#opencv-chessboard-detection class=anchor aria-hidden=true>#</a></h3><p>We will use a printed chessboard and hold it in front of the depth sensors.</p><ul><li>The chessboard is detected using the sensor&rsquo;s color cameras. Both images are passed to OpenCV to detect the pattern and give us the coordinates of each corner (intersection point).</li></ul><p>This process takes a few steps:</p><ul><li><a href=https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html#ga93efa9b0aa890de240ca32b11253dd4a><code>cv::findChessboardCorners()</code></a> finds the chessboard pattern in an image. Make sure you pass the correct number of corners to look for as the <code>patternSize</code> parameter.</li><li><a href=https://docs.opencv.org/3.4/dd/d1a/group__imgproc__feature.html#ga354e0d7c86d0d9da75de9b9701a9a87e>cv::cornerSubPix()`</a> refines the found corners to give better results.</li><li><a href=https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html#ga6a10b0bb120c4907e5eabbcd22319022><code>cv::drawChessboardCorners()</code></a> draws the found corners into the image. While this step is not necessary, it is very useful for debugging!</li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=chessboards.png><img style='display:block;margin:0 auto' src=chessboards.png alt=Chessboards></a><figcaption><em>Chessboards</em></figcaption></figure><p>Because we need corresponding points (or <em>point pairs</em>), we will only consider frames where the chessboard was found in both images.</p><ul><li>We will save coordinate pairs in vectors by pressing a button. We will also add a button to clear the vectors and start over.</li><li>The <code>imgPoints</code> vectors will hold the chessboard corner coordinates in image space (2D) for the current frame only. This will be updated every frame.</li><li>The <code>worldPoints</code> vectors will hold the world coordinates of the chessboard corners (3D) for all saved frames. This will only be updated when <code>savePoints</code> is enabled.</li><li>The <code>imgPoints</code> coordinates are fed to the sensor&rsquo;s world coordinate mapper to extract corresponding 3D world points.</li><li>To get the world points from a coordinate, we will need to make sure our depth and color images are aligned / registered using the corresponding SDK call. For <code>ofxRealSense2</code>, this means setting each device&rsquo;s <code>alignMode</code> to <code>ofxRealSense2::Device::Align::Color</code> or <code>ofxRealSense2::Device::Align::Depth</code>.</li></ul><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxRealSense2.h&quot;
+
+class ofApp
+  : public ofBaseApp 
+{
+public:
+  void setup();
+  void exit();
+
+  void update();
+  void draw();
+
+  void keyPressed(int key);
+
+  ofxRealSense2::Context context;
+  ofEventListeners eventListeners;
+
+  cv::Mat grayMat[2];
+  cv::Mat colorMat[2];
+  ofImage colorImg[2];
+
+  std::vector&lt;cv::Point2f&gt; imgPoints[2];
+  std::vector&lt;glm::vec3&gt; worldPoints[2];
+
+  ofEasyCam cam;
+
+  ofParameter&lt;bool&gt; savePoints;
+  ofParameter&lt;bool&gt; clearPoints;
+  ofParameter&lt;bool&gt; debugPointClouds;
+  ofxLabel statusPoints;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup() 
+{
+  ofDisableArbTex();
+
+  guiPanel.setup(&quot;settings.xml&quot;);
+
+  eventListeners.push(context.deviceAddedEvent.newListener([&amp;](std::string serialNumber) 
+  {
+    ofLogNotice(__FUNCTION__) &lt;&lt; &quot;Starting device &quot; &lt;&lt; serialNumber;
+    
+    auto device = context.getDevice(serialNumber);
+    device-&gt;enableDepth();
+    device-&gt;enableColor();
+    device-&gt;enablePoints();
+    device-&gt;startPipeline();
+  }));
+
+  guiPanel.setup(&quot;Calibrate Cams&quot;, &quot;settings.json&quot;);
+
+  try
+  {
+    context.setup(false);
+  } 
+  catch (std::exception &amp; e)
+  {
+    ofLogFatalError(__FUNCTION__) &lt;&lt; e.what();
+  }
+}
+
+void ofApp::exit() 
+{
+  context.clear();
+}
+
+void ofApp::update() 
+{
+  context.update();
+
+  // Number of corners in the grid, i.e. number of cols - 1 and number of rows - 1.
+  cv::Size patternSize = cv::Size(10, 7);
+  int count = MIN(this-&gt;context.getDevices().size(), 2);
+  for (int i = 0; i &lt; count; ++i) 
+  {
+    auto device = context.getDevice(i);
+
+    // Align the frames to the color viewport.
+    device-&gt;alignMode = ofxRealSense2::Device::Align::Color;
+
+    // Find chessboard pattern in image.
+    imgPoints[i].clear();
+    colorMat[i] = ofxCv::toCv(device-&gt;getColorPix());
+    int chessFlags = cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_FAST_CHECK;
+    bool foundChessboard = cv::findChessboardCorners(colorMat[i], patternSize, imgPoints[i], chessFlags);
+    if (foundChessboard) 
+    {
+      // Refine the corners.
+      // cv::cornerSubPix() requires a grayscale image, so we need to convert our color image first.
+      cv::cvtColor(colorMat[i], grayMat[i], CV_RGB2GRAY);
+      cv::cornerSubPix(grayMat[i], imgPoints[i], cv::Size(11, 11), cv::Size(-1, -1),
+        cv::TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
+
+      // Draw the corners over the color image for review.
+      cv::drawChessboardCorners(colorMat[i], patternSize, cv::Mat(imgPoints[i]), foundChessboard);
+    }
+
+    ofxCv::toOf(colorMat[i], colorImg[i]);
+    colorImg[i].update();
+  }
+
+  if (clearPoints)
+  {
+    worldPoints[0].clear();
+    worldPoints[1].clear();
+
+    clearPoints = false;
+  }
+
+  if (savePoints)
+  {
+    // Only save points if the same number was found in both images.
+    if (count == 2 &amp;&amp;
+      !imgPoints[0].empty() &amp;&amp;
+      imgPoints[0].size() == imgPoints[1].size())
+    {
+      auto device0 = context.getDevice(0);
+      auto device1 = context.getDevice(1);
+
+      int added = 0;
+      for (int i = 0; i &lt; imgPoints[0].size(); ++i)
+      {
+        glm::vec3 point0 = device0-&gt;getWorldPosition(imgPoints[0][i].x, imgPoints[0][i].y);
+        glm::vec3 point1 = device1-&gt;getWorldPosition(imgPoints[1][i].x, imgPoints[1][i].y);
+        
+        // Only add if both points are valid.
+        if (point0.z != 0 &amp;&amp; point1.z != 0)
+        {
+          worldPoints[0].push_back(glm::vec3(point0.x, point0.y, point0.z));
+          worldPoints[1].push_back(glm::vec3(point1.x, point1.y, point1.z));
+
+          ++added;
+        }
+      }
+      ofLogNotice(__FUNCTION__) &lt;&lt; &quot;Added &quot; &lt;&lt; added &lt;&lt; &quot; point pairs&quot;;
+    }
+    else
+    {
+      ofLogWarning(__FUNCTION__) &lt;&lt; &quot;Found points count mismatch! &quot; &lt;&lt; imgPoints[0].size() &lt;&lt; &quot; vs &quot; &lt;&lt; imgPoints[1].size();
+    }
+
+    savePoints = false;
+  }
+
+  statusPoints = ofToString(worldPoints[0].size()) + &quot; Point Pairs&quot;;
+}
+
+void ofApp::draw() 
+{
+  ofBackground(0);
+
+  int count = MIN(this-&gt;context.getDevices().size(), 2);
+
+  for (int i = 0; i &lt; count; ++i)
+  {
+    auto device = context.getDevice(i);
+
+    int x = 640 * i;
+    device-&gt;getDepthTex().draw(x, 0);
+
+    colorImg[i].draw(x, 360);
+  }
+
+  cam.begin(ofRectangle(1280, 0, 720, 720));
+  ofEnableDepthTest();
+  ofPushMatrix();
+  ofScale(100);
+  ofRotateXDeg(180);
+  {
+
+    // Draw device 0 transformed.
+    ofPushMatrix();
+    {
+      ofDrawAxis(1.0);
+
+      auto device0 = context.getDevice(0);
+
+      if (debugPointClouds)
+      {
+        ofSetColor(255, 0, 0);
+        device0-&gt;getPointsMesh().draw();
+      }
+      else
+      {
+        ofSetColor(255);
+        device0-&gt;getColorTex().bind();
+        device0-&gt;getPointsMesh().draw();
+        device0-&gt;getColorTex().unbind();
+      }
+    }
+    ofPopMatrix();
+
+    // Draw device 1 at the origin.
+    ofPushMatrix();
+    {
+      ofDrawAxis(1.0);
+      ofSetColor(0, 255, 0);
+
+      auto device1 = context.getDevice(1);
+
+      if (debugPointClouds) 
+      {
+        ofSetColor(0, 255, 0);
+        device1-&gt;getPointsMesh().draw();
+      } 
+      else
+      {
+        ofSetColor(255);
+        device1-&gt;getColorTex().bind();
+        device1-&gt;getPointsMesh().draw();
+        device1-&gt;getColorTex().unbind();
+      }
+    }
+    ofPopMatrix();
+  }
+  ofPopMatrix();
+  ofDisableDepthTest();
+  cam.end();
+
+  ofSetColor(255);
+
+  ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 10);
+
+  guiPanel.draw();
+}
+
+void ofApp::keyPressed(int key) 
+{
+  if (key == ' ')
+  {
+    savePoints = true;
+  }
+}
+</code></pre><h3 id=opencv-calibration>OpenCV Calibration <a href=#opencv-calibration class=anchor aria-hidden=true>#</a></h3><p>Finally, we can calibrate the cameras by passing both sets of world points to the <a href=https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html#ga27865b1d26bac9ce91efaee83e94d4dd><code>cv::estimateAffine3D()</code></a> OpenCV function.</p><ul><li>We will write our own <code>estimateAffine3D()</code> method in our <code>ofApp</code> that will convert the input data from OF to CV and the output data from CV back to OF.</li><li>Although the <code>ofxCv</code> addon includes a wrapper for <code>cv::estimateAffine3D()</code>, it is using a different version of the OpenCV function from what we want, which is why we are writing our own wrapper.</li><li>This function will return a transformation matrix. We can apply it to our second camera&rsquo;s point cloud using <code>ofMultMatrix()</code>.</li></ul><p>The final code is below:</p><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxRealSense2.h&quot;
+
+class ofApp
+  : public ofBaseApp 
+{
+public:
+  void setup();
+  void exit();
+
+  void update();
+  void draw();
+
+  void keyPressed(int key);
+
+  glm::mat4 estimateAffine3D(float accuracy = 0.99f);
+
+  ofxRealSense2::Context context;
+  ofEventListeners eventListeners;
+
+  cv::Mat grayMat[2];
+  cv::Mat colorMat[2];
+  ofImage colorImg[2];
+
+  std::vector&lt;cv::Point2f&gt; imgPoints[2];
+  std::vector&lt;glm::vec3&gt; worldPoints[2];
+
+  glm::mat4x4 estimatedTransform;
+
+  ofEasyCam cam;
+
+  ofParameter&lt;bool&gt; savePoints;
+  ofParameter&lt;bool&gt; clearPoints;
+  ofParameter&lt;bool&gt; calibrateSensors;
+  ofParameter&lt;bool&gt; debugPointClouds;
+  ofxLabel statusPoints;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup() 
+{
+  ofDisableArbTex();
+
+  guiPanel.setup(&quot;settings.xml&quot;);
+
+  eventListeners.push(context.deviceAddedEvent.newListener([&amp;](std::string serialNumber) 
+  {
+    ofLogNotice(__FUNCTION__) &lt;&lt; &quot;Starting device &quot; &lt;&lt; serialNumber;
+    
+    auto device = context.getDevice(serialNumber);
+    device-&gt;enableDepth();
+    device-&gt;enableColor();
+    device-&gt;enablePoints();
+    device-&gt;startPipeline();
+  }));
+
+  guiPanel.setup(&quot;Calibrate Cams&quot;, &quot;settings.json&quot;);
+
+  try
+  {
+    context.setup(false);
+  } 
+  catch (std::exception &amp; e)
+  {
+    ofLogFatalError(__FUNCTION__) &lt;&lt; e.what();
+  }
+}
+
+void ofApp::exit() 
+{
+  context.clear();
+}
+
+void ofApp::update() 
+{
+  context.update();
+
+  // Number of corners in the grid, i.e. number of cols - 1 and number of rows - 1.
+  cv::Size patternSize = cv::Size(10, 7);
+  int count = MIN(this-&gt;context.getDevices().size(), 2);
+  for (int i = 0; i &lt; count; ++i) 
+  {
+    auto device = context.getDevice(i);
+
+    // Align the frames to the color viewport.
+    device-&gt;alignMode = ofxRealSense2::Device::Align::Color;
+
+    // Find chessboard pattern in image.
+    imgPoints[i].clear();
+    colorMat[i] = ofxCv::toCv(device-&gt;getColorPix());
+    int chessFlags = cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_FAST_CHECK;
+    bool foundChessboard = cv::findChessboardCorners(colorMat[i], patternSize, imgPoints[i], chessFlags);
+    if (foundChessboard) 
+    {
+      // Refine the corners.
+      cv::cvtColor(colorMat[i], grayMat[i], CV_RGB2GRAY);
+      cv::cornerSubPix(grayMat[i], imgPoints[i], cv::Size(11, 11), cv::Size(-1, -1),
+        cv::TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
+
+      // Draw the corners over the color image for review.
+      cv::drawChessboardCorners(colorMat[i], patternSize, cv::Mat(imgPoints[i]), foundChessboard);
+    }
+
+    ofxCv::toOf(colorMat[i], colorImg[i]);
+    colorImg[i].update();
+  }
+
+  if (clearPoints)
+  {
+    worldPoints[0].clear();
+    worldPoints[1].clear();
+
+    clearPoints = false;
+  }
+
+  if (savePoints)
+  {
+    // Only save points if the same number was found in both images.
+    if (count == 2 &amp;&amp;
+      !imgPoints[0].empty() &amp;&amp;
+      imgPoints[0].size() == imgPoints[1].size())
+    {
+      auto device0 = context.getDevice(0);
+      auto device1 = context.getDevice(1);
+
+      int added = 0;
+      for (int i = 0; i &lt; imgPoints[0].size(); ++i)
+      {
+        glm::vec3 point0 = device0-&gt;getWorldPosition(imgPoints[0][i].x, imgPoints[0][i].y);
+        glm::vec3 point1 = device1-&gt;getWorldPosition(imgPoints[1][i].x, imgPoints[1][i].y);
+        
+        // Only add if both points are valid.
+        if (point0.z != 0 &amp;&amp; point1.z != 0)
+        {
+          worldPoints[0].push_back(glm::vec3(point0.x, point0.y, point0.z));
+          worldPoints[1].push_back(glm::vec3(point1.x, point1.y, point1.z));
+
+          ++added;
+        }
+      }
+      ofLogNotice(__FUNCTION__) &lt;&lt; &quot;Added &quot; &lt;&lt; added &lt;&lt; &quot; point pairs&quot;;
+    }
+    else
+    {
+      ofLogWarning(__FUNCTION__) &lt;&lt; &quot;Found points count mismatch! &quot; &lt;&lt; imgPoints[0].size() &lt;&lt; &quot; vs &quot; &lt;&lt; imgPoints[1].size();
+    }
+
+    savePoints = false;
+  }
+
+  if (calibrateSensors)
+  {
+    // We are using our own estimateAffine3D because ofxCv does not use the version we need from OpenCV.
+    estimatedTransform = estimateAffine3D();
+
+    calibrateSensors = false;
+  }
+
+  statusPoints = ofToString(worldPoints[0].size()) + &quot; Point Pairs&quot;;
+}
+
+void ofApp::draw() 
+{
+  ofBackground(0);
+
+  int count = MIN(this-&gt;context.getDevices().size(), 2);
+
+  for (int i = 0; i &lt; count; ++i)
+  {
+    auto device = context.getDevice(i);
+
+    int x = 640 * i;
+    device-&gt;getDepthTex().draw(x, 0);
+
+    colorImg[i].draw(x, 360);
+  }
+
+  cam.begin(ofRectangle(1280, 0, 720, 720));
+  ofEnableDepthTest();
+  ofPushMatrix();
+  ofScale(100);
+  ofRotateXDeg(180);
+  {
+
+    // Draw device 0 transformed.
+    ofPushMatrix();
+    ofMultMatrix(estimatedTransform);
+    {
+      ofDrawAxis(1.0);
+
+      auto device0 = context.getDevice(0);
+
+      if (debugPointClouds)
+      {
+        ofSetColor(255, 0, 0);
+        device0-&gt;getPointsMesh().draw();
+      }
+      else
+      {
+        ofSetColor(255);
+        device0-&gt;getColorTex().bind();
+        device0-&gt;getPointsMesh().draw();
+        device0-&gt;getColorTex().unbind();
+      }
+    }
+    ofPopMatrix();
+
+    // Draw device 1 at the origin.
+    ofPushMatrix();
+    {
+      ofDrawAxis(1.0);
+      ofSetColor(0, 255, 0);
+
+      auto device1 = context.getDevice(1);
+
+      if (debugPointClouds) 
+      {
+        ofSetColor(0, 255, 0);
+        device1-&gt;getPointsMesh().draw();
+      } 
+      else
+      {
+        ofSetColor(255);
+        device1-&gt;getColorTex().bind();
+        device1-&gt;getPointsMesh().draw();
+        device1-&gt;getColorTex().unbind();
+      }
+    }
+    ofPopMatrix();
+  }
+  ofPopMatrix();
+  ofDisableDepthTest();
+  cam.end();
+
+  ofSetColor(255);
+
+  ofDrawBitmapString(ofToString(ofGetFrameRate()), 10, 10);
+
+  guiPanel.draw();
+}
+
+void ofApp::keyPressed(int key) 
+{
+  if (key == ' ')
+  {
+    savePoints = true;
+  }
+  else if (key == OF_KEY_RETURN)
+  {
+    calibrateSensors = true;
+  }
+}
+
+glm::mat4 ofApp::estimateAffine3D(float accuracy) 
+{
+  cv::Mat srcMat(1, worldPoints[0].size(), CV_32FC3, worldPoints[0].data());
+  cv::Mat dstMat(1, worldPoints[1].size(), CV_32FC3, worldPoints[1].data());
+
+  cv::Mat affineMat = cv::estimateAffine3D(srcMat, dstMat);
+
+  // Convert the transformation matrix from OpenCV format to OF (glm) format.
+  auto affineMatPtr = affineMat.ptr&lt;double&gt;();
+  glm::mat4 affine = glm::mat4(1.0f);
+  auto affinePtr = glm::value_ptr(affine);
+  for (int i = 0; i &lt; 12; ++i)
+  {
+    affinePtr[i] = affineMatPtr[i];
+  }
+  affine = glm::transpose(affine);
+
+  return affine;
+}
+</code></pre><figure style='display:block;margin:1em auto;width:600px'><a href=calibrated-cameras.png><img style='display:block;margin:0 auto' src=calibrated-cameras.png alt="Merged Cameras"></a><figcaption><em>Calibrated Cameras</em></figcaption></figure><h2 id=world-to-projector-mapping>World to Projector Mapping <a href=#world-to-projector-mapping class=anchor aria-hidden=true>#</a></h2><p>Another common mapping operation is to map the 3D space we are projecting onto back into the projector image.</p><figure style="width:600px;height:420px;display:block;margin:0 auto"><iframe width=600 height=375 src=https://www.youtube.com/embed/CE1B7tdGCw0 frameborder=0 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><figcaption><i>UCLA's Augmented Reality Sandbox</i></figcaption></figure><p>The idea is similar to what we have seen so far:</p><ul><li>We will collect pairs of corresponding points from both spaces. 2D points from the projector, and 3D points from the sensor covering the space.</li><li>We will pass these point pairs to a solver function, which will give us a transformation we can apply to other points in the same 3D space, and have them <em>project</em> to an appropriate position on the 2D screen.</li></ul><h3 id=model-view-projection>Model View Projection <a href=#model-view-projection class=anchor aria-hidden=true>#</a></h3><p>We have already been doing something similar when rendering 3D objects on screen, like point clouds. You may have heard of the Model View Projection Matrix (or MVP) when working with computer graphics.</p><ul><li>The Model View Projection is actually a stack of three matrices that are used to transform a 3D point from its local space to screen space.</li><li>The <em>model matrix</em> maps a point from its local space to the world space.</li><li>The <em>view matrix</em> maps a point from world space to camera space (from the point of view of the camera).</li><li>The <em>projection matrix</em> maps a point from camera space to clip space, which is essentially what the camera projects onto a surface. Depending on the camera parameters, this projection can have perspective or be orthographic.</li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=https://www.maa.org/sites/default/files/images/cms_upload/figure256786.jpg><img style='display:block;margin:0 auto' src=https://www.maa.org/sites/default/files/images/cms_upload/figure256786.jpg alt="Geometric Photo Manipulation - Projections"></a><figcaption><a href=https://www.maa.org/press/periodicals/loci/joma/geometric-photo-manipulation-projections><em>Geometric Photo Manipulation - Projections</em></a></figcaption></figure><p>What we are essentially doing is coming up with a similar matrix, but with an external camera and projector.</p><p><a href=https://jsantell.com/model-view-projection>Model View Projection</a> is a good reference for in-depth info.</p><h3 id=pinhole-camera-model>Pinhole Camera Model <a href=#pinhole-camera-model class=anchor aria-hidden=true>#</a></h3><p>We use a pinhole camera model to calculate this projection. Using a perspective model, the line of sight from the camera to a 3D point will intersect a plane, which we can consider our canvas. The position at which it intersects the plane is its projection in 2D space.</p><figure style='display:block;margin:1em auto;width:600px'><a href=https://docs.opencv.org/2.4/_images/pinhole_camera_model.png><img style='display:block;margin:0 auto' src=https://docs.opencv.org/2.4/_images/pinhole_camera_model.png alt="Camera Calibration and 3D Reconstruction"></a><figcaption><a href=https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html><em>Camera Calibration and 3D Reconstruction</em></a></figcaption></figure><h3 id=ofxkinectprojectortoolkit>ofxKinectProjectorToolkit <a href=#ofxkinectprojectortoolkit class=anchor aria-hidden=true>#</a></h3><p><a href=https://github.com/prisonerjohn/ofxKinectProjectorToolkit/tree/develop>ofxKinectProjectorToolkit</a> is one of the many addons available for OF to create a correspondence between the 3D world and a 2D projector.</p><ul><li>This addon was originally written by Gene Kogan but it&rsquo;s a little out of date. The link above is my updated version which should get you started faster.</li><li>As the name implies, this addon is meant to work with the Kinect sensor. However, the calibration functions are sensor-agnostic. You just need to provide point pairs and it does the rest.</li><li>That being said, some sensors will provide better data than others. For example, a stereo sensor like the RealSense will have very noisy depth data which will need to be filtered before it can be useful.</li></ul><p>We will also use a chessboard pattern and the <a href=https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html#ga93efa9b0aa890de240ca32b11253dd4a><code>cv::findChessboardCorners()</code></a> function. However, because one of our spaces is the projector and the other (the camera) is capturing this projector, we will render a digital chessboard out to the screen.</p><ul><li>Because we are rendering the chessboard corners out of the projector, we already know their 2D position on screen, in projector space.</li><li>The chessboard is detected using the depth sensor&rsquo;s color camera. The tracked points are then fed to the sensor&rsquo;s world coordinate mapper to extract corresponding 3D world points.</li><li>The two sets of points are then fed to a solver, which determines the transformation matrix from one space to the other.</li><li><code>ofxKinectProjectorToolkit</code> uses <a href=http://dlib.net/>dlib</a> for calibration, which is another commonly used image processing library.</li><li>If we were to use OpenCV, we would probably use the <a href=https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#calibratecamera><code>cv::calibrateCamera()</code></a> function.</li></ul><p>The following is a simplified version of the addon&rsquo;s calibration example:</p><pre><code class=language-cpp>// main.cpp
+#include &quot;ofApp.h&quot;
+#include &quot;ofMain.h&quot;
+
+int main()
+{
+  ofGLFWWindowSettings settings;
+
+  settings.setSize(1280, 900);
+  settings.setPosition(ofVec2f(100, 100));
+  settings.resizable = true;
+  shared_ptr&lt;ofAppBaseWindow&gt; mainWindow = ofCreateWindow(settings);
+
+  settings.setSize(PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y);
+  settings.setPosition(ofVec2f(ofGetScreenWidth(), 0));
+  settings.resizable = false;
+  settings.decorated = false;
+  settings.shareContextWith = mainWindow;
+  shared_ptr&lt;ofAppBaseWindow&gt; secondWindow = ofCreateWindow(settings);
+  secondWindow-&gt;setVerticalSync(false);
+
+  shared_ptr&lt;ofApp&gt; mainApp(new ofApp);
+  ofAddListener(secondWindow-&gt;events().draw, mainApp.get(), &amp;ofApp::drawSecondWindow);
+
+  ofRunApp(mainWindow, mainApp);
+  ofRunMainLoop();
+}
+</code></pre><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxKinect.h&quot;
+#include &quot;ofxKinectProjectorToolkit.h&quot;
+
+// This must match the display resolution of the projector.
+#define PROJECTOR_RESOLUTION_X 1920
+#define PROJECTOR_RESOLUTION_Y 1080
+
+class ofApp : public ofBaseApp 
+{
+public:
+  void setup();
+  void update();
+  void draw();
+  void drawSecondWindow(ofEventArgs &amp; args);
+
+  void keyPressed(int key);
+  void mousePressed(int x, int y, int button);
+
+  void drawChessboard(int x, int y, int chessboardSize);
+  void drawTestingPoint(glm::vec2 projectedPoint);
+  void addPointPair();
+
+  ofxKinect kinect;
+
+  ofxKinectProjectorToolkit kpt;
+
+  ofFbo fboChessboard;
+  ofImage colorImg;
+  cv::Mat colorMat;
+
+  vector&lt;glm::vec2&gt; currentProjectorPoints;
+  vector&lt;cv::Point2f&gt; cvPoints;
+  vector&lt;glm::vec3&gt; pairsKinect;
+  vector&lt;glm::vec2&gt; pairsProjector;
+
+  glm::vec2 testPoint;
+
+  int chessboardSize;
+  int chessboardX;
+  int chessboardY;
+  bool testing;
+  bool saved;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup() 
+{
+  chessboardSize = 300;
+  chessboardX = 5;
+  chessboardY = 4;
+
+  kinect.setRegistration(true);
+  kinect.init();
+  kinect.open();
+
+  fboChessboard.allocate(PROJECTOR_RESOLUTION_X, PROJECTOR_RESOLUTION_Y, GL_RGBA);
+
+  testing = false;
+}
+
+void ofApp::drawChessboard(int x, int y, int chessboardSize) 
+{
+  float w = chessboardSize / chessboardX;
+  float h = chessboardSize / chessboardY;
+
+  currentProjectorPoints.clear();
+
+  // Render a chessboard in an FBO.
+  fboChessboard.begin();
+  {
+    ofClear(255, 0);
+    ofSetColor(0);
+    ofTranslate(x, y);
+    for (int j = 0; j &lt; chessboardY; j++) 
+    {
+      for (int i = 0; i &lt; chessboardX; i++) 
+      {
+        int x0 = ofMap(i, 0, chessboardX, 0, chessboardSize);
+        int y0 = ofMap(j, 0, chessboardY, 0, chessboardSize);
+        if (j &gt; 0 &amp;&amp; i &gt; 0) 
+        {
+          // Save the 2D corner point.
+          currentProjectorPoints.push_back(ofVec2f(
+            ofMap(x + x0, 0, fboChessboard.getWidth(), 0, 1),
+            ofMap(y + y0, 0, fboChessboard.getHeight(), 0, 1)));
+        }
+        if ((i + j) % 2 == 0) 
+        {
+          // Draw a black rectangle every other tile.
+          ofDrawRectangle(x0, y0, w, h);
+        }
+      }
+    }
+    ofSetColor(255);
+  }
+  fboChessboard.end();
+}
+
+void ofApp::drawTestingPoint(glm::vec2 projectedPoint) 
+{
+  // Draw the projected testing point in the FBO.
+  float ptSize = ofMap(sin(ofGetFrameNum() * 0.1), -1, 1, 3, 40);
+  fboChessboard.begin();
+  {
+    ofBackground(255);
+    ofSetColor(0, 255, 0);
+    ofCircle(
+      ofMap(projectedPoint.x, 0, 1, 0, fboChessboard.getWidth()),
+      ofMap(projectedPoint.y, 0, 1, 0, fboChessboard.getHeight()),
+      ptSize);
+    ofSetColor(255);
+  }
+  fboChessboard.end();
+}
+
+void ofApp::addPointPair() 
+{
+  // Find corresponding 3D world points for each 2D chessboard corner.
+
+  // Count the number of found points...
+  int nDepthPoints = 0;
+  for (int i = 0; i &lt; cvPoints.size(); ++i) 
+  {
+    glm::vec3 worldPoint = kinect.getWorldCoordinateAt(cvPoints[i].x, cvPoints[i].y);
+    if (worldPoint.z &gt; 0) ++nDepthPoints;
+  }
+  // ...and add them only if all corners are found.
+  if (nDepthPoints == (chessboardX - 1) * (chessboardY - 1)) 
+  {
+    for (int i = 0; i &lt; cvPoints.size(); ++i) 
+    {
+      glm::vec3 worldPoint = kinect.getWorldCoordinateAt(cvPoints[i].x, cvPoints[i].y);
+
+      ofLogNotice(__FUNCTION__) &lt;&lt; &quot;Point pair &quot; &lt;&lt; currentProjectorPoints[i] &lt;&lt; &quot; =&gt; &quot; &lt;&lt; worldPoint;
+
+      pairsKinect.push_back(worldPoint);
+      pairsProjector.push_back(currentProjectorPoints[i]);
+    }
+
+    ofLogNotice(__FUNCTION__) &lt;&lt; &quot;Added &quot; &lt;&lt; ((chessboardX - 1) * (chessboardY - 1)) &lt;&lt; &quot; points pairs.&quot;;
+  } 
+  else
+  {
+    ofLogWarning(__FUNCTION__) &lt;&lt; &quot;Points not added because not all chessboard points' depth known. Try re-positionining.&quot;;
+  }
+}
+
+void ofApp::update() 
+{
+  kinect.update();
+
+  if (kinect.isFrameNew())
+  {
+    colorImg.setFromPixels(kinect.getPixels());
+
+    if (testing) 
+    {
+      // Calculate the projected value of the testing point and render it.
+      glm::vec2 t = glm::vec2(MIN(kinect.getWidth() - 1, testPoint.x), MIN(kinect.getHeight() - 1, testPoint.y));
+      ofVec3f worldPoint = kinect.getWorldCoordinateAt(t.x, t.y);
+      ofVec2f projectedPoint = kpt.getProjectedPoint(worldPoint);
+      drawTestingPoint(projectedPoint);
+    } 
+    else
+    {
+      // Draw a chessboard on the projector...
+      drawChessboard(ofGetMouseX(), ofGetMouseY(), chessboardSize);
+
+      // ...and use OpenCV to find it in the Kinect color image.
+      colorMat = ofxCv::toCv(colorImg);
+      cv::Size patternSize = cv::Size(chessboardX - 1, chessboardY - 1);
+      int chessFlags = cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_FAST_CHECK;
+      bool foundChessboard = cv::findChessboardCorners(colorMat, patternSize, cvPoints, chessFlags);
+      if (foundChessboard) 
+      {
+        cv::Mat gray;
+        cv::cvtColor(colorMat, gray, CV_RGB2GRAY);
+        cv::cornerSubPix(gray, cvPoints, cv::Size(11, 11), cv::Size(-1, -1),
+          cv::TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
+        cv::drawChessboardCorners(colorMat, patternSize, cv::Mat(cvPoints), foundChessboard);
+
+        colorImg.update();
+      }
+    }
+  }
+}
+
+void ofApp::draw() 
+{
+  colorImg.draw(0, 0);
+  kinect.drawDepth(0, 490, 320, 240);
+
+  std::ostringstream oss;
+
+  ofSetColor(0);
+  if (testing) 
+  {
+    oss &lt;&lt; &quot;Click on the image to test a point in the RGB image.&quot; &lt;&lt; std::endl
+      &lt;&lt; &quot;The projector should place a green dot on the corresponding point.&quot; &lt;&lt; std::endl
+      &lt;&lt; &quot;Press the 's' key to save the calibration.&quot; &lt;&lt; std::endl;
+    if (saved) 
+    {
+      oss &lt;&lt; &quot;Calibration saved.&quot; &lt;&lt; std::endl;
+    }
+
+    ofSetColor(255, 0, 0);
+    float ptSize = ofMap(cos(ofGetFrameNum() * 0.1), -1, 1, 3, 40);
+    ofCircle(testPoint.x, testPoint.y, ptSize);
+  } 
+  else 
+  {
+    oss &lt;&lt; &quot;Position the chessboard using the mouse.&quot; &lt;&lt; std::endl
+      &lt;&lt; &quot;Adjust the size of the chessboard using the 'q' and 'w' keys.&quot; &lt;&lt; std::endl
+      &lt;&lt; &quot;Press the spacebar to save a set of point pairs.&quot; &lt;&lt; std::endl
+      &lt;&lt; &quot;Press the 'c' key to calibrate.&quot; &lt;&lt; std::endl
+      &lt;&lt; pairsKinect.size() &lt;&lt; &quot; point pairs collected.&quot; &lt;&lt; std::endl;
+  }
+
+  ofSetColor(255);
+  ofDrawBitmapString(oss.str(), 532, 532);
+}
+
+void ofApp::drawSecondWindow(ofEventArgs &amp; args) 
+{
+  ofSetColor(ofColor::white);
+  fboChessboard.draw(0, 0);
+}
+
+void ofApp::keyPressed(int key) 
+{
+  if (key == ' ') 
+  {
+    addPointPair();
+  } 
+  else if (key == 'q')
+  {
+    chessboardSize -= 20;
+  } 
+  else if (key == 'w') 
+  {
+    chessboardSize += 20;
+  }
+  else if (key == 't')
+  {
+    testing = !testing;
+  }
+  else if (key == 'c')
+  {
+    kpt.calibrate(pairsKinect, pairsProjector);
+    testing = true;
+  } 
+  else if (key == 's') 
+  {
+    kpt.saveCalibration(&quot;calibration.json&quot;);
+    saved = true;
+  } 
+  else if (key == 'l')
+  {
+    kpt.loadCalibration(&quot;calibration.json&quot;);
+    testing = true;
+  }
+}
+
+void ofApp::mousePressed(int x, int y, int button) 
+{
+  if (testing) 
+  {
+    // Move the testing point to the mouse position.
+    testPoint = glm::vec2(MIN(x, kinect.getWidth() - 1), MIN(y, kinect.getHeight() - 1));
+  }
+}
+</code></pre><p>For better results, try tracking the chessboard at different positions, sizes, and depths. This might mean temporarily adding a large projection surface in front of the wall.</p><h3 id=projected-blobs>Projected Blobs <a href=#projected-blobs class=anchor aria-hidden=true>#</a></h3><p>The following is a simplified version of the addon&rsquo;s contours example, which tracks blobs using depth thresholding and reprojects a color directly on them.</p><ul><li>The <code>calibration.json</code> file is copied from the previous project&rsquo;s <code>bin/data</code> folder so that it can be used in this example.</li></ul><pre><code class=language-cpp>// ofApp.h
+#pragma once
+
+#include &quot;ofMain.h&quot;
+#include &quot;ofxCv.h&quot;
+#include &quot;ofxGui.h&quot;
+#include &quot;ofxKinect.h&quot;
+#include &quot;ofxKinectProjectorToolkit.h&quot;
+
+// this must match the display resolution of your projector
+#define PROJECTOR_RESOLUTION_X 1920
+#define PROJECTOR_RESOLUTION_Y 1080
+
+class ofApp : public ofBaseApp 
+{
+public:
+  void setup();
+  void update();
+  void draw();
+  void drawSecondWindow(ofEventArgs &amp; args);
+
+  void keyPressed(int key);
+
+  ofxKinect kinect;
+
+  ofFloatPixels thresholdNear;
+  ofFloatPixels thresholdFar;
+  ofFloatPixels thresholdResult;
+
+  ofImage thresholdImg;
+
+  ofxCv::ContourFinder contourFinder;
+
+  ofxKinectProjectorToolkit kpt;
+  ofImage colorImg;
+  cv::Mat colorMat;
+
+  ofParameter&lt;float&gt; nearThreshold;
+  ofParameter&lt;float&gt; farThreshold;
+  ofParameter&lt;float&gt; minArea;
+  ofParameter&lt;float&gt; maxArea;
+
+  ofxPanel guiPanel;
+};
+</code></pre><pre><code class=language-cpp>// ofApp.cpp
+#include &quot;ofApp.h&quot;
+
+void ofApp::setup() 
+{
+  kinect.setRegistration(true);
+  kinect.init();
+  kinect.open();
+
+  nearThreshold.set(&quot;Near Threshold&quot;, 0.01f, 0.0f, 0.1f);
+  farThreshold.set(&quot;Far Threshold&quot;, 0.02f, 0.0f, 0.1f);
+  minArea.set(&quot;Min Area&quot;, 0.01f, 0, 0.5f);
+  maxArea.set(&quot;Max Area&quot;, 0.05f, 0, 0.5f);
+
+  // Setup the gui.
+  guiPanel.setup(&quot;Depth Threshold&quot;, &quot;settings.json&quot;);
+  guiPanel.add(nearThreshold);
+  guiPanel.add(farThreshold);
+  guiPanel.add(minArea);
+  guiPanel.add(maxArea);
+
+  kpt.loadCalibration(&quot;calibration.json&quot;);
+}
+
+void ofApp::update() 
+{
+  kinect.update();
+
+  if (kinect.isFrameNew())
+  {
+    // Threshold image with distance.
+    ofFloatPixels depthFloatPixels = kinect.getRawDepthPixels();
+    ofxCv::threshold(depthFloatPixels, thresholdNear, nearThreshold);
+    ofxCv::threshold(depthFloatPixels, thresholdFar, farThreshold, true);
+    ofxCv::bitwise_and(thresholdNear, thresholdFar, thresholdResult);
+    thresholdImg.setFromPixels(thresholdResult);
+
+    // Find contours.
+    contourFinder.setMinAreaNorm(minArea);
+    contourFinder.setMaxAreaNorm(maxArea);
+    contourFinder.findContours(thresholdImg);
+  }
+}
+
+void ofApp::draw() 
+{
+  kinect.draw(0, 0);
+  contourFinder.draw();
+  thresholdImg.draw(0, 454);
+
+  guiPanel.draw();
+}
+
+void ofApp::drawSecondWindow(ofEventArgs &amp; args) 
+{
+  ofSetColor(255, 0, 0);
+
+  for (int i = 0; i &lt; contourFinder.size(); ++i) 
+  {
+    std::vector&lt;cv::Point&gt; points = contourFinder.getContour(i);
+
+    // Map contour from the world to the screen using the calibration transform.
+    ofBeginShape();
+    ofFill();
+    ofSetColor(255, 0, 0);
+    for (int j = 0; j &lt; points.size(); ++j) 
+    {
+      glm::vec3 worldPoint = kinect.getWorldCoordinateAt(points[j].x, points[j].y);
+      glm::vec2 projectedPoint = kpt.getProjectedPoint(worldPoint);
+      ofVertex(PROJECTOR_RESOLUTION_X * projectedPoint.x, PROJECTOR_RESOLUTION_Y * projectedPoint.y);
+    }
+    ofEndShape();
+  }
+}
+
+void ofApp::keyPressed(int key) 
+{
+  if (key == 'l')
+  {
+    kpt.loadCalibration(&quot;calibration.json&quot;);
+  }
+}
+</code></pre><div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between"></div><div class="docs-navigation d-flex justify-content-between"><a href=https://seeingmachines.betamovement.net/docs/class-10/classes/><div class="card my-1"><div class="card-body py-2">&larr; Classes</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container-xxl><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://github.com/>GitHub</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=https://seeingmachines.betamovement.net/js/bootstrap.min.7315382e899a7d7132d93fdf0d6682c67a93f0e72ee1a757f33f3207de3b14e2460a935c9d4cec78f86d94ab892d053c70540695eed0bbb7bf5bdc979e6f5a9f.js integrity="sha512-cxU4LomafXEy2T/fDWaCxnqT8Ocu4adX8z8yB947FOJGCpNcnUzsePhtlKuJLQU8cFQGle7Qu7e/W9yXnm9anw==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/js/highlight.min.93c197e7097c47fc0788b21721b3c308e18e43299f1e45e8ff2697d13cd62908cc5949a053c1fb7242d7b4a60eb07bd106061252f7aa925ef7e91033ea59d9b9.js integrity="sha512-k8GX5wl8R/wHiLIXIbPDCOGOQymfHkXo/yaX0TzWKQjMWUmgU8H7ckLXtKYOsHvRBgYSUveqkl736RAz6lnZuQ==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/main.min.162c56a0426544de0d010e66c56e321579655c400c9aae06a6823e7682de379adadf2165bd416fea191e4e7e410fbf1fd2c35a759aa43ff2e3787067669bf81b.js integrity="sha512-FixWoEJlRN4NAQ5mxW4yFXllXEAMmq4GpoI+doLeN5ra3yFlvUFv6hkeTn5BD78f0sNadZqkP/LjeHBnZpv4Gw==" crossorigin=anonymous defer></script>
+<script src=https://seeingmachines.betamovement.net/index.min.c1cc91dca6660f1869b2d008a28470703fbac95271c9a5993a50b104b93eed140d5034f62894700b5eb7947c0a4e8f60625a127cff13567749ce8dfefd73eb2b.js integrity="sha512-wcyR3KZmDxhpstAIooRwcD+6yVJxyaWZOlCxBLk+7RQNUDT2KJRwC163lHwKTo9gYloSfP8TVndJzo3+/XPrKw==" crossorigin=anonymous defer></script></body></html>
