@@ -4,13 +4,13 @@ description: ""
 lead: ""
 date: 2022-11-19T15:25:33-05:00
 lastmod: 2022-11-19T15:25:33-05:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-9"
+    parent: "class-11"
     identifier: "mobile-development"
-weight: 1020
+weight: 1110
 toc: true
 ---
 
@@ -23,9 +23,9 @@ OF runs on most iOS platforms, including iPhones, iPads, and Apple TVs.
 ### Requirements
 
 * A Mac and [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) to compile apps for iOS.
-* Xcode does not need any additional modules, it should already include all necessary libraries and applications.
-* An Apple ID. We used to need a $99 Apple Developer account to compile apps on devices, but this limitation has been lifted as of Xcode 7. We can now build apps for a local device (plugged into the computer) for free.
-* The iOS version of openFrameworks. The following code has been tested with [version 0.11.2](https://github.com/openframeworks/openFrameworks/releases/download/0.11.2/of_v0.11.2_ios_release.zip) but you may want to try the nightly to try new features.
+* Xcode will ask to download additional iOS files if required, but should already include all necessary libraries and applications.
+* An Apple ID. We can build apps for a local device (plugged into the computer) for free. However, if we want to distribute apps (ad-hoc or on the App Store), we will need a $99 Apple Developer account.
+* The iOS version of openFrameworks. The following code has been tested with [version 0.12.0](https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_ios_release.zip) but you may want to try the nightly to try new features.
 
 OF for iOS includes a variety of useful examples in the `/path/to/OF/examples/ios/` directory. As with everything we've seen so far, the examples are a great reference to get up and running quickly.
 
@@ -74,7 +74,7 @@ OF for iOS is a set of extra files packaged as the `ofxiOS` addon. This addon do
 {{< alert context="info" icon="✌️" >}}
 **C++ on iOS**
 
-iOS apps were originally written in a language called Objective-C. Over the past few years, Apple has been pushing a modern language called Swift, but Objective-C is still widely supported and is often what runs under the hood of some frameworks.
+iOS apps were originally written in a language called Objective-C. Over the past several years, Apple has been pushing a modern language called Swift, but Objective-C is still widely supported and is often what runs under the hood of some frameworks.
 
 Objective-C, like C++, is a superset of C and this makes it very easy to compile C++ for iOS. In fact, we can write C, Objective-C, and C++ code in the same classes and the compiler will usually be able to interpret the code correctly.
 
@@ -249,6 +249,8 @@ void ofApp::touchDoubleTap(ofTouchEventArgs & touch)
 ## Android
 
 OF also runs on most Android platforms, including phones, tablets, and microcontrollers.
+
+The latest `0.12.0` release of openFrameworks does not yet work on Android, so we will use the previous release `0.11.2` for the following examples. Resolving this is in the works and will be coming in an update soon.
 
 ### Requirements
 

@@ -81,8 +81,8 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Oct 24   | [Depth World]({{< relref "docs/class-7/depth-world" >}}) | Assignment 3 DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2023+%5BAUDIO%5D/1_mrkr0e6c)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2023+%5BVIDEO%5D/1_axlikaow) |
 | Oct 31   | [Networking]({{< relref "docs/class-8/networking" >}})<br/>[Texture Sharing]({{< relref "docs/class-8/texture-sharing" >}}) | [Assignment 4 OUT]({{< relref "docs/assignments/assignment-4" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2023+%5BAUDIO%5D/1_8hsj49es)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2023+%5BVIDEO%5D/1_9zdwefdj) |
 | Nov 7    | [Draw Bounds]({{< relref "docs/class-9/draw-bounds" >}})<br/>[Frame Buffers]({{< relref "docs/class-9/frame-buffers" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2023/1_id3iz3eu)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2023/1_v3lh1dcm) |
-| Nov 14   | [Classes]({{< relref "docs/class-10/classes" >}})<br/>[Mapping]({{< relref "docs/class-10/mapping" >}}) | Assignment 4 DUE<br/>[Final Project OUT]({{< relref "docs/assignments/final-project" >}}) |  |
-| Nov 21   | Project Proposals<br/>Classes<br/>Mobile Development | Project Proposal DUE |  |
+| Nov 14   | [Classes]({{< relref "docs/class-10/classes" >}})<br/>[Mapping]({{< relref "docs/class-10/mapping" >}}) | Assignment 4 DUE<br/>[Final Project OUT]({{< relref "docs/assignments/final-project" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2023+%5BAUDIO%5D/1_8l12dvng)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2023+%5BVIDEO%5D/1_ro0o7hnd) |
+| Nov 21   | Project Proposals<br/>[Mobile Development]({{< relref "docs/class-11/mobile-development" >}}) | Project Proposal DUE |  |
 | Nov 28   | Milestone Check-In<br/>Machine Learning | | |
 | Dec 5    | Milestone Check-In<br/>TBD | | |
 | Dec 12   | Final Presentations | Final Project DUE | |

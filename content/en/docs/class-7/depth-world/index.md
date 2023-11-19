@@ -843,7 +843,7 @@ There are a few options in how this is delivered.
 * Secondary textures where the pixels are transformed to make a 1-1 relationship. For example, `ofxKinect` has a [`setRegistration()`](https://openframeworks.cc/documentation/ofxKinect/ofxKinect/#!show_setRegistration) function which outputs the color data in the same space as the depth data.
 * Look-up tables (LUTs) (usually as textures) where you can calculate a pixel's world position based on the pixel value in the LUT. For example, [`ofxKinectForWindows2`](https://github.com/elliotwoods/ofxKinectForWindows2) uses an RGB float texture can be used to represent a vertex XYZ position.
 * A getter function to map a pixel coordinate to a world position. For example, [`ofxKinectV2`](https://github.com/ofTheo/ofxKinectV2) has a `getWorldCoordinateAt(x, y)` function that does exactly that.
-* A pre-mapped mesh that already has the depth and color mapped to world positions and provides the output data. For example, [`ofxRealSense2`](https://github.com/prisonerjohn/ofxRealSense2) has a `getPointsMesh()` function that can be drawn directly.
+* A pre-mapped mesh that already has the depth and color mapped to world positions and provides the output data. For example, [`ofxRealSense2`](https://gitlab.com/prisonerjohn/ofxrealsense2/) has a `getPointsMesh()` function that can be drawn directly.
 
 You will have to read the documentation or look at the examples for the depth camera you are using to determine how to get correspondence between depth, color, and world space.
 

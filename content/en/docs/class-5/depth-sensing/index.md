@@ -212,7 +212,7 @@ OF Support
 
 * [ofxLibRealSense2](https://github.com/m9dfukc/ofxLibRealSense2)
   * Mac (Windows, Linux in theory)
-* [ofxRealSense2](https://github.com/prisonerjohn/ofxRealSense2)
+* [ofxRealSense2](https://gitlab.com/prisonerjohn/ofxrealsense2/)
   * Windows (Mac, Linux in theory)
 
 ## Other Options
