@@ -4,13 +4,13 @@ description: ""
 lead: ""
 date: 2022-11-27T12:04:16-05:00
 lastmod: 2022-11-27T12:04:16-05:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-10"
+    parent: "class-12"
     identifier: "machine-learning"
-weight: 1010
+weight: 1210
 toc: true
 ---
 
@@ -42,22 +42,7 @@ Machine learning has a variety of applications like recommendation engines, rout
 
 ## OpenCV
 
-OpenCV includes a Deep Neural Network (DNN) module which makes it easy to load a model and use it in an OpenCV / openFrameworks based application. The model will also automatically benefit from the optimizations in OpenCV.
-
-{{< alert context="info" icon="✌️" >}}
-**OF Nightly Releases**
-
-The official release of OF (0.11.2 today) goes through substantial testing on all available platforms and is the right choice for stability. We use it in class because we just want things to work as expected. But OF is constantly being updated with bug fixes and new features, and these may take months before they make it into the release.
-
-There are a couple of options if we want to work with the latest and greatest version of OF:
-
-* Clone the [openFrameworks repository from GitHub](https://github.com/openframeworks/openFrameworks) and keep pulling new commits as they come in. Note that this will not include the 3rd party libraries or the project generator, and that these need to be downloaded and built separately (following instructions in the [README](https://github.com/openframeworks/openFrameworks/blob/master/README.md)).
-* Download the latest nightly build from the [openFrameworks download page](https://openframeworks.cc/download/). This is a full download, including all required libs and apps, that is generated every day from the latest code.
-
-In both cases, we are working with code that has not been tested extensively, so keep in mind that some things might break!
-{{< /alert >}}
-
-As of this writing (Nov 2022), openFrameworks support for OpenCV DNN is available in the nightly releases. An image classification example called `opencvImageClassification` is available in the `/path/to/OF/examples/computer_vision/` directory, which we can use as our reference.
+OpenCV includes a Deep Neural Network (DNN) module which makes it easy to load a model and use it in an OpenCV / openFrameworks based application. The model will also automatically benefit from the optimizations in OpenCV. An image classification example called `opencvImageClassification` is available in the `/path/to/OF/examples/computer_vision/` directory, which we can use as our reference.
 
 ### YOLOv5
 
