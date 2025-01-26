@@ -18,7 +18,7 @@ toc: true
 
 We will use Discord to communicate between class meetings. Please use this forum to post any questions or comments.
 
-1. Join the class Discord server using the invitation link: [https://discord.gg/NGMGbjK8w3](https://discord.gg/NGMGbjK8w3).
+1. Join the class Discord server using the invitation link: [https://discord.gg/WaH4haCmmn](https://discord.gg/WaH4haCmmn).
 1. Note that we are using the same server as previous classes, so you may see some activity there from before.
 
 ## IDE Installation
@@ -29,7 +29,7 @@ IDEs can be large downloads and take up a lot of disk space, so its best to inst
 
 ### macOS
 
-You will use [Xcode](https://developer.apple.com/xcode/) on macOS.
+We will use [Xcode](https://developer.apple.com/xcode/) on macOS.
 
 1. Download Xcode directly from the [Mac App Store](https://apps.apple.com/ca/app/xcode/id497799835?mt=12).
 1. Wait for the download and installation to complete.
@@ -42,7 +42,7 @@ xcode-select --install
 
 ### Windows
 
-You will use [Visual Studio](https://visualstudio.microsoft.com/) on Windows.
+We will use [Visual Studio](https://visualstudio.microsoft.com/) on Windows.
 
 1. Download Visual Studio Community 2022 from the [official site](https://visualstudio.microsoft.com/).
 1. Open the Visual Studio Installer and select the `Desktop environment with C++` workload.

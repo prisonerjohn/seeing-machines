@@ -319,5 +319,3 @@ Note that the placeholder `ofApp` already has stubs for common methods you may w
 OF ships with a multitude of examples in the `path/to/OF/examples` folder, and this is the best way to get familiar with the tool. Note that project files need to be created for these using the Project Generator before they can be built.
 
 OF also has comprehensive [documentation](https://openframeworks.cc/documentation/) on its website, as well as an active [user forum](https://forum.openframeworks.cc/), which are other great places to get information.
-
-If you are more of a visual learner, Lewis Lepton's [openFrameworks Tutorial Series](https://www.youtube.com/playlist?list=PL4neAtv21WOlqpDzGqbGM_WN2hc5ZaVv7) on YouTube is an excellent resource.

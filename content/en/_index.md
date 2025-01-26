@@ -2,19 +2,19 @@
 title : "Seeing Machines"
 description: "A programming course where we'll explore various techniques and solutions for tracking and sensing people or objects in space."
 date: 2022-08-16T18:24:18-04:00
-lastmod: 2022-08-16T18:24:18-04:00
+lastmod: 2023-01-25T18:24:18-04:00
 draft: false
 images: []
 ---
 
-ITP Fall 2023<br/>
-Tuesdays 6:00pm - 8:30pm<br/>
-370 Jay St, Room 450
+ITP Spring 2025<br/>
+Mondays 6:00pm - 8:30pm<br/>
+370 Jay St, Room 409
 
 Professor: Elie Zananiri<br/>
 Contact Email: [ez377@nyu.edu](mailto:ez377@nyu.edu)<br/>
-Office Hours: [Tuesdays 5:00pm-6:00pm by appointment](https://calendar.google.com/calendar/selfsched?sstoken=UUFtdUlOM1BOTFpsfGRlZmF1bHR8OTA2NTRjNjM2OTA5YjU0MTRhMjdjYjczYzc0ZTAwMTM)<br/>
-Discord Server: [https://discord.gg/NGMGbjK8w3](https://discord.gg/NGMGbjK8w3)
+Office Hours: [Mondays 5:00pm-6:00pm by appointment](https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0QjRBcX0WF_V-H6eb1YJzVuQQs3iwrqEVxSjfA1xbeQU63ZwpVvfBdUEQ1TaHHggbMcF6shEyk)<br/>
+Discord Server: [https://discord.gg/WaH4haCmmn](https://discord.gg/WaH4haCmmn)
 
 ## Overview
 
@@ -70,26 +70,26 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 
 | Date     | Topic          | Assignment | Recordings |
 |:---------|:---------------|:-----------|:-----------|
-| Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | | |
-| Sep 5    | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+5+2023+%5BAUDIO%5D/1_7xgtbhhf)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+5+2023+%5BVIDEO%5D/1_s73kyypa) |
-| Sep 12   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>[Arrays]({{< relref "docs/class-2/arrays" >}})<br/>[Images and Video]({{< relref "docs/class-2/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+12+2023+%5BAUDIO%5D/1_vy6vvl8l)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+12+2023+%5BVIDEO%5D/1_zgszrz07) |
-| Sep 19   | [Computer Vision]({{< relref "docs/class-3/computer-vision" >}}) | Assignment 1 DUE<br/>[Assignment 2 OUT]({{< relref "docs/assignments/assignment-2" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+19+2023+%5BAUDIO%5D/1_vv2lxe2l)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+19+2023+%5BVIDEO%5D/1_jnfe0yo9) |
-| Sep 26   | [Intro to OpenCV]({{< relref "docs/class-4/intro-to-opencv" >}})<br/>[Object Tracking]({{< relref "docs/class-4/object-tracking" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Sep+26+2023+%5BAUDIO%5D/1_sox63xcv)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Sep+26+2023+%5BVIDEO%5D/1_rtdaqefg) |
-| Oct 3    | [Logging]({{< relref "docs/class-5/logging" >}})<br />[Depth Sensing]({{< relref "docs/class-5/depth-sensing" >}}) | Assignment 2 DUE<br/>[Assignment 3 OUT]({{< relref "docs/assignments/assignment-3" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2023+%5BAUDIO%5D/1_3ho6hbsv)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+3+2023+%5BVIDEO%5D/1_5hsuoian) |
-| Oct 10   | <div class="blink">NO CLASS</div> | | |
-| Oct 17   | [Pointers]({{< relref "docs/class-6/pointers" >}})<br/>[Depth Images]({{< relref "docs/class-6/depth-images" >}}) |  | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BAUDIO%5D/1_2mi99aix)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+17+2023+%5BVIDEO%5D/1_258vzzxa) |
-| Oct 24   | [Depth World]({{< relref "docs/class-7/depth-world" >}}) | Assignment 3 DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2023+%5BAUDIO%5D/1_mrkr0e6c)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+24+2023+%5BVIDEO%5D/1_axlikaow) |
-| Oct 31   | [Networking]({{< relref "docs/class-8/networking" >}})<br/>[Texture Sharing]({{< relref "docs/class-8/texture-sharing" >}}) | [Assignment 4 OUT]({{< relref "docs/assignments/assignment-4" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2023+%5BAUDIO%5D/1_8hsj49es)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Oct+31+2023+%5BVIDEO%5D/1_9zdwefdj) |
-| Nov 7    | [Draw Bounds]({{< relref "docs/class-9/draw-bounds" >}})<br/>[Frame Buffers]({{< relref "docs/class-9/frame-buffers" >}}) | | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2023/1_id3iz3eu)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+7+2023/1_v3lh1dcm) |
-| Nov 14   | [Classes]({{< relref "docs/class-10/classes" >}})<br/>[Mapping]({{< relref "docs/class-10/mapping" >}}) | Assignment 4 DUE<br/>[Final Project OUT]({{< relref "docs/assignments/final-project" >}}) | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2023+%5BAUDIO%5D/1_8l12dvng)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+14+2023+%5BVIDEO%5D/1_ro0o7hnd) |
-| Nov 21   | Project Proposals<br/>[Mobile Development]({{< relref "docs/class-11/mobile-development" >}}) | Project Proposal DUE | [AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Nov+21+2023+%5BAUDIO%5D/1_2etlk8io)<br/>[VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Nov+21+2023+%5BVIDEO%5D/1_0nw9e5xf) |
-| Nov 28   | Milestone Check-In<br/>[Machine Learning]({{< relref "docs/class-12/machine-learning" >}}) | | |
-| Dec 5    | Milestone Check-In<br/>[Sound]({{< relref "docs/class-13/sound" >}}) | | |
-| Dec 12   | Final Presentations | Final Project DUE | |
+| Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | |  |
+| Jan 27   | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | |  |
+| Feb  3   | Data Types<br/>Arrays<br/>Images and Video | Assignment 1 OUT |  |
+| Feb 10   | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
+| Feb 18 <div class="blink">Tuesday</div> | Intro to OpenCV<br/>Object Tracking | |  |
+| Feb 24   | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |
+| Mar  3   | Pointers<br/>Depth Images |  |  |
+| Mar 10   | Depth World | Assignment 3 DUE |  |
+| Mar 17   | Networking<br/>Texture Sharing | Assignment 4 OUT |  |
+| Mar 24   | <div class="blink">NO CLASS</div> | | |
+| Mar 31   | Draw Bounds<br/>Frame Buffers | |  |
+| Apr  7   | Classes<br/>Mapping | Assignment 4 DUE<br/>Final Project OUT |  |
+| Apr 14   | Project Proposals<br/>Mobile Development | Project Proposal DUE |  |
+| Apr 21   | Milestone Check-In<br/>Machine Learning | | |
+| Apr 28   | Milestone Check-In<br/>TBD | Sound | |
+| May  5   | Final Presentations | Final Project DUE | |
 
 ## Academic Integrity
 
-Plagiarism is presenting someone else’s work as though it were your own. More specifically, plagiarism is to present as your own: A sequence of words quoted without quotation marks from another writer or a paraphrased passage from another writer’s work or facts, ideas or images composed by someone else.
+Plagiarism is presenting someone else's work as though it were your own. More specifically, plagiarism is to present as your own: A sequence of words quoted without quotation marks from another writer or a paraphrased passage from another writer’s work or facts, ideas or images composed by someone else.
 
 The core of the educational experience at the Tisch School of the Arts is the creation of original academic and artistic work by students for the critical review of faculty members.  It is therefore of the utmost importance that students at all times provide their instructors with an accurate sense of their current abilities and knowledge in order to receive appropriate constructive criticism and advice.  Any attempt to evade that essential, transparent transaction between instructor and student through plagiarism or cheating is educationally self-defeating and a grave violation of Tisch School of the Arts community standards.  For all the details on plagiarism, please refer to page 10 of the Tisch School of the Arts, Policies and Procedures Handbook, which can be found online at: [http://students.tisch.nyu.edu/page/home.html](http://students.tisch.nyu.edu/page/home.html)
 
