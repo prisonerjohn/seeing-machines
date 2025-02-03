@@ -72,7 +72,7 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 |:---------|:---------------|:-----------|:-----------|
 | Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | |  |
 | Jan 27   | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Jan+27+2025+%5BVIDEO%5D/1_zdccj7c4)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Jan+27+2025+%5BAUDIO%5D/1_a9zeezz4) |
-| Feb  3   | Data Types<br/>Arrays<br/>Images and Video | Assignment 1 OUT |  |
+| Feb  3   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>[Arrays]({{< relref "docs/class-2/arrays" >}})<br/>[Images and Video]({{< relref "docs/class-2/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) |  |
 | Feb 10   | Computer Vision | Assignment 1 DUE<br/>Assignment 2 OUT |  |
 | Feb 18 <div class="blink">Tuesday</div> | Intro to OpenCV<br/>Object Tracking | |  |
 | Feb 24   | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |

@@ -3,8 +3,8 @@ title: "Images and Video"
 description: ""
 lead: ""
 date: 2022-09-18T13:42:06-04:00
-lastmod: 2022-09-18T13:42:06-04:00
-draft: true
+lastmod: 2025-02-02T12:31:13-04:00
+draft: false
 images: []
 menu:
   docs:
@@ -143,7 +143,7 @@ public:
 
 Variables we want to use in any method (function) of our class should be declared in the header. This means that they are in the entire class' *scope*.
 
-If we declare a variable inside one of our methods like `ofApp::setup()` or `ofApp::draw()`, that variable will only be part of that specifc method's scope, and will not be accessible outside of it.
+If we declare a variable inside one of our methods like `ofApp::setup()` or `ofApp::draw()`, that variable will only be part of that specific method's scope, and will not be accessible outside of it.
 {{< /alert >}}
 
 We will load an image named [`dog-grass.jpg`](dog-grass.jpg) from our `data` folder in the `ofApp::setup()` function. We only need to load the image into memory once, so we do it when the app starts up.
@@ -168,7 +168,7 @@ void ofApp::draw()
 {{< alert context="info" icon="✌️" >}}
 **What happened to the other built-in ofApp methods?**
 
-In this specific example, we are not using most of the `ofApp` placeholder methods like `ofApp::update()`, `ofApp::keyPressed()`, `ofApp::mouseMoved()`, etc. We can remove them from our class if we will not be using them, and this will increase readability because the code will not be filled with stub functions.
+In this specific example, we are not using most of the `ofApp` placeholder methods like `ofApp::update()`, `ofApp::keyPressed()`, `ofApp::mouseMoved()`, etc. I am removing them from the code to increase readability.
 
 However, note that the method needs to be removed from both the header `.h` and the implementation `.cpp` files or else the compiler will assume something is missing and will throw an error.
 {{< /alert >}}

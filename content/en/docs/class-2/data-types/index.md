@@ -3,8 +3,8 @@ title: "Data Types"
 description: ""
 lead: ""
 date: 2022-09-18T13:41:13-04:00
-lastmod: 2022-09-18T13:41:13-04:00
-draft: true
+lastmod: 2025-02-02T12:31:13-04:00
+draft: false
 images: []
 menu:
   docs:
