@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-09-25T13:57:20-04:00
 lastmod: 2022-09-25T13:57:20-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -63,7 +63,7 @@ What are some common computer vision operations?
 
 One of the most common operations we will have to perform when working with computer vision is image segmentation. Image segmentation simply means dividing up the image pixels into meaningful groups. These meaningful groups depend on the application we are creating. For example, we may want to only consider the brightest pixels in an image, pixels of a certain color, clusters of pixels of a specific size, etc.
 
-{{< image src="https://www.researchgate.net/profile/Gabriel_Sanchez-Perez/publication/220050099/figure/fig1/AS:277473016205312@1443166130542/Hand-shape-segmentation-grayscale-captured-image-and-its-corresponding-binary-segmented.png" alt="Shape-based hand recognition approach using the morphological pattern spectrum" caption="[*Shape-based hand recognition approach using the morphological pattern spectrum*](https://www.researchgate.net/publication/220050099_Shape-based_hand_recognition_approach_using_the_morphological_pattern_spectrum)" width="600px" >}}
+{{< image src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13640-021-00567-1/MediaObjects/13640_2021_567_Fig2_HTML.png?as=webp" alt="Robust hand gesture recognition using multiple shape-oriented visual cues" caption="[*Robust hand gesture recognition using multiple shape-oriented visual cues*](https://jivp-eurasipjournals.springeropen.com/articles/10.1186/s13640-021-00567-1)" width="600px" >}}
 
 Image segmentation is the first step into many applications as it is a way to discard unwanted data and only keep what we need to focus on.
 
@@ -112,7 +112,7 @@ void ofApp::draw()
 
 Note that we call the [`ofVideoGrabber::update()`](https://openframeworks.cc/documentation/video/ofVideoGrabber/#!show_update) function every frame. This method checks if there's a new video frame available and if so, refreshes the grabber to make it available.
 
-We will use an [`ofImage`](https://openframeworks.cc/documentation/graphics/ofImage/) to store our thresholded image. Let's start with a stub procedure that just copies the video pixels into the image one at a time.
+We will use an [`ofImage`](https://openframeworks.cc/documentation/graphics/ofImage/) to store our thresholded image. Let's start with a loop that just copies the video pixels into the image one at a time.
 
 ```cpp
 // ofApp.h
@@ -164,22 +164,14 @@ void ofApp::draw()
 }
 ```
 
-{{< alert context="danger" icon="⚠️" >}}
-Why is the drawn image not updating?
-
-Remember that an `ofImage` is made up of two parts: [`ofPixels`](https://openframeworks.cc/documentation/graphics/ofPixels/), which is the data component of the image (on the CPU), and [`ofTexture`](https://openframeworks.cc/documentation/gl/ofTexture/), which is the graphics component of the image (on the GPU). For an image to get drawn to the screen, the data in `ofPixels` must be copied over to the `ofTexture`.
-
-When manipulating pixels directly as we are doing, this process needs to be triggered manually by calling [`ofImage::update()`](https://openframeworks.cc/documentation/graphics/ofImage/#show_update).
-{{< /alert >}}
-
 ### Pass by Reference vs. Pass by Value
 
-You'll notice that our drawn image is still not working even after adding the call to `ofImage::update()`.
+You'll notice that our drawn image is not displaying anything.
 
 In C++, there are a few ways to pass data (aka arguments or parameters) between objects and functions. We can pass data by reference, by value, or by pointer.
 
 * Pass by **reference** means that we are passing the actual data object itself. Any changes we make to the received object will be kept in the original reference, as it is the same object.
-* Pass by **value** means that we are just passing the value of the data, not the data object itself. This means making a copy of the original object and passing that copy. This does not make a difference when the data is a number (like an `int` or a `float`) but it does matter when the data is an object, as any changes we make to the received object are only applied on this new copy object.
+* Pass by **value** means that we are just passing the value of the data, not the data object itself. This means *making a copy of the original object and passing that copy*. This does not make a difference when the data is a number (like an `int` or a `float`), but it matters when the data is an object, as any changes we make to the received object are only applied to this new copy object.
 * Pass by **pointer** means that we are passing the memory address of the data object. We will look at this later on in the course.
 
 By default, data is passed by **value** in C++.
@@ -192,7 +184,7 @@ One way to resolve this would be to save back the modified pixels to `resultImg`
 resultImg.setFromPixels(resultPix);
 ```
 
-Our code finally works! However it is highly unoptimized as we are now making two additional copies of our pixel array every frame.
+Our code works! However it is highly unoptimized as we are now making two additional copies of our pixel array every frame.
 
 ```cpp
 // ofApp.cpp
@@ -220,7 +212,40 @@ void ofApp::update()
 // ...
 ```
 
-A better approach is to pass the original pixels by reference using the `&` operator. The reference `ofPixels` from the `ofImage` are then modified directly. We can even go ahead and pass the grabber pixels by reference and avoid making a copy there too.
+A better approach is to pass the original pixels **by reference** using the `&` operator. The reference `ofPixels` from the `ofImage` is then modified directly. We can even go ahead and pass the grabber pixels by reference and avoid making a copy there too.
+
+```cpp
+// ofApp.cpp
+
+// ...
+
+void ofApp::update()
+{
+  grabber.update();
+
+  // Use a reference to the ofPixels in both the grabber and the image.
+  ofPixels& grabberPix = grabber.getPixels();
+  ofPixels& resultPix = resultImg .getPixels();
+  for (int y = 0; y < grabberPix.getHeight(); y++)
+  {
+    for (int x = 0; x < grabberPix.getWidth(); x++)
+    {
+      ofColor pixColor = grabberPix.getColor(x, y);
+      resultPix.setColor(x, y, pixColor);
+    }
+  }
+}
+
+// ...
+```
+
+{{< alert context="danger" icon="⚠️" >}}
+Why is the drawn image not updating?
+
+Remember that an `ofImage` is made up of two parts: [`ofPixels`](https://openframeworks.cc/documentation/graphics/ofPixels/), which is the data component of the image (on the CPU), and [`ofTexture`](https://openframeworks.cc/documentation/gl/ofTexture/), which is the graphics component of the image (on the GPU). For an image to get drawn to the screen, the data in `ofPixels` must be copied over to the `ofTexture`.
+
+When manipulating pixels directly as we are doing, this process needs to be triggered manually by calling [`ofImage::update()`](https://openframeworks.cc/documentation/graphics/ofImage/#show_update).
+{{< /alert >}}
 
 ```cpp
 // ofApp.cpp
@@ -498,11 +523,11 @@ For this example, we will use [`ofxPanel`](https://openframeworks.cc/documentati
 
 `ofxGui` cannot use data types like `int`, `float`, `string` directly, because it needs additional information like a name, a range, etc.
 
-One option is to use special classes that are part of `ofxGui` like `ofxIntSlider`, `ofxColorSlider`, `ofxButton`, etc. The example `examples\gui\guiExample` demonstrates how to do this.
+One option is to use special classes that are part of the `ofxGui` addon, like `ofxIntSlider`, `ofxColorSlider`, `ofxButton`, etc. The example `examples\gui\guiExample` demonstrates how to do this.
 
 ### ofParameter
 
-Another option is to use a special OF class called [`ofParameter`](https://openframeworks.cc/documentation/types/ofParameter/). This is more useful because `ofParameter` objects have similar properties and can be used outside of `ofxGui`.
+Another option is to use a special OF class called [`ofParameter`](https://openframeworks.cc/documentation/types/ofParameter/). This is more useful because `ofParameter` objects are not tied to `ofxGui` and can be used with other GUI frameworks, events, etc.
 
 `ofParameter` is a **wrapper** class that is used to give other data types super powers. For example:
 
@@ -514,9 +539,9 @@ Another option is to use a special OF class called [`ofParameter`](https://openf
 {{< alert context="info" icon="✌️" >}}
 **What is a template?**
 
-C++ has a concept of [templates](https://en.cppreference.com/w/cpp/language/templates). The idea with templates is to use types as parameters, similar to how we use values as parameters. If a class is templated, it can work with various data types without having to write the same code multiple times.
+C++ has a concept of [templates](https://en.cppreference.com/w/cpp/language/templates). The idea with templates is to use **data types as parameters**, similar to how we have been using values as parameters. If a class is templated, it can work with various data types without having to write the same code multiple times.
 
-We will usually see classes or functions be templated.
+We will see classes or functions be templated.
 
 In fact, we have already been using templates with `ofPixels`! The `ofPixels` type is actually a [shorthand](https://github.com/openframeworks/openFrameworks/blob/master/libs/openFrameworks/graphics/ofPixels.h#L661) for `ofPixels_<unsigned char>`. This means it is an [`ofPixels_`](https://openframeworks.cc/documentation/graphics/ofPixels/#!show_ofPixels_) template where the data type of the pixels is `unsigned char` (and that is why our values go from `0` to `255`).
 
@@ -730,6 +755,6 @@ Infrared USB cameras can be hard to come by.
 Thermographic cameras, commonly known as FLIR, can be an interesting option. These infrared cameras sense radiation/heat and represent it as a color map. This can be very useful for tracking humans or animals as they can easily be segmented from their surroundings.
 
 <figure style="width:600px;display:block;margin:0 auto;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5gqVf_rLfn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<figcaption><i><a href="https://www.youtube.com/embed/5gqVf_rLfn4">AGGRO DR1FT Teaser Trailer #1</a></i></figcaption>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0_LDcKwbT2w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<figcaption><i><a href="https://www.youtube.com/embed/0_LDcKwbT2w">AGGRO DR1FT</a></i></figcaption>
 </figure>
