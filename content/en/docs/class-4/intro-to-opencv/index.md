@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-09-25T16:37:02-04:00
 lastmod: 2022-09-25T16:37:02-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -17,10 +17,12 @@ toc: true
 [OpenCV](https://opencv.org/) is an open-source library for performing computer vision operations.
 
 * OpenCV was originally released in 2000 and has gone through many updates and revisions since then.
-* The library is cross-platform and available for all major platforms. It includes interfaces in C++, Java, and Python.
+* The library is cross-platform and available for all major platforms. It includes interfaces in C++, Python, Java, and JavaScript.
 * OpenCV includes hundreds of algorithms, for performing a variety of tasks like image conversion, object tracking, feature recognition, camera calibration, etc.
 
-OpenCV uses its own image type, called [`cv::Mat`](https://docs.opencv.org/4.1.1/d3/d63/classcv_1_1Mat.html). The word "Mat" is short for [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)), which is what we call a multi-dimensional array of values in mathematics. `cv::Mat` is similar to `ofPixels`, as it holds an array of pixel values, but it is also much more powerful as it can perform all types of operations on matrices. For example, we can add or multiply two `cv::Mat` objects directly, without needing to loop through the pixels one at a time.
+OpenCV uses its own image type, called [`cv::Mat`](https://docs.opencv.org/4.1.1/d3/d63/classcv_1_1Mat.html). The word "Mat" is short for [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)), which is what we call a multi-dimensional array of values in mathematics. 
+
+`cv::Mat` is similar to `ofPixels`, as it holds an array of pixel values, but it is also much more powerful as it can perform all types of operations on matrices. For example, we can add or multiply two `cv::Mat` objects directly, without needing to loop through the pixels one at a time.
 
 {{< alert context="info" icon="✌️" >}}
 **What does the `::` mean in this context?**
@@ -29,7 +31,7 @@ We have already covered that `::` is a scope resolution operator in C++. We firs
 
 In the case of `cv::Mat`, the `::` is used to show the relationship between classes and namespaces.
 
-A [namespace](https://en.cppreference.com/w/cpp/language/namespace) is a top-level group that holds classes that are related to each other. This is similar to how programs are organized using packages in JavaScript, Java, or Python. In this case, `cv::Mat` is a reference to the `Mat` class that belongs to the `cv` namespace.
+A [namespace](https://en.cppreference.com/w/cpp/language/namespace) is a group that holds classes that are related to each other. This is similar to how programs are organized using packages in JavaScript, Java, or Python. In this case, `cv::Mat` is a reference to the `Mat` class that belongs to the `cv` namespace.
 
 Classes in the same namespace can refer to each other directly, but classes outside of that namespace need to specify the namespace using the `::` notation to refer to its classes.
 
