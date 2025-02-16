@@ -20,7 +20,7 @@ toc: true
 * The library is cross-platform and available for all major platforms. It includes interfaces in C++, Python, Java, and JavaScript.
 * OpenCV includes hundreds of algorithms, for performing a variety of tasks like image conversion, object tracking, feature recognition, camera calibration, etc.
 
-OpenCV uses its own image type, called [`cv::Mat`](https://docs.opencv.org/4.1.1/d3/d63/classcv_1_1Mat.html). The word "Mat" is short for [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)), which is what we call a multi-dimensional array of values in mathematics. 
+OpenCV uses its own image type, called [`cv::Mat`](https://docs.opencv.org/4.1.1/d3/d63/classcv_1_1Mat.html). The word "Mat" is short for [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)), which is what we call a multi-dimensional array of values in mathematics.
 
 `cv::Mat` is similar to `ofPixels`, as it holds an array of pixel values, but it is also much more powerful as it can perform all types of operations on matrices. For example, we can add or multiply two `cv::Mat` objects directly, without needing to loop through the pixels one at a time.
 
