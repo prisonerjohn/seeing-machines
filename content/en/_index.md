@@ -75,7 +75,7 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Feb  3   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>[Arrays]({{< relref "docs/class-2/arrays" >}})<br/>[Images and Video]({{< relref "docs/class-2/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+3+2025+%5BVIDEO%5D/1_3bu470vk)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+3+2025+%5BAUDIO%5D/1_0bsn5x73) |
 | Feb 10   | [Computer Vision]({{< relref "docs/class-3/computer-vision" >}}) | Assignment 1 DUE<br/>[Assignment 2 OUT]({{< relref "docs/assignments/assignment-2" >}}) | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+10+2025+%5BVIDEO%5D/1_zkx52wnv)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+10+2025+%5BAUDIO%5D/1_gzav46ye) |
 | Feb 18 <div class="blink">Tuesday</div> | [Intro to OpenCV]({{< relref "docs/class-4/intro-to-opencv" >}})<br/>[Object Tracking]({{< relref "docs/class-4/object-tracking" >}}) | | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+18+2025+%5BVIDEO%5D/1_dlszr1ji)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+18+2025+%5BAUDIO%5D/1_s27lxixb) |
-| Feb 24   | Logging<br />Depth Sensing | Assignment 2 DUE<br/>Assignment 3 OUT |  |
+| Feb 24   | [Logging]({{< relref "docs/class-5/logging" >}})<br />[Depth Sensing]({{< relref "docs/class-5/depth-sensing" >}}) | Assignment 2 DUE<br/>[Assignment 3 OUT]({{< relref "docs/assignments/assignment-3" >}}) |  |
 | Mar  3   | Pointers<br/>Depth Images |  |  |
 | Mar 10   | Depth World | Assignment 3 DUE |  |
 | Mar 17   | Networking<br/>Texture Sharing | Assignment 4 OUT |  |

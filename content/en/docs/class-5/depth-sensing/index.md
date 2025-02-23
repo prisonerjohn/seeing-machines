@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-10-07T11:53:02-04:00
 lastmod: 2022-10-07T11:53:02-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -163,7 +163,7 @@ OF Support
 
 ### Kinect for Azure
 
-Just released in 2019, the [Kinect for Azure](https://azure.microsoft.com/en-us/services/kinect-dk/) is based on technologies of the previous Kinect and the [HoloLens](https://www.microsoft.com/en-us/hololens). This is the first Kinect device marketed to developers at launch, and the first device to have an [open-source SDK](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK) with official support for non-Windows platforms.
+Released in 2019, the [Kinect for Azure](https://azure.microsoft.com/en-us/services/kinect-dk/) is based on technologies of the previous Kinect and the [HoloLens](https://www.microsoft.com/en-us/hololens). This is the first Kinect device marketed to developers at launch, and the first device to have an [open-source SDK](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK) with official support for non-Windows platforms.
 
 {{< image src="kinect_v3.png" alt="Kinect for Azure" width="600px" >}}
 
@@ -219,24 +219,38 @@ OF Support
 
 ### Stereolabs ZED
 
-Stereolabs are the newest addition to this list, and are worth mentioning because of their high quality [ZED 2](https://www.stereolabs.com/zed-2/) sensors.
+Stereolabs are the newest players on this list, and are worth mentioning because of their high quality [ZED 2](https://www.stereolabs.com/zed-2/) sensors.
 
 * Technology: Stereo Color (range is virtually unlimited)
 * Waterproof / dustproof options makes them great for outdoor use
 * SDK uses machine learning models to provide a robust depth map and body tracking features
 * Works on Windows and Linux but requires an NVIDIA GPU
 
-### Orbbec Astra
+<figure style="width:600px;display:block;margin:0 auto;">
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/731230649/fbb9eb2c69" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<figcaption><i><a href="https://vimeo.com/731230649/fbb9eb2c69">Polymorphic: An Interactive Installation</a> from <a href="https://vimeo.com/sensoriumimmersive">Sensorium</a> on <a href="https://vimeo.com">Vimeo</a>.</i></figcaption>
+</figure>
 
-Orbbec released the [Astra Series](https://orbbec3d.com/index/Product/info.html?cate=38&id=36) as a response to the Microsoft Kinect. The goal was to create an open, cross-platform SDK which included body tracking with OpenNI.
+### Orbbec Femto
 
-* Technology: Strucutured Light
+Orbbec released the [Femto Series](https://www.orbbec.com/products/#scroll-tof-camera) to fill in the gap left by Microsoft discontinuing the Kinect for Azure. The Femto cameras can be used either with their own [Orbbec SDK](https://www.orbbec.com/developers/orbbec-sdk/) or with the [Microsoft Azure Kinect SDK](https://github.com/orbbec/OrbbecSDK-K4A-Wrapper) (meaning they can be a drop-in replacement in a project that uses Azure Kinects!). The [Femto Mega](https://www.orbbec.com/products/tof-camera/femto-mega/) can also be powered and stream data over Ethernet, which greatly simplifies cable runs over long distances.
+
+<figure style="width:600px;height:420px;display:block;margin:0 auto;">
+  <iframe width="600" height="375" src="https://www.youtube.com/embed/lYkMFsAs3m8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <figcaption><i>The Vivid Unknown at BAM excerpt</i></figcaption>
+</figure>
 
 ### Leap Motion
 
 The [Leap Motion Controller](https://www.ultraleap.com/product/leap-motion-controller/) is a depth sensor that focuses on hand and finger tracking. It can be used for both Desktop and VR applications.
 
 * Technology: Stereo IR
+
+### Orbbec Astra
+
+Orbbec also released the [Astra Series](https://orbbec3d.com/index/Product/info.html?cate=38&id=36) as a response to the Microsoft Kinect. The goal was to create an open, cross-platform SDK which included body tracking with OpenNI.
+
+* Technology: Strucutured Light
 
 ## USB Connections
 
