@@ -68,24 +68,24 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 
 ## Schedule
 
-| Date     | Topic          | Assignment | Recordings |
-|:---------|:---------------|:-----------|:-----------|
-| Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | |  |
-| Jan 27   | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Jan+27+2025+%5BVIDEO%5D/1_zdccj7c4)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Jan+27+2025+%5BAUDIO%5D/1_a9zeezz4) |
-| Feb  3   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>[Arrays]({{< relref "docs/class-2/arrays" >}})<br/>[Images and Video]({{< relref "docs/class-2/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+3+2025+%5BVIDEO%5D/1_3bu470vk)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+3+2025+%5BAUDIO%5D/1_0bsn5x73) |
-| Feb 10   | [Computer Vision]({{< relref "docs/class-3/computer-vision" >}}) | Assignment 1 DUE<br/>[Assignment 2 OUT]({{< relref "docs/assignments/assignment-2" >}}) | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+10+2025+%5BVIDEO%5D/1_zkx52wnv)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+10+2025+%5BAUDIO%5D/1_gzav46ye) |
-| Feb 18 <div class="blink">Tuesday</div> | [Intro to OpenCV]({{< relref "docs/class-4/intro-to-opencv" >}})<br/>[Object Tracking]({{< relref "docs/class-4/object-tracking" >}}) | | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+18+2025+%5BVIDEO%5D/1_dlszr1ji)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+18+2025+%5BAUDIO%5D/1_s27lxixb) |
-| Feb 24   | [Logging]({{< relref "docs/class-5/logging" >}})<br />[Depth Sensing]({{< relref "docs/class-5/depth-sensing" >}}) | Assignment 2 DUE<br/>[Assignment 3 OUT]({{< relref "docs/assignments/assignment-3" >}}) |  |
-| Mar  3   | Pointers<br/>Depth Images |  |  |
-| Mar 10   | Depth World | Assignment 3 DUE |  |
-| Mar 17   | Networking<br/>Texture Sharing | Assignment 4 OUT |  |
-| Mar 24   | <div class="blink">NO CLASS</div> | | |
-| Mar 31   | Draw Bounds<br/>Frame Buffers | |  |
-| Apr  7   | Classes<br/>Mapping | Assignment 4 DUE<br/>Final Project OUT |  |
-| Apr 14   | Project Proposals<br/>Mobile Development | Project Proposal DUE |  |
-| Apr 21   | Milestone Check-In<br/>Machine Learning | | |
-| Apr 28   | Milestone Check-In<br/>Sound | | |
-| May  5   | Final Presentations | Final Project DUE | |
+| Date     | Topic          | Assignment | NYU Stream | [Direct Link](https://drive.google.com/drive/folders/1ut4VOaQjLAnZEr_-m_pETa-5gbgbt9Z8?usp=drive_link) |
+|:---------|:---------------|:-----------|:-----------|:------------|
+| Prologue | [Getting Started]({{< relref "docs/class-0/getting-started" >}}) | | |
+| Jan 27   | [Foreword]({{< relref "docs/class-1/foreword" >}})<br/>[Intro to openFrameworks]({{< relref "docs/class-1/intro-to-of" >}}) | | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Jan+27+2025+%5BVIDEO%5D/1_zdccj7c4)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Jan+27+2025+%5BAUDIO%5D/1_a9zeezz4) | [VIDEO](https://drive.google.com/file/d/1NwrCrXCrHsh4wgBYwBmw_t9UpVnJRR9c/view?usp=drive_link)<br/>[AUDIO](https://drive.google.com/file/d/18tBwKR0N7-9zz-oT6j9WrT9PCf587zN6/view?usp=drive_link) |
+| Feb  3   | [Data Types]({{< relref "docs/class-2/data-types" >}})<br/>[Arrays]({{< relref "docs/class-2/arrays" >}})<br/>[Images and Video]({{< relref "docs/class-2/images-and-video" >}}) | [Assignment 1 OUT]({{< relref "docs/assignments/assignment-1" >}}) | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+3+2025+%5BVIDEO%5D/1_3bu470vk)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+3+2025+%5BAUDIO%5D/1_0bsn5x73) | [VIDEO](https://drive.google.com/file/d/1jyRmKUxfRLl5OMeylVJKvZlHdGhxgY77/view?usp=drive_link)<br/>[AUDIO](https://drive.google.com/file/d/1Yytom8XmhppUtzLgftMu4K3ACWsZQvch/view?usp=drive_link) |
+| Feb 10   | [Computer Vision]({{< relref "docs/class-3/computer-vision" >}}) | Assignment 1 DUE<br/>[Assignment 2 OUT]({{< relref "docs/assignments/assignment-2" >}}) | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+10+2025+%5BVIDEO%5D/1_zkx52wnv)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+10+2025+%5BAUDIO%5D/1_gzav46ye) | [VIDEO](https://drive.google.com/file/d/1RAJou5eX0kGtGjyPY05jIi0-O1lLFDTX/view?usp=drive_link)<br/>[AUDIO](https://drive.google.com/file/d/1HX0GARPIEExojWlIFvZP4y6WsxsdUp0g/view?usp=drive_link) |
+| Feb 18 <div class="blink">Tuesday</div> | [Intro to OpenCV]({{< relref "docs/class-4/intro-to-opencv" >}})<br/>[Object Tracking]({{< relref "docs/class-4/object-tracking" >}}) | | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+18+2025+%5BVIDEO%5D/1_dlszr1ji)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+18+2025+%5BAUDIO%5D/1_s27lxixb) | [VIDEO](https://drive.google.com/file/d/199tqM_MASJr0zmWY0MYNZ_Eq0VIgq6Ri/view?usp=drive_link)<br/>[AUDIO](https://drive.google.com/file/d/1OiLzJwjq2KxSsP2G1HkuGTAdomojwzbc/view?usp=drive_link) |
+| Feb 24   | [Logging]({{< relref "docs/class-5/logging" >}})<br />[Depth Sensing]({{< relref "docs/class-5/depth-sensing" >}}) | Assignment 2 DUE<br/>[Assignment 3 OUT]({{< relref "docs/assignments/assignment-3" >}}) | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Feb+24+2025+%5BVIDEO%5D/1_zyjw28rw)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Feb+24+2025+%5BAUDIO%5D/1_az4i0wk2) | [VIDEO](https://drive.google.com/file/d/1XmAOV-q1enaSwOiWFu52KX1u5p378_Ge/view?usp=drive_link)<br/>[AUDIO](https://drive.google.com/file/d/1b2j7r4aFKsmZ0CTocePkKc8YSljzU_2i/view?usp=drive_link) |
+| Mar  3   | Pointers<br/>Depth Images |  |  |  |
+| Mar 10   | Depth World | Assignment 3 DUE |  |  |
+| Mar 17   | Networking<br/>Texture Sharing | Assignment 4 OUT |  |  |
+| Mar 24   | <div class="blink">NO CLASS</div> | | |  |
+| Mar 31   | Draw Bounds<br/>Frame Buffers | |  |  |
+| Apr  7   | Classes<br/>Mapping | Assignment 4 DUE<br/>Final Project OUT |  |  |
+| Apr 14   | Project Proposals<br/>Mobile Development | Project Proposal DUE |  |  |
+| Apr 21   | Milestone Check-In<br/>Machine Learning | | |  |
+| Apr 28   | Milestone Check-In<br/>Sound | | |  |
+| May  5   | Final Presentations | Final Project DUE | |  |
 
 ## Academic Integrity
 
