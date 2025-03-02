@@ -37,7 +37,7 @@ We fortunately will not have to implement custom depth grabbers ourselves. In th
 {{< alert context="danger" icon="⚠️" >}}
 Unfortunately, there seems to be an [incompatibility with the Intel RealSense and macOS Monterey](https://support.intelrealsense.com/hc/en-us/community/posts/4548413451539-Activating-the-realsense-D435-Depth-Camera-in-MacOs) (and later) related to permissions. You may be unable to run the following code if you are using this operating system.
 
-I am actively looking for solutions and will let the class know once I have more information. This [blog post](https://lightbuzz.com/realsense-macos/) has potential solutions.
+This [blog post](https://lightbuzz.com/realsense-macos/) describes potential solutions, which I've included in the addon, but in my experience the Mac only recognizes the RealSense some of the time, so it is not ideal and YMMV.
 {{< /alert >}}
 
 ```cpp
