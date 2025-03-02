@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-10-23T14:19:26-04:00
 lastmod: 2022-10-23T14:19:26-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -52,15 +52,20 @@ ofImage * dogImgPtr; // OK
 
 {{< /alert >}}
 
-Reference variables are automatically allocated and created as soon as they are declared. All variables we have put in our `ofApp` header so far have been created right as the program started running. There is no need to call constructors explicitly, they are called automatically.
+Reference variables are automatically allocated and created as soon as they are declared.
 
-Pointers on the other hand are not automatically created. They must be explicitly *instantiated* using the `new` operator.
+* When we add variables to our `ofApp.h` header, they are created when the program starts running.
+* There is no need to call constructors explicitly, they are called automatically.
+
+Pointers, on the other hand, are not automatically created. They must be explicitly *instantiated* using the `new` operator.
 
 ```cpp
 dogImgPtr = new ofImage();
 ```
 
-Pointers are also not automatically deleted. They must be explicitly *destroyed* using the `delete` operator when we are done with them. As a general rule, anything we create with `new`, we should eventually destroy with `delete` down the line.
+Pointers are also not automatically deleted. They must be explicitly *destroyed* using the `delete` operator when we are done with them.
+
+* As a general rule, anything we create with `new`, we should eventually destroy with `delete` down the line.
 
 ```cpp
 delete dogImgPtr;
@@ -73,7 +78,7 @@ dogImgPtr->load("dog-grass.jpg");
 dogImgPtr->draw(0, 0);
 ```
 
-We can convert a reference to a pointer, this is called *address-of* . Putting an ampersand `&` operator in front of a reference variable will return its address in memory.
+We can convert a reference to a pointer, this is called *address-of* . Putting an ampersand `&` operator in front of a reference variable will return its address in memory (i.e. its pointer).
 
 ```cpp
 ofImage dogImg;
@@ -471,7 +476,7 @@ In a nutshell, they work the following way:
 * A pointer is destroyed using [`std::shared_ptr<T>.reset()`](http://www.cplusplus.com/reference/memory/shared_ptr/reset/) or by simply setting it to `nullptr`.
 * Every time a new pointer to the same object is added, the reference count increases.
 * Every time a pointer to that object is removed, the reference count decreases.
-* When the reference count hits 0, the object is destroyed.
+* When the reference count hits 0, the object is destroyed automatically.
 
 ```cpp
 // ofApp.h

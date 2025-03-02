@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-10-23T14:19:40-04:00
 lastmod: 2022-10-23T14:19:40-04:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -28,7 +28,7 @@ As these are specialty devices, we cannot use an `ofVideoGrabber` to retrieve da
 `ofVideoGrabber` is therefore able to work with any USB video device that complies with the UVC standard. It is actually a wrapper with specific implementations based on the type of system we are on, for example [AVFoundation](https://developer.apple.com/av-foundation/) on macOS, [GStreamer](https://gstreamer.freedesktop.org/) on Linux, and [Windows Media Foundation](https://docs.microsoft.com/en-us/windows/win32/medfound/microsoft-media-foundation-sdk) on Windows.
 {{< /alert >}}
 
-We fortunately will not have to implement this ourselves. In the same way that `ofxCv` acts as a bridge between OpenCV and openFrameworks, there are many [OF addons](http://ofxaddons.com/categories) we can use that manage the interface between the sensor SDK and openFrameworks.
+We fortunately will not have to implement custom depth grabbers ourselves. In the same way that `ofxCv` acts as a bridge between OpenCV and openFrameworks, there are many [OF addons](http://ofxaddons.com/categories) we can use that manage the interface between the sensor SDK and openFrameworks.
 
 ### Intel RealSense
 
