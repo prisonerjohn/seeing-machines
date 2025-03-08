@@ -96,7 +96,7 @@ We can read the actual depth value using the SDK function `ofxRealSense2::Device
 
 ```cpp
 // ofApp.cpp
-include "ofApp.h"
+#include "ofApp.h"
 
 void ofApp::setup()
 {
@@ -142,7 +142,7 @@ We will therefore read our value from the raw depth texture.
 
 ```cpp
 // ofApp.cpp
-include "ofApp.h"
+#include "ofApp.h"
 
 void ofApp::setup()
 {
