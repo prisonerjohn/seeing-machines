@@ -368,7 +368,7 @@ void ofApp::serverIndexChanged(int&amp; val)
     ofLogWarning(__FUNCTION__) &lt;&lt; &quot;Server &quot; &lt;&lt; serverIdx &lt;&lt; &quot; out of bounds!&quot;;
   }
 }
-</code></pre><figure style="width:600px;height:400px;display:block;margin:0 auto" markdown=1><div style="padding:56.25% 0 0;position:relative"><iframe src="https://player.vimeo.com/video/129234412?color=ef0065&title=0&byline=0&portrait=0" style=position:absolute;top:0;left:0;width:100%;height:100% frameborder=0 allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src=https://player.vimeo.com/api/player.js></script><figcaption><i><a href=https://vimeo.com/129234412>C4D_OF_ImageProcessing_SyphonLink</a> from <a href=https://vimeo.com/adamheslop>Adam Heslop</a> on <a href=https://vimeo.com>Vimeo</a>.</i></figcaption></figure><h2 id=spout>Spout <a href=#spout class=anchor aria-hidden=true>#</a></h2><p><a href=http://spout.zeal.co/>Spout</a> is the equivalent to Syphon but for Windows platforms. It uses a special GPU feature that allows textures to be shared between different apps running on the same PC, and has a fallback method in case the hardware does not support it.</p><p>Similarly to Syphon, Spout already has plug-ins available for a multitude of platforms, and being open-source, allows any developer to write their own Spout interface for any tool they choose.</p><p>We will use the <a href=https://github.com/prisonerjohn/ofxSpout/tree/feature/upgrade-2.007h>ofxSpout</a> addon for openFrameworks. Make sure to use the <code>upgrade-2.007h</code> branch of the addon.</p><h3 id=sender>Sender <a href=#sender class=anchor aria-hidden=true>#</a></h3><p>The following app is a similar thresholding app with two senders.</p><ul><li>Note that <code>ofxSpout</code> only includes a <code>send()</code> function which takes an <code>ofTexture</code> reference as a parameter.</li></ul><pre><code class=language-cpp>// ofApp.h
+</code></pre><figure style="width:600px;height:400px;display:block;margin:0 auto" markdown=1><div style="padding:56.25% 0 0;position:relative"><iframe src="https://player.vimeo.com/video/129234412?color=ef0065&title=0&byline=0&portrait=0" style=position:absolute;top:0;left:0;width:100%;height:100% frameborder=0 allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src=https://player.vimeo.com/api/player.js></script><figcaption><i><a href=https://vimeo.com/129234412>C4D_OF_ImageProcessing_SyphonLink</a> from <a href=https://vimeo.com/adamheslop>Adam Heslop</a> on <a href=https://vimeo.com>Vimeo</a>.</i></figcaption></figure><h2 id=spout>Spout <a href=#spout class=anchor aria-hidden=true>#</a></h2><p><a href=http://spout.zeal.co/>Spout</a> is the equivalent to Syphon but for Windows platforms. It uses a special GPU feature that allows textures to be shared between different apps running on the same PC, and has a fallback method in case the hardware does not support it.</p><p>Similarly to Syphon, Spout already has plug-ins available for a multitude of platforms, and being open-source, allows any developer to write their own Spout interface for any tool they choose.</p><p>We will use the <a href=https://github.com/prisonerjohn/ofxSpout>ofxSpout</a> addon for openFrameworks.</p><h3 id=sender>Sender <a href=#sender class=anchor aria-hidden=true>#</a></h3><p>The following app is a similar thresholding app with two senders.</p><ul><li>Note that <code>ofxSpout</code> only includes a <code>send()</code> function which takes an <code>ofTexture</code> reference as a parameter.</li></ul><pre><code class=language-cpp>// ofApp.h
 #pragma once
 
 #include &quot;ofMain.h&quot;
@@ -557,6 +557,33 @@ void ofApp::keyPressed(int key)
     receiverGrabber.selectSenderPanel();
   }
 }
+</code></pre><p>Some versions of ofxSpout might flip the received images vertically. If that&rsquo;s the case, you can flip it back using <a href=https://openframeworks.cc/documentation/graphics/ofGraphics/#!show_ofTranslate><code>ofTranslate()</code></a> / <a href=https://openframeworks.cc/documentation/graphics/ofGraphics/#!show_ofScale><code>ofScale()</code></a>, or <a href=https://openframeworks.cc/documentation/graphics/ofPixels/#show_mirror><code>ofPixels::mirror()</code></a>.</p><pre><code class=language-cpp>// ofApp.cpp
+
+// ...
+
+void ofApp::draw()
+{
+  ofPushMatrix();
+  ofScale(1, -1, 1);
+  ofTranslate(0, -ofGetHeight(), 0);
+
+  if (recvGrabber)
+  {
+    // Draw grabber.
+    texGrabber.draw(0, 0);
+  }
+  else if (recvThreshold)
+  {
+    // Draw threshold.
+    texThreshold.draw(0, 0);
+  }
+
+  ofPopMatrix();
+
+  guiPanel.draw();
+}
+
+// ...
 </code></pre><h2 id=ndi>NDI <a href=#ndi class=anchor aria-hidden=true>#</a></h2><p>Syphon and Spout are great for sharing images between applications, but they are limited to a single machine. We sometimes need to share images between different machines and that&rsquo;s where NDI comes in!</p><p><a href=https://www.ndi.tv/>NDI</a> is a high performance standard for video over IP. This means that it can be used to send images over the network with very low latency. The SDK is compatible with Windows, Mac, Linux, and even iOS and Android making it truly versatile.</p><p>There are many options for using NDI under openFrameworks (see <a href=https://github.com/thomasgeissl/ofxNDI>here</a>, <a href=https://github.com/leadedge/ofxNDI>here</a>, and <a href=https://github.com/nariakiiwatani/ofxNDI>here</a>), and you may want to try different ones to see if any suits your needs more than another.</p><p><a href=https://github.com/leadedge/ofxNDI>ofxNDI</a> by Lynn Jarvis is my preferred choice at the moment, but requires a manual installation of the NDI SDK on the machine (after registration on the <a href=https://www.ndi.tv/>NDI website</a>).</p><ul><li>On Mac, you will also need to install the NDI redistributable after installing the SDK. The installer will be located in <code>/Library/NDI SDK for Apple/redist/libNDI_for_Mac.pkg</code>.</li></ul><figure style='display:block;margin:1em auto;width:600px'><a href=ndi-redistributable.png><img style='display:block;margin:0 auto' src=ndi-redistributable.png alt="NDI Redistributable"></a><figcaption><em>NDI Redistributable</em></figcaption></figure><h3 id=sender-1>Sender <a href=#sender-1 class=anchor aria-hidden=true>#</a></h3><p>The following app only has a single <code>ofxNDIsender</code>, and switches between textures to send using the value of the <code>ofParameter</code> settings.</p><pre><code class=language-cpp>// ofApp.h
 #pragma once
 
@@ -673,6 +700,8 @@ public:
   void update();
   void draw();
 
+  void keyPressed(int key);
+
   ofxNDIreceiver ndiReceiver;
   ofTexture ndiTexture;
 
@@ -702,7 +731,25 @@ void ofApp::draw()
 
   guiPanel.draw();
 }
+
+void ofApp::keyPressed(int key)
+{
+
+}
+</code></pre><p>Some versions of ofxNDI have a bug where the receiver needs to be restarted to start receiving frames. This can be done using <code>ofxNDIreceiver::ReleaseReceiver()</code> and <code>ofxNDIreceiver::CreateReceiver()</code>.</p><pre><code class=language-cpp>// ofApp.cpp
+
+// ...
+
+void ofApp::keyPressed(int key)
+{
+  if (key == ' ')
+  {
+    // Recreate receiver to get around bug at startup.
+    ndiReceiver.ReleaseReceiver();
+    ndiReceiver.CreateReceiver(0);
+  }
+}
 </code></pre><figure style="width:600px;height:400px;display:block;margin:0 auto"><video src=unity-vision.mp4 controls muted width=100%></video><figcaption><i>Unity Vision.</i></figcaption></figure><h2 id=webcam-sources>Webcam Sources <a href=#webcam-sources class=anchor aria-hidden=true>#</a></h2><p>All three of these frameworks have the option to advertise their shared texture as a webcam. This means that we could use the output from our OF app as an <code>ofVideoGrabber</code> or anywhere on the system where we would use a video input!</p><ul><li>With Syphon, this is achieved with the <a href=https://github.com/TroikaTronix/Syphon-Virtual-Webcam>Syphon Virtual Webcam</a> third party tool.</li><li>With Spout, the <a href=https://leadedge.github.io/>SpoutCam</a> app can be run to set up the webcam stream.</li><li>With NDI, we would need to install the additional <a href=https://ndi.video/type/ndi-tools/>NDI Tools</a> and run the <a href=https://ndi.video/tools/ndi-webcam/>NDI Webcam</a> app from the suite.</li></ul><div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between"></div><div class="docs-navigation d-flex justify-content-between"><a href=https://seeingmachines.betamovement.net/docs/class-8/networking/><div class="card my-1"><div class="card-body py-2">&larr; Networking</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container-xxl><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a class=text-muted href=https://github.com/>GitHub</a>, <a class=text-muted href=https://gohugo.io/>Hugo</a>, and <a class=text-muted href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline></ul></div></div></div></footer><script src=https://seeingmachines.betamovement.net/js/bootstrap.min.7315382e899a7d7132d93fdf0d6682c67a93f0e72ee1a757f33f3207de3b14e2460a935c9d4cec78f86d94ab892d053c70540695eed0bbb7bf5bdc979e6f5a9f.js integrity="sha512-cxU4LomafXEy2T/fDWaCxnqT8Ocu4adX8z8yB947FOJGCpNcnUzsePhtlKuJLQU8cFQGle7Qu7e/W9yXnm9anw==" crossorigin=anonymous defer></script>
 <script src=https://seeingmachines.betamovement.net/js/highlight.min.93c197e7097c47fc0788b21721b3c308e18e43299f1e45e8ff2697d13cd62908cc5949a053c1fb7242d7b4a60eb07bd106061252f7aa925ef7e91033ea59d9b9.js integrity="sha512-k8GX5wl8R/wHiLIXIbPDCOGOQymfHkXo/yaX0TzWKQjMWUmgU8H7ckLXtKYOsHvRBgYSUveqkl736RAz6lnZuQ==" crossorigin=anonymous defer></script>
 <script src=https://seeingmachines.betamovement.net/main.min.162c56a0426544de0d010e66c56e321579655c400c9aae06a6823e7682de379adadf2165bd416fea191e4e7e410fbf1fd2c35a759aa43ff2e3787067669bf81b.js integrity="sha512-FixWoEJlRN4NAQ5mxW4yFXllXEAMmq4GpoI+doLeN5ra3yFlvUFv6hkeTn5BD78f0sNadZqkP/LjeHBnZpv4Gw==" crossorigin=anonymous defer></script>
-<script src=https://seeingmachines.betamovement.net/index.min.c9f011f1a1fc7ba007060bad4a9337245591484ccc317b23c36e924a7e8ad395579790f5c55a529589b99cdbbd5cb3649b1e7dd9deee044fbfcf4f54799528a3.js integrity="sha512-yfAR8aH8e6AHBgutSpM3JFWRSEzMMXsjw26SSn6K05VXl5D1xVpSlYm5nNu9XLNkmx592d7uBE+/z09UeZUoow==" crossorigin=anonymous defer></script></body></html>
+<script src=https://seeingmachines.betamovement.net/index.min.b4db6d59f6cdbcd74a694e78d12865d06fbf38bc62f1ca1e605eceaa14ee62a2064841cf27cf82401a2c37c5bc1949df03096d642af8bc98656a3e855c0b2b39.js integrity="sha512-tNttWfbNvNdKaU540Shl0G+/OLxi8coeYF7OqhTuYqIGSEHPJ8+CQBosN8W8GUnfAwltZCr4vJhlaj6FXAsrOQ==" crossorigin=anonymous defer></script></body></html>
