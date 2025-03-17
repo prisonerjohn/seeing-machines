@@ -444,7 +444,7 @@ void ofApp::serverIndexChanged(int& val)
 
 Similarly to Syphon, Spout already has plug-ins available for a multitude of platforms, and being open-source, allows any developer to write their own Spout interface for any tool they choose.
 
-We will use the [ofxSpout](https://github.com/prisonerjohn/ofxSpout/tree/feature/upgrade-2.007h) addon for openFrameworks. Make sure to use the `upgrade-2.007h` branch of the addon.
+We will use the [ofxSpout](https://github.com/prisonerjohn/ofxSpout) addon for openFrameworks.
 
 ### Sender
 
@@ -660,6 +660,38 @@ void ofApp::keyPressed(int key)
 }
 ```
 
+Some versions of ofxSpout might flip the received images vertically. If that's the case, you can flip it back using [`ofTranslate()`](https://openframeworks.cc/documentation/graphics/ofGraphics/#!show_ofTranslate) / [`ofScale()`](https://openframeworks.cc/documentation/graphics/ofGraphics/#!show_ofScale), or [`ofPixels::mirror()`](https://openframeworks.cc/documentation/graphics/ofPixels/#show_mirror).
+
+```cpp
+// ofApp.cpp
+
+// ...
+
+void ofApp::draw()
+{
+  ofPushMatrix();
+  ofScale(1, -1, 1);
+  ofTranslate(0, -ofGetHeight(), 0);
+
+  if (recvGrabber)
+  {
+    // Draw grabber.
+    texGrabber.draw(0, 0);
+  }
+  else if (recvThreshold)
+  {
+    // Draw threshold.
+    texThreshold.draw(0, 0);
+  }
+
+  ofPopMatrix();
+
+  guiPanel.draw();
+}
+
+// ...
+```
+
 ## NDI
 
 Syphon and Spout are great for sharing images between applications, but they are limited to a single machine. We sometimes need to share images between different machines and that's where NDI comes in!
@@ -805,6 +837,8 @@ public:
   void update();
   void draw();
 
+  void keyPressed(int key);
+
   ofxNDIreceiver ndiReceiver;
   ofTexture ndiTexture;
 
@@ -836,6 +870,29 @@ void ofApp::draw()
   ndiTexture.draw(0, 0);
 
   guiPanel.draw();
+}
+
+void ofApp::keyPressed(int key)
+{
+
+}
+```
+
+Some versions of ofxNDI have a bug where the receiver needs to be restarted to start receiving frames. This can be done using `ofxNDIreceiver::ReleaseReceiver()` and `ofxNDIreceiver::CreateReceiver()`.
+
+```cpp
+// ofApp.cpp
+
+// ...
+
+void ofApp::keyPressed(int key)
+{
+  if (key == ' ')
+  {
+    // Recreate receiver to get around bug at startup.
+    ndiReceiver.ReleaseReceiver();
+    ndiReceiver.CreateReceiver(0);
+  }
 }
 ```
 
