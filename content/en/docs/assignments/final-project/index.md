@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-11-20T17:10:27-05:00
 lastmod: 2022-11-20T17:10:27-05:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -58,7 +58,7 @@ For all points above, pick the right tool for the job.
 
 You have 4 weeks to work on your project. You will need to present progress every week: a proposal, two milestones with updates and work in progress, and a final working project.
 
-#### Nov 21 / Project Proposal {{< mdl-disable "<!-- markdownlint-disable MD001 -->" >}}
+#### Apr 14 / Project Proposal {{< mdl-disable "<!-- markdownlint-disable MD001 -->" >}}
 
 * Present the idea.
   * What does it do?
@@ -75,7 +75,7 @@ You have 4 weeks to work on your project. You will need to present progress ever
   * What will you present for the milestones?
   * When and how will you combine work with your teammate (if any)?
 
-#### Nov 28 / Milestone Check-in
+#### Apr 21 / Milestone Check-in
 
 * Progress update.
   * Did your scope change? If so, why?
@@ -86,7 +86,7 @@ You have 4 weeks to work on your project. You will need to present progress ever
   * Show working or failed prototypes.
   * Talk through problems faced and how you resolved them.
 
-#### Dec 5 / Milestone Check-in
+#### Apr 28 / Milestone Check-in
 
 * Progress update.
   * Did your scope change? If so, why?
@@ -97,7 +97,7 @@ You have 4 weeks to work on your project. You will need to present progress ever
   * Show working or failed prototypes.
   * Talk through problems faced and how you resolved them.
 
-#### Dec 12 / Final Presentation
+#### May 5 / Final Presentation
 
 * Present the final project.
   * It needs to be set up and working!
@@ -115,7 +115,7 @@ You will need to submit your progress online.
 
 * Use a blog, GitHub Pages site, or something similar.
 * Post everything you will present in class every week.
-* Post the link in the `#assignments-23` channel on Discord!
+* Post the link in the `#assignments-25` channel on Discord!
 
 ### Code
 

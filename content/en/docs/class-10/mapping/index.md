@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: 2022-11-28T14:33:17-05:00
 lastmod: 2022-11-28T14:33:17-05:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
@@ -878,8 +878,7 @@ void ofApp::draw()
 
     int x = 640 * i;
     device->getDepthTex().draw(x, 0);
-
-    colorImg[i].draw(x, 360);
+    device->getColorTex().draw(x, 360);
   }
 
   cam.begin(ofRectangle(1280, 0, 720, 720));
@@ -1008,7 +1007,7 @@ public:
   ofParameter<bool> savePoints;
   ofParameter<bool> clearPoints;
   ofParameter<bool> debugPointClouds;
-  ofxLabel statusPoints;
+  ofParameter<string> statusPoints;
 
   ofxPanel guiPanel;
 };
@@ -1022,8 +1021,6 @@ void ofApp::setup()
 {
   ofDisableArbTex();
 
-  guiPanel.setup("settings.xml");
-
   eventListeners.push(context.deviceAddedEvent.newListener([&](std::string serialNumber) 
   {
     ofLogNotice(__FUNCTION__) << "Starting device " << serialNumber;
@@ -1034,6 +1031,17 @@ void ofApp::setup()
     device->enablePoints();
     device->startPipeline();
   }));
+
+  savePoints.set("Save Points", false);
+  clearPoints.set("Clear Points", false);
+  debugPointClouds.set("Debug Point Clouds", false);
+  statusPoints.set("Status", "");
+
+  guiPanel.setup("Calibrate Cams", "settings.json");
+  guiPanel.add(savePoints);
+  guiPanel.add(clearPoints);
+  guiPanel.add(calibrateSensors);
+  guiPanel.add(statusPoints);
 
   guiPanel.setup("Calibrate Cams", "settings.json");
 
@@ -1272,7 +1280,7 @@ public:
   ofParameter<bool> clearPoints;
   ofParameter<bool> calibrateSensors;
   ofParameter<bool> debugPointClouds;
-  ofxLabel statusPoints;
+  ofParameter<string> statusPoints;
 
   ofxPanel guiPanel;
 };
@@ -1286,8 +1294,6 @@ void ofApp::setup()
 {
   ofDisableArbTex();
 
-  guiPanel.setup("settings.xml");
-
   eventListeners.push(context.deviceAddedEvent.newListener([&](std::string serialNumber) 
   {
     ofLogNotice(__FUNCTION__) << "Starting device " << serialNumber;
@@ -1299,7 +1305,18 @@ void ofApp::setup()
     device->startPipeline();
   }));
 
+  savePoints.set("Save Points", false);
+  clearPoints.set("Clear Points", false);
+  calibrateSensors.set("Calibrate Sensors", false);
+  debugPointClouds.set("Debug Point Clouds", false);
+  statusPoints.set("Status", "");
+
   guiPanel.setup("Calibrate Cams", "settings.json");
+  guiPanel.add(savePoints);
+  guiPanel.add(clearPoints);
+  guiPanel.add(calibrateSensors);
+  guiPanel.add(debugPointClouds);
+  guiPanel.add(statusPoints);
 
   try
   {
@@ -1542,11 +1559,12 @@ We have already been doing something similar when rendering 3D objects on screen
 * The *view matrix* maps a point from world space to camera space (from the point of view of the camera).
 * The *projection matrix* maps a point from camera space to clip space, which is essentially what the camera projects onto a surface. Depending on the camera parameters, this projection can have perspective or be orthographic.
 
-{{< image src="https://www.maa.org/sites/default/files/images/cms_upload/figure256786.jpg" alt="Geometric Photo Manipulation - Projections" caption="[*Geometric Photo Manipulation - Projections*](https://www.maa.org/press/periodicals/loci/joma/geometric-photo-manipulation-projections)" width="600px" >}}
+<figure style="width:600px;height:340px;display:block;margin:0 auto;">
+<video src="https://jsantell.com/model-view-projection/mvp.webm" controls width="100%"></video>
+<figcaption><a href="https://jsantell.com/model-view-projection"><i>Model View Projection / Jordan Santell.</i></a></figcaption>
+</figure>
 
 What we are essentially doing is coming up with a similar matrix, but with an external camera and projector.
-
-[Model View Projection](https://jsantell.com/model-view-projection) is a good reference for in-depth info.
 
 ### Pinhole Camera Model
 
