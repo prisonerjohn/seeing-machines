@@ -134,11 +134,11 @@ void ofApp::draw()
 
 Installing the addon requires a few more steps after downloading the addon ZIP, as outlined in the [README](https://github.com/zkmkarlsruhe/ofxTensorFlow2/blob/main/README.md). The additional `cppflow` and `tensorflow` libraries as well as the models used in the examples need to be downloaded separately. This is a bit easier on Mac, as the download scripts are formatted for Mac/Linux.
 
-For simplicity's sake, I have the full addon with dependencies and model files available for download for [CUDA (Windows only)](https://drive.google.com/file/d/1djzZXKfU6Lt1zlNzcH5OQsDBawdL2oUN/view?usp=drive_link) and [CPU (Mac and Windows)](https://drive.google.com/file/d/1aPv7FX1eCyNoIOP0noWuvB7uJzGHsTA4/view?usp=drive_link).
+For simplicity's sake, I have the full addon with dependencies and model files available for download for [CUDA (Windows only)](https://drive.google.com/file/d/1_pYXvqfDy7tpnWw7pwipcFebSQ3RG4us/view?usp=drive_link) and [CPU (Mac and Windows)](https://drive.google.com/file/d/1IJx_iHGbfmV2GBCccp7BhxVtdqIJ_RMn/view?usp=drive_link).
 
 Note that on macOS, there are a couple of extra steps to perform in Xcode.
 
-1. Change the C++ language version to `c++14`.
+1. Change the C++ language version to `c++14`. (This may already be the default in OF 0.12)
   {{< image src="xcode-cpp14.jpg" alt="Xcode C++14" align="center" >}}
 1. Run a custom linking script in the second "Run Script" build phase.
   {{< image src="xcode-runscript.jpg" alt="Xcode Run Script" align="center" >}}
