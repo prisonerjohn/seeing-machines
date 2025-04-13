@@ -4,13 +4,13 @@ description: ""
 lead: ""
 date: 2022-11-27T12:04:16-05:00
 lastmod: 2022-11-27T12:04:16-05:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-12"
+    parent: "class-11"
     identifier: "machine-learning"
-weight: 1210
+weight: 1110
 toc: true
 ---
 
@@ -134,7 +134,7 @@ void ofApp::draw()
 
 Installing the addon requires a few more steps after downloading the addon ZIP, as outlined in the [README](https://github.com/zkmkarlsruhe/ofxTensorFlow2/blob/main/README.md). The additional `cppflow` and `tensorflow` libraries as well as the models used in the examples need to be downloaded separately. This is a bit easier on Mac, as the download scripts are formatted for Mac/Linux.
 
-For simplicity's sake, I have the full addon available here for download on [Mac (CPU only)](https://drive.google.com/file/d/1GAbbyTHJzqOKhpu_r029ayCmFE0tREPg/view?usp=sharing), [Windows (CPU)](https://drive.google.com/file/d/1hUR2sRGyDKsc_L7Sk3D45y2TdquBvM0O/view?usp=sharing), and [Windows (GPU)](https://drive.google.com/file/d/18m4weedXDQqr7UZzPQohu_5XMg_WJ2zX/view?usp=sharing).
+For simplicity's sake, I have the full addon with dependencies and model files available for download for [CUDA (Windows only)](https://drive.google.com/file/d/1djzZXKfU6Lt1zlNzcH5OQsDBawdL2oUN/view?usp=drive_link) and [CPU (Mac and Windows)](https://drive.google.com/file/d/1aPv7FX1eCyNoIOP0noWuvB7uJzGHsTA4/view?usp=drive_link).
 
 Note that on macOS, there are a couple of extra steps to perform in Xcode.
 

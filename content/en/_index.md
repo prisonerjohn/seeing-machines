@@ -82,9 +82,9 @@ I will notify you ahead of time if you are at risk of failing, and you can reach
 | Mar 24   | <div class="blink">NO CLASS</div> | | |  |
 | Mar 31   | [Draw Bounds]({{< relref "docs/class-9/draw-bounds" >}})<br/>[Frame Buffers]({{< relref "docs/class-9/frame-buffers" >}}) | | [VIDEO](https://stream.nyu.edu/media/Seeing+Machines+Mar+31+2025+%5BVIDEO%5D/1_m8zz8eyd)<br/>[AUDIO](https://stream.nyu.edu/media/Seeing+Machines+Mar+31+2025+%5BAUDIO%5D/1_8vjldsxs) | [VIDEO](https://drive.google.com/file/d/1pbsPMUNZdYMD31vTFqIAdud0yRtmkTZ-/view?usp=drive_link)<br/>[AUDIO](https://drive.google.com/file/d/1zHBXTAMuwRrXMvlIFfzI_BnHfFoQcU-E/view?usp=drive_link) |
 | Apr  7   | [Classes]({{< relref "docs/class-10/classes" >}})<br/>[Mapping]({{< relref "docs/class-10/mapping" >}}) | Assignment 4 DUE<br/>[Final Project OUT]({{< relref "docs/assignments/final-project" >}}) |  |  |
-| Apr 14   | Project Proposals<br/>Mobile Development | Project Proposal DUE |  |  |
-| Apr 21   | Milestone Check-In<br/>Machine Learning | | |  |
-| Apr 28   | Milestone Check-In<br/>Sound | | |  |
+| Apr 14   | Project Proposals<br/>[Machine Learning]({{< relref "docs/class-11/machine-learning" >}}) | Project Proposal DUE |  |  |
+| Apr 21   | Milestone Check-In<br/>[Mobile Development]({{< relref "docs/class-12/mobile-development" >}}) | | |  |
+| Apr 28   | Milestone Check-In<br/>[Sound]({{< relref "docs/class-13/sound" >}}) | | |  |
 | May  5   | Final Presentations | Final Project DUE | |  |
 
 ## Academic Integrity

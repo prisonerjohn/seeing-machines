@@ -4,13 +4,13 @@ description: ""
 lead: ""
 date: 2022-11-19T15:25:33-05:00
 lastmod: 2022-11-19T15:25:33-05:00
-draft: true
+draft: false
 images: []
 menu:
   docs:
-    parent: "class-11"
+    parent: "class-12"
     identifier: "mobile-development"
-weight: 1110
+weight: 1210
 toc: true
 ---
 
